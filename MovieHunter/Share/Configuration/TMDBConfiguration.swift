@@ -8,3 +8,4 @@
 import Foundation
 
 let tmdbAPIKey = "703f9b5b31d0f32feb52b4cfab42e343"
+let moviePosterURLPrefix = URL(string: "https://image.tmdb.org/t/p/w300")!

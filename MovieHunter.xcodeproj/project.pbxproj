@@ -11,6 +11,20 @@
 		76AC258529C2E23A007874DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC258429C2E23A007874DA /* ContentView.swift */; };
 		76AC258729C2E23B007874DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76AC258629C2E23B007874DA /* Assets.xcassets */; };
 		76AC258B29C2E23B007874DA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76AC258A29C2E23B007874DA /* Preview Assets.xcassets */; };
+		76AC259529C2E2A0007874DA /* TMDb in Frameworks */ = {isa = PBXBuildFile; productRef = 76AC259429C2E2A0007874DA /* TMDb */; };
+		76AC259829C2E2D4007874DA /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 76AC259729C2E2D4007874DA /* Nuke */; };
+		76AC259A29C2E2D4007874DA /* NukeExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 76AC259929C2E2D4007874DA /* NukeExtensions */; };
+		76AC259C29C2E2D4007874DA /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 76AC259B29C2E2D4007874DA /* NukeUI */; };
+		76AC259E29C2E2D4007874DA /* NukeVideo in Frameworks */ = {isa = PBXBuildFile; productRef = 76AC259D29C2E2D4007874DA /* NukeVideo */; };
+		76AC25A629C2E350007874DA /* DeviceStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC25A529C2E350007874DA /* DeviceStatus.swift */; };
+		76AC25A929C2E35C007874DA /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC25A729C2E35B007874DA /* Shape.swift */; };
+		76AC25AA29C2E35C007874DA /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC25A829C2E35B007874DA /* ViewExtension.swift */; };
+		76AC25AC29C2E369007874DA /* Pipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC25AB29C2E369007874DA /* Pipeline.swift */; };
+		76AC25B129C2E37C007874DA /* ItemPoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC25AD29C2E37B007874DA /* ItemPoster.swift */; };
+		76AC25B229C2E37C007874DA /* BookMarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC25AE29C2E37B007874DA /* BookMarkButton.swift */; };
+		76AC25B329C2E37C007874DA /* ItemRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC25AF29C2E37C007874DA /* ItemRoot.swift */; };
+		76AC25B429C2E37C007874DA /* ShortInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC25B029C2E37C007874DA /* ShortInfo.swift */; };
+		76AC25B629C2E381007874DA /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC25B529C2E381007874DA /* Rate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +34,15 @@
 		76AC258629C2E23B007874DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76AC258829C2E23B007874DA /* MovieHunter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MovieHunter.entitlements; sourceTree = "<group>"; };
 		76AC258A29C2E23B007874DA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		76AC25A529C2E350007874DA /* DeviceStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceStatus.swift; sourceTree = "<group>"; };
+		76AC25A729C2E35B007874DA /* Shape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
+		76AC25A829C2E35B007874DA /* ViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		76AC25AB29C2E369007874DA /* Pipeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pipeline.swift; sourceTree = "<group>"; };
+		76AC25AD29C2E37B007874DA /* ItemPoster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemPoster.swift; sourceTree = "<group>"; };
+		76AC25AE29C2E37B007874DA /* BookMarkButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookMarkButton.swift; sourceTree = "<group>"; };
+		76AC25AF29C2E37C007874DA /* ItemRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemRoot.swift; sourceTree = "<group>"; };
+		76AC25B029C2E37C007874DA /* ShortInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortInfo.swift; sourceTree = "<group>"; };
+		76AC25B529C2E381007874DA /* Rate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +50,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76AC259529C2E2A0007874DA /* TMDb in Frameworks */,
+				76AC259829C2E2D4007874DA /* Nuke in Frameworks */,
+				76AC259E29C2E2D4007874DA /* NukeVideo in Frameworks */,
+				76AC259A29C2E2D4007874DA /* NukeExtensions in Frameworks */,
+				76AC259C29C2E2D4007874DA /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +80,8 @@
 		76AC258129C2E23A007874DA /* MovieHunter */ = {
 			isa = PBXGroup;
 			children = (
+				76AC259229C2E250007874DA /* Views */,
+				76AC259129C2E24A007874DA /* Share */,
 				76AC258229C2E23A007874DA /* MovieHunterApp.swift */,
 				76AC258429C2E23A007874DA /* ContentView.swift */,
 				76AC258629C2E23B007874DA /* Assets.xcassets */,
@@ -67,6 +97,77 @@
 				76AC258A29C2E23B007874DA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		76AC259129C2E24A007874DA /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				76AC25B729C2E3FA007874DA /* Configuration */,
+				76AC25A329C2E339007874DA /* SwiftUI */,
+				76AC25A229C2E332007874DA /* Nuke */,
+				76AC25A129C2E323007874DA /* Foundation */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
+		76AC259229C2E250007874DA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				76AC25A029C2E2F3007874DA /* MovieDetail */,
+				76AC259F29C2E2E9007874DA /* MovieItem */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		76AC259F29C2E2E9007874DA /* MovieItem */ = {
+			isa = PBXGroup;
+			children = (
+				76AC25AE29C2E37B007874DA /* BookMarkButton.swift */,
+				76AC25AD29C2E37B007874DA /* ItemPoster.swift */,
+				76AC25AF29C2E37C007874DA /* ItemRoot.swift */,
+				76AC25B029C2E37C007874DA /* ShortInfo.swift */,
+			);
+			path = MovieItem;
+			sourceTree = "<group>";
+		};
+		76AC25A029C2E2F3007874DA /* MovieDetail */ = {
+			isa = PBXGroup;
+			children = (
+				76AC25B529C2E381007874DA /* Rate.swift */,
+			);
+			path = MovieDetail;
+			sourceTree = "<group>";
+		};
+		76AC25A129C2E323007874DA /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		76AC25A229C2E332007874DA /* Nuke */ = {
+			isa = PBXGroup;
+			children = (
+				76AC25AB29C2E369007874DA /* Pipeline.swift */,
+			);
+			path = Nuke;
+			sourceTree = "<group>";
+		};
+		76AC25A329C2E339007874DA /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				76AC25A729C2E35B007874DA /* Shape.swift */,
+				76AC25A829C2E35B007874DA /* ViewExtension.swift */,
+				76AC25A529C2E350007874DA /* DeviceStatus.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		76AC25B729C2E3FA007874DA /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,6 +186,13 @@
 			dependencies = (
 			);
 			name = MovieHunter;
+			packageProductDependencies = (
+				76AC259429C2E2A0007874DA /* TMDb */,
+				76AC259729C2E2D4007874DA /* Nuke */,
+				76AC259929C2E2D4007874DA /* NukeExtensions */,
+				76AC259B29C2E2D4007874DA /* NukeUI */,
+				76AC259D29C2E2D4007874DA /* NukeVideo */,
+			);
 			productName = MovieHunter;
 			productReference = 76AC257F29C2E23A007874DA /* MovieHunter.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +221,10 @@
 				Base,
 			);
 			mainGroup = 76AC257629C2E23A007874DA;
+			packageReferences = (
+				76AC259329C2E2A0007874DA /* XCRemoteSwiftPackageReference "TMDb" */,
+				76AC259629C2E2D4007874DA /* XCRemoteSwiftPackageReference "Nuke" */,
+			);
 			productRefGroup = 76AC258029C2E23A007874DA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -139,8 +251,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76AC25B329C2E37C007874DA /* ItemRoot.swift in Sources */,
 				76AC258529C2E23A007874DA /* ContentView.swift in Sources */,
+				76AC25B429C2E37C007874DA /* ShortInfo.swift in Sources */,
+				76AC25B229C2E37C007874DA /* BookMarkButton.swift in Sources */,
+				76AC25B129C2E37C007874DA /* ItemPoster.swift in Sources */,
+				76AC25A629C2E350007874DA /* DeviceStatus.swift in Sources */,
 				76AC258329C2E23A007874DA /* MovieHunterApp.swift in Sources */,
+				76AC25AC29C2E369007874DA /* Pipeline.swift in Sources */,
+				76AC25B629C2E381007874DA /* Rate.swift in Sources */,
+				76AC25A929C2E35C007874DA /* Shape.swift in Sources */,
+				76AC25AA29C2E35C007874DA /* ViewExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +475,53 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		76AC259329C2E2A0007874DA /* XCRemoteSwiftPackageReference "TMDb" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/fatbobman/TMDb.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		76AC259629C2E2D4007874DA /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		76AC259429C2E2A0007874DA /* TMDb */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76AC259329C2E2A0007874DA /* XCRemoteSwiftPackageReference "TMDb" */;
+			productName = TMDb;
+		};
+		76AC259729C2E2D4007874DA /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76AC259629C2E2D4007874DA /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+		76AC259929C2E2D4007874DA /* NukeExtensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76AC259629C2E2D4007874DA /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeExtensions;
+		};
+		76AC259B29C2E2D4007874DA /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76AC259629C2E2D4007874DA /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeUI;
+		};
+		76AC259D29C2E2D4007874DA /* NukeVideo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76AC259629C2E2D4007874DA /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeVideo;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 76AC257729C2E23A007874DA /* Project object */;
 }

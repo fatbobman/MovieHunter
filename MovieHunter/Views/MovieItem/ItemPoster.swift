@@ -24,15 +24,12 @@ struct ItemPoster: View {
       }
     }
     .pipeline(imagePipeline)
-    .onAppear {
-      print((imagePipeline?.configuration.dataCache as! DataCache).sizeLimit)
-    }
   }
 }
 
 struct ItemPosterPreview: PreviewProvider {
   static var previews: some View {
-    ItemPoster(imageURL: URL(string: "https://image.tmdb.org/t/p/w300/iOcbJ5pxokOPDRgieVDbsFMrCc6.jpg")!)
+    ItemPoster(imageURL: PreviewData.portraitImageURL)
       .frame(
         width: DisplayType.portrait(.small).imageSize.width,
         height: DisplayType.portrait(.small).imageSize.height

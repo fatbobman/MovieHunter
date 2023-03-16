@@ -135,8 +135,8 @@ public enum DisplayType: Equatable {
       VStack {
         MovieItem(
           movieID: 100,
-          movieName: "The Lengend of 1900",
-          imageURL: URL(string: "https://image.tmdb.org/t/p/w300/iOcbJ5pxokOPDRgieVDbsFMrCc6.jpg")!,
+          movieName: PreviewData.previewMovieName,
+          imageURL: PreviewData.portraitImageURL,
           rate: 8.5,
           duration: 175,
           releaseDate: .init(timeIntervalSince1970: 0),
@@ -149,8 +149,8 @@ public enum DisplayType: Equatable {
 
         MovieItem(
           movieID: 100,
-          movieName: "History of the World: Part II",
-          imageURL: URL(string: "https://image.tmdb.org/t/p/w300/iOcbJ5pxokOPDRgieVDbsFMrCc6.jpg")!,
+          movieName: PreviewData.previewMovieName,
+          imageURL: PreviewData.portraitImageURL,
           rate: 8.5,
           duration: 175,
           releaseDate: .init(timeIntervalSince1970: 0),
@@ -161,8 +161,8 @@ public enum DisplayType: Equatable {
 
         MovieItem(
           movieID: 100,
-          movieName: "History of the World: Part II",
-          imageURL: URL(string: "https://image.tmdb.org/t/p/w300/iOcbJ5pxokOPDRgieVDbsFMrCc6.jpg")!,
+          movieName: PreviewData.previewMovieName,
+          imageURL: PreviewData.portraitImageURL,
           rate: 8.5,
           duration: 175,
           releaseDate: .init(timeIntervalSince1970: 0),

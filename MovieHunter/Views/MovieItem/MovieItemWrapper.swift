@@ -36,8 +36,11 @@ struct MovieItemWrapper: View {
 #if DEBUG
 struct MovieItemWrapperPreview:PreviewProvider {
     static var previews: some View {
-        MovieItemWrapper(displayType: .portrait(.small), movie: PreviewData.previewMovie)
+        MovieItemWrapper(displayType: .portrait(.middle), movie: PreviewData.previewMovie)
             .environment(\.locale, .init(identifier: "zh-cn"))
+        MovieItemWrapper(displayType: .landscape, movie: PreviewData.previewMovie)
+            .environment(\.locale, .init(identifier: "zh-cn"))
+
     }
 }
 #endif

@@ -11,8 +11,13 @@ import TMDb
 
 struct MovieItemWrapper: View {
     @Environment(\.tmdb) var tmdb
+    @EnvironmentObject var store: Store
     let displayType: DisplayType
     let movie: Movie
+
+    var inWishlist: Bool { store.state.favorite.movies.contains(movie.id)
+    }
+
     var body: some View {
         MovieItem(
             movieID: movie.id,
@@ -21,9 +26,11 @@ struct MovieItemWrapper: View {
             rate: movie.voteAverage,
             duration: movie.runtime ?? 90,
             releaseDate: movie.releaseDate,
-            inWishlist: true,
+            inWishlist: inWishlist,
             displayType: displayType,
-            updateWishlist: { _ in }
+            updateWishlist: {
+                store.send(.updateMovieWishlisth($0))
+            }
         )
     }
 
@@ -38,8 +45,10 @@ struct MovieItemWrapper: View {
         static var previews: some View {
             MovieItemWrapper(displayType: .portrait(.middle), movie: PreviewData.previewMovie)
                 .environment(\.locale, .init(identifier: "zh-cn"))
+                .environmentObject(Store())
             MovieItemWrapper(displayType: .landscape, movie: PreviewData.previewMovie)
                 .environment(\.locale, .init(identifier: "zh-cn"))
+                .environmentObject(Store())
         }
     }
 #endif

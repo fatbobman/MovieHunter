@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var store = Store()
+    @EnvironmentObject var store: Store
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
         VStack {
@@ -16,13 +16,17 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
             Text("Hello, world!")
-            Button("Change"){
+            Button("Change") {
                 if colorScheme == .dark {
                     store.send(.updateColorScheme(.light))
                 } else {
                     store.send(.updateColorScheme(.dark))
                 }
             }
+            Button("add Favorite") {
+                store.send(.updateMovieWishlisth(10))
+            }
+            Text("\(store.state.favorite.movies.count)")
         }
         .padding()
         .preferredColorScheme(store.state.configuration.colorScheme.colorSchmeme)
@@ -32,5 +36,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(Store())
     }
 }

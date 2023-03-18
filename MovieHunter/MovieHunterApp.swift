@@ -9,10 +9,13 @@ import SwiftUI
 
 @main
 struct MovieHunterApp: App {
-  var body: some Scene {
-    WindowGroup {
-//      ContentView()
-        PersonPortraitPreviewWrapper()
+    @StateObject var store = Store()
+    var body: some Scene {
+        WindowGroup {
+//            ContentView()
+            MovieItemWrapper(displayType: .portrait(.middle), movie: PreviewData.previewMovie)
+                .environmentObject(store)
+                .preferredColorScheme(store.state.configuration.colorScheme.colorSchmeme)
+        }
     }
-  }
 }

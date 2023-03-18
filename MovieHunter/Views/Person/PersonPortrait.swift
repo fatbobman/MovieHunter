@@ -11,16 +11,20 @@ import NukeUI
 import SwiftUI
 
 struct PersonPortrait: View {
+    let personID: Int
     let imageURL: URL
     let name: String
     let displayType: DisplayType
+    let isFavorite: Bool
+    var updateFavorite: (Int) -> Void
+
     var body: some View {
         VStack(spacing: 10) {
             PeopleImage(imageURL: imageURL, displayType: displayType)
                 .frame(width: imageSize.width, height: imageSize.height)
                 .clipped()
                 .overlay(alignment: .bottomLeading) {
-                    FavoritButton()
+                    FavoritButton(personID: personID, isFavorite: isFavorite, updateFavorite: updateFavorite)
                         .offset(x: 3, y: -3)
                 }
             PersonName(name: name)
@@ -55,6 +59,10 @@ struct PeopleImage: View {
 }
 
 struct FavoritButton: View {
+    let personID: Int
+    let isFavorite: Bool
+    var updateFavorite: (Int) -> Void
+
     var body: some View {
         Circle()
             .fill(.black.opacity(0.6))
@@ -68,6 +76,21 @@ struct FavoritButton: View {
                     .bold()
                     .foregroundColor(.white)
             )
+            .overlay(
+                VStack {
+                    if isFavorite {
+                        Image(systemName: "heart.fill")
+                            .bold()
+                            .foregroundColor(Color("starYellow"))
+                            .transition(.scale(scale: 1.7).combined(with: .opacity))
+                    }
+                }
+                .animation(.spring(), value: isFavorite)
+            )
+            .clipShape(Circle())
+            .onTapGesture {
+                updateFavorite(personID)
+            }
     }
 }
 
@@ -80,12 +103,26 @@ struct PersonName: View {
     }
 }
 
-struct PersonPortrait_Previews: PreviewProvider {
-    static var previews: some View {
-        PersonPortrait(
-            imageURL: PreviewData.peopleImageURL,
-            name: "Brad Pitt",
-            displayType: .landscape
-        )
+#if DEBUG
+    private struct PreviewWrapper: View {
+        @State var isFavorite = false
+        var body: some View {
+            PersonPortrait(
+                personID: 100,
+                imageURL: PreviewData.peopleImageURL,
+                name: "Brad Pitt",
+                displayType: .landscape,
+                isFavorite: isFavorite,
+                updateFavorite: { _ in
+                    isFavorite.toggle()
+                }
+            )
+        }
     }
-}
+
+    struct PersonPortrait_Previews: PreviewProvider {
+        static var previews: some View {
+            PreviewWrapper()
+        }
+    }
+#endif

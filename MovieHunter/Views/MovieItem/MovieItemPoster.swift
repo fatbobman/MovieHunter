@@ -9,41 +9,60 @@ import Foundation
 import Nuke
 import NukeUI
 import SwiftUI
+import TMDb
 
 struct ItemPoster: View {
-    let imageURL: URL?
+    let movie: Movie
+    let size: CGSize
+    let inWishlist: Bool
+    var updateWishlist: ((Int) -> Void)?
     @Environment(\.imagePipeline) var imagePipeline
     var body: some View {
-        if let imageURL {
-            LazyImage(url: imageURL) { state in
-                if let image = state.image {
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                } else {
-                    Color("imagePlaceHolderColor")
+        VStack {
+            if let imageURL {
+                LazyImage(url: imageURL) { state in
+                    if let image = state.image {
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    } else {
+                        Assets.Colors.imagePlaceHolder
+                    }
                 }
+                .pipeline(imagePipeline)
+            } else {
+                Assets.Colors.imagePlaceHolder
             }
-            .pipeline(imagePipeline)
-        } else {
-            Color.clear
+        }
+        .frame(width: size.width, height: size.height)
+        .clipped()
+        .overlay(alignment: .topLeading) {
+            if let updateWishlist {
+                BookMarkCornerButton(
+                    movieID: movie.id,
+                    inWishlist: inWishlist,
+                    updateWishlist: updateWishlist
+                )
+            }
         }
     }
-}
 
-struct ItemPosterPreview: PreviewProvider {
-    static var previews: some View {
-        ItemPoster(imageURL: PreviewData.portraitImageURL)
-            .frame(
-                width: DisplayType.portrait(.small).imageSize.width,
-                height: DisplayType.portrait(.small).imageSize.height
-            )
-
-        ItemPoster(imageURL: nil)
-            .frame(
-                width: DisplayType.portrait(.small).imageSize.width,
-                height: DisplayType.portrait(.small).imageSize.height
-            )
-            .border(.blue)
+    var imageURL: URL? {
+        guard let path = movie.posterPath else { return nil }
+        return moviePosterURLPrefix
+            .appending(path: "/w300")
+            .appending(path: path.absoluteString)
     }
 }
+
+#if DEBUG
+    struct ItemPosterPreview: PreviewProvider {
+        static var previews: some View {
+            ItemPoster(movie: PreviewData.previewMovie, size: DisplayType.portrait(.small).imageSize, inWishlist: true, updateWishlist: { _ in print("update ") })
+
+            ItemPoster(movie: PreviewData.previewMovie, size: DisplayType.portrait(.small).imageSize, inWishlist: false)
+
+            ItemPoster(movie: PreviewData.previewMovie, size: DisplayType.portrait(.middle).imageSize, inWishlist: false)
+        }
+    }
+#endif

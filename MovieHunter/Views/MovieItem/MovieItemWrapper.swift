@@ -20,23 +20,13 @@ struct MovieItemWrapper: View {
 
     var body: some View {
         MovieItem(
-            movieID: movie.id,
-            movieName: movie.title,
-            imageURL: posterPath,
-            rate: movie.voteAverage,
-            duration: movie.runtime ?? 90,
-            releaseDate: movie.releaseDate,
+            movie: movie,
             inWishlist: inWishlist,
             displayType: displayType,
             updateWishlist: {
                 store.send(.updateMovieWishlisth($0))
             }
         )
-    }
-
-    var posterPath: URL? {
-        guard let path = movie.posterPath else { return nil }
-        return moviePosterURLPrefix.appending(path: path.absoluteString)
     }
 }
 

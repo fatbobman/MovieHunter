@@ -9,41 +9,13 @@ import Foundation
 import Nuke
 import NukeUI
 import SwiftUI
+import TMDb
 
 public struct MovieItem: View {
-    let movieID: Int
-    let imageURL: URL?
-    let movieName: String
-    let rate: Double?
-    let duration: Int?
-    let releaseDate: Date?
+    let movie: Movie
     let inWishlist: Bool
     let displayType: DisplayType
     var updateWishlist: (Int) -> Void
-
-    @Environment(\.imagePipeline) var pipeline
-
-    public init(
-        movieID: Int,
-        movieName: String,
-        imageURL: URL?,
-        rate: Double?,
-        duration: Int?,
-        releaseDate: Date?,
-        inWishlist: Bool,
-        displayType: DisplayType,
-        updateWishlist: @escaping (Int) -> Void
-    ) {
-        self.movieID = movieID
-        self.imageURL = imageURL
-        self.movieName = movieName
-        self.rate = rate
-        self.duration = duration
-        self.releaseDate = releaseDate
-        self.inWishlist = inWishlist
-        self.displayType = displayType
-        self.updateWishlist = updateWishlist
-    }
 
     var layout: AnyLayout {
         switch displayType {
@@ -64,22 +36,14 @@ public struct MovieItem: View {
 
     public var body: some View {
         layout {
-            ItemPoster(imageURL: imageURL)
-                .frame(width: displayType.imageSize.width,
-                       height: displayType.imageSize.height)
-                .clipped()
-                .overlay(alignment: .topLeading) {
-                    BookMarkCornerButton(
-                        movieID: movieID,
-                        inWishlist: inWishlist,
-                        updateWishlist: updateWishlist
-                    )
-                }
+            ItemPoster(
+                movie: movie,
+                size: displayType.imageSize,
+                inWishlist: inWishlist,
+                updateWishlist: updateWishlist
+            )
             MovieShortInfo(
-                movieName: movieName,
-                rate: rate,
-                duration: duration,
-                releaseDate: releaseDate,
+                movie: movie,
                 displayType: displayType
             )
         }
@@ -134,12 +98,7 @@ public enum DisplayType: Equatable {
         static var previews: some View {
             VStack {
                 MovieItem(
-                    movieID: 100,
-                    movieName: PreviewData.previewMovieName,
-                    imageURL: PreviewData.portraitImageURL,
-                    rate: 8.5,
-                    duration: 175,
-                    releaseDate: .init(timeIntervalSince1970: 0),
+                    movie: PreviewData.previewMovie,
                     inWishlist: false,
                     displayType: .landscape,
                     updateWishlist: { id in print(id) }
@@ -148,24 +107,14 @@ public enum DisplayType: Equatable {
                 .padding(10)
 
                 MovieItem(
-                    movieID: 100,
-                    movieName: PreviewData.previewMovieName,
-                    imageURL: PreviewData.portraitImageURL,
-                    rate: 8.5,
-                    duration: 175,
-                    releaseDate: .init(timeIntervalSince1970: 0),
+                    movie: PreviewData.previewMovie,
                     inWishlist: true,
                     displayType: .portrait(.small),
                     updateWishlist: { id in print(id) }
                 )
 
                 MovieItem(
-                    movieID: 100,
-                    movieName: PreviewData.previewMovieName,
-                    imageURL: PreviewData.portraitImageURL,
-                    rate: 8.5,
-                    duration: 175,
-                    releaseDate: .init(timeIntervalSince1970: 0),
+                    movie: PreviewData.previewMovie,
                     inWishlist: true,
                     displayType: .portrait(.large),
                     updateWishlist: { id in print(id) }

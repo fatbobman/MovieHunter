@@ -7,12 +7,10 @@
 
 import Foundation
 import SwiftUI
+import TMDb
 
 struct MovieShortInfo: View {
-    let movieName: String
-    let rate: Double?
-    let duration: Int?
-    let releaseDate: Date?
+    let movie: Movie
     let displayType: DisplayType
 
     var body: some View {
@@ -50,7 +48,7 @@ struct MovieShortInfo: View {
             Image(systemName: "star")
                 .symbolVariant(.fill)
                 .foregroundColor(.orange)
-            if let rate {
+            if let rate = movie.voteAverage {
                 Text(rate, format: .number.precision(.fractionLength(1)))
             } else {
                 Text("No Rate")
@@ -63,7 +61,7 @@ struct MovieShortInfo: View {
     // 电影名称
     @ViewBuilder
     var movieNameView: some View {
-        Text(movieName)
+        Text(movie.title)
             .font(.callout)
             .lineLimit(1)
     }
@@ -72,7 +70,7 @@ struct MovieShortInfo: View {
     @ViewBuilder
     var releaseDateView: some View {
         VStack {
-            if let releaseDate {
+            if let releaseDate = movie.releaseDate {
                 Text(releaseDate, format: .dateTime.year(.defaultDigits))
             } else {
                 Text("coming soon")
@@ -85,7 +83,7 @@ struct MovieShortInfo: View {
     // 电影时长
     @ViewBuilder
     var durationView: some View {
-        if let duration {
+        if let duration = movie.runtime {
             let now = Date(timeIntervalSince1970: 0)
             let later = now + TimeInterval(duration) * 60
             let timeDuration = (now ..< later).formatted(.components(style: .narrow))
@@ -105,10 +103,7 @@ struct MovieShortInfo: View {
                     .frame(width: DisplayType.landscape.imageSize.width,
                            height: DisplayType.landscape.imageSize.height)
                 MovieShortInfo(
-                    movieName: "The lengend of 1900",
-                    rate: 9.5,
-                    duration: 134,
-                    releaseDate: .now,
+                    movie: PreviewData.previewMovie,
                     displayType: .landscape
                 )
             }
@@ -125,10 +120,7 @@ struct MovieShortInfo: View {
                     .frame(width: DisplayType.portrait(.small).imageSize.width,
                            height: DisplayType.portrait(.small).imageSize.height)
                 MovieShortInfo(
-                    movieName: "The lengend of 1900",
-                    rate: 9.5,
-                    duration: 55,
-                    releaseDate: .now,
+                    movie: PreviewData.previewMovie,
                     displayType: .portrait(.small)
                 )
             }
@@ -140,10 +132,7 @@ struct MovieShortInfo: View {
                     .frame(width: DisplayType.portrait(.middle).imageSize.width,
                            height: DisplayType.portrait(.middle).imageSize.height)
                 MovieShortInfo(
-                    movieName: "History of the World",
-                    rate: nil,
-                    duration: nil,
-                    releaseDate: nil,
+                    movie: PreviewData.previewMovie,
                     displayType: .portrait(.middle)
                 )
             }

@@ -82,7 +82,7 @@ struct FavoritButton: View {
                     if isFavorite {
                         Image(systemName: "heart.fill")
                             .bold()
-                            .foregroundColor(Color("starYellow"))
+                            .foregroundColor(Assets.Colors.favorite)
                             .transition(.scale(scale: 1.7).combined(with: .opacity))
                     }
                 }

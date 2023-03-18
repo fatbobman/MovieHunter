@@ -45,7 +45,7 @@ public struct BookMarkCornerButton: View {
                 VStack {
                     if inWishlist {
                         BookMarkShap()
-                            .fill(Color("starYellow"))
+                            .fill(Assets.Colors.favorite)
                             .overlay(alignment: .top) {
                                 Image(systemName: "checkmark")
                                     .foregroundColor(.black)
@@ -100,6 +100,6 @@ struct BookMarkShap: Shape {
     struct BookMarConerButtonPreview: PreviewProvider {
         static var previews: some View {
             BookMarkCornerButtonPreviewWrapper()
-        }
+        }   
     }
 #endif

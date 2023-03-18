@@ -28,19 +28,36 @@ public struct BookMarkCornerButton: View {
             .frame(width: 32, height: 40)
             .overlay(
                 BookMarkShap()
-                    .fill(inWishlist ? Color("starYellow") : .black)
+                    .fill(.black)
+                    .overlay(
+                        BookMarkShap()
+                            .stroke(inWishlist ? .clear : .white.opacity(0.2), lineWidth: 0.5)
+                    )
+                    .overlay(alignment: .top) {
+                        Image(systemName: inWishlist ? "checkmark" : "plus")
+                            .foregroundColor(inWishlist ? .black : .white)
+                            .font(.callout)
+                            .bold()
+                            .alignmentGuide(.top) { _ in -8 }
+                    }
             )
             .overlay(
-                BookMarkShap()
-                    .stroke(inWishlist ? .clear : .white.opacity(0.2), lineWidth: 0.5)
+                VStack {
+                    if inWishlist {
+                        BookMarkShap()
+                            .fill(Color("starYellow"))
+                            .overlay(alignment: .top) {
+                                Image(systemName: "checkmark")
+                                    .foregroundColor(.black)
+                                    .font(.callout)
+                                    .bold()
+                                    .alignmentGuide(.top) { _ in -8 }
+                            }
+                            .transition(.scale(scale: 1.7).combined(with: .opacity))
+                    }
+                }
+                .animation(.spring(), value: inWishlist)
             )
-            .overlay(alignment: .top) {
-                Image(systemName: inWishlist ? "checkmark" : "plus")
-                    .foregroundColor(inWishlist ? .black : .white)
-                    .font(.callout)
-                    .bold()
-                    .alignmentGuide(.top) { _ in -8 }
-            }
             .contentShape(Rectangle())
             .onTapGesture {
                 updateWishlist(movieID)
@@ -62,26 +79,27 @@ struct BookMarkShap: Shape {
     }
 }
 
-struct BookMarConerButtonPreview: PreviewProvider {
-    static var previews: some View {
-        HStack {
-            BookMarkCornerButton(
-                movieID: 100,
-                inWishlist: true,
-                updateWishlist: { id in
-                    print(id)
-                }
-            )
-
-            BookMarkCornerButton(
-                movieID: 100,
-                inWishlist: false,
-                updateWishlist: { id in
-                    print(id)
-                }
-            )
+#if DEBUG
+    private struct PreviewWrapper: View {
+        @State var inWishlist = false
+        var body: some View {
+            HStack {
+                BookMarkCornerButton(
+                    movieID: 100,
+                    inWishlist: inWishlist,
+                    updateWishlist: { _ in
+                        inWishlist.toggle()
+                    }
+                )
+            }
+            .padding()
+            .background(.black)
         }
-        .padding()
-        .background(.black)
     }
-}
+
+    struct BookMarConerButtonPreview: PreviewProvider {
+        static var previews: some View {
+            PreviewWrapper()
+        }
+    }
+#endif

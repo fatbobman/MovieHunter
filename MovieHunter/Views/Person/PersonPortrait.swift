@@ -87,7 +87,7 @@ struct FavoritButton: View {
                 }
                 .animation(.spring(), value: isFavorite)
             )
-            .clipShape(Circle())
+            .contentShape(Circle())
             .onTapGesture {
                 updateFavorite(personID)
             }

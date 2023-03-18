@@ -11,7 +11,7 @@ import TMDb
 
 struct MovieItemWrapper: View {
     @Environment(\.tmdb) var tmdb
-    let displayType:DisplayType
+    let displayType: DisplayType
     let movie: Movie
     var body: some View {
         MovieItem(
@@ -29,18 +29,17 @@ struct MovieItemWrapper: View {
 
     var posterPath: URL? {
         guard let path = movie.posterPath else { return nil }
-        return moviePosterURLPrefix.appending(path:path.absoluteString)
+        return moviePosterURLPrefix.appending(path: path.absoluteString)
     }
 }
 
 #if DEBUG
-struct MovieItemWrapperPreview:PreviewProvider {
-    static var previews: some View {
-        MovieItemWrapper(displayType: .portrait(.middle), movie: PreviewData.previewMovie)
-            .environment(\.locale, .init(identifier: "zh-cn"))
-        MovieItemWrapper(displayType: .landscape, movie: PreviewData.previewMovie)
-            .environment(\.locale, .init(identifier: "zh-cn"))
-
+    struct MovieItemWrapperPreview: PreviewProvider {
+        static var previews: some View {
+            MovieItemWrapper(displayType: .portrait(.middle), movie: PreviewData.previewMovie)
+                .environment(\.locale, .init(identifier: "zh-cn"))
+            MovieItemWrapper(displayType: .landscape, movie: PreviewData.previewMovie)
+                .environment(\.locale, .init(identifier: "zh-cn"))
+        }
     }
-}
 #endif

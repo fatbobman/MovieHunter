@@ -11,4 +11,3 @@ import SwiftUI
 final class Configuration: ObservableObject {
     @AppStorage("colorScheme") var colorScheme: ColorSchemeSetting = .system
 }
-

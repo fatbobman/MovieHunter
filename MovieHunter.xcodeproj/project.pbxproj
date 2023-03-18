@@ -36,7 +36,7 @@
 		76AC25B629C2E381007874DA /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC25B529C2E381007874DA /* Rate.swift */; };
 		76AC25BB29C2E4C2007874DA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 76AC25BD29C2E4C2007874DA /* Localizable.strings */; };
 		76AC25C029C2E7DC007874DA /* DebugResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC25BF29C2E7DC007874DA /* DebugResources.swift */; };
-		76AC25C329C2E82A007874DA /* PeoplePortrait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC25C229C2E82A007874DA /* PeoplePortrait.swift */; };
+		76AC25C329C2E82A007874DA /* PersonPortrait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC25C229C2E82A007874DA /* PersonPortrait.swift */; };
 		76AC25C629C2EA5F007874DA /* MovieItemWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC25C529C2EA5F007874DA /* MovieItemWrapper.swift */; };
 		76AC25C829C2EAA1007874DA /* TMDBConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC25C729C2EAA1007874DA /* TMDBConfiguration.swift */; };
 		76AC25CB29C2EB06007874DA /* TMDBEnviromentKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC25CA29C2EB06007874DA /* TMDBEnviromentKey.swift */; };
@@ -71,7 +71,7 @@
 		76AC25BC29C2E4C2007874DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76AC25BE29C2E4C6007874DA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		76AC25BF29C2E7DC007874DA /* DebugResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugResources.swift; sourceTree = "<group>"; };
-		76AC25C229C2E82A007874DA /* PeoplePortrait.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeoplePortrait.swift; sourceTree = "<group>"; };
+		76AC25C229C2E82A007874DA /* PersonPortrait.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonPortrait.swift; sourceTree = "<group>"; };
 		76AC25C429C2E962007874DA /* TMDb */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = TMDb; path = ../TMDb; sourceTree = "<group>"; };
 		76AC25C529C2EA5F007874DA /* MovieItemWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieItemWrapper.swift; sourceTree = "<group>"; };
 		76AC25C729C2EAA1007874DA /* TMDBConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBConfiguration.swift; sourceTree = "<group>"; };
@@ -167,7 +167,7 @@
 		76AC259229C2E250007874DA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				76AC25C129C2E821007874DA /* People */,
+				76AC25C129C2E821007874DA /* Person */,
 				76AC25A029C2E2F3007874DA /* MovieDetail */,
 				76AC259F29C2E2E9007874DA /* MovieItem */,
 			);
@@ -236,12 +236,12 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		76AC25C129C2E821007874DA /* People */ = {
+		76AC25C129C2E821007874DA /* Person */ = {
 			isa = PBXGroup;
 			children = (
-				76AC25C229C2E82A007874DA /* PeoplePortrait.swift */,
+				76AC25C229C2E82A007874DA /* PersonPortrait.swift */,
 			);
-			path = People;
+			path = Person;
 			sourceTree = "<group>";
 		};
 		76AC25C929C2EABF007874DA /* TMDB */ = {
@@ -372,7 +372,7 @@
 				76751E5529C544DC0013BBDF /* Configuration.swift in Sources */,
 				76751E5E29C556500013BBDF /* TabDestination.swift in Sources */,
 				76751E5729C547350013BBDF /* ColorSchemeSetting.swift in Sources */,
-				76AC25C329C2E82A007874DA /* PeoplePortrait.swift in Sources */,
+				76AC25C329C2E82A007874DA /* PersonPortrait.swift in Sources */,
 				76AC25AA29C2E35C007874DA /* ViewExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

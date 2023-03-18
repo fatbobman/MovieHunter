@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TabDestination:Equatable {
+enum TabDestination: Equatable {
     case movie
     case setting
 }

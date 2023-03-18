@@ -15,6 +15,7 @@
 		76751E5729C547350013BBDF /* ColorSchemeSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E5629C547350013BBDF /* ColorSchemeSetting.swift */; };
 		76751E5929C547570013BBDF /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E5829C547570013BBDF /* Favorite.swift */; };
 		76751E5C29C5478C0013BBDF /* CloudStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 76751E5B29C5478C0013BBDF /* CloudStorage */; };
+		76751E5E29C556500013BBDF /* TabDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E5D29C556500013BBDF /* TabDestination.swift */; };
 		76AC258329C2E23A007874DA /* MovieHunterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC258229C2E23A007874DA /* MovieHunterApp.swift */; };
 		76AC258529C2E23A007874DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC258429C2E23A007874DA /* ContentView.swift */; };
 		76AC258729C2E23B007874DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76AC258629C2E23B007874DA /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 		76751E5429C544DC0013BBDF /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		76751E5629C547350013BBDF /* ColorSchemeSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeSetting.swift; sourceTree = "<group>"; };
 		76751E5829C547570013BBDF /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
+		76751E5D29C556500013BBDF /* TabDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabDestination.swift; sourceTree = "<group>"; };
 		76AC257F29C2E23A007874DA /* MovieHunter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieHunter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76AC258229C2E23A007874DA /* MovieHunterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieHunterApp.swift; sourceTree = "<group>"; };
 		76AC258429C2E23A007874DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 				76AC25FE29C3F4D0007874DA /* MovieGenre.swift */,
 				76AC260029C45C69007874DA /* Destination.swift */,
 				76751E5629C547350013BBDF /* ColorSchemeSetting.swift */,
+				76751E5D29C556500013BBDF /* TabDestination.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				76AC25A929C2E35C007874DA /* Shape.swift in Sources */,
 				76751E5929C547570013BBDF /* Favorite.swift in Sources */,
 				76751E5529C544DC0013BBDF /* Configuration.swift in Sources */,
+				76751E5E29C556500013BBDF /* TabDestination.swift in Sources */,
 				76751E5729C547350013BBDF /* ColorSchemeSetting.swift in Sources */,
 				76AC25C329C2E82A007874DA /* PeoplePortrait.swift in Sources */,
 				76AC25AA29C2E35C007874DA /* ViewExtension.swift in Sources */,

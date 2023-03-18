@@ -44,9 +44,25 @@ final class Store: ObservableObject {
 
     private let reduce: Reducer<AppState, AppAction, Void> = Reducer { state, action, _ in
         switch action {
-        case .TabItemButtonTapped:
-            break
-        case .updateColorScheme(let colorScheme):
+        case let .TabItemButtonTapped(destination):
+            let oldDestination = state.tabDesctination
+            switch destination {
+            case .movie:
+                if oldDestination == .movie && !state.destinations.isEmpty {
+                    state.destinations = []
+                } else {
+                    state.tabDesctination = .movie
+                }
+            case .setting:
+                if oldDestination != .setting {
+                    state.tabDesctination = .setting
+                }
+            }
+        case let .gotoDestionation(destination):
+            state.destinations.append(destination)
+        case let .setDestination(destination):
+            state.destinations = [destination]
+        case let .updateColorScheme(colorScheme):
             state.configuration.colorScheme = colorScheme
         }
         return Empty(completeImmediately: true).eraseToAnyPublisher()

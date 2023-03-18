@@ -8,6 +8,12 @@
 import Foundation
 
 enum AppAction {
-    case TabItemButtonTapped(Int)
+    case TabItemButtonTapped(TabDestination)
+    /// empty destinations and back to home
+    case setDestination(to:Destination)
+    /// append one destination into destinations
+    case gotoDestionation(Destination)
+    // Configuration
     case updateColorScheme(ColorSchemeSetting)
+    // Favorite
 }

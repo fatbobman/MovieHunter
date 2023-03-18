@@ -16,5 +16,7 @@ let movieData = Movie(id: 315162, title: "Puss in Boots: The Last Wish", tagline
         static let peopleImageURL = URL(string: "https://image.tmdb.org/t/p/w300/kU3B75TyRiCgE270EyZnHjfivoq.jpg")!
         static let previewMovieName = "The lengend of 1900"
         static let previewMovie = movieData
+        static let previewPerson = Person(id: 100, name: "Brad Pitt")
     }
+
 #endif

@@ -9,11 +9,11 @@ import Foundation
 import Nuke
 import NukeUI
 import SwiftUI
+import TMDb
 
 struct PersonPortrait: View {
-    let personID: Int
-    let imageURL: URL
-    let name: String
+    let person: Person?
+    let imageURL: URL?
     let displayType: DisplayType
     let isFavorite: Bool
     var updateFavorite: (Int) -> Void
@@ -24,10 +24,10 @@ struct PersonPortrait: View {
                 .frame(width: imageSize.width, height: imageSize.height)
                 .clipped()
                 .overlay(alignment: .bottomLeading) {
-                    FavoritButton(personID: personID, isFavorite: isFavorite, updateFavorite: updateFavorite)
+                    FavoritButton(personID: person?.id, isFavorite: isFavorite, updateFavorite: updateFavorite)
                         .offset(x: 3, y: -3)
                 }
-            PersonName(name: name)
+            PersonName(person: person)
                 .frame(width: imageSize.width)
         }
     }
@@ -41,7 +41,7 @@ struct PersonPortrait: View {
 }
 
 struct PeopleImage: View {
-    let imageURL: URL
+    let imageURL: URL?
     let displayType: DisplayType
     @Environment(\.imagePipeline) var pipeline
     var body: some View {
@@ -51,7 +51,8 @@ struct PeopleImage: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
             } else {
-                Color("imagePlaceHolderColor")
+                Rectangle()
+                    .fill(Color("imagePlaceHolderColor").gradient)
             }
         }
         .pipeline(pipeline)
@@ -59,7 +60,7 @@ struct PeopleImage: View {
 }
 
 struct FavoritButton: View {
-    let personID: Int
+    let personID: Int?
     let isFavorite: Bool
     var updateFavorite: (Int) -> Void
 
@@ -89,40 +90,68 @@ struct FavoritButton: View {
             )
             .contentShape(Circle())
             .onTapGesture {
+                guard let personID else { return }
                 updateFavorite(personID)
             }
     }
 }
 
 struct PersonName: View {
-    let name: String
+    let person: Person?
     var body: some View {
-        Text(name)
+        Text(person?.name ?? "")
             .lineLimit(1)
             .font(.caption)
     }
 }
 
 #if DEBUG
-    private struct PreviewWrapper: View {
-        @State var isFavorite = false
+    struct PersonPortraitPreviewWrapper: View {
+        var isFavorite: Bool {
+            if let id = person?.id {
+                return favorite.contains(id)
+            } else { return false }
+        }
+
+        @State var person: Person?
+        @State var personImageURL: URL?
+        @State var favorite = Set<Int>()
         var body: some View {
-            PersonPortrait(
-                personID: 100,
-                imageURL: PreviewData.peopleImageURL,
-                name: "Brad Pitt",
-                displayType: .landscape,
-                isFavorite: isFavorite,
-                updateFavorite: { _ in
-                    isFavorite.toggle()
+            VStack {
+                PersonPortrait(
+                    person: person,
+                    imageURL: personImageURL,
+                    displayType: .landscape,
+                    isFavorite: isFavorite,
+                    updateFavorite: { id in
+                        if favorite.contains(id) {
+                            favorite.removeAll()
+                        } else {
+                            favorite.insert(id)
+                        }
+                    }
+                )
+
+                Button("Switch Person") {
+                    if person != nil {
+                        person = nil
+                        personImageURL = nil
+                        if let id = person?.id {
+                            favorite.insert(id)
+                        }
+                    } else {
+                        person = PreviewData.previewPerson
+                        personImageURL = PreviewData.peopleImageURL
+                        favorite.removeAll()
+                    }
                 }
-            )
+            }
         }
     }
 
     struct PersonPortrait_Previews: PreviewProvider {
         static var previews: some View {
-            PreviewWrapper()
+            PersonPortraitPreviewWrapper()
         }
     }
 #endif

@@ -80,7 +80,7 @@ struct BookMarkShap: Shape {
 }
 
 #if DEBUG
-    private struct PreviewWrapper: View {
+    struct BookMarkCornerButtonPreviewWrapper: View {
         @State var inWishlist = false
         var body: some View {
             HStack {
@@ -99,7 +99,7 @@ struct BookMarkShap: Shape {
 
     struct BookMarConerButtonPreview: PreviewProvider {
         static var previews: some View {
-            PreviewWrapper()
+            BookMarkCornerButtonPreviewWrapper()
         }
     }
 #endif

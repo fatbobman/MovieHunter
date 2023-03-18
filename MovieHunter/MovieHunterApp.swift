@@ -11,7 +11,8 @@ import SwiftUI
 struct MovieHunterApp: App {
   var body: some Scene {
     WindowGroup {
-      ContentView()
+//      ContentView()
+        PersonPortraitPreviewWrapper()
     }
   }
 }

@@ -60,8 +60,8 @@ final class Store: ObservableObject {
             }
         case let .gotoDestionation(destination):
             state.destinations.append(destination)
-        case let .setDestination(destination):
-            state.destinations = [destination]
+        case let .setDestination(destinations):
+            state.destinations = destinations
         case let .updateColorScheme(colorScheme):
             state.configuration.colorScheme = colorScheme
 

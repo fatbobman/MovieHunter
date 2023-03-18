@@ -16,6 +16,7 @@ struct MovieHunterApp: App {
             MovieItemWrapper(displayType: .portrait(.middle), movie: PreviewData.previewMovie)
                 .environmentObject(store)
                 .preferredColorScheme(store.state.configuration.colorScheme.colorSchmeme)
+                .setDeviceStatus()
         }
     }
 }

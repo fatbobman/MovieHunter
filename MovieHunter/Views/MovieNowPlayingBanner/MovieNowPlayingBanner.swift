@@ -13,7 +13,7 @@ struct MovieNowPlayingBanner: View {
     let movie: Movie
     let backdropSize: CGSize
     let inWishlist: Bool
-    var tapBanner: (Int) -> Void
+    var tapBanner: (Movie) -> Void
     var updateWishlist: (Int) -> Void
     @Environment(\.deviceStatus) var devieStaus
     var body: some View {
@@ -30,7 +30,7 @@ struct MovieNowPlayingBanner: View {
         }
         .contentShape(Rectangle())
         .onTapGesture {
-            tapBanner(movie.id)
+            tapBanner(movie)
         }
         .padding(.bottom, 15)
         .background(Assets.Colors.movieItemPortraitBackground)

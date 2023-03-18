@@ -64,6 +64,24 @@ final class Store: ObservableObject {
             state.destinations = [destination]
         case let .updateColorScheme(colorScheme):
             state.configuration.colorScheme = colorScheme
+
+        // Favorite
+        case let .updateMovieWishlisth(movieID):
+            var movies = Set(state.favorite.movies)
+            if !movies.contains(movieID) {
+                state.favorite.movies.append(movieID)
+            } else {
+                movies.remove(movieID)
+                state.favorite.movies = Array(movies)
+            }
+        case let .updateFavoritePersonList(personID):
+            var persons = Set(state.favorite.person)
+            if !persons.contains(personID) {
+                state.favorite.person.append(personID)
+            } else {
+                persons.remove(personID)
+                state.favorite.person = Array(persons)
+            }
         }
         return Empty(completeImmediately: true).eraseToAnyPublisher()
     }

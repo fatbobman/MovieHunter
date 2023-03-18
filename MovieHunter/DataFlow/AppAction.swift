@@ -16,4 +16,6 @@ enum AppAction {
     // Configuration
     case updateColorScheme(ColorSchemeSetting)
     // Favorite
+    case updateMovieWishlisth(Int)
+    case updateFavoritePersonList(Int)
 }

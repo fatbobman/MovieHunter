@@ -11,7 +11,7 @@ import TMDb
 
 struct MovieNowPlayingBanner: View {
     let movie: Movie
-    let width: CGFloat
+    let backdropSize: CGSize
     let inWishlist: Bool
     var tapBanner: (Int) -> Void
     var updateWishlist: (Int) -> Void
@@ -19,12 +19,14 @@ struct MovieNowPlayingBanner: View {
     var body: some View {
         VStack(alignment: .leading, spacing: -posterSize.height * 0.56) {
             MovieNowPlayingBackdrop(movie: movie)
+                .frame(width: backdropSize.width, height: backdropSize.height)
             HStack(alignment: .lastTextBaseline) {
                 ItemPoster(movie: movie, size: posterSize, inWishlist: inWishlist, updateWishlist: updateWishlist)
                 MovieNowPlayingBannerTitle(movie: movie)
                     .alignmentGuide(.lastTextBaseline) { $0[.lastTextBaseline] + 10 }
             }
             .padding(.leading, leadingPadding)
+            .frame(width: backdropSize.width, alignment: .leading)
         }
         .contentShape(Rectangle())
         .onTapGesture {
@@ -65,12 +67,31 @@ struct MovieNowPlayingBanner: View {
         static var previews: some View {
             MovieNowPlayingBanner(
                 movie: PreviewData.previewMovie,
-                width: 400,
+                backdropSize: .init(width: 393, height: 393 / 1.77),
                 inWishlist: true,
                 tapBanner: { id in print("Tapped \(id)") }, updateWishlist: { _ in print("update") }
             )
-            .frame(width: 393, height: 393 / 1.77)
             .environment(\.colorScheme, .dark)
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 10) {
+                    MovieNowPlayingBanner(
+                        movie: PreviewData.previewMovie,
+                        backdropSize: .init(width: 540, height: 540 / 1.77),
+                        inWishlist: true,
+                        tapBanner: { id in print("Tapped \(id)") }, updateWishlist: { _ in print("update") }
+                    )
+
+                    MovieNowPlayingBanner(
+                        movie: PreviewData.previewMovie,
+                        backdropSize: .init(width: 540, height: 540 / 1.77),
+                        inWishlist: true,
+                        tapBanner: { id in print("Tapped \(id)") }, updateWishlist: { _ in print("update") }
+                    )
+                }
+            }
+            .previewDevice(.init(rawValue: "iPad Pro (11-inch) (4th generation)"))
+//            .previewInterfaceOrientation(.landscapeLeft)
         }
     }
 #endif

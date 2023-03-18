@@ -48,7 +48,6 @@ struct MovieNowPlayingBackdrop: View {
                         .foregroundColor(Assets.Colors.secondWhite)
                 }
                 .frame(width: 52, height: 52)
-//                }
             }
         )
     }
@@ -60,7 +59,7 @@ struct MovieNowPlayingBackdrop: View {
             MovieNowPlayingBackdrop(
                 movie: PreviewData.previewMovie
             )
-            .frame(width: 400, height: 400 / 1.77)
+            .frame(width: 390, height: 390 / 1.77)
         }
     }
 #endif

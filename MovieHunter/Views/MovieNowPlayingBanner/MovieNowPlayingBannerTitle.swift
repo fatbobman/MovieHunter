@@ -16,13 +16,22 @@ struct MovieNowPlayingBannerTitle: View {
             Text(movie.title)
                 .font(.callout)
                 .lineLimit(1)
-            if let releaseDate = movie.releaseDate {
-                Text(releaseDate, format: .dateTime.month().day())
-                    .foregroundColor(.secondary)
-                    .font(.footnote)
+            Group {
+                if let releaseDate = movie.releaseDate {
+                    Text(releaseDate, format: .dateTime.month().day())
+
+                } else if let overview = movie.overview {
+                    Text(overview)
+
+                } else {
+                    Text("")
+                }
             }
+            .lineLimit(1)
+            .foregroundColor(.secondary)
+            .font(.footnote)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal, 10)
     }
 }
 

@@ -8,14 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var store = Store()
+    @Environment(\.colorScheme) var colorScheme
     var body: some View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
             Text("Hello, world!")
+            Button("Change"){
+                if colorScheme == .dark {
+                    store.send(.updateColorScheme(.light))
+                } else {
+                    store.send(.updateColorScheme(.dark))
+                }
+            }
         }
         .padding()
+        .preferredColorScheme(store.state.configuration.colorScheme.colorSchmeme)
     }
 }
 

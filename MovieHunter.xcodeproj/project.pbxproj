@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		76751E4D29C541D70013BBDF /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E4C29C541D70013BBDF /* Reducer.swift */; };
+		76751E4F29C542110013BBDF /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E4E29C542110013BBDF /* AppState.swift */; };
+		76751E5129C5424C0013BBDF /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E5029C5424C0013BBDF /* Store.swift */; };
+		76751E5329C542F10013BBDF /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E5229C542F10013BBDF /* AppAction.swift */; };
+		76751E5529C544DC0013BBDF /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E5429C544DC0013BBDF /* Configuration.swift */; };
+		76751E5729C547350013BBDF /* ColorSchemeSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E5629C547350013BBDF /* ColorSchemeSetting.swift */; };
+		76751E5929C547570013BBDF /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E5829C547570013BBDF /* Favorite.swift */; };
+		76751E5C29C5478C0013BBDF /* CloudStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 76751E5B29C5478C0013BBDF /* CloudStorage */; };
 		76AC258329C2E23A007874DA /* MovieHunterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC258229C2E23A007874DA /* MovieHunterApp.swift */; };
 		76AC258529C2E23A007874DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC258429C2E23A007874DA /* ContentView.swift */; };
 		76AC258729C2E23B007874DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76AC258629C2E23B007874DA /* Assets.xcassets */; };
@@ -36,6 +44,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		76751E4C29C541D70013BBDF /* Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
+		76751E4E29C542110013BBDF /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		76751E5029C5424C0013BBDF /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		76751E5229C542F10013BBDF /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
+		76751E5429C544DC0013BBDF /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		76751E5629C547350013BBDF /* ColorSchemeSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeSetting.swift; sourceTree = "<group>"; };
+		76751E5829C547570013BBDF /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		76AC257F29C2E23A007874DA /* MovieHunter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieHunter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76AC258229C2E23A007874DA /* MovieHunterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieHunterApp.swift; sourceTree = "<group>"; };
 		76AC258429C2E23A007874DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -72,6 +87,7 @@
 				76AC259829C2E2D4007874DA /* Nuke in Frameworks */,
 				76AC259E29C2E2D4007874DA /* NukeVideo in Frameworks */,
 				76AC259A29C2E2D4007874DA /* NukeExtensions in Frameworks */,
+				76751E5C29C5478C0013BBDF /* CloudStorage in Frameworks */,
 				76AC259C29C2E2D4007874DA /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,6 +95,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		76751E4B29C541C30013BBDF /* DataFlow */ = {
+			isa = PBXGroup;
+			children = (
+				76751E4C29C541D70013BBDF /* Reducer.swift */,
+				76751E4E29C542110013BBDF /* AppState.swift */,
+				76751E5029C5424C0013BBDF /* Store.swift */,
+				76751E5229C542F10013BBDF /* AppAction.swift */,
+				76751E5429C544DC0013BBDF /* Configuration.swift */,
+				76751E5829C547570013BBDF /* Favorite.swift */,
+			);
+			path = DataFlow;
+			sourceTree = "<group>";
+		};
 		76AC257629C2E23A007874DA = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +128,7 @@
 		76AC258129C2E23A007874DA /* MovieHunter */ = {
 			isa = PBXGroup;
 			children = (
+				76751E4B29C541C30013BBDF /* DataFlow */,
 				76AC25B829C2E4AF007874DA /* Resources */,
 				76AC259229C2E250007874DA /* Views */,
 				76AC25FD29C3F4C2007874DA /* Model */,
@@ -225,6 +255,7 @@
 			children = (
 				76AC25FE29C3F4D0007874DA /* MovieGenre.swift */,
 				76AC260029C45C69007874DA /* Destination.swift */,
+				76751E5629C547350013BBDF /* ColorSchemeSetting.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -251,6 +282,7 @@
 				76AC259929C2E2D4007874DA /* NukeExtensions */,
 				76AC259B29C2E2D4007874DA /* NukeUI */,
 				76AC259D29C2E2D4007874DA /* NukeVideo */,
+				76751E5B29C5478C0013BBDF /* CloudStorage */,
 			);
 			productName = MovieHunter;
 			productReference = 76AC257F29C2E23A007874DA /* MovieHunter.app */;
@@ -284,6 +316,7 @@
 			packageReferences = (
 				76AC259329C2E2A0007874DA /* XCRemoteSwiftPackageReference "TMDb" */,
 				76AC259629C2E2D4007874DA /* XCRemoteSwiftPackageReference "Nuke" */,
+				76751E5A29C5478C0013BBDF /* XCRemoteSwiftPackageReference "CloudStorage" */,
 			);
 			productRefGroup = 76AC258029C2E23A007874DA /* Products */;
 			projectDirPath = "";
@@ -312,22 +345,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76751E5129C5424C0013BBDF /* Store.swift in Sources */,
 				76AC25B329C2E37C007874DA /* MovieItem.swift in Sources */,
 				76AC258529C2E23A007874DA /* ContentView.swift in Sources */,
 				76AC25B429C2E37C007874DA /* MovieShortInfo.swift in Sources */,
 				76AC25B229C2E37C007874DA /* BookMarkButton.swift in Sources */,
+				76751E4D29C541D70013BBDF /* Reducer.swift in Sources */,
 				76AC25B129C2E37C007874DA /* MovieItemPoster.swift in Sources */,
 				76AC25C629C2EA5F007874DA /* MovieItemWrapper.swift in Sources */,
 				76AC25C029C2E7DC007874DA /* DebugResources.swift in Sources */,
 				76AC25A629C2E350007874DA /* DeviceStatus.swift in Sources */,
 				76AC258329C2E23A007874DA /* MovieHunterApp.swift in Sources */,
 				76AC25CB29C2EB06007874DA /* TMDBEnviromentKey.swift in Sources */,
+				76751E4F29C542110013BBDF /* AppState.swift in Sources */,
 				76AC25C829C2EAA1007874DA /* TMDBConfiguration.swift in Sources */,
 				76AC25AC29C2E369007874DA /* Pipeline.swift in Sources */,
+				76751E5329C542F10013BBDF /* AppAction.swift in Sources */,
 				76AC25FF29C3F4D0007874DA /* MovieGenre.swift in Sources */,
 				76AC25B629C2E381007874DA /* Rate.swift in Sources */,
 				76AC260129C45C69007874DA /* Destination.swift in Sources */,
 				76AC25A929C2E35C007874DA /* Shape.swift in Sources */,
+				76751E5929C547570013BBDF /* Favorite.swift in Sources */,
+				76751E5529C544DC0013BBDF /* Configuration.swift in Sources */,
+				76751E5729C547350013BBDF /* ColorSchemeSetting.swift in Sources */,
 				76AC25C329C2E82A007874DA /* PeoplePortrait.swift in Sources */,
 				76AC25AA29C2E35C007874DA /* ViewExtension.swift in Sources */,
 			);
@@ -557,6 +597,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		76751E5A29C5478C0013BBDF /* XCRemoteSwiftPackageReference "CloudStorage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/fatbobman/CloudStorage.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		76AC259329C2E2A0007874DA /* XCRemoteSwiftPackageReference "TMDb" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/fatbobman/TMDb.git";
@@ -576,6 +624,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		76751E5B29C5478C0013BBDF /* CloudStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76751E5A29C5478C0013BBDF /* XCRemoteSwiftPackageReference "CloudStorage" */;
+			productName = CloudStorage;
+		};
 		76AC259429C2E2A0007874DA /* TMDb */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 76AC259329C2E2A0007874DA /* XCRemoteSwiftPackageReference "TMDb" */;

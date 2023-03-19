@@ -15,18 +15,11 @@ struct MovieHunterApp: App {
         WindowGroup {
 //            ContentView()
             MovieItemWrapper(displayType: .portrait(.middle), movie: PreviewData.previewMovie)
-                .background(
-                    SyncDataView()
-                )
+                .syncCoreData() // 同步 favorite 数据
                 .environmentObject(store)
                 .preferredColorScheme(store.state.configuration.colorScheme.colorSchmeme)
                 .setDeviceStatus()
                 .environment(\.managedObjectContext, stack.viewContext)
-//                .onAppear{
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-//                        store.send(.onStart)
-//                    }
-//                }
         }
     }
 }

@@ -26,7 +26,7 @@ struct ContentView: View {
             Button("add Favorite") {
                 store.send(.updateMovieWishlisth(10))
             }
-            Text("\(store.state.favorite.movies.count)")
+//            Text("\(store.state.favoriteovies.count)")
         }
         .padding()
         .preferredColorScheme(store.state.configuration.colorScheme.colorSchmeme)

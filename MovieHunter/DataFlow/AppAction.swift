@@ -8,6 +8,13 @@
 import Foundation
 
 enum AppAction {
+    /// prepare core data fetch manager
+    case onStart
+    /// favorite movie data update from Core Data
+    case movieChangedFormCoreData(Set<Int>)
+    /// favorite person data update from Core Data
+    case personChangedFormCoreData(Set<Int>)
+    /// switch tabView
     case TabItemButtonTapped(TabDestination)
     /// empty destinations and back to home
     case setDestination(to: [Destination])

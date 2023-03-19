@@ -9,7 +9,8 @@ import SwiftUI
 
 @main
 struct MovieHunterApp: App {
-    @StateObject var store = Store()
+    @State var stack = CoreDataStack.share
+    @StateObject var store = Store.share
     var body: some Scene {
         WindowGroup {
 //            ContentView()
@@ -17,6 +18,10 @@ struct MovieHunterApp: App {
                 .environmentObject(store)
                 .preferredColorScheme(store.state.configuration.colorScheme.colorSchmeme)
                 .setDeviceStatus()
+                .environment(\.managedObjectContext, stack.viewContext)
+                .onAppear{
+                    store.send(.onStart)
+                }
         }
     }
 }

@@ -42,7 +42,7 @@ struct NowPlayingTabView: View {
                 MovieNowPlayingBanner(
                     movie: movie,
                     backdropSize: size,
-                    inWishlist: store.state.favorite.movies.contains(movie.id),
+                    inWishlist: store.state.favoriteMovieIDs.contains(movie.id),
                     tapBanner: { store.send(.setDestination(to: [.nowPlaying, .movieDetail($0)])) },
                     updateWishlist: { store.send(.updateMovieWishlisth($0)) }
                 )
@@ -64,7 +64,7 @@ struct NowPlayingScrollView: View {
                     MovieNowPlayingBanner(
                         movie: movie,
                         backdropSize: .init(width: 540, height: 540 / 1.77),
-                        inWishlist: store.state.favorite.movies.contains(movie.id),
+                        inWishlist: store.state.favoriteMovieIDs.contains(movie.id),
                         tapBanner: { store.send(.setDestination(to: [.nowPlaying, .movieDetail($0)])) },
                         updateWishlist: { store.send(.updateMovieWishlisth($0)) }
                     )

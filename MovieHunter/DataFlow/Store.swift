@@ -14,12 +14,14 @@ final class Store: ObservableObject {
 
     @Published private(set) var state: AppState
 
-    private let environment: () = ()
+    private let environment: AppEnvironment
 
     private var effectCancellables: [UUID: AnyCancellable] = [:]
 
     init() {
-        state = AppState(favorite: favorite, configuration: configuration)
+        state = AppState(configuration: configuration)
+        environment = AppEnvironment()
+        environment.stack.store = self
     }
 
     func send(_ action: AppAction) {
@@ -42,8 +44,21 @@ final class Store: ObservableObject {
         }
     }
 
-    private let reduce: Reducer<AppState, AppAction, Void> = Reducer { state, action, _ in
+    private let reduce: Reducer<AppState, AppAction, AppEnvironment> = Reducer { state, action, environment in
         switch action {
+        case .onStart:
+            environment.stack.setup(
+                updatePersons: { ids in
+                    environment.stack.store?.send(.personChangedFormCoreData(ids))
+                },
+                updateMovies: { ids in
+                    environment.stack.store?.send(.movieChangedFormCoreData(ids))
+                }
+            )
+        case let .movieChangedFormCoreData(favoriteMovieIDs):
+            state.favoriteMovieIDs = favoriteMovieIDs
+        case let .personChangedFormCoreData(favoritePersonIDs):
+            state.favoritePersonIDs = favoritePersonIDs
         case let .TabItemButtonTapped(destination):
             let oldDestination = state.tabDesctination
             switch destination {
@@ -67,22 +82,14 @@ final class Store: ObservableObject {
 
         // Favorite
         case let .updateMovieWishlisth(movieID):
-            var movies = Set(state.favorite.movies)
-            if !movies.contains(movieID) {
-                state.favorite.movies.append(movieID)
-            } else {
-                movies.remove(movieID)
-                state.favorite.movies = Array(movies)
-            }
+            environment.stack.updateFovariteMovie(movieID: movieID)
         case let .updateFavoritePersonList(personID):
-            var persons = Set(state.favorite.person)
-            if !persons.contains(personID) {
-                state.favorite.person.append(personID)
-            } else {
-                persons.remove(personID)
-                state.favorite.person = Array(persons)
-            }
+            environment.stack.updateFovaritePerson(personID: personID)
         }
         return Empty(completeImmediately: true).eraseToAnyPublisher()
     }
+}
+
+extension Store {
+    static let share = Store()
 }

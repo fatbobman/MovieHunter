@@ -12,8 +12,6 @@ import TMDb
 final class CoreDataStack {
     static let share = CoreDataStack()
 
-    var store: Store?
-
     let container: NSPersistentCloudKitContainer = {
         let container = NSPersistentCloudKitContainer(name: "Model")
         container.loadPersistentStores { _, error in

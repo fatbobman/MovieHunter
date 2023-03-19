@@ -13,14 +13,12 @@ final class Store: ObservableObject {
 
     @Published private(set) var state: AppState
 
-    private let environment: AppEnvironment
+    private let environment = AppEnvironment()
 
     private var effectCancellables: [UUID: AnyCancellable] = [:]
 
     init() {
         state = AppState(configuration: configuration)
-        environment = AppEnvironment()
-        environment.stack.store = self
     }
 
     func send(_ action: AppAction) {

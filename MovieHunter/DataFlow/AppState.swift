@@ -8,7 +8,6 @@
 import Foundation
 
 struct AppState {
-//    let favorite:Favorite
     let configuration: Configuration
 
     var destinations = [Destination]()
@@ -22,7 +21,6 @@ struct AppState {
     var tabDesctination: TabDestination = .movie
 
     init(configuration: Configuration) {
-//        self.favorite = favorite
         self.configuration = configuration
     }
 }

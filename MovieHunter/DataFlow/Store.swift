@@ -9,7 +9,6 @@ import Combine
 import Foundation
 
 final class Store: ObservableObject {
-    private let favorite = Favorite()
     private let configuration = Configuration()
 
     @Published private(set) var state: AppState

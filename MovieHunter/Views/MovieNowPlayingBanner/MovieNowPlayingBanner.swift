@@ -21,7 +21,13 @@ struct MovieNowPlayingBanner: View {
             MovieNowPlayingBackdrop(movie: movie)
                 .frame(width: backdropSize.width, height: backdropSize.height)
             HStack(alignment: .lastTextBaseline) {
-                ItemPoster(movie: movie, size: posterSize, inWishlist: inWishlist, updateWishlist: updateWishlist)
+                ItemPoster(
+                    movie: movie,
+                    size: posterSize,
+                    showShadow: true,
+                    inWishlist: inWishlist,
+                    updateWishlist: updateWishlist
+                )
                 MovieNowPlayingBannerTitle(movie: movie)
                     .alignmentGuide(.lastTextBaseline) { $0[.lastTextBaseline] + 10 }
             }

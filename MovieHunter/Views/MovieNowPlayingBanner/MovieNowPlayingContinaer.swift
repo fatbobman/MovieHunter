@@ -48,7 +48,9 @@ struct NowPlayingTabView: View {
                 )
             }
         }
+        #if !os(macOS)
         .tabViewStyle(.page(indexDisplayMode: .never))
+        #endif
         .getSizeByWidth(size: $size, aspectRatio: 9 / 16)
     }
 }
@@ -59,7 +61,7 @@ struct NowPlayingScrollView: View {
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 10) {
+            LazyHStack(spacing: 10) {
                 ForEach(movies) { movie in
                     MovieNowPlayingBanner(
                         movie: movie,
@@ -88,7 +90,9 @@ struct MovieNowPlayingScrollView_Previews: PreviewProvider {
             }
 //            .toolbar(.hidden, for: .navigationBar)
             .navigationTitle("")
+            #if !os(macOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
         }
         .environmentObject(Store())
         .previewDevice(.init(rawValue: "iPad Pro (11-inch) (4th generation)"))

@@ -14,9 +14,25 @@ import TMDb
 struct ItemPoster: View {
     let movie: Movie?
     let size: CGSize
+    let showShadow: Bool
     let inWishlist: Bool
     var updateWishlist: ((Int) -> Void)?
     @Environment(\.imagePipeline) var imagePipeline
+
+    init(
+        movie: Movie?,
+        size: CGSize,
+        showShadow: Bool = false,
+        inWishlist: Bool,
+        updateWishlist: ((Int) -> Void)? = nil
+    ) {
+        self.movie = movie
+        self.size = size
+        self.showShadow = showShadow
+        self.inWishlist = inWishlist
+        self.updateWishlist = updateWishlist
+    }
+
     var body: some View {
         VStack {
             if let imageURL {
@@ -37,7 +53,7 @@ struct ItemPoster: View {
         .frame(width: size.width, height: size.height)
         .clipped()
         .overlay(alignment: .topLeading) {
-            if let movie,let updateWishlist {
+            if let movie, let updateWishlist {
                 BookMarkCornerButton(
                     movieID: movie.id,
                     inWishlist: inWishlist,
@@ -45,10 +61,14 @@ struct ItemPoster: View {
                 )
             }
         }
+        .compositingGroup()
+        .if(showShadow){
+            $0.shadow(radius: 3)
+        }
     }
 
     var imageURL: URL? {
-        guard let movie,let path = movie.posterPath else { return nil }
+        guard let movie, let path = movie.posterPath else { return nil }
         return moviePosterURLPrefix
             .appending(path: "/w300")
             .appending(path: path.absoluteString)

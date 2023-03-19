@@ -38,16 +38,16 @@ struct MovieNowPlayingBackdrop: View {
         .overlay(
             VStack {
                 // Fake Button
-                ZStack {
-                    Circle()
-                        .fill(.secondary)
-                    Circle()
-                        .stroke(Assets.Colors.secondWhite, lineWidth: 3)
-                    Image(systemName: "play.fill")
-                        .font(.title)
-                        .foregroundColor(Assets.Colors.secondWhite)
-                }
-                .frame(width: 52, height: 52)
+//                ZStack {
+//                    Circle()
+//                        .fill(.secondary)
+//                    Circle()
+//                        .stroke(Assets.Colors.secondWhite, lineWidth: 3)
+//                    Image(systemName: "play.fill")
+//                        .font(.title)
+//                        .foregroundColor(Assets.Colors.secondWhite)
+//                }
+//                .frame(width: 52, height: 52)
             }
         )
     }

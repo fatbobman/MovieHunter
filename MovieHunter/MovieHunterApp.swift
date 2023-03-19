@@ -14,8 +14,9 @@ struct MovieHunterApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-            MovieNowPlayingContainer()
+//            MovieNowPlayingContainer()
 //            MovieItemWrapper(displayType: .portrait(.middle), movie: PreviewData.previewMovie)
+           HomeRoot()
                 .syncCoreData() // 同步 favorite 数据
                 .environmentObject(store)
                 .preferredColorScheme(store.state.configuration.colorScheme.colorSchmeme)

@@ -5,3 +5,34 @@
   Created by Yang Xu on 2023/3/16.
   
 */
+
+// Genre
+"Genre_action" = "Action";
+"Genre_adventure" = "Adventure";
+"Genre_animation" = "Animation";
+"Genre_comedy" = "Comedy";
+"Genre_crime" = "Crime";
+"Genre_documentary" = "Documentary";
+"Genre_drama" = "Drama";
+"Genre_family" = "Family";
+"Genre_fantasy" = "Fantasy";
+"Genre_history" = "History";
+"Genre_horror" = "Horror";
+"Genre_music" = "Music";
+"Genre_mystery" = "Mystery";
+"Genre_romance" = "Romance";
+"Genre_scienceFiction" = "Science Fiction";
+"Genre_tvMovie" = "TV Movie";
+"Genre_thriller" = "Thriller";
+"Genre_war" = "War";
+"Genre_western" = "Western";
+
+// Category
+"Category_nowPlaying" = "Now Playing";
+"Category_popular" = "Popular";
+"Category_upComing" = "Upcoming";
+"Category_topRate" = "Top Rated";
+"Category_movieWishlist" = "Movie Wishlist";
+"Category_favoritePerson" = "Favorite Person";
+
+// 

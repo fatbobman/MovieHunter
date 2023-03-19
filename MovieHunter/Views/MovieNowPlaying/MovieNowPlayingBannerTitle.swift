@@ -14,7 +14,7 @@ struct MovieNowPlayingBannerTitle: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(movie.title)
-                .font(.callout)
+                .font(.footnote)
                 .lineLimit(1)
             Group {
                 if let releaseDate = movie.releaseDate {

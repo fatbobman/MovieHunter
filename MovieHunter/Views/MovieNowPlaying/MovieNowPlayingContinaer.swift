@@ -22,6 +22,7 @@ struct MovieNowPlayingContainer: View {
             default:
                 NowPlayingScrollView(movies: movies)
             }
+            CategoryLabelInHome(category: .nowPlaying)
         }
         .task {
             // get now plaing movies
@@ -52,6 +53,9 @@ struct NowPlayingTabView: View {
         .tabViewStyle(.page(indexDisplayMode: .never))
         #endif
         .getSizeByWidth(size: $size, aspectRatio: 9 / 16)
+        .if(size != .zero){
+            $0.frame(width:size.width,height:size.height + 70)
+        }
     }
 }
 
@@ -91,7 +95,7 @@ struct MovieNowPlayingScrollView_Previews: PreviewProvider {
 //            .toolbar(.hidden, for: .navigationBar)
             .navigationTitle("")
             #if !os(macOS)
-            .navigationBarTitleDisplayMode(.inline)
+                .navigationBarTitleDisplayMode(.inline)
             #endif
         }
         .environmentObject(Store())

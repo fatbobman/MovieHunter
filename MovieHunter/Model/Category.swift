@@ -6,3 +6,37 @@
 //
 
 import Foundation
+import SwiftUI
+import TMDb
+
+enum Category:String,CaseIterable {
+    case nowPlaying
+    case popular
+    case upComing
+    case topRate
+    case movieWishlist
+    case favoritePerson
+}
+
+extension Category:Identifiable {
+    var id:String { self.rawValue }
+}
+
+extension Category {
+    var localizedString:LocalizedStringKey {
+        switch self {
+        case .nowPlaying:
+            return "Category_nowPlaying"
+        case .popular:
+            return "Category_popular"
+        case .upComing:
+            return "Category_upComing"
+        case .topRate:
+            return "Category_topRate"
+        case .movieWishlist:
+            return "Category_movieWishlist"
+        case .favoritePerson:
+            return "Category_favoritePerson"
+        }
+    }
+}

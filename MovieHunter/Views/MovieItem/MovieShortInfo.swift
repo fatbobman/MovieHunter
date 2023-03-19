@@ -10,7 +10,7 @@ import SwiftUI
 import TMDb
 
 struct MovieShortInfo: View {
-    let movie: Movie
+    let movie: Movie?
     let displayType: DisplayType
 
     var body: some View {
@@ -45,13 +45,19 @@ struct MovieShortInfo: View {
     @ViewBuilder
     var rateView: some View {
         HStack(spacing: 3) {
-            Image(systemName: "star")
-                .symbolVariant(.fill)
-                .foregroundColor(.orange)
-            if let rate = movie.voteAverage {
-                Text(rate, format: .number.precision(.fractionLength(1)))
+            if let movie {
+                if let rate = movie.voteAverage {
+                    Image(systemName: "star")
+                        .symbolVariant(.fill)
+                        .foregroundColor(.orange)
+                    
+                    Text(rate, format: .number.precision(.fractionLength(1)))
+                } else {
+                    Text("")
+                        .foregroundColor(.secondary)
+                }
             } else {
-                Text("No Rate")
+                Text(" ")
                     .foregroundColor(.secondary)
             }
         }
@@ -61,7 +67,7 @@ struct MovieShortInfo: View {
     // 电影名称
     @ViewBuilder
     var movieNameView: some View {
-        Text(movie.title)
+        Text(movie?.title ?? " ")
             .font(.callout)
             .lineLimit(1)
     }
@@ -70,10 +76,14 @@ struct MovieShortInfo: View {
     @ViewBuilder
     var releaseDateView: some View {
         VStack {
-            if let releaseDate = movie.releaseDate {
-                Text(releaseDate, format: .dateTime.year(.defaultDigits))
+            if let movie {
+                if let releaseDate = movie.releaseDate {
+                    Text(releaseDate, format: .dateTime.year(.defaultDigits))
+                } else {
+                    Text("coming soon")
+                }
             } else {
-                Text("coming soon")
+                Text(" ")
             }
         }
         .foregroundColor(.secondary)
@@ -83,7 +93,7 @@ struct MovieShortInfo: View {
     // 电影时长
     @ViewBuilder
     var durationView: some View {
-        if let duration = movie.runtime {
+        if let movie, let duration = movie.runtime {
             let now = Date(timeIntervalSince1970: 0)
             let later = now + TimeInterval(duration) * 60
             let timeDuration = (now ..< later).formatted(.components(style: .narrow))

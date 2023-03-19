@@ -12,7 +12,7 @@ import SwiftUI
 import TMDb
 
 struct ItemPoster: View {
-    let movie: Movie
+    let movie: Movie?
     let size: CGSize
     let inWishlist: Bool
     var updateWishlist: ((Int) -> Void)?
@@ -37,7 +37,7 @@ struct ItemPoster: View {
         .frame(width: size.width, height: size.height)
         .clipped()
         .overlay(alignment: .topLeading) {
-            if let updateWishlist {
+            if let movie,let updateWishlist {
                 BookMarkCornerButton(
                     movieID: movie.id,
                     inWishlist: inWishlist,
@@ -48,7 +48,7 @@ struct ItemPoster: View {
     }
 
     var imageURL: URL? {
-        guard let path = movie.posterPath else { return nil }
+        guard let movie,let path = movie.posterPath else { return nil }
         return moviePosterURLPrefix
             .appending(path: "/w300")
             .appending(path: path.absoluteString)

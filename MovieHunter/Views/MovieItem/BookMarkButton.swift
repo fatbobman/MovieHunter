@@ -9,13 +9,13 @@ import Foundation
 import SwiftUI
 
 public struct BookMarkCornerButton: View {
-    let movieID: Int
+    let movieID: Int?
     let inWishlist: Bool
     var updateWishlist: (Int) -> Void
     @State private var animation:Animation?
 
     public init(
-        movieID: Int,
+        movieID: Int?,
         inWishlist: Bool,
         updateWishlist: @escaping (Int) -> Void
     ) {
@@ -61,7 +61,9 @@ public struct BookMarkCornerButton: View {
             )
             .contentShape(Rectangle())
             .onTapGesture {
-                updateWishlist(movieID)
+                if let movieID {
+                    updateWishlist(movieID)
+                }
             }
             .onAppear{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){ animation = .spring()}

@@ -12,7 +12,7 @@ import SwiftUI
 import TMDb
 
 public struct MovieItem: View {
-    let movie: Movie
+    let movie: Movie?
     let inWishlist: Bool
     let displayType: DisplayType
     var updateWishlist: (Int) -> Void

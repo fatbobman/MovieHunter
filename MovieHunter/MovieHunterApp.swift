@@ -9,19 +9,24 @@ import SwiftUI
 
 @main
 struct MovieHunterApp: App {
-    @State var stack = CoreDataStack.share
+    let stack = CoreDataStack.share
     @StateObject var store = Store.share
     var body: some Scene {
         WindowGroup {
 //            ContentView()
             MovieItemWrapper(displayType: .portrait(.middle), movie: PreviewData.previewMovie)
+                .background(
+                    SyncDataView()
+                )
                 .environmentObject(store)
                 .preferredColorScheme(store.state.configuration.colorScheme.colorSchmeme)
                 .setDeviceStatus()
                 .environment(\.managedObjectContext, stack.viewContext)
-                .onAppear{
-                    store.send(.onStart)
-                }
+//                .onAppear{
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+//                        store.send(.onStart)
+//                    }
+//                }
         }
     }
 }

@@ -8,14 +8,19 @@
 import Foundation
 import SwiftUI
 import TMDb
+import CoreData
 
 struct MovieItemWrapper: View {
     @Environment(\.tmdb) var tmdb
     @EnvironmentObject var store: Store
+    @Environment(\.managedObjectContext) var context
     let displayType: DisplayType
     let movie: Movie
+    @FetchRequest(entity: FavoriteMovie.entity(), sortDescriptors: [.init(key: "createTimestamp", ascending: false)])
+    var favoriteMovies:FetchedResults<FavoriteMovie>
 
-    var inWishlist: Bool { store.state.favoriteMovieIDs.contains(movie.id)
+    var inWishlist: Bool {
+        return store.state.favoriteMovieIDs.contains(movie.id)
     }
 
     var body: some View {
@@ -27,6 +32,7 @@ struct MovieItemWrapper: View {
                 store.send(.updateMovieWishlisth($0))
             }
         )
+
     }
 }
 

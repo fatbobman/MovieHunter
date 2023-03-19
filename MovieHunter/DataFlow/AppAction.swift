@@ -8,8 +8,6 @@
 import Foundation
 
 enum AppAction {
-    /// prepare core data fetch manager
-    case onStart
     /// favorite movie data update from Core Data
     case movieChangedFormCoreData(Set<Int>)
     /// favorite person data update from Core Data

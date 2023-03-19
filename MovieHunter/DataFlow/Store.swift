@@ -45,15 +45,6 @@ final class Store: ObservableObject {
 
     private let reduce: Reducer<AppState, AppAction, AppEnvironment> = Reducer { state, action, environment in
         switch action {
-        case .onStart:
-            environment.stack.setup(
-                updatePersons: { ids in
-                    environment.stack.store?.send(.personChangedFormCoreData(ids))
-                },
-                updateMovies: { ids in
-                    environment.stack.store?.send(.movieChangedFormCoreData(ids))
-                }
-            )
         case let .movieChangedFormCoreData(favoriteMovieIDs):
             state.favoriteMovieIDs = favoriteMovieIDs
         case let .personChangedFormCoreData(favoritePersonIDs):

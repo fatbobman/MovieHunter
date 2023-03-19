@@ -29,24 +29,6 @@ final class CoreDataStack {
     var viewContext: NSManagedObjectContext {
         container.viewContext
     }
-
-    private var fetchMoviesManager: FetchDataManager<FavoriteMovie>?
-    private var fetchPersonManager: FetchDataManager<FavoritePerson>?
-
-    func setup(updatePersons: ((Set<Int>) -> Void)?, updateMovies: ((Set<Int>) -> Void)?) {
-        if fetchMoviesManager == nil {
-            let request = NSFetchRequest<FavoriteMovie>(entityName: "FavoriteMovie")
-            request.sortDescriptors = [NSSortDescriptor(key: "createTimestamp", ascending: false)]
-            fetchMoviesManager = .init(request: request, context: viewContext)
-            fetchMoviesManager?.start(by: updateMovies)
-        }
-        if fetchPersonManager == nil {
-            let request = NSFetchRequest<FavoritePerson>(entityName: "FavoritePerson")
-            request.sortDescriptors = [NSSortDescriptor(key: "createTimestamp", ascending: false)]
-            fetchPersonManager = .init(request: request, context: viewContext)
-            fetchPersonManager?.start(by: updatePersons)
-        }
-    }
 }
 
 extension CoreDataStack {

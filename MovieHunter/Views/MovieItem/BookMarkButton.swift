@@ -12,6 +12,7 @@ public struct BookMarkCornerButton: View {
     let movieID: Int
     let inWishlist: Bool
     var updateWishlist: (Int) -> Void
+    @State private var animation:Animation?
 
     public init(
         movieID: Int,
@@ -56,12 +57,16 @@ public struct BookMarkCornerButton: View {
                             .transition(.scale(scale: 1.7).combined(with: .opacity))
                     }
                 }
-                .animation(.spring(), value: inWishlist)
+                .animation(animation, value: inWishlist)
             )
             .contentShape(Rectangle())
             .onTapGesture {
                 updateWishlist(movieID)
             }
+            .onAppear{
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){ animation = .spring()}
+            }
+            .onDisappear{ animation = nil }
     }
 }
 

@@ -22,7 +22,7 @@
 		769002A329C67AB900620A3C /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769002A229C67AB900620A3C /* CoreDataStack.swift */; };
 		769002A629C67ACB00620A3C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 769002A429C67ACB00620A3C /* Model.xcdatamodeld */; };
 		769002A929C680F300620A3C /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769002A829C680F300620A3C /* AppEnvironment.swift */; };
-		769002AB29C685C700620A3C /* FetchDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769002AA29C685C700620A3C /* FetchDataManager.swift */; };
+		769002AE29C6A57100620A3C /* SyncDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769002AD29C6A57100620A3C /* SyncDataView.swift */; };
 		76AC258329C2E23A007874DA /* MovieHunterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC258229C2E23A007874DA /* MovieHunterApp.swift */; };
 		76AC258529C2E23A007874DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC258429C2E23A007874DA /* ContentView.swift */; };
 		76AC258729C2E23B007874DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76AC258629C2E23B007874DA /* Assets.xcassets */; };
@@ -68,7 +68,7 @@
 		769002A529C67ACB00620A3C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		769002A729C67F9600620A3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		769002A829C680F300620A3C /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
-		769002AA29C685C700620A3C /* FetchDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDataManager.swift; sourceTree = "<group>"; };
+		769002AD29C6A57100620A3C /* SyncDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDataView.swift; sourceTree = "<group>"; };
 		76AC257F29C2E23A007874DA /* MovieHunter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieHunter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76AC258229C2E23A007874DA /* MovieHunterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieHunterApp.swift; sourceTree = "<group>"; };
 		76AC258429C2E23A007874DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -141,9 +141,16 @@
 			children = (
 				769002A229C67AB900620A3C /* CoreDataStack.swift */,
 				769002A429C67ACB00620A3C /* Model.xcdatamodeld */,
-				769002AA29C685C700620A3C /* FetchDataManager.swift */,
 			);
 			path = DB;
+			sourceTree = "<group>";
+		};
+		769002AC29C6A55E00620A3C /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				769002AD29C6A57100620A3C /* SyncDataView.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		76AC257629C2E23A007874DA = {
@@ -205,6 +212,7 @@
 		76AC259229C2E250007874DA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				769002AC29C6A55E00620A3C /* CoreData */,
 				76AC25C129C2E821007874DA /* Person */,
 				76AC25A029C2E2F3007874DA /* MovieDetail */,
 				76AC259F29C2E2E9007874DA /* MovieItem */,
@@ -387,7 +395,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				76751E5129C5424C0013BBDF /* Store.swift in Sources */,
-				769002AB29C685C700620A3C /* FetchDataManager.swift in Sources */,
 				76AC25B329C2E37C007874DA /* MovieItem.swift in Sources */,
 				76AC258529C2E23A007874DA /* ContentView.swift in Sources */,
 				76AC25B429C2E37C007874DA /* MovieShortInfo.swift in Sources */,
@@ -397,6 +404,7 @@
 				769002A329C67AB900620A3C /* CoreDataStack.swift in Sources */,
 				76AC25C629C2EA5F007874DA /* MovieItemWrapper.swift in Sources */,
 				76AC25C029C2E7DC007874DA /* DebugResources.swift in Sources */,
+				769002AE29C6A57100620A3C /* SyncDataView.swift in Sources */,
 				76751E6729C58EE20013BBDF /* MovieNowPlayingBackdrop.swift in Sources */,
 				76AC25A629C2E350007874DA /* DeviceStatus.swift in Sources */,
 				76AC258329C2E23A007874DA /* MovieHunterApp.swift in Sources */,

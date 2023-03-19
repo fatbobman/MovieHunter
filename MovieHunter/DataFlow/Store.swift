@@ -76,6 +76,14 @@ final class Store: ObservableObject {
         }
         return Empty(completeImmediately: true).eraseToAnyPublisher()
     }
+
+    func inWishlist(_ movieID: Int) -> Bool {
+        state.favoriteMovieIDs.contains(movieID)
+    }
+
+    func isFavoritePerson(_ personID: Int) -> Bool {
+        state.favoritePersonIDs.contains(personID)
+    }
 }
 
 extension Store {

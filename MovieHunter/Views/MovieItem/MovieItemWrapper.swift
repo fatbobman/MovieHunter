@@ -21,7 +21,7 @@ struct MovieItemWrapper: View {
 
     var inWishlist: Bool {
         guard let movie else { return false }
-        return store.state.favoriteMovieIDs.contains(movie.id)
+        return store.inWishlist(movie.id)
     }
 
     var body: some View {

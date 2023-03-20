@@ -91,7 +91,7 @@ struct NowPlayingBanner: View {
                     )
 
                     NowPlayingBanner(
-                        movie: PreviewData.previewMovie1,
+                        movie: PreviewData.previewMovie2,
                         backdropSize: .init(width: 540, height: 540 / 1.77),
                         inWishlist: true,
                         tapBanner: { id in print("Tapped \(id)") }, updateWishlist: { _ in print("update") }
@@ -99,7 +99,7 @@ struct NowPlayingBanner: View {
                 }
             }
             .previewDevice(.init(rawValue: "iPad Pro (11-inch) (4th generation)"))
-//            .previewInterfaceOrientation(.landscapeLeft)
+            .previewInterfaceOrientation(.landscapeLeft)
         }
     }
 #endif

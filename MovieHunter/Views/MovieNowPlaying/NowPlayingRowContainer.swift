@@ -38,10 +38,13 @@ struct NowPlayingRowContainer: View {
                     updateWishList: updateWishlist
                 )
             }
-            NowPlayingLabel(hideText: true, checkMore: {
-//                store.send(.setDestination(to: [.nowPlaying]))
-                goCategory(Destination.nowPlaying)
-            })
+            ViewMoreButton(
+                category: .nowPlaying,
+                showSymbole: false,
+                showViewMoreText: false,
+                textSize: .small,
+                perform: { goCategory(Destination.nowPlaying) }
+            )
         }
         .task {
             // get now plaing movies by tmdb
@@ -58,7 +61,6 @@ struct MovieNowPlayingScrollView_Previews: PreviewProvider {
             goDetail: { print($0) },
             updateWishlist: { print($0) },
             goCategory: { print($0) }
-            
         )
         .environment(\.colorScheme, .dark)
 
@@ -78,57 +80,5 @@ struct MovieNowPlayingScrollView_Previews: PreviewProvider {
 //        .previewDevice(.init(rawValue: "iPad Pro (11-inch) (4th generation)"))
 //        .previewInterfaceOrientation(.landscapeLeft)
 //        .setDeviceStatus()
-    }
-}
-
-struct NowPlayingLabel: View {
-    private let category = Category.nowPlaying
-    let hideText: Bool
-    let hideArrow: Bool
-    let checkMore: () -> Void
-
-    init(hideText: Bool = false, hideArrow: Bool = false, checkMore: @escaping () -> Void) {
-        self.hideText = hideText
-        self.hideArrow = hideArrow
-        self.checkMore = checkMore
-    }
-
-    var body: some View {
-        Assets.Colors.rowBackground
-            .frame(height: 60)
-            .frame(maxWidth: .infinity)
-            .overlay(
-                HStack(spacing: 10) {
-                    Text(category.localizedString)
-                        .font(.subheadline)
-                    Spacer()
-                    MoreButton(hideText: hideText, hideArrow: hideArrow, perform: checkMore)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 16)
-            )
-    }
-}
-
-struct MoreButton: View {
-    let hideText: Bool
-    let hideArrow: Bool
-    let perform: () -> Void
-    var body: some View {
-        Button {
-            perform()
-        } label: {
-            HStack(spacing: 3) {
-                if !hideText {
-                    Text("查看更多")
-                }
-                if !hideArrow {
-                    Image(systemName: "chevron.right")
-                }
-            }
-            .foregroundColor(.blue)
-            .font(.callout)
-        }
-        .buttonStyle(.plain)
     }
 }

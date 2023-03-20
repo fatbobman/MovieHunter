@@ -76,6 +76,7 @@ final class Store: ObservableObject {
         }
         return Empty(completeImmediately: true).eraseToAnyPublisher()
     }
+    .debug()
 
     func inWishlist(_ movieID: Int) -> Bool {
         state.favoriteMovieIDs.contains(movieID)

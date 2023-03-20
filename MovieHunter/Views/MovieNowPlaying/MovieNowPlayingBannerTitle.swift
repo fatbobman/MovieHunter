@@ -38,7 +38,7 @@ struct MovieNowPlayingBannerTitle: View {
 #if DEBUG
     struct MovieBannerTitle_Previews: PreviewProvider {
         static var previews: some View {
-            MovieNowPlayingBannerTitle(movie: PreviewData.previewMovie)
+            MovieNowPlayingBannerTitle(movie: PreviewData.previewMovie1)
         }
     }
 #endif

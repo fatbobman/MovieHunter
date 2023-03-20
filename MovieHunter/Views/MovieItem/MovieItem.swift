@@ -98,7 +98,7 @@ public enum DisplayType: Equatable {
         static var previews: some View {
             VStack {
                 MovieItem(
-                    movie: PreviewData.previewMovie,
+                    movie: PreviewData.previewMovie1,
                     inWishlist: false,
                     displayType: .landscape,
                     updateWishlist: { id in print(id) }
@@ -107,14 +107,14 @@ public enum DisplayType: Equatable {
                 .padding(10)
 
                 MovieItem(
-                    movie: PreviewData.previewMovie,
+                    movie: PreviewData.previewMovie1,
                     inWishlist: true,
                     displayType: .portrait(.small),
                     updateWishlist: { id in print(id) }
                 )
 
                 MovieItem(
-                    movie: PreviewData.previewMovie,
+                    movie: PreviewData.previewMovie1,
                     inWishlist: true,
                     displayType: .portrait(.large),
                     updateWishlist: { id in print(id) }

@@ -87,6 +87,15 @@ struct Reducer<AppState, AppAction, AppEnvironment> {
             return Publishers.MergeMany(effects).eraseToAnyPublisher()
         }
     }
+
+    func debug(_ prefix: String = "Reducer Action:") -> Reducer<AppState, AppAction, AppEnvironment> {
+        .init { state, action, environment in
+            #if DEBUG
+                print(prefix, action)
+            #endif
+            return self(&state, action, environment).eraseToAnyPublisher()
+        }
+    }
 }
 
 class DisposeBag {

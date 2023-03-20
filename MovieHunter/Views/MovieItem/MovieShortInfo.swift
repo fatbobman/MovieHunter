@@ -113,7 +113,7 @@ struct MovieShortInfo: View {
                     .frame(width: DisplayType.landscape.imageSize.width,
                            height: DisplayType.landscape.imageSize.height)
                 MovieShortInfo(
-                    movie: PreviewData.previewMovie,
+                    movie: PreviewData.previewMovie1,
                     displayType: .landscape
                 )
             }
@@ -130,7 +130,7 @@ struct MovieShortInfo: View {
                     .frame(width: DisplayType.portrait(.small).imageSize.width,
                            height: DisplayType.portrait(.small).imageSize.height)
                 MovieShortInfo(
-                    movie: PreviewData.previewMovie,
+                    movie: PreviewData.previewMovie1,
                     displayType: .portrait(.small)
                 )
             }
@@ -142,7 +142,7 @@ struct MovieShortInfo: View {
                     .frame(width: DisplayType.portrait(.middle).imageSize.width,
                            height: DisplayType.portrait(.middle).imageSize.height)
                 MovieShortInfo(
-                    movie: PreviewData.previewMovie,
+                    movie: PreviewData.previewMovie1,
                     displayType: .portrait(.middle)
                 )
             }

@@ -40,9 +40,9 @@ struct MovieItemWrapper: View {
 #if DEBUG
     struct MovieItemWrapperPreview: PreviewProvider {
         static var previews: some View {
-            MovieItemWrapper(displayType: .portrait(.middle), movie: PreviewData.previewMovie)
+            MovieItemWrapper(displayType: .portrait(.middle), movie: PreviewData.previewMovie1)
                 .environmentObject(Store())
-            MovieItemWrapper(displayType: .landscape, movie: PreviewData.previewMovie)
+            MovieItemWrapper(displayType: .landscape, movie: PreviewData.previewMovie1)
                 .environmentObject(Store())
             
             MovieItemWrapper(displayType: .portrait(.middle), movie: nil)

@@ -7,14 +7,15 @@
 
 import Foundation
 import SwiftUI
+import TMDb
 
 struct CategoryWrapper: View {
-    let category:Category
+    @EnvironmentObject private var store: Store
+    let category: Category
     var body: some View {
         switch category {
         case .nowPlaying:
-            let _ = print("abc")
-            MovieNowPlayingContainer()
+            NowPlayingRowContainer(inWishlist: inWishlist, goDetail: goDetail, updateWishlist: updateWishlist, goCategory: goCategory)
         case .popular:
             Text("popu")
         case .upComing:
@@ -27,10 +28,27 @@ struct CategoryWrapper: View {
             Text("fa")
         }
     }
+
+    var inWishlist: (Int) -> Bool {
+        { store.state.favoriteMovieIDs.contains($0) }
+    }
+
+    var goDetail: (Movie) -> Void {
+        { store.send(.setDestination(to: [.nowPlaying, .movieDetail($0)])) }
+    }
+
+    var updateWishlist: (Int) -> Void {
+        { store.send(.updateMovieWishlisth($0)) }
+    }
+
+    var goCategory: (Destination) -> Void {
+        { store.send(.setDestination(to: [$0])) }
+    }
 }
 
 struct CategoryRoot_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryWrapper(category: .favoritePerson)
+        CategoryWrapper(category: .nowPlaying)
+            .environmentObject(Store.share)
     }
 }

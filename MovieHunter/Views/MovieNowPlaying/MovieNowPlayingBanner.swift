@@ -74,7 +74,7 @@ struct MovieNowPlayingBanner: View {
     struct MovieBanner_Previews: PreviewProvider {
         static var previews: some View {
             MovieNowPlayingBanner(
-                movie: PreviewData.previewMovie,
+                movie: PreviewData.previewMovie1,
                 backdropSize: .init(width: 393, height: 393 / 1.77),
                 inWishlist: true,
                 tapBanner: { id in print("Tapped \(id)") }, updateWishlist: { _ in print("update") }
@@ -84,14 +84,14 @@ struct MovieNowPlayingBanner: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
                     MovieNowPlayingBanner(
-                        movie: PreviewData.previewMovie,
+                        movie: PreviewData.previewMovie1,
                         backdropSize: .init(width: 540, height: 540 / 1.77),
                         inWishlist: true,
                         tapBanner: { id in print("Tapped \(id)") }, updateWishlist: { _ in print("update") }
                     )
 
                     MovieNowPlayingBanner(
-                        movie: PreviewData.previewMovie,
+                        movie: PreviewData.previewMovie1,
                         backdropSize: .init(width: 540, height: 540 / 1.77),
                         inWishlist: true,
                         tapBanner: { id in print("Tapped \(id)") }, updateWishlist: { _ in print("update") }

@@ -78,11 +78,11 @@ struct ItemPoster: View {
 #if DEBUG
     struct ItemPosterPreview: PreviewProvider {
         static var previews: some View {
-            ItemPoster(movie: PreviewData.previewMovie, size: DisplayType.portrait(.small).imageSize, inWishlist: true, updateWishlist: { _ in print("update ") })
+            ItemPoster(movie: PreviewData.previewMovie1, size: DisplayType.portrait(.small).imageSize, inWishlist: true, updateWishlist: { _ in print("update ") })
 
-            ItemPoster(movie: PreviewData.previewMovie, size: DisplayType.portrait(.small).imageSize, inWishlist: false)
+            ItemPoster(movie: PreviewData.previewMovie1, size: DisplayType.portrait(.small).imageSize, inWishlist: false)
 
-            ItemPoster(movie: PreviewData.previewMovie, size: DisplayType.portrait(.middle).imageSize, inWishlist: false)
+            ItemPoster(movie: PreviewData.previewMovie1, size: DisplayType.portrait(.middle).imageSize, inWishlist: false)
         }
     }
 #endif

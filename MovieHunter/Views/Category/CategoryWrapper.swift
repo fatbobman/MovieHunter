@@ -15,7 +15,11 @@ struct CategoryWrapper: View {
     var body: some View {
         switch category {
         case .nowPlaying:
-            NowPlayingRowContainer(inWishlist: inWishlist, goDetail: goDetail, updateWishlist: updateWishlist, goCategory: goCategory)
+            NowPlayingRowContainer(
+                inWishlist: inWishlist,
+                goDetail: goDetail,
+                updateWishlist: updateWishlist, goCategory: goCategory
+            )
         case .popular:
             Text("popu")
         case .upComing:

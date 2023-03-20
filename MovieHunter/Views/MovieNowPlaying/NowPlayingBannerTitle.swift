@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import TMDb
 
-struct MovieNowPlayingBannerTitle: View {
+struct NowPlayingBannerTitle: View {
     let movie: Movie
     var body: some View {
         VStack(alignment: .leading) {
@@ -38,7 +38,7 @@ struct MovieNowPlayingBannerTitle: View {
 #if DEBUG
     struct MovieBannerTitle_Previews: PreviewProvider {
         static var previews: some View {
-            MovieNowPlayingBannerTitle(movie: PreviewData.previewMovie1)
+            NowPlayingBannerTitle(movie: PreviewData.previewMovie1)
         }
     }
 #endif

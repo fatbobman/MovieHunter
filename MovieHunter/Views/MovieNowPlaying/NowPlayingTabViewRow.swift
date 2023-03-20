@@ -19,7 +19,7 @@ struct NowPlayingTabViewRow: View {
     var body: some View {
         TabView {
             ForEach(movies) { movie in
-                MovieNowPlayingBanner(
+                NowPlayingBanner(
                     movie: movie,
                     backdropSize: size,
                     inWishlist: inWishlist(movie.id),

@@ -20,7 +20,7 @@ struct NowPlayingScrollViewRow: View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack(spacing: 10) {
                 ForEach(movies) { movie in
-                    MovieNowPlayingBanner(
+                    NowPlayingBanner(
                         movie: movie,
                         backdropSize: .init(width: 540, height: 540 / 1.77),
                         inWishlist: inWishlist(movie.id),

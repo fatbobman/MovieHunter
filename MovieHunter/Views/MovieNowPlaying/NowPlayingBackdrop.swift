@@ -11,7 +11,7 @@ import NukeUI
 import SwiftUI
 import TMDb
 
-struct MovieNowPlayingBackdrop: View {
+struct NowPlayingBackdrop: View {
     let movie: Movie
     private let showPlayButton: Bool = false
     @Environment(\.imagePipeline) var imagePipeline
@@ -70,7 +70,7 @@ struct MovieNowPlayingBackdrop: View {
 #if DEBUG
     struct MovieNowPlayingBackdrop_Previews: PreviewProvider {
         static var previews: some View {
-            MovieNowPlayingBackdrop(
+            NowPlayingBackdrop(
                 movie: PreviewData.previewMovie1
             )
             .frame(width: 390, height: 390 / 1.77)

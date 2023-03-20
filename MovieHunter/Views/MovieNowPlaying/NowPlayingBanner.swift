@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import TMDb
 
-struct MovieNowPlayingBanner: View {
+struct NowPlayingBanner: View {
     let movie: Movie
     let backdropSize: CGSize
     let inWishlist: Bool
@@ -19,7 +19,7 @@ struct MovieNowPlayingBanner: View {
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
         VStack(alignment: .leading, spacing: -posterSize.height * 0.56) {
-            MovieNowPlayingBackdrop(movie: movie)
+            NowPlayingBackdrop(movie: movie)
                 .frame(width: backdropSize.width, height: backdropSize.height)
                 .clipped()
             HStack(alignment: .lastTextBaseline) {
@@ -30,7 +30,7 @@ struct MovieNowPlayingBanner: View {
                     inWishlist: inWishlist,
                     updateWishlist: updateWishlist
                 )
-                MovieNowPlayingBannerTitle(movie: movie)
+                NowPlayingBannerTitle(movie: movie)
                     .alignmentGuide(.lastTextBaseline) { $0[.lastTextBaseline] + 10 }
             }
             .padding(.leading, leadingPadding)
@@ -73,7 +73,7 @@ struct MovieNowPlayingBanner: View {
 #if DEBUG
     struct MovieBanner_Previews: PreviewProvider {
         static var previews: some View {
-            MovieNowPlayingBanner(
+            NowPlayingBanner(
                 movie: PreviewData.previewMovie1,
                 backdropSize: .init(width: 393, height: 393 / 1.77),
                 inWishlist: true,
@@ -83,14 +83,14 @@ struct MovieNowPlayingBanner: View {
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
-                    MovieNowPlayingBanner(
+                    NowPlayingBanner(
                         movie: PreviewData.previewMovie1,
                         backdropSize: .init(width: 540, height: 540 / 1.77),
                         inWishlist: true,
                         tapBanner: { id in print("Tapped \(id)") }, updateWishlist: { _ in print("update") }
                     )
 
-                    MovieNowPlayingBanner(
+                    NowPlayingBanner(
                         movie: PreviewData.previewMovie1,
                         backdropSize: .init(width: 540, height: 540 / 1.77),
                         inWishlist: true,

@@ -18,6 +18,8 @@ public struct MovieItem: View {
     let updateWishlist: (Int) -> Void
     let goDetail: (Movie) -> Void
 
+    @Environment(\.colorScheme) var colorScheme
+
     var layout: AnyLayout {
         switch displayType {
         case .portrait:
@@ -62,7 +64,7 @@ public struct MovieItem: View {
         .clipShape(clipShape)
         .if(displayType != .landscape) { view in
             view
-                .shadow(color: .black.opacity(0.3), radius: 3, x: 0, y: 2)
+                .shadow(color: .black.opacity(colorScheme == .dark ? 0.3 : 0.1), radius: 3, x: 0, y: 2)
         }
         .onTapGesture {
             if let movie {

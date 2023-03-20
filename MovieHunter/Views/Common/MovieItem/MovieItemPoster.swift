@@ -15,6 +15,7 @@ struct ItemPoster: View {
     let movie: Movie?
     let size: CGSize
     let showShadow: Bool
+    let enableScale: Bool
     let inWishlist: Bool
     var updateWishlist: ((Int) -> Void)?
     @Environment(\.imagePipeline) var imagePipeline
@@ -25,12 +26,14 @@ struct ItemPoster: View {
         movie: Movie?,
         size: CGSize,
         showShadow: Bool = false,
+        enableScale: Bool = true,
         inWishlist: Bool,
         updateWishlist: ((Int) -> Void)? = nil
     ) {
         self.movie = movie
         self.size = size
         self.showShadow = showShadow
+        self.enableScale = enableScale
         self.inWishlist = inWishlist
         self.updateWishlist = updateWishlist
     }
@@ -49,7 +52,9 @@ struct ItemPoster: View {
                             .onContinuousHover(coordinateSpace: .local) { phase in
                                 switch phase {
                                 case .active:
-                                    scale = 1.2
+                                    if enableScale {
+                                        scale = 1.2
+                                    }
                                 case .ended:
                                     scale = 1
                                 }

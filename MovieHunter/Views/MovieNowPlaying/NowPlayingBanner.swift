@@ -27,6 +27,7 @@ struct NowPlayingBanner: View {
                     movie: movie,
                     size: posterSize,
                     showShadow: true,
+                    enableScale: false,
                     inWishlist: inWishlist,
                     updateWishlist: updateWishlist
                 )

@@ -13,7 +13,9 @@ import TMDb
 
 struct MovieNowPlayingBackdrop: View {
     let movie: Movie
+    private let showPlayButton: Bool = false
     @Environment(\.imagePipeline) var imagePipeline
+    @Environment(\.colorScheme) var colorScheme
 
     var backdropPath: URL? {
         guard let path = movie.backdropPath else { return nil }
@@ -38,18 +40,30 @@ struct MovieNowPlayingBackdrop: View {
         .overlay(
             VStack {
                 // Fake Button
-//                ZStack {
-//                    Circle()
-//                        .fill(.secondary)
-//                    Circle()
-//                        .stroke(Assets.Colors.secondWhite, lineWidth: 3)
-//                    Image(systemName: "play.fill")
-//                        .font(.title)
-//                        .foregroundColor(Assets.Colors.secondWhite)
-//                }
-//                .frame(width: 52, height: 52)
+                if showPlayButton {
+                    ZStack {
+                        Circle()
+                            .fill(.secondary)
+                        Circle()
+                            .stroke(Assets.Colors.secondWhite, lineWidth: 3)
+                        Image(systemName: "play.fill")
+                            .font(.title)
+                            .foregroundColor(Assets.Colors.secondWhite)
+                    }
+                    .frame(width: 52, height: 52)
+                }
             }
         )
+        .overlay(alignment: .bottom) {
+            // 渐变蒙版
+            Group {
+                if colorScheme == .dark {
+                    Rectangle()
+                        .fill(LinearGradient(gradient: Gradient(colors: [.clear, Assets.Colors.rowBackground]), startPoint: .top, endPoint: .init(x: 0.5, y: 1)))
+                        .frame(height: 40)
+                }
+            }
+        }
     }
 }
 
@@ -60,6 +74,7 @@ struct MovieNowPlayingBackdrop: View {
                 movie: PreviewData.previewMovie
             )
             .frame(width: 390, height: 390 / 1.77)
+            .environment(\.colorScheme, .dark)
         }
     }
 #endif

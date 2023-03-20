@@ -21,6 +21,7 @@ struct MovieNowPlayingBanner: View {
         VStack(alignment: .leading, spacing: -posterSize.height * 0.56) {
             MovieNowPlayingBackdrop(movie: movie)
                 .frame(width: backdropSize.width, height: backdropSize.height)
+                .clipped()
             HStack(alignment: .lastTextBaseline) {
                 ItemPoster(
                     movie: movie,

@@ -11,7 +11,8 @@ import SwiftUI
 enum Assets {
     enum Colors {
         static let imagePlaceHolder = Color("imagePlaceHolderColor")
-        static let movieItemPortraitBackground = Color("movieItemPortraitBackgroundColor")
+        static let rowBackground = Color("rowBackgroundColor")
+        static let mainBackground = Color("mainBackground")
         static let favorite = Color("starYellow")
         static let secondWhite = Color("secondWhite")
     }

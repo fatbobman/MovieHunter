@@ -12,20 +12,23 @@ import TMDb
 struct MovieNowPlayingContainer: View {
     @Environment(\.tmdb) var tmdb
     @Environment(\.deviceStatus) var deviceStatus
+    @EnvironmentObject var store: Store
     @State var movies = [Movie]()
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             switch deviceStatus {
             case .compact:
                 NowPlayingTabView(movies: movies)
             default:
                 NowPlayingScrollView(movies: movies)
             }
-            CategoryLabelInHome(category: .nowPlaying)
+            NowPlayingLabel(hideText: true, checkMore: {
+                store.send(.setDestination(to: [.nowPlaying]))
+            })
         }
         .task {
-            // get now plaing movies
+            // get now plaing movies by tmdb
             let movies = try? await tmdb.movies.nowPlaying(page: 1)
             self.movies = Array((movies?.results ?? []).prefix(10))
         }
@@ -53,8 +56,8 @@ struct NowPlayingTabView: View {
         .tabViewStyle(.page(indexDisplayMode: .never))
         #endif
         .getSizeByWidth(size: $size, aspectRatio: 9 / 16)
-        .if(size != .zero){
-            $0.frame(width:size.width,height:size.height + 70)
+        .if(size != .zero) {
+            $0.frame(width: size.width, height: size.height + 70)
         }
     }
 }
@@ -77,6 +80,8 @@ struct NowPlayingScrollView: View {
                 }
             }
         }
+        .scrollContentBackground(.hidden)
+        .background(Assets.Colors.rowBackground)
     }
 }
 
@@ -84,23 +89,75 @@ struct MovieNowPlayingScrollView_Previews: PreviewProvider {
     static var previews: some View {
         MovieNowPlayingContainer()
             .environmentObject(Store())
+            .environment(\.colorScheme, .dark)
 
-        NavigationSplitView {
-            Text("abc")
-        } detail: {
-            VStack {
-                MovieNowPlayingContainer()
-                Spacer()
+//        NavigationSplitView {
+//            Text("abc")
+//        } detail: {
+//            VStack {
+//                MovieNowPlayingContainer()
+//                Spacer()
+//            }
+//            .navigationTitle("")
+//            #if !os(macOS)
+//                .navigationBarTitleDisplayMode(.inline)
+//            #endif
+//        }
+//        .environmentObject(Store())
+//        .previewDevice(.init(rawValue: "iPad Pro (11-inch) (4th generation)"))
+//        .previewInterfaceOrientation(.landscapeLeft)
+//        .setDeviceStatus()
+    }
+}
+
+struct NowPlayingLabel: View {
+    private let category = Category.nowPlaying
+    let hideText: Bool
+    let hideArrow: Bool
+    let checkMore: () -> Void
+
+    init(hideText: Bool = false, hideArrow: Bool = false, checkMore: @escaping () -> Void) {
+        self.hideText = hideText
+        self.hideArrow = hideArrow
+        self.checkMore = checkMore
+    }
+
+    var body: some View {
+        Assets.Colors.rowBackground
+            .frame(height: 60)
+            .frame(maxWidth: .infinity)
+            .overlay(
+                HStack(spacing: 10) {
+                    Text(category.localizedString)
+                        .font(.subheadline)
+                    Spacer()
+                    MoreButton(hideText: hideText, hideArrow: hideArrow, perform: checkMore)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 16)
+            )
+    }
+}
+
+struct MoreButton: View {
+    let hideText: Bool
+    let hideArrow: Bool
+    let perform: () -> Void
+    var body: some View {
+        Button {
+            perform()
+        } label: {
+            HStack(spacing: 3) {
+                if !hideText {
+                    Text("查看更多")
+                }
+                if !hideArrow {
+                    Image(systemName: "chevron.right")
+                }
             }
-//            .toolbar(.hidden, for: .navigationBar)
-            .navigationTitle("")
-            #if !os(macOS)
-                .navigationBarTitleDisplayMode(.inline)
-            #endif
+            .foregroundColor(.blue)
+            .font(.callout)
         }
-        .environmentObject(Store())
-        .previewDevice(.init(rawValue: "iPad Pro (11-inch) (4th generation)"))
-        .previewInterfaceOrientation(.landscapeLeft)
-        .setDeviceStatus()
+        .buttonStyle(.plain)
     }
 }

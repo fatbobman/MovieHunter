@@ -16,6 +16,7 @@ struct MovieNowPlayingBanner: View {
     var tapBanner: (Movie) -> Void
     var updateWishlist: (Int) -> Void
     @Environment(\.deviceStatus) var devieStaus
+    @Environment(\.colorScheme) var colorScheme
     var body: some View {
         VStack(alignment: .leading, spacing: -posterSize.height * 0.56) {
             MovieNowPlayingBackdrop(movie: movie)
@@ -39,7 +40,7 @@ struct MovieNowPlayingBanner: View {
             tapBanner(movie)
         }
         .padding(.bottom, 15)
-        .background(Assets.Colors.movieItemPortraitBackground)
+        .background(Assets.Colors.rowBackground)
     }
 
     var posterSize: CGSize {

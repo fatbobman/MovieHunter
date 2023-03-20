@@ -9,37 +9,27 @@ import Foundation
 import SwiftUI
 
 struct HomeRoot: View {
-    @EnvironmentObject var store:Store
-    @State var size:CGSize = .zero
-    var genres:[Genres] {
+    @EnvironmentObject var store: Store
+    var genres: [Genres] {
         Genres
             .allCases
-            .filter{ store.state.configuration.genres.contains($0.id)
+            .filter { store.state.configuration.genres.contains($0.id)
             }
     }
-    
+
     var body: some View {
         ScrollView {
-            VStack(alignment:.leading) {
-                ForEach(Category.allCases){ category in
+            VStack(alignment: .leading, spacing: 10) {
+                ForEach(Category.allCases) { category in
                     CategoryWrapper(category: category)
                 }
-                ForEach(genres,id:\.id) { genre in
+                ForEach(genres, id: \.id) { genre in
                     Text(genre.localizedString)
                 }
-//                MovieNowPlayingContainer()
             }
-//            .frame(width:size.width)
         }
-        .background(
-            GeometryReader{ proxy in
-                Color.clear
-                    .task(id: proxy.size){
-                        self.size = proxy.size
-                    }
-            }
-        )
-        
+        .scrollContentBackground(.hidden)
+        .background(Assets.Colors.mainBackground)
     }
 }
 

@@ -18,14 +18,33 @@ struct CategoryWrapper: View {
             NowPlayingRowContainer(
                 inWishlist: inWishlist,
                 goDetail: goDetail,
-                updateWishlist: updateWishlist, goCategory: goCategory
+                updateWishlist: updateWishlist,
+                goCategory: goCategory
             )
         case .popular:
-            Text("popu")
+            CategoryCommonContainer(
+                category: .popular,
+                inWishlist: inWishlist,
+                goDetail: goDetail,
+                updateWishlist: updateWishlist,
+                goCategory: goCategory
+            )
         case .upComing:
-            Text("up")
+            CategoryCommonContainer(
+                category: .upComing,
+                inWishlist: inWishlist,
+                goDetail: goDetail,
+                updateWishlist: updateWishlist,
+                goCategory: goCategory
+            )
         case .topRate:
-            Text("rate")
+            CategoryCommonContainer(
+                category: .topRate,
+                inWishlist: inWishlist,
+                goDetail: goDetail,
+                updateWishlist: updateWishlist,
+                goCategory: goCategory
+            )
         case .movieWishlist:
             Text("list")
         case .favoritePerson:

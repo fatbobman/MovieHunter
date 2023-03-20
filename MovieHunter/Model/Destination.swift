@@ -14,6 +14,7 @@ enum Destination: CustomDebugStringConvertible, Identifiable, Hashable, Equatabl
     case popular
     case topRate
     case wishlist
+    case favoritePerson
     case genre(Genre)
     case movieDetail(Movie)
     case personDetail(Person)
@@ -30,6 +31,8 @@ enum Destination: CustomDebugStringConvertible, Identifiable, Hashable, Equatabl
             return "topRate"
         case .wishlist:
             return "wishlist"
+        case .favoritePerson:
+            return "favoritePerson"
         case let .genre(genre):
             return "genre_\(genre.name)"
         case let .movieDetail(movie):

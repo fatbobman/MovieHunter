@@ -5,10 +5,10 @@
 //  Created by Yang Xu on 2023/3/16.
 //
 
+import CoreData
 import Foundation
 import SwiftUI
 import TMDb
-import CoreData
 
 struct MovieItemWrapper: View {
     @Environment(\.tmdb) var tmdb
@@ -16,8 +16,9 @@ struct MovieItemWrapper: View {
     @Environment(\.managedObjectContext) var context
     let displayType: DisplayType
     let movie: Movie?
+    let goDetail: (Movie) -> Void
     @FetchRequest(entity: FavoriteMovie.entity(), sortDescriptors: [.init(key: "createTimestamp", ascending: false)])
-    var favoriteMovies:FetchedResults<FavoriteMovie>
+    var favoriteMovies: FetchedResults<FavoriteMovie>
 
     var inWishlist: Bool {
         guard let movie else { return false }
@@ -31,22 +32,34 @@ struct MovieItemWrapper: View {
             displayType: displayType,
             updateWishlist: {
                 store.send(.updateMovieWishlisth($0))
-            }
+            },
+            goDetail: goDetail
         )
-
     }
 }
 
 #if DEBUG
     struct MovieItemWrapperPreview: PreviewProvider {
         static var previews: some View {
-            MovieItemWrapper(displayType: .portrait(.middle), movie: PreviewData.previewMovie1)
-                .environmentObject(Store())
-            MovieItemWrapper(displayType: .landscape, movie: PreviewData.previewMovie1)
-                .environmentObject(Store())
-            
-            MovieItemWrapper(displayType: .portrait(.middle), movie: nil)
-                .environmentObject(Store())
+            MovieItemWrapper(
+                displayType: .portrait(.middle),
+                movie: PreviewData.previewMovie1,
+                goDetail: { print($0) }
+            )
+            .environmentObject(Store())
+            MovieItemWrapper(
+                displayType: .landscape,
+                movie: PreviewData.previewMovie1,
+                goDetail: { print($0) }
+            )
+            .environmentObject(Store())
+
+            MovieItemWrapper(
+                displayType: .portrait(.middle),
+                movie: nil,
+                goDetail: { print($0) }
+            )
+            .environmentObject(Store())
         }
     }
 #endif

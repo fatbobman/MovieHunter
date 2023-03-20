@@ -40,3 +40,22 @@ extension Category {
         }
     }
 }
+
+extension Category {
+    var destination:Destination {
+        switch self {
+        case .nowPlaying:
+            return .nowPlaying
+        case .popular:
+            return .popular
+        case .upComing:
+            return .upcoming
+        case .topRate:
+            return .topRate
+        case .movieWishlist:
+            return .wishlist
+        case .favoritePerson:
+            return .favoritePerson
+        }
+    }
+}

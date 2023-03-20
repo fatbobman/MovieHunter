@@ -15,7 +15,8 @@ public struct MovieItem: View {
     let movie: Movie?
     let inWishlist: Bool
     let displayType: DisplayType
-    var updateWishlist: (Int) -> Void
+    let updateWishlist: (Int) -> Void
+    let goDetail: (Movie) -> Void
 
     var layout: AnyLayout {
         switch displayType {
@@ -56,12 +57,17 @@ public struct MovieItem: View {
                     .foregroundColor(.secondary)
             }
         }
-        .background(displayType == .landscape ? .clear : Color("movieItemPortraitBackgroundColor"))
+        .background(displayType == .landscape ? .clear : Assets.Colors.rowBackground)
         .compositingGroup()
         .clipShape(clipShape)
         .if(displayType != .landscape) { view in
             view
-                .shadow(color: .secondary.opacity(0.3), radius: 3, x: 0, y: 2)
+                .shadow(color: .black.opacity(0.3), radius: 3, x: 0, y: 2)
+        }
+        .onTapGesture {
+            if let movie {
+                goDetail(movie)
+            }
         }
     }
 }
@@ -101,7 +107,8 @@ public enum DisplayType: Equatable {
                     movie: PreviewData.previewMovie1,
                     inWishlist: false,
                     displayType: .landscape,
-                    updateWishlist: { id in print(id) }
+                    updateWishlist: { id in print(id) },
+                    goDetail: { print($0) }
                 )
                 .border(.gray)
                 .padding(10)
@@ -110,14 +117,16 @@ public enum DisplayType: Equatable {
                     movie: PreviewData.previewMovie1,
                     inWishlist: true,
                     displayType: .portrait(.small),
-                    updateWishlist: { id in print(id) }
+                    updateWishlist: { id in print(id) },
+                    goDetail: { print($0) }
                 )
 
                 MovieItem(
                     movie: PreviewData.previewMovie1,
                     inWishlist: true,
                     displayType: .portrait(.large),
-                    updateWishlist: { id in print(id) }
+                    updateWishlist: { id in print(id) },
+                    goDetail: { print($0) }
                 )
             }
         }

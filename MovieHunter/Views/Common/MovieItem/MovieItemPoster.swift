@@ -19,6 +19,8 @@ struct ItemPoster: View {
     var updateWishlist: ((Int) -> Void)?
     @Environment(\.imagePipeline) var imagePipeline
 
+    @State private var scale: CGFloat = 1
+
     init(
         movie: Movie?,
         size: CGSize,
@@ -41,6 +43,18 @@ struct ItemPoster: View {
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fill)
+                            .scaleEffect(scale)
+                            .animation(.default, value: scale)
+                        #if os(macOS)
+                            .onContinuousHover(coordinateSpace: .local) { phase in
+                                switch phase {
+                                case .active:
+                                    scale = 1.2
+                                case .ended:
+                                    scale = 1
+                                }
+                            }
+                        #endif
                     } else {
                         Assets.Colors.imagePlaceHolder
                     }
@@ -62,7 +76,7 @@ struct ItemPoster: View {
             }
         }
         .compositingGroup()
-        .if(showShadow){
+        .if(showShadow) {
             $0.shadow(radius: 3)
         }
     }

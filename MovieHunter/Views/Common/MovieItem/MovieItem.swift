@@ -81,6 +81,7 @@ public enum DisplayType: Equatable {
     case landscape
 
     public enum Size: Equatable {
+        case tint
         case small
         case middle
         case large
@@ -89,6 +90,8 @@ public enum DisplayType: Equatable {
     var imageSize: CGSize {
         switch self {
         case .landscape:
+            return .init(width: 86, height: 128)
+        case .portrait(.tint):
             return .init(width: 86, height: 128)
         case .portrait(.small):
             return .init(width: 150, height: 223)

@@ -46,7 +46,12 @@ struct CategoryWrapper: View {
                 goCategory: goCategory
             )
         case .movieWishlist:
-            Text("list")
+            WishlistContainer(
+                inWishlist: inWishlist,
+                goDetail: goDetail,
+                updateWishlist: updateWishlist,
+                goCategory: goCategory
+            )
         case .favoritePerson:
             Text("fa")
         }

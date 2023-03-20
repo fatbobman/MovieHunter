@@ -40,3 +40,9 @@
 
 // MovieItem
 "Comming_Soon" = "Comming_Soon";
+
+// Wishlist
+"Wishlist_Is_Empty_Title" = "Your Watchlist is empty";
+"Wishlist_Is_Empty_Description_1" = "Never miss a movie or show.";
+"Wishlist_Is_Empty_Description_2" = "Use your Watchlist to track what you want to see.";
+

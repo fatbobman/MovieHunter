@@ -13,15 +13,22 @@ struct MovieHunterApp: App {
     @StateObject var store = Store.share
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-//            MovieNowPlayingContainer()
-//            MovieItemWrapper(displayType: .portrait(.middle), movie: PreviewData.previewMovie)
-           HomeRoot()
-                .syncCoreData() // 同步 favorite 数据
-                .environmentObject(store)
-                .preferredColorScheme(store.state.configuration.colorScheme.colorSchmeme)
-                .setDeviceStatus()
-                .environment(\.managedObjectContext, stack.viewContext)
+            TabView {
+                HomeRoot()
+                    .tabItem {
+                        Label("Home", systemImage: "house.fill")
+                    }
+                Text("Setting")
+                    .tabItem {
+                        Label("You", systemImage: "person.circle.fill")
+                    }
+            }
+
+            .syncCoreData() // 同步 favorite 数据
+            .environmentObject(store)
+            .preferredColorScheme(store.state.configuration.colorScheme.colorSchmeme)
+            .setDeviceStatus()
+            .environment(\.managedObjectContext, stack.viewContext)
         }
     }
 }

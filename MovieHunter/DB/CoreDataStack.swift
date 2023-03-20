@@ -12,8 +12,18 @@ import TMDb
 final class CoreDataStack {
     static let share = CoreDataStack()
 
-    let container: NSPersistentCloudKitContainer = {
+    lazy var container: NSPersistentCloudKitContainer = {
         let container = NSPersistentCloudKitContainer(name: "Model")
+
+        let desc = container.persistentStoreDescriptions.first!
+        desc.setOption(true as NSNumber,
+                       forKey: NSPersistentHistoryTrackingKey)
+        desc.setOption(true as NSNumber,
+                       forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+
+        if !allowCloudKitSync {
+            desc.cloudKitContainerOptions = nil
+        }
         container.loadPersistentStores { _, error in
             if let error {
                 fatalError("\(error.localizedDescription)")
@@ -27,6 +37,16 @@ final class CoreDataStack {
     var viewContext: NSManagedObjectContext {
         container.viewContext
     }
+
+    let allowCloudKitSync: Bool = {
+        let arguments = ProcessInfo.processInfo.arguments
+        var allow = true
+        for index in 0 ..< arguments.count - 1 where arguments[index] == "-AllowCloudKitSync" {
+            allow = arguments.count >= (index + 1) ? arguments[index + 1] == "1" : true
+            break
+        }
+        return allow
+    }()
 }
 
 extension CoreDataStack {

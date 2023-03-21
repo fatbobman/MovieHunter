@@ -80,7 +80,7 @@ struct MovieShortInfo: View {
                 if let releaseDate = movie.releaseDate {
                     Text(releaseDate, format: .dateTime.year(.defaultDigits))
                 } else {
-                    Text("Comming_Soon")
+                    Text("Coming_Soon")
                 }
             } else {
                 Text(" ")

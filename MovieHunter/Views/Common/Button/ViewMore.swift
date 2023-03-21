@@ -10,7 +10,7 @@ import SwiftUI
 import TMDb
 
 struct ViewMoreButton: View {
-    let category: Category
+    let title: LocalizedStringKey
     let showSymbole: Bool
     let showViewMoreText: Bool
     let showArrow: Bool
@@ -18,14 +18,14 @@ struct ViewMoreButton: View {
     let perform: () -> Void
 
     init(
-        category: Category,
+        title: LocalizedStringKey,
         showSymbole: Bool = true,
         showViewMoreText: Bool = true,
         showArrow: Bool = true,
         textSize: TextSize = .middle,
         perform: @escaping () -> Void
     ) {
-        self.category = category
+        self.title = title
         self.showSymbole = showSymbole
         self.showViewMoreText = showViewMoreText
         self.showArrow = showArrow
@@ -48,7 +48,7 @@ struct ViewMoreButton: View {
                                 .frame(width: 4)
                                 .padding(.vertical, 18)
                         }
-                        Text(category.localizedString)
+                        Text(title)
                             .font(textSize.CategorySize)
                             .foregroundColor(.primary)
                         Spacer()
@@ -106,16 +106,14 @@ struct ViewMoreButton_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             ViewMoreButton(
-                category: .nowPlaying,
+                title: Category.nowPlaying.localizedString,
                 showSymbole: false,
                 showViewMoreText: false,
                 textSize: .small,
                 perform: {}
             )
 
-            ViewMoreButton(category: .movieWishlist, perform: {})
-
-            ViewMoreButton(category: .popular, perform: {})
+            ViewMoreButton(title: Category.movieWishlist.localizedString, perform: {})
         }
     }
 }

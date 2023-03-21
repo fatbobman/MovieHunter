@@ -39,7 +39,7 @@ struct NowPlayingRowContainer: View {
                 )
             }
             ViewMoreButton(
-                category: .nowPlaying,
+                title: Category.nowPlaying.localizedString,
                 showSymbole: false,
                 showViewMoreText: false,
                 textSize: .small,

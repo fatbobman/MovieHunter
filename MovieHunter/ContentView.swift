@@ -24,7 +24,7 @@ struct ContentView: View {
                 }
             }
             Button("add Favorite") {
-                store.send(.updateMovieWishlisth(10))
+                store.send(.updateMovieWishlist(10))
             }
 //            Text("\(store.state.favoriteovies.count)")
         }

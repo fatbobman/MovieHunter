@@ -10,7 +10,7 @@ import SwiftUI
 import TMDb
 
 struct GenreScrollView: View {
-    let gerneID: Int
+    let genreID: Int
     let inWishlist: (Int) -> Bool
     let goDetail: (Movie) -> Void
     let updateWishlist: (Int) -> Void
@@ -39,7 +39,7 @@ struct GenreScrollView: View {
                 .frame(width: 6)
         }
         .task {
-            if let result = try? await tmdb.discover.movies(sortedBy: nil, withPeople: nil, withGenres: [gerneID], page: 1) {
+            if let result = try? await tmdb.discover.movies(sortedBy: nil, withPeople: nil, withGenres: [genreID], page: 1) {
                 movies = Array(result.results.prefix(10))
             }
         }
@@ -49,7 +49,7 @@ struct GenreScrollView: View {
 struct GenreScrollView_Previews: PreviewProvider {
     static var previews: some View {
         GenreScrollView(
-            gerneID: 12,
+            genreID: 12,
             inWishlist: { _ in true },
             goDetail: { print($0) },
             updateWishlist: { print($0) }

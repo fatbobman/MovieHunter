@@ -23,8 +23,9 @@ struct HomeRoot: View {
                 ForEach(Category.allCases) { category in
                     CategoryWrapper(category: category)
                 }
+                // TODO: 根据设定过过滤
                 ForEach(genres, id: \.id) { genre in
-                    Text(genre.localizedString)
+                    GenreContainer(genreID: genre.id, inWishlist: { _ in true }, goDetail: { _ in }, updateWishlist: {_ in}, goCategory: {_ in})
                 }
             }
         }

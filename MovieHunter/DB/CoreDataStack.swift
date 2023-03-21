@@ -50,7 +50,7 @@ final class CoreDataStack {
 }
 
 extension CoreDataStack {
-    func updateFovariteMovie(movieID: Int) {
+    func updateFavoriteMovie(movieID: Int) {
         container.performBackgroundTask { context in
             let request = NSFetchRequest<FavoriteMovie>(entityName: "FavoriteMovie")
             request.fetchLimit = 1
@@ -69,7 +69,7 @@ extension CoreDataStack {
         }
     }
 
-    func updateFovaritePerson(personID: Int) {
+    func updateFavoritePerson(personID: Int) {
         container.performBackgroundTask { context in
             let request = NSFetchRequest<FavoritePerson>(entityName: "FavoritePerson")
             request.fetchLimit = 1

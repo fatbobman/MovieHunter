@@ -13,6 +13,7 @@ final class Configuration: ObservableObject {
     /// colorScheme
     @AppStorage("colorScheme") var colorScheme: ColorSchemeSetting = .system
     /// selected genre
-    @AppStorage("genres") var genres:[Int] = Genres.allCases.map{$0.rawValue}
-    
+    @AppStorage("genres") var genres:[Int] =  Genres.allCases.map{$0.rawValue}
+    /// genre sortBy
+    @AppStorage("genre_sortBy") var genre_sortBy:Int = 0
 }

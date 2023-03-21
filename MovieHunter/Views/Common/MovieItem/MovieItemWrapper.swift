@@ -31,7 +31,7 @@ struct MovieItemWrapper: View {
             inWishlist: inWishlist,
             displayType: displayType,
             updateWishlist: {
-                store.send(.updateMovieWishlisth($0))
+                store.send(.updateMovieWishlist($0))
             },
             goDetail: goDetail
         )

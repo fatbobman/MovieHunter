@@ -18,7 +18,7 @@ struct AppState {
     var favoriteMovieIDs = Set<Int>()
     var favoritePersonIDs = Set<Int>()
 
-    var tabDesctination: TabDestination = .movie
+    var tabDestination: TabDestination = .movie
 
     init(configuration: Configuration) {
         self.configuration = configuration

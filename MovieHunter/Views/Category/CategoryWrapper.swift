@@ -66,7 +66,7 @@ struct CategoryWrapper: View {
     }
 
     var updateWishlist: (Int) -> Void {
-        { store.send(.updateMovieWishlisth($0)) }
+        { store.send(.updateMovieWishlist($0)) }
     }
 
     var goCategory: (Destination) -> Void {

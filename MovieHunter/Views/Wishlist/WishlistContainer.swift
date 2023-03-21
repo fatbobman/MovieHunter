@@ -20,22 +20,22 @@ struct WishlistContainer: View {
     var body: some View {
         VStack(spacing: 0) {
             ViewMoreButton(
-                category: .movieWishlist,
-                perform: { goCategory(.wishlist)}
+                title: Category.movieWishlist.localizedString,
+                perform: { goCategory(.wishlist) }
             )
             WishlistScrollView(
                 inWishlist: inWishlist,
                 goDetail: goDetail,
                 updateWishlist: updateWishlist
             )
-                .overlay(
-                    VStack {
-                        if showEmpty {
-                            WishlistEmpty()
-                        }
+            .overlay(
+                VStack {
+                    if showEmpty {
+                        WishlistEmpty()
                     }
-                    .animation(.default, value: showEmpty)
-                )
+                }
+                .animation(.default, value: showEmpty)
+            )
         }
 
         .task(id: store.state.favoriteMovieIDs.count) {

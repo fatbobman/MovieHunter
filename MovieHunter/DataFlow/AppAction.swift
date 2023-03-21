@@ -17,10 +17,13 @@ enum AppAction {
     /// empty destinations and back to home
     case setDestination(to: [Destination])
     /// append one destination into destinations
-    case gotoDestionation(Destination)
-    // Configuration
+    case gotoDestination(Destination)
+    /// Configuration
     case updateColorScheme(ColorSchemeSetting)
-    // Favorite
-    case updateMovieWishlisth(Int)
+    /// update favorite movies
+    case updateMovieWishlist(Int)
+    /// update favorite person
     case updateFavoritePersonList(Int)
+    /// update genre list
+    case updateGenreList([Int])
 }

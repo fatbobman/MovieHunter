@@ -18,7 +18,7 @@ struct CategoryCommonContainer: View {
     var body: some View {
         VStack(spacing: 0) {
             ViewMoreButton(
-                category: category,
+                title: category.localizedString,
                 perform: { goCategory(category.destination) }
             )
             CategoryCommonScrollView(

@@ -15,8 +15,8 @@ struct ContentView: View {
                 .environment(\.inWishlist) {
                     store.state.favoriteMovieIDs.contains($0)
                 }
-                .environment(\.goDetail) {
-                    store.send(.setDestination(to: [.nowPlaying, .movieDetail($0)]))
+                .environment(\.goDetail) { _,_ in
+//                    store.send(.setDestination(to: [.nowPlaying, .movieDetail($0)]))
                 }
                 .environment(\.updateWishlist) {
                     store.send(.updateMovieWishlist($0))

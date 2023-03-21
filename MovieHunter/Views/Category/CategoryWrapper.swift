@@ -54,6 +54,8 @@ struct CategoryWrapper: View {
             )
         case .favoritePerson:
             Text("fa")
+        case .genre:
+            EmptyView()
         }
     }
 

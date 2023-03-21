@@ -20,7 +20,7 @@ struct Home: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
-                ForEach(Category.allCases) { category in
+                ForEach(Category.showableCategory) { category in
                     CategoryWrapper(category: category)
                 }
                 // TODO: 根据设定过过滤

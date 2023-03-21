@@ -9,17 +9,18 @@ import Foundation
 import SwiftUI
 import TMDb
 
-enum Category:String,CaseIterable {
+enum Category:Hashable {
     case nowPlaying
     case popular
     case upComing
     case topRate
     case movieWishlist
     case favoritePerson
+    case genre(Genre)
 }
 
 extension Category:Identifiable {
-    var id:String { self.rawValue }
+    var id:Self { self }
 }
 
 extension Category {
@@ -37,6 +38,8 @@ extension Category {
             return "Category_movieWishlist"
         case .favoritePerson:
             return "Category_favoritePerson"
+        case .genre:
+            return ""
         }
     }
 }
@@ -56,6 +59,17 @@ extension Category {
             return .wishlist
         case .favoritePerson:
             return .favoritePerson
+        case .genre(let genre):
+            return .genre(genre)
         }
     }
+    
+    static let showableCategory:[Category] = [
+        .nowPlaying,
+        .popular,
+        .upComing,
+        .topRate,
+        .movieWishlist,
+        .favoritePerson
+    ]
 }

@@ -54,6 +54,8 @@ struct CategoryCommonScrollView: View {
                 if let result = try? await tmdb.movies.topRated(page: 1) {
                     movies = Array(result.results.prefix(10))
                 }
+            default:
+                break
             }
         }
     }

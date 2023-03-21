@@ -14,9 +14,9 @@ struct InWishlistKey: EnvironmentKey {
 }
 
 struct GoMovieDetailKey: EnvironmentKey {
-    static var defaultValue: (Movie) -> Void = {
+    static var defaultValue: (Category, Movie) -> Void = {
         #if DEBUG
-            print("goto \($0.title)'s detail view")
+            print("goto \($0) \($1.title)'s detail view")
         #endif
     }
 }
@@ -45,7 +45,7 @@ extension EnvironmentValues {
     }
 
     // go to movie detail view
-    var goDetail: (Movie) -> Void {
+    var goDetail: (Category, Movie) -> Void {
         get { self[GoMovieDetailKey.self] }
         set { self[GoMovieDetailKey.self] = newValue }
     }

@@ -13,7 +13,7 @@ enum ColorSchemeSetting: Int {
     case light
     case system
 
-    var colorSchmeme: ColorScheme? {
+    var colorScheme: ColorScheme? {
         switch self {
         case .dark:
             return .dark

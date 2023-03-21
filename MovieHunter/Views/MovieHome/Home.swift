@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct HomeRoot: View {
+struct Home: View {
     @EnvironmentObject var store: Store
     var genres: [Genres] {
         Genres
@@ -24,7 +24,7 @@ struct HomeRoot: View {
                     CategoryWrapper(category: category)
                 }
                 // TODO: 根据设定过过滤
-                ForEach(genres, id: \.id) { genre in
+                ForEach(genres) { genre in
                     GenreContainer(genreID: genre.id, inWishlist: { _ in true }, goDetail: { _ in }, updateWishlist: {_ in}, goCategory: {_ in})
                 }
             }
@@ -36,7 +36,7 @@ struct HomeRoot: View {
 
 struct HomeRoot_Previews: PreviewProvider {
     static var previews: some View {
-        HomeRoot()
+        Home()
             .environmentObject(Store.share)
     }
 }

@@ -13,20 +13,10 @@ struct MovieHunterApp: App {
     @StateObject var store = Store.share
     var body: some Scene {
         WindowGroup {
-            TabView {
-                HomeRoot()
-                    .tabItem {
-                        Label("Home", systemImage: "house.fill")
-                    }
-                Text("Setting")
-                    .tabItem {
-                        Label("You", systemImage: "person.circle.fill")
-                    }
-            }
-
+            ContentView()
             .syncCoreData() // 同步 favorite 数据
             .environmentObject(store)
-            .preferredColorScheme(store.state.configuration.colorScheme.colorSchmeme)
+            .preferredColorScheme(store.state.configuration.colorScheme.colorScheme)
             .setDeviceStatus()
             .environment(\.managedObjectContext, stack.viewContext)
         }

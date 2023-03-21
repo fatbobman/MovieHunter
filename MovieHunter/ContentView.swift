@@ -9,27 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var store: Store
-    @Environment(\.colorScheme) var colorScheme
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-            Button("Change") {
-                if colorScheme == .dark {
-                    store.send(.updateColorScheme(.light))
-                } else {
-                    store.send(.updateColorScheme(.dark))
+            Home()
+                .environment(\.inWishlist) {
+                    store.state.favoriteMovieIDs.contains($0)
                 }
-            }
-            Button("add Favorite") {
-                store.send(.updateMovieWishlist(10))
-            }
-//            Text("\(store.state.favoriteovies.count)")
+                .environment(\.goDetail) {
+                    store.send(.setDestination(to: [.nowPlaying, .movieDetail($0)]))
+                }
+                .environment(\.updateWishlist) {
+                    store.send(.updateMovieWishlist($0))
+                }
+                .environment(\.goCategory) {
+                    store.send(.setDestination(to: [$0]))
+                }
         }
-        .padding()
-        .preferredColorScheme(store.state.configuration.colorScheme.colorSchmeme)
     }
 }
 

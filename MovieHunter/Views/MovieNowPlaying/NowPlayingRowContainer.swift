@@ -47,7 +47,7 @@ struct NowPlayingRowContainer: View {
             )
         }
         .task {
-            // get now plaing movies by tmdb
+            // get now playing movies by tmdb
             let movies = try? await tmdb.movies.nowPlaying(page: 1)
             self.movies = Array((movies?.results ?? []).prefix(10))
         }

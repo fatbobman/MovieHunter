@@ -140,7 +140,7 @@ struct MoreButton: View {
         } label: {
             HStack(spacing: 3) {
                 if !hideText {
-                    Text("查看更多")
+                    Text("ViewMore")
                 }
                 if !hideArrow {
                     Image(systemName: "chevron.right")

@@ -24,7 +24,7 @@ struct NowPlayingBannerTitle: View {
                     Text(overview)
 
                 } else {
-                    Text("")
+                    Text(verbatim: "")
                 }
             }
             .lineLimit(1)

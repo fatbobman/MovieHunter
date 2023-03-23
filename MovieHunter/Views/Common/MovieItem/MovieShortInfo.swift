@@ -53,11 +53,11 @@ struct MovieShortInfo: View {
                     
                     Text(rate, format: .number.precision(.fractionLength(1)))
                 } else {
-                    Text("")
+                    Text(verbatim: "")
                         .foregroundColor(.secondary)
                 }
             } else {
-                Text(" ")
+                Text(verbatim: "")
                     .foregroundColor(.secondary)
             }
         }

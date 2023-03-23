@@ -20,6 +20,7 @@ public struct MovieItem: View {
     @Environment(\.goDetailFromHome) private var goDetailFromHome
     @Environment(\.goDetailFromCategory) private var goDetailFromCategory
     @Environment(\.colorScheme) private var colorScheme
+    @State private var isPressed:Bool = false
 
     init(
         movie: Movie?,
@@ -97,10 +98,12 @@ public struct MovieItem: View {
                         .shadow(color: .black.opacity(colorScheme == .dark ? 0.3 : 0.1), radius: 3, x: 0, y: 2)
                 }
             }
-            .buttonStyle(.flat)
+            .buttonStyle(.pressStatus($isPressed))
 
             BookMarkCornerButton(movieID: movie?.id)
         }
+        .scaleEffect(isPressed ? 0.95 : 1)
+        .animation(.easeOut, value: isPressed)
     }
 }
 

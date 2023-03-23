@@ -126,16 +126,24 @@ public enum DisplayType: Equatable {
 }
 
 #if DEBUG
+    struct MovieItemTest: View {
+        @State var favorite: Bool = false
+        var body: some View {
+            MovieItem(
+                movie: PreviewData.previewMovie1,
+                displayType: .portrait(.small)
+            )
+            .border(.gray)
+            .padding(10)
+            .environment(\.inWishlist) { _ in favorite }
+            .environment(\.updateWishlist) { _ in favorite.toggle() }
+        }
+    }
+
     struct MovieItem_Previews: PreviewProvider {
         static var previews: some View {
             VStack {
-                MovieItem(
-                    movie: PreviewData.previewMovie1,
-                    displayType: .landscape
-                )
-                .border(.gray)
-                .padding(10)
-                .environment(\.inWishlist) { _ in false }
+                MovieItemTest()
 
                 MovieItem(
                     movie: PreviewData.previewMovie1,

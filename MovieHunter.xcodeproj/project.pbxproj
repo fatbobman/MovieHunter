@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		761044E429CC1ACE004EFAA2 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761044E329CC1ACE004EFAA2 /* ButtonStyle.swift */; };
 		761044E729CC2B4D004EFAA2 /* MovieGalleryContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761044E629CC2B4D004EFAA2 /* MovieGalleryContainer.swift */; };
+		762FCA8629CC718300030A57 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762FCA8529CC718300030A57 /* Binding.swift */; };
 		76751E4D29C541D70013BBDF /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E4C29C541D70013BBDF /* Reducer.swift */; };
 		76751E4F29C542110013BBDF /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E4E29C542110013BBDF /* AppState.swift */; };
 		76751E5129C5424C0013BBDF /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E5029C5424C0013BBDF /* Store.swift */; };
@@ -71,6 +72,7 @@
 /* Begin PBXFileReference section */
 		761044E329CC1ACE004EFAA2 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		761044E629CC2B4D004EFAA2 /* MovieGalleryContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieGalleryContainer.swift; sourceTree = "<group>"; };
+		762FCA8529CC718300030A57 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		76751E4C29C541D70013BBDF /* Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 		76751E4E29C542110013BBDF /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		76751E5029C5424C0013BBDF /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 				76AC25A529C2E350007874DA /* DeviceStatus.swift */,
 				76A0D35029C979AD002C3286 /* ActionKey.swift */,
 				761044E329CC1ACE004EFAA2 /* ButtonStyle.swift */,
+				762FCA8529CC718300030A57 /* Binding.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				76AC258529C2E23A007874DA /* ContentView.swift in Sources */,
 				76AC25B429C2E37C007874DA /* MovieShortInfo.swift in Sources */,
 				76AC25B229C2E37C007874DA /* BookMarkButton.swift in Sources */,
+				762FCA8629CC718300030A57 /* Binding.swift in Sources */,
 				76751E4D29C541D70013BBDF /* Reducer.swift in Sources */,
 				769002D229C83B5800620A3C /* WishlistScrollView.swift in Sources */,
 				76AC25B129C2E37C007874DA /* MovieItemPoster.swift in Sources */,
@@ -703,7 +707,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.3;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.2;
@@ -744,7 +748,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.3;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.2;

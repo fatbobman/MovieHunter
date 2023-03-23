@@ -13,6 +13,7 @@ public struct BookMarkCornerButton: View {
     @Environment(\.inWishlist) private var inWishlist
     @Environment(\.updateWishlist) private var updateWishlist
     @State private var animation: Animation?
+    @State private var readyToRemove: Int?
 
     private var isFavorite: Bool {
         guard let movieID else { return false }
@@ -25,7 +26,10 @@ public struct BookMarkCornerButton: View {
 
     public var body: some View {
         Button {
-            if let movieID {
+            guard let movieID else { return }
+            if isFavorite {
+                readyToRemove = movieID
+            } else {
                 updateWishlist(movieID)
             }
         } label: {
@@ -70,6 +74,11 @@ public struct BookMarkCornerButton: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { animation = .spring() }
         }
         .onDisappear { animation = nil }
+        .confirmationDialog("Wishlist_Manage", isPresented: .isPresented($readyToRemove), presenting: readyToRemove) { movieID in
+            Button("Confirm_To_Remove_From_Favorite_Movies", role: .destructive) {
+                updateWishlist(movieID)
+            }
+        }
     }
 }
 

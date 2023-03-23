@@ -28,4 +28,16 @@ public extension View {
             }
         )
     }
+
+    @ViewBuilder
+    func safeTask(priority: _Concurrency.TaskPriority = .userInitiated, @_inheritActorContext _ action: @escaping @Sendable () async -> Void) -> some View {
+        if #available(iOS 16.4, macOS 13.3, *) {
+            self
+                .task(priority: priority, action)
+        } else {
+            onAppear {
+                Task(priority: priority, operation: action)
+            }
+        }
+    }
 }

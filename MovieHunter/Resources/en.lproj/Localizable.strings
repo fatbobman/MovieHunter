@@ -50,3 +50,7 @@
 "SortBy_VoteAverage" = "SortBy_VoteAverage";
 "SortBy_ReleaseDate" = "SortBy_ReleaseDate";
 "SortBy_Popularity" = "SortBy_Popularity";
+
+// ConfirmationDialog
+"Confirm_To_Remove_From_Favorite_Movies" = "Remove from Watchlist";
+"Wishlist_Manage" = "Wishlist";

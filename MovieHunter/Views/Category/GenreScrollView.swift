@@ -21,9 +21,10 @@ struct GenreScrollView: View {
             LazyHStack(spacing: 10) {
                 ForEach(movies) { movie in
                     MovieItemWrapper(
-                        displayType: .portrait(.small),
                         movie: movie,
-                        goDetail: goDetail
+                        genreID: genreID,
+                        displayType: .portrait(.small)
+//                        goDetail: goDetail
                     )
                 }
             }

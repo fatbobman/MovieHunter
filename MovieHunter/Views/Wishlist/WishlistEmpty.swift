@@ -42,10 +42,10 @@ struct WishlistEmpty: View {
         Color.clear
             .frame(width: 32, height: 40)
             .overlay(
-                BookMarkShap()
+                BookMarkShape()
                     .fill(.black)
                     .overlay(
-                        BookMarkShap()
+                        BookMarkShape()
                             .stroke(colorScheme != .dark ? .clear : .white.opacity(0.2), lineWidth: 0.5)
                     )
                     .overlay(alignment: .top) {

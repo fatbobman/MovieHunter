@@ -10,70 +10,53 @@ import SwiftUI
 import TMDb
 
 struct CategoryWrapper: View {
-    @EnvironmentObject private var store: Store
+//    @EnvironmentObject private var store: Store
     let category: Category
     var body: some View {
         switch category {
         case .nowPlaying:
             NowPlayingRowContainer(
-                inWishlist: inWishlist,
-                goDetail: goDetail,
-                updateWishlist: updateWishlist,
-                goCategory: goCategory
+//                inWishlist: inWishlist,
+//                goDetail: goDetail,
+//                updateWishlist: updateWishlist,
+//                goCategory: goCategory
             )
         case .popular:
             CategoryCommonContainer(
-                category: .popular,
-                inWishlist: inWishlist,
-                goDetail: goDetail,
-                updateWishlist: updateWishlist,
-                goCategory: goCategory
+                category: .popular
             )
         case .upComing:
             CategoryCommonContainer(
-                category: .upComing,
-                inWishlist: inWishlist,
-                goDetail: goDetail,
-                updateWishlist: updateWishlist,
-                goCategory: goCategory
+                category: .upComing
             )
         case .topRate:
             CategoryCommonContainer(
-                category: .topRate,
-                inWishlist: inWishlist,
-                goDetail: goDetail,
-                updateWishlist: updateWishlist,
-                goCategory: goCategory
+                category: .topRate
             )
         case .movieWishlist:
-            WishlistContainer(
-                inWishlist: inWishlist,
-                goDetail: goDetail,
-                updateWishlist: updateWishlist,
-                goCategory: goCategory
-            )
+            WishlistContainer()
         case .favoritePerson:
             Text("fa")
-        case .genre:
+        default:
             EmptyView()
         }
     }
-
-    var inWishlist: (Int) -> Bool {
-        { store.state.favoriteMovieIDs.contains($0) }
-    }
-
-    var goDetail: (Movie) -> Void {
-        { store.send(.setDestination(to: [.nowPlaying, .movieDetail($0)])) }
-    }
-
-    var updateWishlist: (Int) -> Void {
-        { store.send(.updateMovieWishlist($0)) }
-    }
-
-    var goCategory: (Destination) -> Void {
-        { store.send(.setDestination(to: [$0])) }
-    }
+//
+//    var inWishlist: (Int) -> Bool {
+//        { store.state.favoriteMovieIDs.contains($0) }
+//    }
+//
+//    var goDetail: (Movie) -> Void {
+//        { store.send(.setDestination(to: [.nowPlaying, .movieDetail($0)])) }
+//    }
+//
+//    var updateWishlist: (Int) -> Void {
+//        { store.send(.updateMovieWishlist($0)) }
+//    }
+//
+//    var goCategory: (Destination) -> Void {
+//        { store.send(.setDestination(to: [$0])) }
+//    }
 }
 
 struct CategoryRoot_Previews: PreviewProvider {

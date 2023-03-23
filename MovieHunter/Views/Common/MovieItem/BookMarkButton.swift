@@ -10,69 +10,74 @@ import SwiftUI
 
 public struct BookMarkCornerButton: View {
     let movieID: Int?
-    let inWishlist: Bool
-    var updateWishlist: (Int) -> Void
-    @State private var animation:Animation?
+    @Environment(\.inWishlist) var inWishlist
+    @Environment(\.updateWishlist) var updateWishlist
+    @State private var animation: Animation?
+
+    private var isFavorite: Bool {
+        guard let movieID else { return false }
+        return inWishlist(movieID)
+    }
 
     public init(
-        movieID: Int?,
-        inWishlist: Bool,
-        updateWishlist: @escaping (Int) -> Void
+        movieID: Int?
+//        inWishlist: Bool,
+//        updateWishlist: @escaping (Int) -> Void
     ) {
         self.movieID = movieID
-        self.inWishlist = inWishlist
-        self.updateWishlist = updateWishlist
+//        self.inWishlist = inWishlist
+//        self.updateWishlist = updateWishlist
     }
 
     public var body: some View {
         Color.clear
             .frame(width: 32, height: 40)
             .overlay(
-                BookMarkShap()
+                BookMarkShape()
                     .fill(.black)
                     .overlay(
-                        BookMarkShap()
-                            .stroke(inWishlist ? .clear : .white.opacity(0.2), lineWidth: 0.5)
+                        BookMarkShape()
+                            .stroke(isFavorite ? .clear : .white.opacity(0.2), lineWidth: 0.5)
                     )
                     .overlay(alignment: .top) {
-                        Image(systemName: inWishlist ? "checkmark" : "plus")
-                            .foregroundColor(inWishlist ? .black : .white)
+                        Image(systemName: isFavorite ? "checkmark" : "plus")
+                            .foregroundColor(isFavorite ? .black : .white)
                             .font(.callout)
                             .bold()
                             .alignmentGuide(.top) { _ in -8 }
                     }
             )
-            .overlay(
-                VStack {
-                    if inWishlist {
-                        BookMarkShap()
-                            .fill(Assets.Colors.favorite)
-                            .overlay(alignment: .top) {
-                                Image(systemName: "checkmark")
-                                    .foregroundColor(.black)
-                                    .font(.callout)
-                                    .bold()
-                                    .alignmentGuide(.top) { _ in -8 }
-                            }
-                            .transition(.scale(scale: 1.7).combined(with: .opacity))
-                    }
-                }
-                .animation(animation, value: inWishlist)
-            )
+//            .overlay(
+//                VStack {
+//                    if isFavorite {
+//                        BookMarkShape()
+//                            .fill(Assets.Colors.favorite)
+//                            .overlay(alignment: .top) {
+//                                Image(systemName: "checkmark")
+//                                    .foregroundColor(.black)
+//                                    .font(.callout)
+//                                    .bold()
+//                                    .alignmentGuide(.top) { _ in -8 }
+//                            }
+//                            .transition(.scale(scale: 1.7).combined(with: .opacity))
+//                    }
+//                }
+//                .animation(animation, value: inWishlist)
+//            )
             .contentShape(Rectangle())
             .onTapGesture {
                 if let movieID {
                     updateWishlist(movieID)
                 }
             }
-            .onAppear{
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){ animation = .spring()}
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { animation = .spring() }
             }
-            .onDisappear{ animation = nil }
+            .onDisappear { animation = nil }
     }
 }
 
-struct BookMarkShap: Shape {
+struct BookMarkShape: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
         let y = CGFloat(33) / CGFloat(40) * (rect.maxY - rect.minY)
@@ -86,27 +91,27 @@ struct BookMarkShap: Shape {
     }
 }
 
-#if DEBUG
-    struct BookMarkCornerButtonPreviewWrapper: View {
-        @State var inWishlist = false
-        var body: some View {
-            HStack {
-                BookMarkCornerButton(
-                    movieID: 100,
-                    inWishlist: inWishlist,
-                    updateWishlist: { _ in
-                        inWishlist.toggle()
-                    }
-                )
-            }
-            .padding()
-            .background(.black)
-        }
-    }
-
-    struct BookMarConerButtonPreview: PreviewProvider {
-        static var previews: some View {
-            BookMarkCornerButtonPreviewWrapper()
-        }   
-    }
-#endif
+//#if DEBUG
+//    struct BookMarkCornerButtonPreviewWrapper: View {
+//        @State var inWishlist = false
+//        var body: some View {
+//            HStack {
+//                BookMarkCornerButton(
+//                    movieID: 100,
+//                    inWishlist: inWishlist,
+//                    updateWishlist: { _ in
+//                        inWishlist.toggle()
+//                    }
+//                )
+//            }
+//            .padding()
+//            .background(.black)
+//        }
+//    }
+//
+//    struct BookMarConerButtonPreview: PreviewProvider {
+//        static var previews: some View {
+//            BookMarkCornerButtonPreviewWrapper()
+//        }
+//    }
+//#endif

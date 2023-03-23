@@ -10,10 +10,10 @@ import SwiftUI
 import TMDb
 
 struct NowPlayingRowContainer: View {
-    let inWishlist: (Int) -> Bool
-    let goDetail: (Movie) -> Void
-    let updateWishlist: (Int) -> Void
-    let goCategory: (Destination) -> Void
+//    let inWishlist: (Int) -> Bool
+//    let goDetail: (Movie) -> Void
+//    let updateWishlist: (Int) -> Void
+//    let goCategory: (Destination) -> Void
 
     @Environment(\.tmdb) private var tmdb
     @Environment(\.deviceStatus) private var deviceStatus
@@ -24,26 +24,26 @@ struct NowPlayingRowContainer: View {
             switch deviceStatus {
             case .compact:
                 NowPlayingTabViewRow(
-                    movies: movies,
-                    inWishlist: inWishlist,
-                    tapBanner: goDetail,
-                    updateWishList: updateWishlist
+                    movies: movies
+//                    inWishlist: inWishlist,
+//                    tapBanner: goDetail,
+//                    updateWishList: updateWishlist
                 )
 
             default:
                 NowPlayingScrollViewRow(
-                    movies: movies,
-                    inWishlist: inWishlist,
-                    tapBanner: goDetail,
-                    updateWishList: updateWishlist
+                    movies: movies
+//                    inWishlist: inWishlist,
+//                    tapBanner: goDetail,
+//                    updateWishList: updateWishlist
                 )
             }
             ViewMoreButton(
                 title: Category.nowPlaying.localizedString,
-                showSymbole: false,
+                showSymbol: false,
                 showViewMoreText: false,
-                textSize: .small,
-                perform: { goCategory(Destination.nowPlaying) }
+                textSize: .small
+//                perform: { goCategory(Destination.nowPlaying) }
             )
         }
         .task {
@@ -54,15 +54,15 @@ struct NowPlayingRowContainer: View {
     }
 }
 
-struct MovieNowPlayingScrollView_Previews: PreviewProvider {
-    static var previews: some View {
-        NowPlayingRowContainer(
-            inWishlist: { _ in true },
-            goDetail: { print($0) },
-            updateWishlist: { print($0) },
-            goCategory: { print($0) }
-        )
-        .environment(\.colorScheme, .dark)
+//struct MovieNowPlayingScrollView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NowPlayingRowContainer(
+//            inWishlist: { _ in true },
+//            goDetail: { print($0) },
+//            updateWishlist: { print($0) },
+//            goCategory: { print($0) }
+//        )
+//        .environment(\.colorScheme, .dark)
 
 //        NavigationSplitView {
 //            Text("abc")
@@ -80,5 +80,5 @@ struct MovieNowPlayingScrollView_Previews: PreviewProvider {
 //        .previewDevice(.init(rawValue: "iPad Pro (11-inch) (4th generation)"))
 //        .previewInterfaceOrientation(.landscapeLeft)
 //        .setDeviceStatus()
-    }
-}
+//    }
+//}

@@ -10,23 +10,23 @@ import SwiftUI
 import TMDb
 
 struct WishlistContainer: View {
-    let inWishlist: (Int) -> Bool
-    let goDetail: (Movie) -> Void
-    let updateWishlist: (Int) -> Void
-    let goCategory: (Destination) -> Void
+//    let inWishlist: (Int) -> Bool
+//    let goDetail: (Movie) -> Void
+//    let updateWishlist: (Int) -> Void
+//    let goCategory: (Destination) -> Void
 
     @EnvironmentObject private var store: Store
     @State private var showEmpty: Bool = true
     var body: some View {
         VStack(spacing: 0) {
             ViewMoreButton(
-                title: Category.movieWishlist.localizedString,
-                perform: { goCategory(.wishlist) }
+                title: Category.movieWishlist.localizedString
+//                perform: { goCategory(.wishlist) }
             )
             WishlistScrollView(
-                inWishlist: inWishlist,
-                goDetail: goDetail,
-                updateWishlist: updateWishlist
+//                inWishlist: inWishlist,
+//                goDetail: goDetail,
+//                updateWishlist: updateWishlist
             )
             .overlay(
                 VStack {
@@ -51,10 +51,10 @@ struct WishlistContainer: View {
 struct WishlistContainer_Previews: PreviewProvider {
     static var previews: some View {
         WishlistContainer(
-            inWishlist: { _ in true },
-            goDetail: { print($0) },
-            updateWishlist: { print($0) },
-            goCategory: { print($0) }
+//            inWishlist: { _ in true },
+//            goDetail: { print($0) },
+//            updateWishlist: { print($0) },
+//            goCategory: { print($0) }
         )
         .environmentObject(Store.share)
     }

@@ -16,7 +16,7 @@ enum Category:Hashable {
     case topRate
     case movieWishlist
     case favoritePerson
-    case genre(Genre)
+    case genre(Genre.ID)
 }
 
 extension Category:Identifiable {
@@ -59,8 +59,8 @@ extension Category {
             return .wishlist
         case .favoritePerson:
             return .favoritePerson
-        case .genre(let genre):
-            return .genre(genre)
+        case .genre(let genreID):
+            return .genre(genreID)
         }
     }
     

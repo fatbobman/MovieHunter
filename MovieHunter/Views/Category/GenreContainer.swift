@@ -23,8 +23,8 @@ struct GenreContainer: View {
     var body: some View {
         VStack(spacing: 0) {
             ViewMoreButton(
-                title: genreTitle,
-                perform: {  }
+                title: genreTitle
+//                perform: {  }
             )
             GenreScrollView(
                 genreID: genreID,

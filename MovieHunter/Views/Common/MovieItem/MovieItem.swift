@@ -13,12 +13,24 @@ import TMDb
 
 public struct MovieItem: View {
     let movie: Movie?
-    let inWishlist: Bool
+    let category: Category?
+    let genreID: Genre.ID?
     let displayType: DisplayType
-    let updateWishlist: (Int) -> Void
-    let goDetail: (Movie) -> Void
 
-    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.goDetail) private var goDetail
+    @Environment(\.colorScheme) private var colorScheme
+
+    init(
+        movie: Movie?,
+        category: Category? = nil,
+        genreID: Genre.ID? = nil,
+        displayType: DisplayType
+    ) {
+        self.movie = movie
+        self.category = category
+        self.genreID = genreID
+        self.displayType = displayType
+    }
 
     var layout: AnyLayout {
         switch displayType {
@@ -41,9 +53,9 @@ public struct MovieItem: View {
         layout {
             ItemPoster(
                 movie: movie,
-                size: displayType.imageSize,
-                inWishlist: inWishlist,
-                updateWishlist: updateWishlist
+                size: displayType.imageSize
+//                inWishlist: inWishlist,
+//                updateWishlist: updateWishlist
             )
             MovieShortInfo(
                 movie: movie,
@@ -68,7 +80,14 @@ public struct MovieItem: View {
         }
         .onTapGesture {
             if let movie {
-                goDetail(movie)
+                var destinationCategory: Category = .popular
+                if let category {
+                    destinationCategory = category
+                }
+                if let genreID {
+                    destinationCategory = .genre(genreID)
+                }
+                goDetail(destinationCategory, movie)
             }
         }
     }
@@ -104,36 +123,36 @@ public enum DisplayType: Equatable {
     }
 }
 
-#if DEBUG
-    struct MovieItem_Previews: PreviewProvider {
-        static var previews: some View {
-            VStack {
-                MovieItem(
-                    movie: PreviewData.previewMovie1,
-                    inWishlist: false,
-                    displayType: .landscape,
-                    updateWishlist: { id in print(id) },
-                    goDetail: { print($0) }
-                )
-                .border(.gray)
-                .padding(10)
-
-                MovieItem(
-                    movie: PreviewData.previewMovie1,
-                    inWishlist: true,
-                    displayType: .portrait(.small),
-                    updateWishlist: { id in print(id) },
-                    goDetail: { print($0) }
-                )
-
-                MovieItem(
-                    movie: PreviewData.previewMovie1,
-                    inWishlist: true,
-                    displayType: .portrait(.large),
-                    updateWishlist: { id in print(id) },
-                    goDetail: { print($0) }
-                )
-            }
-        }
-    }
-#endif
+// #if DEBUG
+//    struct MovieItem_Previews: PreviewProvider {
+//        static var previews: some View {
+//            VStack {
+//                MovieItem(
+//                    movie: PreviewData.previewMovie1,
+//                    inWishlist: false,
+//                    displayType: .landscape,
+//                    updateWishlist: { id in print(id) },
+//                    goDetail: { print($0) }
+//                )
+//                .border(.gray)
+//                .padding(10)
+//
+//                MovieItem(
+//                    movie: PreviewData.previewMovie1,
+//                    inWishlist: true,
+//                    displayType: .portrait(.small),
+//                    updateWishlist: { id in print(id) },
+//                    goDetail: { print($0) }
+//                )
+//
+//                MovieItem(
+//                    movie: PreviewData.previewMovie1,
+//                    inWishlist: true,
+//                    displayType: .portrait(.large),
+//                    updateWishlist: { id in print(id) },
+//                    goDetail: { print($0) }
+//                )
+//            }
+//        }
+//    }
+// #endif

@@ -11,9 +11,9 @@ import SwiftUI
 import TMDb
 
 struct WishlistScrollView: View {
-    let inWishlist: (Int) -> Bool
-    let goDetail: (Movie) -> Void
-    let updateWishlist: (Int) -> Void
+//    let inWishlist: (Int) -> Bool
+//    let goDetail: (Movie) -> Void
+//    let updateWishlist: (Int) -> Void
     
     @EnvironmentObject private var store: Store
     @State private var movies = [Movie]()
@@ -25,16 +25,23 @@ struct WishlistScrollView: View {
         ScrollView(.horizontal) {
             LazyHStack(spacing: 10) {
                 if movies.isEmpty {
-                    MovieItem(movie: PreviewData.previewMovie1, inWishlist: true, displayType: .portrait(.small), updateWishlist: { _ in }, goDetail: { _ in })
+                    MovieItem(movie: PreviewData.previewMovie1,
+//                              inWishlist: true,
+                              category: .movieWishlist,
+                              displayType: .portrait(.small)
+//                              updateWishlist: { _ in },
+//                              goDetail: { _ in }
+                    )
                         .opacity(0.001)
                 }
                 ForEach(movies) { movie in
                     MovieItem(
                         movie: movie,
-                        inWishlist: inWishlist(movie.id),
-                        displayType: .portrait(.small),
-                        updateWishlist: updateWishlist,
-                        goDetail: goDetail
+                        category: .movieWishlist,
+//                        inWishlist: inWishlist(movie.id),
+                        displayType: .portrait(.small)
+//                        updateWishlist: updateWishlist,
+//                        goDetail: goDetail
                     )
                 }
                 .transition(.opacity)

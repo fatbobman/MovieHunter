@@ -11,55 +11,65 @@ import SwiftUI
 import TMDb
 
 struct MovieItemWrapper: View {
-    @Environment(\.tmdb) var tmdb
-    @EnvironmentObject var store: Store
-    @Environment(\.managedObjectContext) var context
-    let displayType: DisplayType
     let movie: Movie?
-    let goDetail: (Movie) -> Void
-    @FetchRequest(entity: FavoriteMovie.entity(), sortDescriptors: [.init(key: "createTimestamp", ascending: false)])
-    var favoriteMovies: FetchedResults<FavoriteMovie>
+    let category: Category?
+    let genreID: Genre.ID?
+    let displayType: DisplayType
 
-    var inWishlist: Bool {
+    @Environment(\.tmdb) private var tmdb
+    @EnvironmentObject private var store: Store
+    @Environment(\.managedObjectContext) private var context
+    @FetchRequest(entity: FavoriteMovie.entity(), sortDescriptors: [.init(key: "createTimestamp", ascending: false)])
+    private var favoriteMovies: FetchedResults<FavoriteMovie>
+    private var inWishlist: Bool {
         guard let movie else { return false }
         return store.inWishlist(movie.id)
+    }
+
+    init(
+        movie: Movie?,
+        category: Category? = nil,
+        genreID: Genre.ID? = nil,
+        displayType: DisplayType
+    ) {
+        self.movie = movie
+        self.category = category
+        self.genreID = genreID
+        self.displayType = displayType
     }
 
     var body: some View {
         MovieItem(
             movie: movie,
-            inWishlist: inWishlist,
-            displayType: displayType,
-            updateWishlist: {
-                store.send(.updateMovieWishlist($0))
-            },
-            goDetail: goDetail
+            category: category,
+            genreID: genreID,
+            displayType: displayType
         )
     }
 }
 
-#if DEBUG
-    struct MovieItemWrapperPreview: PreviewProvider {
-        static var previews: some View {
-            MovieItemWrapper(
-                displayType: .portrait(.middle),
-                movie: PreviewData.previewMovie1,
-                goDetail: { print($0) }
-            )
-            .environmentObject(Store())
-            MovieItemWrapper(
-                displayType: .landscape,
-                movie: PreviewData.previewMovie1,
-                goDetail: { print($0) }
-            )
-            .environmentObject(Store())
-
-            MovieItemWrapper(
-                displayType: .portrait(.middle),
-                movie: nil,
-                goDetail: { print($0) }
-            )
-            .environmentObject(Store())
-        }
-    }
-#endif
+// #if DEBUG
+//    struct MovieItemWrapperPreview: PreviewProvider {
+//        static var previews: some View {
+//            MovieItemWrapper(
+//                displayType: .portrait(.middle),
+//                movie: PreviewData.previewMovie1,
+//                goDetail: { print($0) }
+//            )
+//            .environmentObject(Store())
+//            MovieItemWrapper(
+//                displayType: .landscape,
+//                movie: PreviewData.previewMovie1,
+//                goDetail: { print($0) }
+//            )
+//            .environmentObject(Store())
+//
+//            MovieItemWrapper(
+//                displayType: .portrait(.middle),
+//                movie: nil,
+//                goDetail: { print($0) }
+//            )
+//            .environmentObject(Store())
+//        }
+//    }
+// #endif

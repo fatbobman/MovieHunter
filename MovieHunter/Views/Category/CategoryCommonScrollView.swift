@@ -11,9 +11,9 @@ import TMDb
 
 struct CategoryCommonScrollView: View {
     let category: Category
-    let inWishlist: (Int) -> Bool
-    let goDetail: (Movie) -> Void
-    let updateWishlist: (Int) -> Void
+//    let inWishlist: (Int) -> Bool
+//    let goDetail: (Movie) -> Void
+//    let updateWishlist: (Int) -> Void
     @State private var movies = [Movie]()
     @Environment(\.tmdb) private var tmdb
     var body: some View {
@@ -21,9 +21,12 @@ struct CategoryCommonScrollView: View {
             LazyHStack(spacing: 10) {
                 ForEach(movies) { movie in
                     MovieItemWrapper(
-                        displayType: .portrait(.small),
+//                        category:category,
                         movie: movie,
-                        goDetail: goDetail
+                        category: category,
+                        displayType: .portrait(.small)
+                        
+//                        goDetail: goDetail
                     )
                 }
             }

@@ -11,38 +11,38 @@ import TMDb
 
 struct ViewMoreButton: View {
     let title: LocalizedStringKey
-    let showSymbole: Bool
+    let showSymbol: Bool
     let showViewMoreText: Bool
     let showArrow: Bool
     let textSize: TextSize
-    let perform: () -> Void
+    @Environment(\.goCategory) var goCategory
 
     init(
         title: LocalizedStringKey,
-        showSymbole: Bool = true,
+        showSymbol: Bool = true,
         showViewMoreText: Bool = true,
         showArrow: Bool = true,
-        textSize: TextSize = .middle,
-        perform: @escaping () -> Void
+        textSize: TextSize = .middle
+//        perform: @escaping () -> Void
     ) {
         self.title = title
-        self.showSymbole = showSymbole
+        self.showSymbol = showSymbol
         self.showViewMoreText = showViewMoreText
         self.showArrow = showArrow
         self.textSize = textSize
-        self.perform = perform
+//        self.perform = perform
     }
 
     var body: some View {
         Button {
-            perform()
+            goCategory(.favoritePerson)
         } label: {
             Assets.Colors.rowBackground
                 .frame(height: 60)
                 .frame(maxWidth: .infinity)
                 .overlay(
                     HStack(spacing: 10) {
-                        if showSymbole {
+                        if showSymbol {
                             RoundedRectangle(cornerRadius: 2)
                                 .fill(Assets.Colors.favorite)
                                 .frame(width: 4)
@@ -107,13 +107,12 @@ struct ViewMoreButton_Previews: PreviewProvider {
         VStack {
             ViewMoreButton(
                 title: Category.nowPlaying.localizedString,
-                showSymbole: false,
+                showSymbol: false,
                 showViewMoreText: false,
-                textSize: .small,
-                perform: {}
+                textSize: .small
             )
 
-            ViewMoreButton(title: Category.movieWishlist.localizedString, perform: {})
+            ViewMoreButton(title: Category.movieWishlist.localizedString)
         }
     }
 }

@@ -157,7 +157,7 @@
 			path = DataFlow;
 			sourceTree = "<group>";
 		};
-		76751E6329C58B690013BBDF /* MovieNowPlaying */ = {
+		76751E6329C58B690013BBDF /* NowPlaying */ = {
 			isa = PBXGroup;
 			children = (
 				76751E6129C589E80013BBDF /* NowPlayingBanner.swift */,
@@ -167,7 +167,7 @@
 				769002C329C804DC00620A3C /* NowPlayingScrollViewRow.swift */,
 				769002C129C8043800620A3C /* NowPlayingTabViewRow.swift */,
 			);
-			path = MovieNowPlaying;
+			path = NowPlaying;
 			sourceTree = "<group>";
 		};
 		769002A129C67AAF00620A3C /* DB */ = {
@@ -308,7 +308,7 @@
 				769002B829C6EBF000620A3C /* Category */,
 				769002B529C6E75800620A3C /* MovieHome */,
 				76AC25A029C2E2F3007874DA /* MovieDetail */,
-				76751E6329C58B690013BBDF /* MovieNowPlaying */,
+				76751E6329C58B690013BBDF /* NowPlaying */,
 			);
 			path = Views;
 			sourceTree = "<group>";

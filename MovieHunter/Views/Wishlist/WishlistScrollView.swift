@@ -23,7 +23,7 @@ struct WishlistScrollView: View {
                 if movies.isEmpty {
                     // placeholder 保持高度
                     MovieItem(
-                        movie: PreviewData.previewMovie1,
+                        movie: nil,
                         category: .movieWishlist,
                         displayType: .portrait(.small)
                     )

@@ -16,6 +16,13 @@ struct GenreScrollView: View {
     var body: some View {
         ScrollView(.horizontal) {
             LazyHStack(spacing: 10) {
+                if movies.isEmpty {
+                    MovieItem(
+                        movie: nil,
+                        category: .genre(genreID),
+                        displayType: .portrait(.small)
+                    )
+                }
                 ForEach(movies) { movie in
                     MovieItem(
                         movie: movie,

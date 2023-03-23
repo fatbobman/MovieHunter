@@ -50,43 +50,49 @@ public struct MovieItem: View {
     }
 
     public var body: some View {
-        layout {
-            ItemPoster(
-                movie: movie,
-                size: displayType.imageSize
-            )
-            MovieShortInfo(
-                movie: movie,
-                displayType: displayType
-            )
-        }
-        .overlay(alignment: .topTrailing) {
-            if displayType == .landscape {
-                Image(systemName: "ellipsis")
-                    .offset(x: -10, y: 16)
-                    .font(.title3)
-                    .bold()
-                    .foregroundColor(.secondary)
-            }
-        }
-        .background(displayType == .landscape ? .clear : Assets.Colors.rowBackground)
-        .compositingGroup()
-        .clipShape(clipShape)
-        .if(displayType != .landscape) { view in
-            view
-                .shadow(color: .black.opacity(colorScheme == .dark ? 0.3 : 0.1), radius: 3, x: 0, y: 2)
-        }
-        .onTapGesture {
-            if let movie {
-                var destinationCategory: Category = .popular
-                if let category {
-                    destinationCategory = category
+        ZStack(alignment: .topLeading) {
+            Button {
+                if let movie {
+                    var destinationCategory: Category = .popular
+                    if let category {
+                        destinationCategory = category
+                    }
+                    if let genreID {
+                        destinationCategory = .genre(genreID)
+                    }
+                    goDetail(destinationCategory, movie)
                 }
-                if let genreID {
-                    destinationCategory = .genre(genreID)
+            } label: {
+                layout {
+                    ItemPoster(
+                        movie: movie,
+                        size: displayType.imageSize
+                    )
+                    MovieShortInfo(
+                        movie: movie,
+                        displayType: displayType
+                    )
                 }
-                goDetail(destinationCategory, movie)
+                .overlay(alignment: .topTrailing) {
+                    if displayType == .landscape {
+                        Image(systemName: "ellipsis")
+                            .offset(x: -10, y: 16)
+                            .font(.title3)
+                            .bold()
+                            .foregroundColor(.secondary)
+                    }
+                }
+                .background(displayType == .landscape ? .clear : Assets.Colors.rowBackground)
+                .compositingGroup()
+                .clipShape(clipShape)
+                .if(displayType != .landscape) { view in
+                    view
+                        .shadow(color: .black.opacity(colorScheme == .dark ? 0.3 : 0.1), radius: 3, x: 0, y: 2)
+                }
             }
+            .buttonStyle(.flat)
+
+            BookMarkCornerButton(movieID: movie?.id)
         }
     }
 }

@@ -66,11 +66,6 @@ struct ItemPoster: View {
         }
         .frame(width: size.width, height: size.height)
         .clipped()
-        .overlay(alignment: .topLeading) {
-            if let movie {
-                BookMarkCornerButton(movieID: movie.id)
-            }
-        }
         .compositingGroup()
         .if(showShadow) {
             $0.shadow(radius: 3)

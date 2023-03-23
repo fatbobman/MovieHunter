@@ -17,7 +17,7 @@ struct GenreScrollView: View {
         ScrollView(.horizontal) {
             LazyHStack(spacing: 10) {
                 ForEach(movies) { movie in
-                    MovieItemWrapper(
+                    MovieItem(
                         movie: movie,
                         genreID: genreID,
                         displayType: .portrait(.small)

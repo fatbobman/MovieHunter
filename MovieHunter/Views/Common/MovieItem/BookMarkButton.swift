@@ -24,50 +24,52 @@ public struct BookMarkCornerButton: View {
     }
 
     public var body: some View {
-        Color.clear
-            .frame(width: 32, height: 40)
-            .overlay(
-                BookMarkShape()
-                    .fill(.black)
-                    .overlay(
-                        BookMarkShape()
-                            .stroke(isFavorite ? .clear : .white.opacity(0.2), lineWidth: 0.5)
-                    )
-                    .overlay(alignment: .top) {
-                        Image(systemName: isFavorite ? "checkmark" : "plus")
-                            .foregroundColor(isFavorite ? .black : .white)
-                            .font(.callout)
-                            .bold()
-                            .alignmentGuide(.top) { _ in -8 }
-                    }
-            )
-            .overlay(
-                VStack {
-                    if isFavorite {
-                        BookMarkShape()
-                            .fill(Assets.Colors.favorite)
-                            .overlay(alignment: .top) {
-                                Image(systemName: "checkmark")
-                                    .foregroundColor(.black)
-                                    .font(.callout)
-                                    .bold()
-                                    .alignmentGuide(.top) { _ in -8 }
-                            }
-                            .transition(.scale(scale: 1.7).combined(with: .opacity))
-                    }
-                }
-                .animation(animation, value: isFavorite)
-            )
-            .contentShape(Rectangle())
-            .onTapGesture {
-                if let movieID {
-                    updateWishlist(movieID)
-                }
+        Button {
+            if let movieID {
+                updateWishlist(movieID)
             }
-            .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { animation = .spring() }
-            }
-            .onDisappear { animation = nil }
+        } label: {
+            Color.clear
+                .frame(width: 32, height: 40)
+                .overlay(
+                    BookMarkShape()
+                        .fill(.black)
+                        .overlay(
+                            BookMarkShape()
+                                .stroke(isFavorite ? .clear : .white.opacity(0.2), lineWidth: 0.5)
+                        )
+                        .overlay(alignment: .top) {
+                            Image(systemName: isFavorite ? "checkmark" : "plus")
+                                .foregroundColor(isFavorite ? .black : .white)
+                                .font(.callout)
+                                .bold()
+                                .alignmentGuide(.top) { _ in -8 }
+                        }
+                )
+                .overlay(
+                    VStack {
+                        if isFavorite {
+                            BookMarkShape()
+                                .fill(Assets.Colors.favorite)
+                                .overlay(alignment: .top) {
+                                    Image(systemName: "checkmark")
+                                        .foregroundColor(.black)
+                                        .font(.callout)
+                                        .bold()
+                                        .alignmentGuide(.top) { _ in -8 }
+                                }
+                                .transition(.scale(scale: 1.7).combined(with: .opacity))
+                        }
+                    }
+                    .animation(animation, value: isFavorite)
+                )
+                .contentShape(Rectangle())
+        }
+        .buttonStyle(.flat)
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { animation = .spring() }
+        }
+        .onDisappear { animation = nil }
     }
 }
 
@@ -94,6 +96,8 @@ struct BookMarkShape: Shape {
             }
             .padding()
             .background(.black)
+            .environment(\.updateWishlist) { _ in inWishlist.toggle() }
+            .environment(\.inWishlist) { _ in inWishlist }
         }
     }
 

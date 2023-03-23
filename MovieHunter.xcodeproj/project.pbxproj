@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		761044E429CC1ACE004EFAA2 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761044E329CC1ACE004EFAA2 /* ButtonStyle.swift */; };
 		76751E4D29C541D70013BBDF /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E4C29C541D70013BBDF /* Reducer.swift */; };
 		76751E4F29C542110013BBDF /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E4E29C542110013BBDF /* AppState.swift */; };
 		76751E5129C5424C0013BBDF /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E5029C5424C0013BBDF /* Store.swift */; };
@@ -68,6 +69,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		761044E329CC1ACE004EFAA2 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		76751E4C29C541D70013BBDF /* Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 		76751E4E29C542110013BBDF /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		76751E5029C5424C0013BBDF /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				76AC25A829C2E35B007874DA /* ViewExtension.swift */,
 				76AC25A529C2E350007874DA /* DeviceStatus.swift */,
 				76A0D35029C979AD002C3286 /* ActionKey.swift */,
+				761044E329CC1ACE004EFAA2 /* ButtonStyle.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				769002CA29C826FF00620A3C /* ViewMore.swift in Sources */,
 				76751E4F29C542110013BBDF /* AppState.swift in Sources */,
 				76AC25C829C2EAA1007874DA /* TMDBConfiguration.swift in Sources */,
+				761044E429CC1ACE004EFAA2 /* ButtonStyle.swift in Sources */,
 				76C939CF29C95C2400A5D020 /* GenreContainer.swift in Sources */,
 				76751E6229C589E80013BBDF /* NowPlayingBanner.swift in Sources */,
 				76AC25AC29C2E369007874DA /* Pipeline.swift in Sources */,

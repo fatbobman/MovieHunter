@@ -51,7 +51,7 @@ struct NowPlayingRowContainer: View {
                 Spacer()
             }
             .navigationTitle("")
-            #if !os(macOS) && !os(tvOS)
+            #if !os(macOS)
                 .navigationBarTitleDisplayMode(.inline)
             #endif
         }

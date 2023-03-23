@@ -8,7 +8,6 @@
 import SwiftUI
 
 public enum DeviceStatus: String {
-  case tvOS
   case macOS
   case compact
   case regular
@@ -17,8 +16,6 @@ public enum DeviceStatus: String {
 struct DeviceStatusKey: EnvironmentKey {
   #if os(macOS)
     static var defaultValue: DeviceStatus = .macOS
-  #elseif os(tvOS)
-    static var defaultValue: DeviceStatus = .tvOS
   #else
     static var defaultValue: DeviceStatus = .compact
   #endif
@@ -37,8 +34,6 @@ public extension View {
     self
     #if os(macOS)
     .environment(\.deviceStatus, .macOS)
-    #elseif os(tvOS)
-    .environment(\.deviceStatus, .tvOS)
     #else
     .modifier(GetSizeClassModifier())
     #endif

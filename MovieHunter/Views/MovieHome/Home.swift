@@ -29,9 +29,7 @@ struct Home: View {
                 }
             }
         }
-        #if !os(tvOS)
         .scrollContentBackground(.hidden)
-        #endif
         .background(Assets.Colors.mainBackground)
     }
 }

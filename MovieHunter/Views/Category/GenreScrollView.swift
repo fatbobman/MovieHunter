@@ -26,9 +26,7 @@ struct GenreScrollView: View {
             }
             .padding(.bottom, 22)
         }
-        #if !os(tvOS)
         .scrollContentBackground(.hidden)
-        #endif
         .safeAreaInset(edge: .leading) {
             Color.clear
                 .frame(width: 6)

@@ -11,10 +11,6 @@ import TMDb
 
 struct NowPlayingScrollViewRow: View {
     let movies: [Movie]
-//    let inWishlist: (Int) -> Bool
-//    let tapBanner: (Movie) -> Void
-//    let updateWishList: (Int) -> Void
-    @EnvironmentObject var store: Store
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -22,10 +18,7 @@ struct NowPlayingScrollViewRow: View {
                 ForEach(movies) { movie in
                     NowPlayingBanner(
                         movie: movie,
-                        backdropSize: .init(width: 540, height: 540 / 1.77)//,
-//                        inWishlist: inWishlist(movie.id),
-//                        tapBanner: tapBanner,
-//                        updateWishlist: updateWishList
+                        backdropSize: .init(width: 540, height: 540 / 1.77)
                     )
                 }
             }
@@ -35,27 +28,17 @@ struct NowPlayingScrollViewRow: View {
     }
 }
 
-//#if DEBUG
-//    struct NowPlayingScrollViewRowPreview: PreviewProvider {
-//        static var previews: some View {
-//            NowPlayingScrollViewRow(
-//                movies: [PreviewData.previewMovie1, PreviewData.previewMovie2],
-//                inWishlist: { _ in true },
-//                tapBanner: { print($0) },
-//                updateWishList: { print($0) }
-//            )
-//            .previewDevice(.init(rawValue: "iPad Pro (11-inch) (4th generation)"))
-//            .previewInterfaceOrientation(.landscapeLeft)
-//
-//            NowPlayingScrollViewRow(
-//                movies: [PreviewData.previewMovie1, PreviewData.previewMovie2],
-//                inWishlist: { _ in true },
-//                tapBanner: { print($0) },
-//                updateWishList: { print($0) }
-//            )
-//            .previewDevice(.init(rawValue: "iPad Pro (11-inch) (4th generation)"))
-//            .previewInterfaceOrientation(.landscapeLeft)
-//            .environment(\.colorScheme, .dark)
-//        }
-//    }
-//#endif
+#if DEBUG
+    struct NowPlayingScrollViewRowPreview: PreviewProvider {
+        static var previews: some View {
+            NowPlayingScrollViewRow(movies: [PreviewData.previewMovie1, PreviewData.previewMovie2])
+                .previewDevice(.init(rawValue: "iPad Pro (11-inch) (4th generation)"))
+                .previewInterfaceOrientation(.landscapeLeft)
+
+            NowPlayingScrollViewRow(movies: [PreviewData.previewMovie1, PreviewData.previewMovie2])
+                .previewDevice(.init(rawValue: "iPad Pro (11-inch) (4th generation)"))
+                .previewInterfaceOrientation(.landscapeLeft)
+                .environment(\.colorScheme, .dark)
+        }
+    }
+#endif

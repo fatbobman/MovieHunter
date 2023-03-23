@@ -12,12 +12,10 @@ import TMDb
 struct NowPlayingBanner: View {
     let movie: Movie
     let backdropSize: CGSize
-//    var goDetail: (Movie) -> Void
-    @Environment(\.goDetail) var goDetail
-//    var updateWishlist: (Int) -> Void
-    @Environment(\.deviceStatus) var devieStaus
-    @Environment(\.colorScheme) var colorScheme
-    
+    @Environment(\.goDetail) private var goDetail
+    @Environment(\.deviceStatus) private var deviceStatus
+    @Environment(\.colorScheme) private var colorScheme
+
     var body: some View {
         VStack(alignment: .leading, spacing: -posterSize.height * 0.56) {
             NowPlayingBackdrop(movie: movie)
@@ -29,8 +27,6 @@ struct NowPlayingBanner: View {
                     size: posterSize,
                     showShadow: true,
                     enableScale: false
-//                    inWishlist: inWishlist,
-//                    updateWishlist: updateWishlist
                 )
                 NowPlayingBannerTitle(movie: movie)
                     .alignmentGuide(.lastTextBaseline) { $0[.lastTextBaseline] + 10 }
@@ -40,14 +36,14 @@ struct NowPlayingBanner: View {
         }
         .contentShape(Rectangle())
         .onTapGesture {
-            goDetail(.nowPlaying,movie)
+            goDetail(.nowPlaying, movie)
         }
         .padding(.bottom, 15)
         .background(Assets.Colors.rowBackground)
     }
 
     var posterSize: CGSize {
-        switch devieStaus {
+        switch deviceStatus {
         case .compact:
             return .init(width: 100, height: 148)
         default:
@@ -56,7 +52,7 @@ struct NowPlayingBanner: View {
     }
 
     var leadingPadding: CGFloat {
-        switch devieStaus {
+        switch deviceStatus {
         case .compact:
             return 16
         default:
@@ -72,36 +68,30 @@ struct NowPlayingBanner: View {
     }
 }
 
-//#if DEBUG
-//    struct MovieBanner_Previews: PreviewProvider {
-//        static var previews: some View {
-//            NowPlayingBanner(
-//                movie: PreviewData.previewMovie1,
-//                backdropSize: .init(width: 393, height: 393 / 1.77),
-//                inWishlist: true,
-//                tapBanner: { id in print("Tapped \(id)") }, updateWishlist: { _ in print("update") }
-//            )
-//            .environment(\.colorScheme, .dark)
-//
-//            ScrollView(.horizontal, showsIndicators: false) {
-//                HStack(spacing: 10) {
-//                    NowPlayingBanner(
-//                        movie: PreviewData.previewMovie1,
-//                        backdropSize: .init(width: 540, height: 540 / 1.77),
-//                        inWishlist: true,
-//                        tapBanner: { id in print("Tapped \(id)") }, updateWishlist: { _ in print("update") }
-//                    )
-//
-//                    NowPlayingBanner(
-//                        movie: PreviewData.previewMovie2,
-//                        backdropSize: .init(width: 540, height: 540 / 1.77),
-//                        inWishlist: true,
-//                        tapBanner: { id in print("Tapped \(id)") }, updateWishlist: { _ in print("update") }
-//                    )
-//                }
-//            }
-//            .previewDevice(.init(rawValue: "iPad Pro (11-inch) (4th generation)"))
-//            .previewInterfaceOrientation(.landscapeLeft)
-//        }
-//    }
-//#endif
+#if DEBUG
+    struct MovieBanner_Previews: PreviewProvider {
+        static var previews: some View {
+            NowPlayingBanner(
+                movie: PreviewData.previewMovie1,
+                backdropSize: .init(width: 393, height: 393 / 1.77)
+            )
+            .environment(\.colorScheme, .dark)
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 10) {
+                    NowPlayingBanner(
+                        movie: PreviewData.previewMovie1,
+                        backdropSize: .init(width: 540, height: 540 / 1.77)
+                    )
+
+                    NowPlayingBanner(
+                        movie: PreviewData.previewMovie2,
+                        backdropSize: .init(width: 540, height: 540 / 1.77)
+                    )
+                }
+            }
+            .previewDevice(.init(rawValue: "iPad Pro (11-inch) (4th generation)"))
+            .previewInterfaceOrientation(.landscapeLeft)
+        }
+    }
+#endif

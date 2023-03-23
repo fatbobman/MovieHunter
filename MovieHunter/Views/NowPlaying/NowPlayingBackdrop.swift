@@ -14,10 +14,10 @@ import TMDb
 struct NowPlayingBackdrop: View {
     let movie: Movie
     private let showPlayButton: Bool = false
-    @Environment(\.imagePipeline) var imagePipeline
-    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.imagePipeline) private var imagePipeline
+    @Environment(\.colorScheme) private var colorScheme
 
-    var backdropPath: URL? {
+    private var backdropPath: URL? {
         guard let path = movie.backdropPath else { return nil }
         return moviePosterURLPrefix
             .appending(path: "/w500")

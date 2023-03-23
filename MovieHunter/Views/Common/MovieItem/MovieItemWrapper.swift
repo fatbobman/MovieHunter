@@ -11,10 +11,10 @@ import SwiftUI
 import TMDb
 
 struct MovieItemWrapper: View {
-    let movie: Movie?
-    let category: Category?
-    let genreID: Genre.ID?
-    let displayType: DisplayType
+    private let movie: Movie?
+    private let category: Category?
+    private let genreID: Genre.ID?
+    private let displayType: DisplayType
 
     @Environment(\.tmdb) private var tmdb
     @EnvironmentObject private var store: Store
@@ -48,28 +48,26 @@ struct MovieItemWrapper: View {
     }
 }
 
-// #if DEBUG
-//    struct MovieItemWrapperPreview: PreviewProvider {
-//        static var previews: some View {
-//            MovieItemWrapper(
-//                displayType: .portrait(.middle),
-//                movie: PreviewData.previewMovie1,
-//                goDetail: { print($0) }
-//            )
-//            .environmentObject(Store())
-//            MovieItemWrapper(
-//                displayType: .landscape,
-//                movie: PreviewData.previewMovie1,
-//                goDetail: { print($0) }
-//            )
-//            .environmentObject(Store())
-//
-//            MovieItemWrapper(
-//                displayType: .portrait(.middle),
-//                movie: nil,
-//                goDetail: { print($0) }
-//            )
-//            .environmentObject(Store())
-//        }
-//    }
-// #endif
+#if DEBUG
+    struct MovieItemWrapperPreview: PreviewProvider {
+        static var previews: some View {
+            MovieItemWrapper(
+                movie: PreviewData.previewMovie1,
+                category: .popular, displayType: .portrait(.middle)
+            )
+            .environmentObject(Store())
+            MovieItemWrapper(
+                movie: PreviewData.previewMovie1,
+                genreID: 12,
+                displayType: .landscape
+            )
+            .environmentObject(Store())
+
+            MovieItemWrapper(
+                movie: nil,
+                displayType: .portrait(.middle)
+            )
+            .environmentObject(Store())
+        }
+    }
+#endif

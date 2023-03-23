@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import TMDb
 
-enum Category:Hashable {
+enum Category: Hashable {
     case nowPlaying
     case popular
     case upComing
@@ -19,12 +19,12 @@ enum Category:Hashable {
     case genre(Genre.ID)
 }
 
-extension Category:Identifiable {
-    var id:Self { self }
+extension Category: Identifiable {
+    var id: Self { self }
 }
 
 extension Category {
-    var localizedString:LocalizedStringKey {
+    var localizedString: LocalizedStringKey {
         switch self {
         case .nowPlaying:
             return "Category_nowPlaying"
@@ -45,7 +45,7 @@ extension Category {
 }
 
 extension Category {
-    var destination:Destination {
+    var destination: Destination {
         switch self {
         case .nowPlaying:
             return .nowPlaying
@@ -59,17 +59,17 @@ extension Category {
             return .wishlist
         case .favoritePerson:
             return .favoritePerson
-        case .genre(let genreID):
+        case let .genre(genreID):
             return .genre(genreID)
         }
     }
-    
-    static let showableCategory:[Category] = [
+
+    static let showableCategory: [Category] = [
         .nowPlaying,
         .popular,
         .upComing,
         .topRate,
         .movieWishlist,
-        .favoritePerson
+        .favoritePerson,
     ]
 }

@@ -12,34 +12,25 @@ import SwiftUI
 import TMDb
 
 struct ItemPoster: View {
-    let movie: Movie?
-    let size: CGSize
-    let showShadow: Bool
-    let enableScale: Bool
-//    let inWishlist: Bool
-//    var updateWishlist: ((Int) -> Void)?
-//    @Environment(\.inWishlist) var inWishlist
-    @Environment(\.updateWishlist) var updateWishlist
-    @Environment(\.imagePipeline) var imagePipeline
+    private let movie: Movie?
+    private let size: CGSize
+    private let showShadow: Bool
+    private let enableScale: Bool
 
+    @Environment(\.updateWishlist) private var updateWishlist
+    @Environment(\.imagePipeline) private var imagePipeline
     @State private var scale: CGFloat = 1
-
-
 
     init(
         movie: Movie?,
         size: CGSize,
         showShadow: Bool = false,
         enableScale: Bool = true
-//        inWishlist: Bool,
-//        updateWishlist: ((Int) -> Void)? = nil
     ) {
         self.movie = movie
         self.size = size
         self.showShadow = showShadow
         self.enableScale = enableScale
-//        self.inWishlist = inWishlist
-//        self.updateWishlist = updateWishlist
     }
 
     var body: some View {
@@ -77,11 +68,7 @@ struct ItemPoster: View {
         .clipped()
         .overlay(alignment: .topLeading) {
             if let movie {
-                BookMarkCornerButton(
-                    movieID: movie.id
-//                    inWishlist: inWishlist,
-//                    updateWishlist: updateWishlist
-                )
+                BookMarkCornerButton(movieID: movie.id)
             }
         }
         .compositingGroup()
@@ -98,14 +85,23 @@ struct ItemPoster: View {
     }
 }
 
-// #if DEBUG
-//    struct ItemPosterPreview: PreviewProvider {
-//        static var previews: some View {
-//            ItemPoster(movie: PreviewData.previewMovie1, size: DisplayType.portrait(.small).imageSize, inWishlist: true, updateWishlist: { _ in print("update ") })
-//
-//            ItemPoster(movie: PreviewData.previewMovie1, size: DisplayType.portrait(.small).imageSize, inWishlist: false)
-//
-//            ItemPoster(movie: PreviewData.previewMovie1, size: DisplayType.portrait(.middle).imageSize, inWishlist: false)
-//        }
-//    }
-// #endif
+#if DEBUG
+    struct ItemPosterPreview: PreviewProvider {
+        static var previews: some View {
+            ItemPoster(
+                movie: PreviewData.previewMovie1,
+                size: DisplayType.portrait(.small).imageSize
+            )
+
+            ItemPoster(
+                movie: PreviewData.previewMovie1,
+                size: DisplayType.portrait(.small).imageSize
+            )
+
+            ItemPoster(
+                movie: PreviewData.previewMovie1,
+                size: DisplayType.portrait(.middle).imageSize
+            )
+        }
+    }
+#endif

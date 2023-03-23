@@ -9,9 +9,9 @@ import Foundation
 import SwiftUI
 
 public struct BookMarkCornerButton: View {
-    let movieID: Int?
-    @Environment(\.inWishlist) var inWishlist
-    @Environment(\.updateWishlist) var updateWishlist
+    private let movieID: Int?
+    @Environment(\.inWishlist) private var inWishlist
+    @Environment(\.updateWishlist) private var updateWishlist
     @State private var animation: Animation?
 
     private var isFavorite: Bool {
@@ -19,14 +19,8 @@ public struct BookMarkCornerButton: View {
         return inWishlist(movieID)
     }
 
-    public init(
-        movieID: Int?
-//        inWishlist: Bool,
-//        updateWishlist: @escaping (Int) -> Void
-    ) {
+    public init(movieID: Int?) {
         self.movieID = movieID
-//        self.inWishlist = inWishlist
-//        self.updateWishlist = updateWishlist
     }
 
     public var body: some View {
@@ -47,23 +41,23 @@ public struct BookMarkCornerButton: View {
                             .alignmentGuide(.top) { _ in -8 }
                     }
             )
-//            .overlay(
-//                VStack {
-//                    if isFavorite {
-//                        BookMarkShape()
-//                            .fill(Assets.Colors.favorite)
-//                            .overlay(alignment: .top) {
-//                                Image(systemName: "checkmark")
-//                                    .foregroundColor(.black)
-//                                    .font(.callout)
-//                                    .bold()
-//                                    .alignmentGuide(.top) { _ in -8 }
-//                            }
-//                            .transition(.scale(scale: 1.7).combined(with: .opacity))
-//                    }
-//                }
-//                .animation(animation, value: inWishlist)
-//            )
+            .overlay(
+                VStack {
+                    if isFavorite {
+                        BookMarkShape()
+                            .fill(Assets.Colors.favorite)
+                            .overlay(alignment: .top) {
+                                Image(systemName: "checkmark")
+                                    .foregroundColor(.black)
+                                    .font(.callout)
+                                    .bold()
+                                    .alignmentGuide(.top) { _ in -8 }
+                            }
+                            .transition(.scale(scale: 1.7).combined(with: .opacity))
+                    }
+                }
+                .animation(animation, value: isFavorite)
+            )
             .contentShape(Rectangle())
             .onTapGesture {
                 if let movieID {
@@ -91,27 +85,21 @@ struct BookMarkShape: Shape {
     }
 }
 
-//#if DEBUG
-//    struct BookMarkCornerButtonPreviewWrapper: View {
-//        @State var inWishlist = false
-//        var body: some View {
-//            HStack {
-//                BookMarkCornerButton(
-//                    movieID: 100,
-//                    inWishlist: inWishlist,
-//                    updateWishlist: { _ in
-//                        inWishlist.toggle()
-//                    }
-//                )
-//            }
-//            .padding()
-//            .background(.black)
-//        }
-//    }
-//
-//    struct BookMarConerButtonPreview: PreviewProvider {
-//        static var previews: some View {
-//            BookMarkCornerButtonPreviewWrapper()
-//        }
-//    }
-//#endif
+#if DEBUG
+    struct BookMarkCornerButtonPreviewWrapper: View {
+        @State var inWishlist = false
+        var body: some View {
+            HStack {
+                BookMarkCornerButton(movieID: 100)
+            }
+            .padding()
+            .background(.black)
+        }
+    }
+
+    struct BookMarCornerButtonPreview: PreviewProvider {
+        static var previews: some View {
+            BookMarkCornerButtonPreviewWrapper()
+        }
+    }
+#endif

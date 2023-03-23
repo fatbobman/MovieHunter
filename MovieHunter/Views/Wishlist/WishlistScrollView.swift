@@ -11,37 +11,29 @@ import SwiftUI
 import TMDb
 
 struct WishlistScrollView: View {
-//    let inWishlist: (Int) -> Bool
-//    let goDetail: (Movie) -> Void
-//    let updateWishlist: (Int) -> Void
-    
     @EnvironmentObject private var store: Store
     @State private var movies = [Movie]()
     @FetchRequest(fetchRequest: movieRequest)
     private var favoriteMovieIDs: FetchedResults<FavoriteMovie>
-    @Environment(\.tmdb) var tmdb
+    @Environment(\.tmdb) private var tmdb
 
     var body: some View {
         ScrollView(.horizontal) {
             LazyHStack(spacing: 10) {
                 if movies.isEmpty {
-                    MovieItem(movie: PreviewData.previewMovie1,
-//                              inWishlist: true,
-                              category: .movieWishlist,
-                              displayType: .portrait(.small)
-//                              updateWishlist: { _ in },
-//                              goDetail: { _ in }
+                    // placeholder 保持高度
+                    MovieItem(
+                        movie: PreviewData.previewMovie1,
+                        category: .movieWishlist,
+                        displayType: .portrait(.small)
                     )
-                        .opacity(0.001)
+                    .opacity(0.001)
                 }
                 ForEach(movies) { movie in
                     MovieItem(
                         movie: movie,
                         category: .movieWishlist,
-//                        inWishlist: inWishlist(movie.id),
                         displayType: .portrait(.small)
-//                        updateWishlist: updateWishlist,
-//                        goDetail: goDetail
                     )
                 }
                 .transition(.opacity)
@@ -66,7 +58,7 @@ struct WishlistScrollView: View {
 
     func loadMovies() async {
         let movies = await withTaskGroup(of: Movie?.self, returning: [Movie?].self) { taskGroup in
-            for movieID in favoriteMovieIDs{
+            for movieID in favoriteMovieIDs {
                 taskGroup.addTask {
                     try? await tmdb.movies.details(forMovie: Int(movieID.movieID))
                 }
@@ -88,8 +80,11 @@ struct WishlistScrollView: View {
     }()
 }
 
-// struct WishlistContainer_Previews: PreviewProvider {
-//    static var previews: some View {
-//        WishlistContainer()
-//    }
-// }
+#if DEBUG
+    struct WishlistScrollView_Previews: PreviewProvider {
+        static var previews: some View {
+            WishlistScrollView()
+                .environment(\.managedObjectContext, CoreDataStack.share.viewContext)
+        }
+    }
+#endif

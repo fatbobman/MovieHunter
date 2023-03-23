@@ -12,9 +12,6 @@ import TMDb
 struct NowPlayingTabViewRow: View {
     let movies: [Movie]
     @State private var size: CGSize = .zero
-//    let inWishlist: (Int) -> Bool
-//    let tapBanner: (Movie) -> Void
-//    let updateWishList: (Int) -> Void
 
     var body: some View {
         TabView {
@@ -22,9 +19,6 @@ struct NowPlayingTabViewRow: View {
                 NowPlayingBanner(
                     movie: movie,
                     backdropSize: size
-//                    inWishlist: inWishlist(movie.id),
-//                    tapBanner: tapBanner,
-//                    updateWishlist: updateWishList
                 )
             }
         }
@@ -39,15 +33,11 @@ struct NowPlayingTabViewRow: View {
     }
 }
 
-//#if DEBUG
-//    struct NowPlayingTabViewRowPreview: PreviewProvider {
-//        static var previews: some View {
-//            NowPlayingTabViewRow(
-//                movies: [PreviewData.previewMovie1, PreviewData.previewMovie2],
-//                inWishlist: { _ in true },
-//                tapBanner: { print($0) },
-//                updateWishList: { print($0) }
-//            )
-//        }
-//    }
-//#endif
+#if DEBUG
+    struct NowPlayingTabViewRowPreview: PreviewProvider {
+        static var previews: some View {
+            NowPlayingTabViewRow(movies: [PreviewData.previewMovie1, PreviewData.previewMovie2])
+                .frame(width: 400, height: 400)
+        }
+    }
+#endif

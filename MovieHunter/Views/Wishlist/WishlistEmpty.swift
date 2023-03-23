@@ -14,7 +14,7 @@ struct WishlistEmpty: View {
     var body: some View {
         RoundedRectangle(cornerRadius: 10)
             .fill(Assets.Colors.mainBackground)
-            .padding(.bottom,20)
+            .padding(.bottom, 20)
             .padding(.horizontal, 16)
             .overlay(
                 VStack {
@@ -34,7 +34,7 @@ struct WishlistEmpty: View {
                         .padding(.bottom, 30)
                 }
             )
-            .frame(maxWidth: .infinity,maxHeight: .infinity)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Assets.Colors.rowBackground)
     }
 
@@ -59,8 +59,10 @@ struct WishlistEmpty: View {
     }
 }
 
-struct WishlistEmpty_Previews: PreviewProvider {
-    static var previews: some View {
-        WishlistEmpty()
+#if DEBUG
+    struct WishlistEmpty_Previews: PreviewProvider {
+        static var previews: some View {
+            WishlistEmpty()
+        }
     }
-}
+#endif

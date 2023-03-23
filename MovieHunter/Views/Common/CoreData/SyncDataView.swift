@@ -11,10 +11,10 @@ import SwiftUI
 
 struct SyncDataView: View {
     @FetchRequest(fetchRequest: movieRequest)
-    var favoriteMovies: FetchedResults<FavoriteMovie>
+    private var favoriteMovies: FetchedResults<FavoriteMovie>
     @FetchRequest(fetchRequest: personRequest)
-    var favoritePersons: FetchedResults<FavoritePerson>
-    @EnvironmentObject var store: Store
+    private var favoritePersons: FetchedResults<FavoritePerson>
+    @EnvironmentObject private var store: Store
     var body: some View {
         Color.clear
             .task(id: favoriteMovies.count) {
@@ -50,8 +50,12 @@ extension View {
     }
 }
 
-struct SyncDataView_Previews: PreviewProvider {
-    static var previews: some View {
-        SyncDataView()
+#if DEBUG
+    struct SyncDataView_Previews: PreviewProvider {
+        static var previews: some View {
+            SyncDataView()
+                .environmentObject(Store.share)
+                .environment(\.managedObjectContext, CoreDataStack.share.viewContext)
+        }
     }
-}
+#endif

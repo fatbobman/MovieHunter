@@ -49,10 +49,12 @@ struct RateView: View {
     }
 }
 
-struct RateViewPreview: PreviewProvider {
-    static var previews: some View {
-        RateView(rate: 9.5, participants: 268_935)
-            .foregroundColor(.secondary)
-            .font(.footnote)
+#if DEBUG
+    struct RateViewPreview: PreviewProvider {
+        static var previews: some View {
+            RateView(rate: 9.5, participants: 268_935)
+                .foregroundColor(.secondary)
+                .font(.footnote)
+        }
     }
-}
+#endif

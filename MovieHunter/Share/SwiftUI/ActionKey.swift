@@ -16,7 +16,7 @@ struct InWishlistKey: EnvironmentKey {
 struct GoMovieDetailKey: EnvironmentKey {
     static var defaultValue: (Category, Movie) -> Void = {
         #if DEBUG
-            print("goto \($0) \($1.title)'s detail view")
+            print("goto (\($0)):(\($1.title))'s detail view")
         #endif
     }
 }

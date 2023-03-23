@@ -10,11 +10,6 @@ import SwiftUI
 import TMDb
 
 struct NowPlayingRowContainer: View {
-//    let inWishlist: (Int) -> Bool
-//    let goDetail: (Movie) -> Void
-//    let updateWishlist: (Int) -> Void
-//    let goCategory: (Destination) -> Void
-
     @Environment(\.tmdb) private var tmdb
     @Environment(\.deviceStatus) private var deviceStatus
     @State private var movies = [Movie]()
@@ -23,27 +18,16 @@ struct NowPlayingRowContainer: View {
         VStack(spacing: 0) {
             switch deviceStatus {
             case .compact:
-                NowPlayingTabViewRow(
-                    movies: movies
-//                    inWishlist: inWishlist,
-//                    tapBanner: goDetail,
-//                    updateWishList: updateWishlist
-                )
+                NowPlayingTabViewRow(movies: movies)
 
             default:
-                NowPlayingScrollViewRow(
-                    movies: movies
-//                    inWishlist: inWishlist,
-//                    tapBanner: goDetail,
-//                    updateWishList: updateWishlist
-                )
+                NowPlayingScrollViewRow(movies: movies)
             }
             ViewMoreButton(
                 title: Category.nowPlaying.localizedString,
                 showSymbol: false,
                 showViewMoreText: false,
                 textSize: .small
-//                perform: { goCategory(Destination.nowPlaying) }
             )
         }
         .task {
@@ -54,31 +38,25 @@ struct NowPlayingRowContainer: View {
     }
 }
 
-//struct MovieNowPlayingScrollView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NowPlayingRowContainer(
-//            inWishlist: { _ in true },
-//            goDetail: { print($0) },
-//            updateWishlist: { print($0) },
-//            goCategory: { print($0) }
-//        )
-//        .environment(\.colorScheme, .dark)
+ struct MovieNowPlayingScrollView_Previews: PreviewProvider {
+    static var previews: some View {
+        NowPlayingRowContainer()
+        .environment(\.colorScheme, .dark)
 
-//        NavigationSplitView {
-//            Text("abc")
-//        } detail: {
-//            VStack {
-//                MovieNowPlayingContainer()
-//                Spacer()
-//            }
-//            .navigationTitle("")
-//            #if !os(macOS)
-//                .navigationBarTitleDisplayMode(.inline)
-//            #endif
-//        }
-//        .environmentObject(Store())
-//        .previewDevice(.init(rawValue: "iPad Pro (11-inch) (4th generation)"))
-//        .previewInterfaceOrientation(.landscapeLeft)
-//        .setDeviceStatus()
-//    }
-//}
+        NavigationSplitView {
+            Text("abc")
+        } detail: {
+            VStack {
+                NowPlayingRowContainer()
+                Spacer()
+            }
+            .navigationTitle("")
+            #if !os(macOS)
+                .navigationBarTitleDisplayMode(.inline)
+            #endif
+        }
+        .environmentObject(Store())
+        .previewDevice(.init(rawValue: "iPad Pro (11-inch) (4th generation)"))
+        .previewInterfaceOrientation(.landscapeLeft)
+    }
+ }

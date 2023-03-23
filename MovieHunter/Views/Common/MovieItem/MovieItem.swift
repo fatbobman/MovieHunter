@@ -12,10 +12,10 @@ import SwiftUI
 import TMDb
 
 public struct MovieItem: View {
-    let movie: Movie?
-    let category: Category?
-    let genreID: Genre.ID?
-    let displayType: DisplayType
+    private let movie: Movie?
+    private let category: Category?
+    private let genreID: Genre.ID?
+    private let displayType: DisplayType
 
     @Environment(\.goDetail) private var goDetail
     @Environment(\.colorScheme) private var colorScheme
@@ -32,7 +32,7 @@ public struct MovieItem: View {
         self.displayType = displayType
     }
 
-    var layout: AnyLayout {
+    private var layout: AnyLayout {
         switch displayType {
         case .portrait:
             return AnyLayout(VStackLayout(alignment: .leading, spacing: 0))
@@ -41,7 +41,7 @@ public struct MovieItem: View {
         }
     }
 
-    var clipShape: AnyShape {
+    private var clipShape: AnyShape {
         if displayType == .landscape {
             return AnyShape(Rectangle())
         } else {
@@ -54,8 +54,6 @@ public struct MovieItem: View {
             ItemPoster(
                 movie: movie,
                 size: displayType.imageSize
-//                inWishlist: inWishlist,
-//                updateWishlist: updateWishlist
             )
             MovieShortInfo(
                 movie: movie,
@@ -93,8 +91,6 @@ public struct MovieItem: View {
     }
 }
 
-extension MovieItem {}
-
 public enum DisplayType: Equatable {
     case portrait(Size)
     case landscape
@@ -123,36 +119,29 @@ public enum DisplayType: Equatable {
     }
 }
 
-// #if DEBUG
-//    struct MovieItem_Previews: PreviewProvider {
-//        static var previews: some View {
-//            VStack {
-//                MovieItem(
-//                    movie: PreviewData.previewMovie1,
-//                    inWishlist: false,
-//                    displayType: .landscape,
-//                    updateWishlist: { id in print(id) },
-//                    goDetail: { print($0) }
-//                )
-//                .border(.gray)
-//                .padding(10)
-//
-//                MovieItem(
-//                    movie: PreviewData.previewMovie1,
-//                    inWishlist: true,
-//                    displayType: .portrait(.small),
-//                    updateWishlist: { id in print(id) },
-//                    goDetail: { print($0) }
-//                )
-//
-//                MovieItem(
-//                    movie: PreviewData.previewMovie1,
-//                    inWishlist: true,
-//                    displayType: .portrait(.large),
-//                    updateWishlist: { id in print(id) },
-//                    goDetail: { print($0) }
-//                )
-//            }
-//        }
-//    }
-// #endif
+#if DEBUG
+    struct MovieItem_Previews: PreviewProvider {
+        static var previews: some View {
+            VStack {
+                MovieItem(
+                    movie: PreviewData.previewMovie1,
+                    displayType: .landscape
+                )
+                .border(.gray)
+                .padding(10)
+                .environment(\.inWishlist) { _ in false }
+
+                MovieItem(
+                    movie: PreviewData.previewMovie1,
+                    displayType: .portrait(.small)
+                )
+                .environment(\.inWishlist) { _ in true }
+
+                MovieItem(
+                    movie: PreviewData.previewMovie1,
+                    displayType: .portrait(.large)
+                )
+            }
+        }
+    }
+#endif

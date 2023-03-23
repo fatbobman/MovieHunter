@@ -10,29 +10,17 @@ import SwiftUI
 import TMDb
 
 struct CategoryWrapper: View {
-//    @EnvironmentObject private var store: Store
     let category: Category
     var body: some View {
         switch category {
         case .nowPlaying:
-            NowPlayingRowContainer(
-//                inWishlist: inWishlist,
-//                goDetail: goDetail,
-//                updateWishlist: updateWishlist,
-//                goCategory: goCategory
-            )
+            NowPlayingRowContainer()
         case .popular:
-            CategoryCommonContainer(
-                category: .popular
-            )
+            CategoryCommonContainer(category: .popular)
         case .upComing:
-            CategoryCommonContainer(
-                category: .upComing
-            )
+            CategoryCommonContainer(category: .upComing)
         case .topRate:
-            CategoryCommonContainer(
-                category: .topRate
-            )
+            CategoryCommonContainer(category: .topRate)
         case .movieWishlist:
             WishlistContainer()
         case .favoritePerson:
@@ -41,27 +29,22 @@ struct CategoryWrapper: View {
             EmptyView()
         }
     }
-//
-//    var inWishlist: (Int) -> Bool {
-//        { store.state.favoriteMovieIDs.contains($0) }
-//    }
-//
-//    var goDetail: (Movie) -> Void {
-//        { store.send(.setDestination(to: [.nowPlaying, .movieDetail($0)])) }
-//    }
-//
-//    var updateWishlist: (Int) -> Void {
-//        { store.send(.updateMovieWishlist($0)) }
-//    }
-//
-//    var goCategory: (Destination) -> Void {
-//        { store.send(.setDestination(to: [$0])) }
-//    }
 }
 
-struct CategoryRoot_Previews: PreviewProvider {
-    static var previews: some View {
-        CategoryWrapper(category: .nowPlaying)
-            .environmentObject(Store.share)
+#if DEBUG
+    struct CategoryRoot_Previews: PreviewProvider {
+        static var previews: some View {
+            CategoryWrapper(category: .nowPlaying)
+                .environmentObject(Store.share)
+
+            CategoryWrapper(category: .nowPlaying)
+                .environmentObject(Store.share)
+                .environment(\.deviceStatus, .regular)
+                .previewDevice(PreviewDevice(rawValue: "iPad Pro (11-inch) (4th generation)"))
+                .previewInterfaceOrientation(.landscapeLeft)
+
+            CategoryWrapper(category: .popular)
+                .environmentObject(Store.share)
+        }
     }
-}
+#endif

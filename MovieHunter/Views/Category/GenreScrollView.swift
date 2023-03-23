@@ -11,9 +11,6 @@ import TMDb
 
 struct GenreScrollView: View {
     let genreID: Int
-    let inWishlist: (Int) -> Bool
-    let goDetail: (Movie) -> Void
-    let updateWishlist: (Int) -> Void
     @State private var movies = [Movie]()
     @Environment(\.tmdb) private var tmdb
     var body: some View {
@@ -24,7 +21,6 @@ struct GenreScrollView: View {
                         movie: movie,
                         genreID: genreID,
                         displayType: .portrait(.small)
-//                        goDetail: goDetail
                     )
                 }
             }
@@ -47,13 +43,10 @@ struct GenreScrollView: View {
     }
 }
 
-struct GenreScrollView_Previews: PreviewProvider {
-    static var previews: some View {
-        GenreScrollView(
-            genreID: 12,
-            inWishlist: { _ in true },
-            goDetail: { print($0) },
-            updateWishlist: { print($0) }
-        )
+#if DEBUG
+    struct GenreScrollView_Previews: PreviewProvider {
+        static var previews: some View {
+            GenreScrollView(genreID: 12)
+        }
     }
-}
+#endif

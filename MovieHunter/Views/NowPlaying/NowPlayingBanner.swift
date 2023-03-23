@@ -15,29 +15,40 @@ struct NowPlayingBanner: View {
     @Environment(\.goDetail) private var goDetail
     @Environment(\.deviceStatus) private var deviceStatus
     @Environment(\.colorScheme) private var colorScheme
+    @Namespace private var nameSpace
 
     var body: some View {
-        VStack(alignment: .leading, spacing: -posterSize.height * 0.56) {
-            NowPlayingBackdrop(movie: movie)
-                .frame(width: backdropSize.width, height: backdropSize.height)
-                .clipped()
-            HStack(alignment: .lastTextBaseline) {
-                ItemPoster(
-                    movie: movie,
-                    size: posterSize,
-                    showShadow: true,
-                    enableScale: false
-                )
-                NowPlayingBannerTitle(movie: movie)
-                    .alignmentGuide(.lastTextBaseline) { $0[.lastTextBaseline] + 10 }
-            }
-            .padding(.leading, leadingPadding)
-            .frame(width: backdropSize.width, alignment: .leading)
-        }
-        .contentShape(Rectangle())
-        .onTapGesture {
+        Button {
             goDetail(.nowPlaying, movie)
+        } label: {
+            VStack(alignment: .leading, spacing: -posterSize.height * 0.56) {
+                NowPlayingBackdrop(movie: movie)
+                    .frame(width: backdropSize.width, height: backdropSize.height)
+                    .clipped()
+                HStack(alignment: .lastTextBaseline) {
+                    ItemPoster(
+                        movie: movie,
+                        size: posterSize,
+                        showShadow: true,
+                        enableScale: false
+                    )
+                    .matchedGeometryEffect(id: "posterTopLeading", in: nameSpace, properties: [.position], anchor: .topLeading, isSource: true)
+                    NowPlayingBannerTitle(movie: movie)
+                        .alignmentGuide(.lastTextBaseline) { $0[.lastTextBaseline] + 10 }
+                }
+                .padding(.leading, leadingPadding)
+                .frame(width: backdropSize.width, alignment: .leading)
+            }
+            .contentShape(Rectangle())
         }
+        .buttonStyle(.flat)
+        .overlay(
+            BookMarkCornerButton(movieID: movie.id)
+                .matchedGeometryEffect(id: "posterTopLeading", in: nameSpace, anchor: .topLeading, isSource: false)
+        )
+//        .onTapGesture {
+//            goDetail(.nowPlaying, movie)
+//        }
         .padding(.bottom, 15)
         .background(Assets.Colors.rowBackground)
     }

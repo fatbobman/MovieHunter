@@ -15,7 +15,7 @@ struct ContentView: View {
                 .environment(\.inWishlist) {
                     store.state.favoriteMovieIDs.contains($0)
                 }
-                .environment(\.goDetail) { category,movie in
+                .environment(\.goDetailFromHome) { category,movie in
                     store.send(.setDestination(to: [category.destination, .movieDetail(movie)]))
                 }
                 .environment(\.updateWishlist) {

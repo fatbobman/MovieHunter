@@ -17,7 +17,8 @@ public struct MovieItem: View {
     private let genreID: Genre.ID?
     private let displayType: DisplayType
 
-    @Environment(\.goDetail) private var goDetail
+    @Environment(\.goDetailFromHome) private var goDetailFromHome
+    @Environment(\.goDetailFromCategory) private var goDetailFromCategory
     @Environment(\.colorScheme) private var colorScheme
 
     init(
@@ -54,13 +55,19 @@ public struct MovieItem: View {
             Button {
                 if let movie {
                     var destinationCategory: Category = .popular
+                    // from movie gallery
+                    if category == nil && genreID == nil {
+                        goDetailFromCategory(movie)
+                        return
+                    }
+                    // from home view
                     if let category {
                         destinationCategory = category
                     }
                     if let genreID {
                         destinationCategory = .genre(genreID)
                     }
-                    goDetail(destinationCategory, movie)
+                    goDetailFromHome(destinationCategory, movie)
                 }
             } label: {
                 layout {

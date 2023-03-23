@@ -12,14 +12,14 @@ import TMDb
 struct NowPlayingBanner: View {
     let movie: Movie
     let backdropSize: CGSize
-    @Environment(\.goDetail) private var goDetail
+    @Environment(\.goDetailFromHome) private var goDetailFromHome
     @Environment(\.deviceStatus) private var deviceStatus
     @Environment(\.colorScheme) private var colorScheme
     @Namespace private var nameSpace
 
     var body: some View {
         Button {
-            goDetail(.nowPlaying, movie)
+            goDetailFromHome(.nowPlaying, movie)
         } label: {
             VStack(alignment: .leading, spacing: -posterSize.height * 0.56) {
                 NowPlayingBackdrop(movie: movie)

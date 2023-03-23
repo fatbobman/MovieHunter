@@ -13,10 +13,18 @@ struct InWishlistKey: EnvironmentKey {
     static var defaultValue: (Int) -> Bool = { _ in true }
 }
 
-struct GoMovieDetailKey: EnvironmentKey {
+struct GoMovieDetailFromHomeKey: EnvironmentKey {
     static var defaultValue: (Category, Movie) -> Void = {
         #if DEBUG
             print("goto (\($0)):(\($1.title))'s detail view")
+        #endif
+    }
+}
+
+struct GoMovieDetailFormCategoryKey: EnvironmentKey {
+    static var defaultValue: (Movie) -> Void = {
+        #if DEBUG
+            print("goto (\($0.title))'s detail view")
         #endif
     }
 }
@@ -44,10 +52,16 @@ extension EnvironmentValues {
         set { self[InWishlistKey.self] = newValue }
     }
 
-    // go to movie detail view
-    var goDetail: (Category, Movie) -> Void {
-        get { self[GoMovieDetailKey.self] }
-        set { self[GoMovieDetailKey.self] = newValue }
+    // go to movie detail view from home
+    var goDetailFromHome: (Category, Movie) -> Void {
+        get { self[GoMovieDetailFromHomeKey.self] }
+        set { self[GoMovieDetailFromHomeKey.self] = newValue }
+    }
+
+    // go to movie detail view from movie gallery
+    var goDetailFromCategory: (Movie) -> Void {
+        get { self[GoMovieDetailFormCategoryKey.self] }
+        set { self[GoMovieDetailFormCategoryKey.self] = newValue }
     }
 
     // add movie into favorite list

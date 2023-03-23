@@ -41,7 +41,9 @@ struct WishlistScrollView: View {
             .animation(.default, value: movies)
             .padding(.bottom, 22)
         }
+        #if !os(tvOS)
         .scrollContentBackground(.hidden)
+        #endif
         .background(Assets.Colors.rowBackground)
         .safeAreaInset(edge: .leading) {
             Color.clear

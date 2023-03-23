@@ -23,7 +23,9 @@ struct NowPlayingScrollViewRow: View {
                 }
             }
         }
+        #if !os(tvOS)
         .scrollContentBackground(.hidden)
+        #endif
         .background(Assets.Colors.rowBackground)
     }
 }

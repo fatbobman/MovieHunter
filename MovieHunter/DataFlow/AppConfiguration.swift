@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import TMDb
 
-final class Configuration: ObservableObject {
+final class AppConfiguration: ObservableObject {
     /// colorScheme
     @AppStorage("colorScheme") var colorScheme: ColorSchemeSetting = .system
     /// selected genre

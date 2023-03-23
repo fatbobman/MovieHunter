@@ -9,7 +9,7 @@ import Combine
 import Foundation
 
 final class Store: ObservableObject {
-    private let configuration = Configuration()
+    private let configuration = AppConfiguration()
 
     @Published private(set) var state: AppState
 

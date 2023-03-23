@@ -11,7 +11,7 @@
 		76751E4F29C542110013BBDF /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E4E29C542110013BBDF /* AppState.swift */; };
 		76751E5129C5424C0013BBDF /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E5029C5424C0013BBDF /* Store.swift */; };
 		76751E5329C542F10013BBDF /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E5229C542F10013BBDF /* AppAction.swift */; };
-		76751E5529C544DC0013BBDF /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E5429C544DC0013BBDF /* Configuration.swift */; };
+		76751E5529C544DC0013BBDF /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E5429C544DC0013BBDF /* AppConfiguration.swift */; };
 		76751E5729C547350013BBDF /* ColorSchemeSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E5629C547350013BBDF /* ColorSchemeSetting.swift */; };
 		76751E5E29C556500013BBDF /* TabDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E5D29C556500013BBDF /* TabDestination.swift */; };
 		76751E6229C589E80013BBDF /* NowPlayingBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E6129C589E80013BBDF /* NowPlayingBanner.swift */; };
@@ -72,7 +72,7 @@
 		76751E4E29C542110013BBDF /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		76751E5029C5424C0013BBDF /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		76751E5229C542F10013BBDF /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
-		76751E5429C544DC0013BBDF /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		76751E5429C544DC0013BBDF /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		76751E5629C547350013BBDF /* ColorSchemeSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeSetting.swift; sourceTree = "<group>"; };
 		76751E5D29C556500013BBDF /* TabDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabDestination.swift; sourceTree = "<group>"; };
 		76751E6129C589E80013BBDF /* NowPlayingBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingBanner.swift; sourceTree = "<group>"; };
@@ -151,7 +151,7 @@
 				76751E4E29C542110013BBDF /* AppState.swift */,
 				76751E5029C5424C0013BBDF /* Store.swift */,
 				76751E5229C542F10013BBDF /* AppAction.swift */,
-				76751E5429C544DC0013BBDF /* Configuration.swift */,
+				76751E5429C544DC0013BBDF /* AppConfiguration.swift */,
 				769002A829C680F300620A3C /* AppEnvironment.swift */,
 			);
 			path = DataFlow;
@@ -531,7 +531,7 @@
 				76AC260129C45C69007874DA /* Destination.swift in Sources */,
 				76A0D35129C979AD002C3286 /* ActionKey.swift in Sources */,
 				76AC25A929C2E35C007874DA /* Shape.swift in Sources */,
-				76751E5529C544DC0013BBDF /* Configuration.swift in Sources */,
+				76751E5529C544DC0013BBDF /* AppConfiguration.swift in Sources */,
 				76751E5E29C556500013BBDF /* TabDestination.swift in Sources */,
 				76751E5729C547350013BBDF /* ColorSchemeSetting.swift in Sources */,
 				76751E6529C58BDA0013BBDF /* NowPlayingBannerTitle.swift in Sources */,
@@ -699,10 +699,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.fatbobman.MovieHunter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,3";
 			};
 			name = Debug;
 		};
@@ -738,10 +740,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.fatbobman.MovieHunter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,3";
 			};
 			name = Release;
 		};

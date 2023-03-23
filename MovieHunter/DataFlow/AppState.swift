@@ -8,7 +8,7 @@
 import Foundation
 
 struct AppState {
-    let configuration: Configuration
+    let configuration: AppConfiguration
 
     var destinations = [Destination]()
     var topDestination: Destination? {
@@ -20,7 +20,7 @@ struct AppState {
 
     var tabDestination: TabDestination = .movie
 
-    init(configuration: Configuration) {
+    init(configuration: AppConfiguration) {
         self.configuration = configuration
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct Home: View {
-    @StateObject var configuration = Configuration()
+    @StateObject var configuration = AppConfiguration()
     var genres: [Genres] {
         Genres
             .allCases
@@ -29,7 +29,9 @@ struct Home: View {
                 }
             }
         }
+        #if !os(tvOS)
         .scrollContentBackground(.hidden)
+        #endif
         .background(Assets.Colors.mainBackground)
     }
 }

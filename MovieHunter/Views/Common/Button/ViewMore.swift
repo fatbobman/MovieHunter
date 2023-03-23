@@ -32,19 +32,19 @@ struct ViewMoreButton: View {
     }
 
     var body: some View {
-        Button {
-            goCategory(.favoritePerson)
-        } label: {
-            Assets.Colors.rowBackground
-                .frame(height: 60)
-                .frame(maxWidth: .infinity)
-                .overlay(
+        Assets.Colors.rowBackground
+            .frame(height: 60)
+            .frame(maxWidth: .infinity)
+            .overlay(
+                Button {
+                    goCategory(.favoritePerson)
+                } label: {
                     HStack(spacing: 10) {
                         if showSymbol {
                             RoundedRectangle(cornerRadius: 2)
                                 .fill(Assets.Colors.favorite)
                                 .frame(width: 4)
-                                .padding(.vertical, 18)
+                                .padding(.vertical, 8)
                         }
                         Text(title)
                             .font(textSize.CategorySize)
@@ -63,12 +63,13 @@ struct ViewMoreButton: View {
                             .font(textSize.arrowSize)
                         }
                     }
+                    .if(!showSymbol) { $0.frame(height: 40) }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 16)
-                )
-                .contentShape(Rectangle())
-        }
-        .buttonStyle(.plain)
+                }
+                .buttonStyle(.plain)
+                .padding(.vertical, 10)
+            )
     }
 
     enum TextSize {

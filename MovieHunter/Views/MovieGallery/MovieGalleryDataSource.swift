@@ -27,7 +27,7 @@ struct MovieGalleryDataSource: View {
             return AnyRandomAccessCollection(wishlistMovies)
         }
     }
-    
+
     init(category: Category) {
         self.category = category
         switch category {
@@ -41,23 +41,19 @@ struct MovieGalleryDataSource: View {
     }
 
     var body: some View {
-        List {
-            ForEach(movies) { movie in
-                MovieItem(movie: movie, displayType: .landscape)
+        MovieGalleryContainer(movies: movies)
+            .onAppear {
+                switch source {
+                case .tmdb:
+                    loader.setLoader(category: category, tmdb: tmdb)
+                case .wishlist:
+                    break
+                }
             }
-        }
-        .onAppear {
-            switch source {
-            case .tmdb:
-                loader.setLoader(category: category, tmdb: tmdb)
-            case .wishlist:
-                break
+            .task(id: favoriteMovieIDs.count) {
+                guard source == .wishlist else { return }
+                wishlistMovies = await Movie.loadWishlistMovieByIDs(tmdb: tmdb, movieIDs: Array(favoriteMovieIDs.map { Int($0.movieID) }))
             }
-        }
-        .task(id: favoriteMovieIDs.count) {
-            guard source == .wishlist else { return }
-            wishlistMovies = await Movie.loadWishlistMovieByIDs(tmdb: tmdb, movieIDs: Array(favoriteMovieIDs.map { Int($0.movieID) })) // loadMovies(movieIDs: Array(favoriteMovieIDs.map{Int($0.movieID)}))
-        }
     }
 }
 

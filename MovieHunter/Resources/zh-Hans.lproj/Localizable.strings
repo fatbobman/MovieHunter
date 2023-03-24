@@ -5,3 +5,51 @@
   Created by Yang Xu on 2023/3/16.
   
 */
+// Genre
+"Genre_action" = "动作";
+"Genre_adventure" = "冒险";
+"Genre_animation" = "动画";
+"Genre_comedy" = "喜剧";
+"Genre_crime" = "犯罪";
+"Genre_documentary" = "纪录片";
+"Genre_drama" = "戏剧";
+"Genre_family" = "家庭";
+"Genre_fantasy" = "奇幻";
+"Genre_history" = "历史";
+"Genre_horror" = "恐怖";
+"Genre_music" = "音乐";
+"Genre_mystery" = "悬疑";
+"Genre_romance" = "浪漫";
+"Genre_scienceFiction" = "科幻";
+"Genre_tvMovie" = "电视电影";
+"Genre_thriller" = "惊悚";
+"Genre_war" = "战争";
+"Genre_western" = "西部";
+
+// Category
+"Category_nowPlaying" = "正在上映";
+"Category_popular" = "热门";
+"Category_upComing" = "即将上映";
+"Category_topRate" = "高分";
+"Category_movieWishlist" = "想看";
+"Category_favoritePerson" = "喜欢的人";
+
+// Home
+"ViewMore" = "查看更多";
+
+// MovieItem
+"Coming_Soon" = "即将上映";
+
+// Wishlist
+"Wishlist_Is_Empty_Title" = "您的想看列表为空";
+"Wishlist_Is_Empty_Description_1" = "不要错过任何电影或节目。";
+"Wishlist_Is_Empty_Description_2" = "使用您的想看列表跟踪您想看的内容。";
+
+// SortBy
+"SortBy_VoteAverage" = "按评分排序";
+"SortBy_ReleaseDate" = "按发布日期排序";
+"SortBy_Popularity" = "按受欢迎程度排序";
+
+// ConfirmationDialog
+"Confirm_To_Remove_From_Favorite_Movies" = "从想看列表中移除";
+"Wishlist_Manage" = "想看列表";

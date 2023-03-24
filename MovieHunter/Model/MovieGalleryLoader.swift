@@ -33,10 +33,6 @@ final class MoviesGalleryLoader: RandomAccessCollection, ObservableObject {
     func loadNextPage() async {
         if !finished,!loading, let loader {
             loading = true
-//            do {
-//                let result = try await Task {
-//                    try await loader(currentPage)
-//                }.value
             if let result = await withErrorHandling({ () -> PageableListResult<Movie> in
                 try await loader(self.currentPage)
             }) {
@@ -49,11 +45,6 @@ final class MoviesGalleryLoader: RandomAccessCollection, ObservableObject {
                     }
                 }
             }
-//            } catch {
-//                #if DEBUG
-//                    print(error)
-//                #endif
-//            }
             loading = false
         }
     }
@@ -74,29 +65,19 @@ final class MoviesGalleryLoader: RandomAccessCollection, ObservableObject {
         guard self.tmdb == nil, self.category == nil else { return }
         self.tmdb = tmdb
         self.category = category
-
+        let loaders = Loaders()
         var loader: ((Int) async throws -> PageableListResult<Movie>)? = nil
         switch category {
         case .nowPlaying:
-            loader = {
-                try await tmdb.movies.nowPlaying(page: $0)
-            }
+            loader = { try await loaders.nowPlaying(tmdb, $0) }
         case .popular:
-            loader = {
-                try await tmdb.movies.popular(page: $0)
-            }
+            loader = { try await loaders.popular(tmdb, $0) }
         case .upComing:
-            loader = {
-                try await tmdb.movies.upcoming(page: $0)
-            }
+            loader = { try await loaders.upComing(tmdb, $0) }
         case .topRate:
-            loader = {
-                try await tmdb.movies.topRated(page: $0)
-            }
+            loader = { try await loaders.topRate(tmdb, $0) }
         case let .genre(genreID):
-            loader = {
-                try await tmdb.discover.movies(sortedBy: self.genre_sortBy.movieSort, withPeople: nil, withGenres: [genreID], page: $0)
-            }
+            loader = { try await loaders.genre(tmdb, self.genre_sortBy.movieSort, genreID, $0) }
         default:
             break
         }

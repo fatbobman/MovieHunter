@@ -18,11 +18,11 @@ struct SyncDataView: View {
     var body: some View {
         Color.clear
             .task(id: favoriteMovies.count) {
-                let ids = Set(favoriteMovies.map { Int($0.movieID) })
+                let ids = Set(favoriteMovies.map(\.movieID).map(Int.init))
                 store.send(.movieChangedFormCoreData(ids))
             }
             .task(id: favoritePersons.count) {
-                let ids = Set(favoritePersons.map { Int($0.personID) })
+                let ids = Set(favoritePersons.map(\.personID).map(Int.init))
                 store.send(.personChangedFormCoreData(ids))
             }
     }

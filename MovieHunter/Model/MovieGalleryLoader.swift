@@ -19,17 +19,6 @@ final class MoviesGalleryLoader: RandomAccessCollection, ObservableObject {
     private var loading = false
     private let maxPage = 10
 
-    private var movieSort: MovieSort {
-        switch genre_sortBy {
-        case .byPopularity:
-            return .popularity()
-        case .byVoteAverage:
-            return .voteAverage()
-        case .byReleaseDate:
-            return .releaseDate()
-        }
-    }
-
     var loader: ((Int) async throws -> PageableListResult<Movie>)?
 
     func formIndex(after i: inout Int) {
@@ -44,10 +33,13 @@ final class MoviesGalleryLoader: RandomAccessCollection, ObservableObject {
     func loadNextPage() async {
         if !finished,!loading, let loader {
             loading = true
-            do {
-                let result = try await Task {
-                    try await loader(currentPage)
-                }.value
+//            do {
+//                let result = try await Task {
+//                    try await loader(currentPage)
+//                }.value
+            if let result = await withErrorHandling({ () -> PageableListResult<Movie> in
+                try await loader(self.currentPage)
+            }) {
                 await MainActor.run {
                     movies += result.results
                     if let totalPages = result.totalPages, currentPage < Swift.min(totalPages, maxPage) {
@@ -56,11 +48,12 @@ final class MoviesGalleryLoader: RandomAccessCollection, ObservableObject {
                         finished = true
                     }
                 }
-            } catch {
-                #if DEBUG
-                    print(error)
-                #endif
             }
+//            } catch {
+//                #if DEBUG
+//                    print(error)
+//                #endif
+//            }
             loading = false
         }
     }
@@ -102,7 +95,7 @@ final class MoviesGalleryLoader: RandomAccessCollection, ObservableObject {
             }
         case let .genre(genreID):
             loader = {
-                try await tmdb.discover.movies(sortedBy: self.movieSort, withPeople: nil, withGenres: [genreID], page: $0)
+                try await tmdb.discover.movies(sortedBy: self.genre_sortBy.movieSort, withPeople: nil, withGenres: [genreID], page: $0)
             }
         default:
             break
@@ -110,6 +103,30 @@ final class MoviesGalleryLoader: RandomAccessCollection, ObservableObject {
         self.loader = loader
         Task {
             await loadNextPage()
+        }
+    }
+}
+
+extension MoviesGalleryLoader {
+    private struct Loaders {
+        let nowPlaying: (TMDbAPI, Int) async throws -> PageableListResult<Movie> = { tmdb, page in
+            try await tmdb.movies.nowPlaying(page: page)
+        }
+
+        let popular: (TMDbAPI, Int) async throws -> PageableListResult<Movie> = { tmdb, page in
+            try await tmdb.movies.popular(page: page)
+        }
+
+        let upComing: (TMDbAPI, Int) async throws -> PageableListResult<Movie> = { tmdb, page in
+            try await tmdb.movies.upcoming(page: page)
+        }
+
+        let topRate: (TMDbAPI, Int) async throws -> PageableListResult<Movie> = { tmdb, page in
+            try await tmdb.movies.topRated(page: page)
+        }
+
+        let genre: (TMDbAPI, MovieSort, Genre.ID, Int) async throws -> PageableListResult<Movie> = { tmdb, sort, genreID, page in
+            try await tmdb.discover.movies(sortedBy: sort, withPeople: nil, withGenres: [genreID], page: page)
         }
     }
 }

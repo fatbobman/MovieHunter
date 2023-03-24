@@ -47,3 +47,18 @@ struct MovieGalleryContainer_Previews: PreviewProvider {
     }
 }
 
+/*
+// 三种数据源的包装器： Tmdb、wishlist、favoritePerson
+ List
+ Grid
+ 
+ 
+ NavigationStack
+ MovieDetail
+ PersonDetail
+ TabView
+ Settings
+ NavigationSplitView
+ 
+ 
+*/

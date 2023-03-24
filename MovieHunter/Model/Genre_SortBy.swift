@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import TMDb
 
 enum Genre_SortBy: Int {
     case byPopularity = 0
@@ -21,6 +22,17 @@ enum Genre_SortBy: Int {
             return "SortBy_ReleaseDate"
         case .byVoteAverage:
             return "SortBy_VoteAverage"
+        }
+    }
+    
+    var movieSort: MovieSort {
+        switch self {
+        case .byPopularity:
+            return .popularity()
+        case .byVoteAverage:
+            return .voteAverage()
+        case .byReleaseDate:
+            return .releaseDate()
         }
     }
 }

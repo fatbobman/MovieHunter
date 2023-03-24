@@ -93,6 +93,7 @@ public struct MovieItem: View {
                 .background(displayType == .landscape ? .clear : Assets.Colors.rowBackground)
                 .compositingGroup()
                 .clipShape(clipShape)
+                .contentShape(Rectangle())
                 .if(displayType != .landscape) { view in
                     view
                         .shadow(color: .black.opacity(colorScheme == .dark ? 0.3 : 0.1), radius: 3, x: 0, y: 2)
@@ -103,7 +104,7 @@ public struct MovieItem: View {
             BookMarkCornerButton(movieID: movie?.id)
         }
         .scaleEffect(isPressed ? 0.95 : 1)
-        .animation(.easeOut, value: isPressed)
+        .animation(.easeOut.speed(2), value: isPressed)
     }
 }
 

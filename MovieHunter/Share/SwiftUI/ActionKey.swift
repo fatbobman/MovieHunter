@@ -32,7 +32,7 @@ struct GoMovieDetailFormCategoryKey: EnvironmentKey {
 struct UpdateMovieWishlistKey: EnvironmentKey {
     static var defaultValue: (Int) -> Void = {
         #if DEBUG
-            print("add movie id:\($0) to favorite movie list")
+            print("update movie id:\($0) in favorite movie list")
         #endif
     }
 }

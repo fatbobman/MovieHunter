@@ -20,7 +20,7 @@ public struct MovieItem: View {
     @Environment(\.goDetailFromHome) private var goDetailFromHome
     @Environment(\.goDetailFromCategory) private var goDetailFromCategory
     @Environment(\.colorScheme) private var colorScheme
-    @State private var isPressed:Bool = false
+    @State private var isPressed: Bool = false
 
     init(
         movie: Movie?,
@@ -54,20 +54,12 @@ public struct MovieItem: View {
     public var body: some View {
         ZStack(alignment: .topLeading) {
             Button {
-                if let movie {
-                    var destinationCategory: Category = .popular
-                    // from movie gallery
-                    if category == nil && genreID == nil {
-                        goDetailFromCategory(movie)
-                        return
-                    }
-                    // from home view
-                    if let category {
-                        destinationCategory = category
-                    }
-                    if let genreID {
-                        destinationCategory = .genre(genreID)
-                    }
+                guard let movie else { return }
+                let destinationCategory: Category = category ?? (genreID != nil ? .genre(genreID!) : .popular)
+                // from movie gallery
+                if category == nil && genreID == nil {
+                    goDetailFromCategory(movie)
+                } else {
                     goDetailFromHome(destinationCategory, movie)
                 }
             } label: {

@@ -13,8 +13,8 @@ struct MovieHunterApp: App {
     @StateObject var store = Store.share
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-            MovieGalleryDataSource(category:.genre(12))
+            ContentView()
+//            MovieGalleryDataSource(category:.genre(12))
                 .syncCoreData() // 同步 favorite 数据
                 .environmentObject(store)
                 .preferredColorScheme(store.state.configuration.colorScheme.colorScheme)

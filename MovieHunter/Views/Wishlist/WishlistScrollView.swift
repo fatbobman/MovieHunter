@@ -52,7 +52,7 @@ struct WishlistScrollView: View {
                 .frame(width: 6)
         }
         .task(id: favoriteMovieIDs.count) {
-            movies = await Movie.loadWishlistMovieByIDs(tmdb: tmdb, movieIDs: Array(favoriteMovieIDs.map { Int($0.movieID) }))
+            movies = await Movie.loadWishlistMovieByIDs(tmdb: tmdb, movieIDs: Array(favoriteMovieIDs.map(\.movieID).map(Int.init)))
         }
     }
 }

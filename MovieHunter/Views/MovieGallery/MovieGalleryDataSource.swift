@@ -52,7 +52,7 @@ struct MovieGalleryDataSource: View {
             }
             .task(id: favoriteMovieIDs.count) {
                 guard source == .wishlist else { return }
-                wishlistMovies = await Movie.loadWishlistMovieByIDs(tmdb: tmdb, movieIDs: Array(favoriteMovieIDs.map { Int($0.movieID) }))
+                wishlistMovies = await Movie.loadWishlistMovieByIDs(tmdb: tmdb, movieIDs: Array(favoriteMovieIDs.map(\.movieID).map(Int.init)))
             }
     }
 }

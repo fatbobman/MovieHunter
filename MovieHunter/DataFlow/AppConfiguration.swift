@@ -16,4 +16,10 @@ final class AppConfiguration: ObservableObject {
     @AppStorage("genres") var genres:[Int] =  Genres.allCases.map{$0.rawValue}
     /// genre sortBy
     @AppStorage("genre_sortBy") var genre_sortBy:Int = 0
+    /// show book mark button in movie poster
+    @AppStorage("show_favorite_button_in_movie_poster") var show_favorite_button_in_movie_poster = true
+    /// show book mark button in person poster
+    @AppStorage("show_favorite_button_in_person_poster") var show_favorite_button_in_person_poster = true
+    /// open in new window on macOS
+    @AppStorage("open_in_new_window") var open_in_new_window = false
 }

@@ -10,6 +10,7 @@
 		761044E429CC1ACE004EFAA2 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761044E329CC1ACE004EFAA2 /* ButtonStyle.swift */; };
 		761044E729CC2B4D004EFAA2 /* MovieGalleryContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761044E629CC2B4D004EFAA2 /* MovieGalleryContainer.swift */; };
 		762FCA8629CC718300030A57 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762FCA8529CC718300030A57 /* Binding.swift */; };
+		762FCA8829CD2F9900030A57 /* MovieGalleryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762FCA8729CD2F9900030A57 /* MovieGalleryLoader.swift */; };
 		76751E4D29C541D70013BBDF /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E4C29C541D70013BBDF /* Reducer.swift */; };
 		76751E4F29C542110013BBDF /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E4E29C542110013BBDF /* AppState.swift */; };
 		76751E5129C5424C0013BBDF /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76751E5029C5424C0013BBDF /* Store.swift */; };
@@ -38,7 +39,7 @@
 		769002D229C83B5800620A3C /* WishlistScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769002D129C83B5800620A3C /* WishlistScrollView.swift */; };
 		769002D429C83DD000620A3C /* WishlistEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769002D329C83DD000620A3C /* WishlistEmpty.swift */; };
 		769002D629C8545800620A3C /* WishlistContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769002D529C8545800620A3C /* WishlistContainer.swift */; };
-		76A0D34F29C9727A002C3286 /* SortBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A0D34E29C9727A002C3286 /* SortBy.swift */; };
+		76A0D34F29C9727A002C3286 /* Genre_SortBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A0D34E29C9727A002C3286 /* Genre_SortBy.swift */; };
 		76A0D35129C979AD002C3286 /* ActionKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A0D35029C979AD002C3286 /* ActionKey.swift */; };
 		76AC258329C2E23A007874DA /* MovieHunterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC258229C2E23A007874DA /* MovieHunterApp.swift */; };
 		76AC258529C2E23A007874DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC258429C2E23A007874DA /* ContentView.swift */; };
@@ -73,6 +74,7 @@
 		761044E329CC1ACE004EFAA2 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		761044E629CC2B4D004EFAA2 /* MovieGalleryContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieGalleryContainer.swift; sourceTree = "<group>"; };
 		762FCA8529CC718300030A57 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
+		762FCA8729CD2F9900030A57 /* MovieGalleryLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieGalleryLoader.swift; sourceTree = "<group>"; };
 		76751E4C29C541D70013BBDF /* Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 		76751E4E29C542110013BBDF /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		76751E5029C5424C0013BBDF /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -102,7 +104,7 @@
 		769002D129C83B5800620A3C /* WishlistScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistScrollView.swift; sourceTree = "<group>"; };
 		769002D329C83DD000620A3C /* WishlistEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistEmpty.swift; sourceTree = "<group>"; };
 		769002D529C8545800620A3C /* WishlistContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistContainer.swift; sourceTree = "<group>"; };
-		76A0D34E29C9727A002C3286 /* SortBy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortBy.swift; sourceTree = "<group>"; };
+		76A0D34E29C9727A002C3286 /* Genre_SortBy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre_SortBy.swift; sourceTree = "<group>"; };
 		76A0D35029C979AD002C3286 /* ActionKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionKey.swift; sourceTree = "<group>"; };
 		76AC257F29C2E23A007874DA /* MovieHunter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieHunter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76AC258229C2E23A007874DA /* MovieHunterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieHunterApp.swift; sourceTree = "<group>"; };
@@ -416,7 +418,8 @@
 				76751E5629C547350013BBDF /* ColorSchemeSetting.swift */,
 				76751E5D29C556500013BBDF /* TabDestination.swift */,
 				769002B129C6DF6B00620A3C /* Category.swift */,
-				76A0D34E29C9727A002C3286 /* SortBy.swift */,
+				76A0D34E29C9727A002C3286 /* Genre_SortBy.swift */,
+				762FCA8729CD2F9900030A57 /* MovieGalleryLoader.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -521,10 +524,11 @@
 				76751E6729C58EE20013BBDF /* NowPlayingBackdrop.swift in Sources */,
 				76AC25A629C2E350007874DA /* DeviceStatus.swift in Sources */,
 				76AC258329C2E23A007874DA /* MovieHunterApp.swift in Sources */,
+				762FCA8829CD2F9900030A57 /* MovieGalleryLoader.swift in Sources */,
 				76751E6929C5922D0013BBDF /* Assets.swift in Sources */,
 				76AC25CB29C2EB06007874DA /* TMDBEnviromentKey.swift in Sources */,
 				769002B029C6DB9900620A3C /* Array.swift in Sources */,
-				76A0D34F29C9727A002C3286 /* SortBy.swift in Sources */,
+				76A0D34F29C9727A002C3286 /* Genre_SortBy.swift in Sources */,
 				769002CA29C826FF00620A3C /* ViewMore.swift in Sources */,
 				76751E4F29C542110013BBDF /* AppState.swift in Sources */,
 				76AC25C829C2EAA1007874DA /* TMDBConfiguration.swift in Sources */,

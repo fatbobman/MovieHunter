@@ -13,9 +13,9 @@ final class AppConfiguration: ObservableObject {
     /// colorScheme
     @AppStorage("colorScheme") var colorScheme: ColorSchemeSetting = .system
     /// selected genre
-    @AppStorage("genres") var genres:[Int] =  Genres.allCases.map{$0.rawValue}
+    @AppStorage("genres") var genres: [Int] = Genres.allCases.map { $0.rawValue }
     /// genre sortBy
-    @AppStorage("genre_sortBy") var genre_sortBy:Int = 0
+    @AppStorage("genre_sortBy") var genre_sortBy: Genre_SortBy = .byPopularity
     /// show book mark button in movie poster
     @AppStorage("show_favorite_button_in_movie_poster") var show_favorite_button_in_movie_poster = true
     /// show book mark button in person poster

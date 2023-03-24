@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum SortBy: Int {
+enum Genre_SortBy: Int {
     case byPopularity = 0
     case byVoteAverage = 1
     case byReleaseDate = 2

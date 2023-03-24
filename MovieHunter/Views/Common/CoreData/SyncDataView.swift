@@ -10,9 +10,9 @@ import Foundation
 import SwiftUI
 
 struct SyncDataView: View {
-    @FetchRequest(fetchRequest: movieRequest)
+    @FetchRequest(fetchRequest: FavoriteMovie.movieRequest)
     private var favoriteMovies: FetchedResults<FavoriteMovie>
-    @FetchRequest(fetchRequest: personRequest)
+    @FetchRequest(fetchRequest: FavoritePerson.personRequest)
     private var favoritePersons: FetchedResults<FavoritePerson>
     @EnvironmentObject private var store: Store
     var body: some View {
@@ -26,20 +26,6 @@ struct SyncDataView: View {
                 store.send(.personChangedFormCoreData(ids))
             }
     }
-
-    static let movieRequest: NSFetchRequest<FavoriteMovie> = {
-        let request = NSFetchRequest<FavoriteMovie>(entityName: "FavoriteMovie")
-        request.sortDescriptors = [.init(key: "createTimestamp", ascending: false)]
-        request.returnsObjectsAsFaults = false
-        return request
-    }()
-
-    static let personRequest: NSFetchRequest<FavoritePerson> = {
-        let request = NSFetchRequest<FavoritePerson>(entityName: "FavoritePerson")
-        request.sortDescriptors = [.init(key: "createTimestamp", ascending: false)]
-        request.returnsObjectsAsFaults = false
-        return request
-    }()
 }
 
 extension View {

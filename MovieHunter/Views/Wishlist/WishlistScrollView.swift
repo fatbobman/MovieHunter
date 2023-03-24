@@ -13,7 +13,7 @@ import TMDb
 struct WishlistScrollView: View {
     @EnvironmentObject private var store: Store
     @State private var movies = [Movie]()
-    @FetchRequest(fetchRequest: movieRequest)
+    @FetchRequest(fetchRequest: FavoriteMovie.movieRequest)
     private var favoriteMovieIDs: FetchedResults<FavoriteMovie>
     @Environment(\.tmdb) private var tmdb
 
@@ -52,32 +52,9 @@ struct WishlistScrollView: View {
                 .frame(width: 6)
         }
         .task(id: favoriteMovieIDs.count) {
-            await loadMovies()
+            movies = await Movie.loadWishlistMovieByIDs(tmdb: tmdb, movieIDs: Array(favoriteMovieIDs.map { Int($0.movieID) }))
         }
     }
-
-    func loadMovies() async {
-        let movies = await withTaskGroup(of: Movie?.self, returning: [Movie?].self) { taskGroup in
-            for movieID in favoriteMovieIDs {
-                taskGroup.addTask {
-                    try? await tmdb.movies.details(forMovie: Int(movieID.movieID))
-                }
-            }
-            var movies = [Movie?]()
-            for await result in taskGroup {
-                movies.append(result)
-            }
-            return movies
-        }
-        self.movies = movies.compactMap { $0 }.sorted(using: KeyPathComparator(\.popularity))
-    }
-
-    static let movieRequest: NSFetchRequest<FavoriteMovie> = {
-        let request = NSFetchRequest<FavoriteMovie>(entityName: "FavoriteMovie")
-        request.sortDescriptors = [.init(key: "createTimestamp", ascending: false)]
-        request.returnsObjectsAsFaults = false
-        return request
-    }()
 }
 
 #if DEBUG

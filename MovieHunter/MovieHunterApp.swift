@@ -14,7 +14,7 @@ struct MovieHunterApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-            MovieGalleryContainer(category:.genre(12))
+            MovieGalleryContainer(category:.movieWishlist)
                 .syncCoreData() // 同步 favorite 数据
                 .environmentObject(store)
                 .preferredColorScheme(store.state.configuration.colorScheme.colorScheme)

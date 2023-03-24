@@ -12,53 +12,78 @@ import TMDb
 struct MovieGalleryContainer: View {
     let category: Category
 
-    @Environment(\.deviceStatus) private var deviceStatus
-    @Environment(\.tmdb) private var tmdb
     @StateObject private var loader = MoviesGalleryLoader()
-
+    @Environment(\.tmdb) private var tmdb
+    @FetchRequest
+    private var favoriteMovieIDs: FetchedResults<FavoriteMovie>
+    private var source: Source
+    // movies from wishlist movie ids
+    @State private var wishlistMovies = [Movie]()
+    private var movies: AnyRandomAccessCollection<Movie> {
+        switch source {
+        case .tmdb:
+            return AnyRandomAccessCollection(loader)
+        case .wishlist:
+            return AnyRandomAccessCollection(wishlistMovies)
+        }
+    }
+    
     init(category: Category) {
         self.category = category
-    }
-
-    private var showInGrid: Bool {
-        switch deviceStatus {
-        case .compact:
-            return false
+        switch category {
+        case .movieWishlist:
+            _favoriteMovieIDs = FetchRequest(fetchRequest: FavoriteMovie.movieRequest)
+            source = .wishlist
         default:
-            return true
+            source = .tmdb
+            _favoriteMovieIDs = FetchRequest(fetchRequest: FavoriteMovie.disableRequest)
         }
     }
 
     var body: some View {
         List {
-            ForEach(loader) { movie in
+            ForEach(movies) { movie in
                 MovieItem(movie: movie, displayType: .landscape)
             }
         }
         .onAppear {
-            loader.setLoader(category: category, tmdb: tmdb)
+            switch source {
+            case .tmdb:
+                loader.setLoader(category: category, tmdb: tmdb)
+            case .wishlist:
+                break
+            }
+        }
+        .task(id: favoriteMovieIDs.count) {
+            guard source == .wishlist else { return }
+            wishlistMovies = await Movie.loadWishlistMovieByIDs(tmdb: tmdb, movieIDs: Array(favoriteMovieIDs.map { Int($0.movieID) })) // loadMovies(movieIDs: Array(favoriteMovieIDs.map{Int($0.movieID)}))
         }
     }
 }
 
-struct MovieGalleryContainer_Previews: PreviewProvider {
-    static var previews: some View {
-        MovieGalleryContainer(category: .topRate)
+private extension MovieGalleryContainer {
+    enum Source {
+        case tmdb
+        case wishlist
     }
 }
 
+// struct MovieGalleryContainer_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MovieGalleryContainer(category: .topRate)
+//    }
+// }
+
 /*
-// 三种数据源的包装器： Tmdb、wishlist、favoritePerson
- List
- Grid
- 
- 
- NavigationStack
- MovieDetail
- PersonDetail
- TabView
- Settings
- NavigationSplitView
- 
- 
-*/
+ // 三种数据源的包装器： Tmdb、wishlist、favoritePerson
+  List
+  Grid
+
+  NavigationStack
+  MovieDetail
+  PersonDetail
+  TabView
+  Settings
+  NavigationSplitView
+
+ */

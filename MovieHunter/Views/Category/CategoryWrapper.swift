@@ -23,8 +23,6 @@ struct CategoryWrapper: View {
             CategoryCommonContainer(category: .topRate)
         case .movieWishlist:
             WishlistContainer()
-        case .favoritePerson:
-            Text("fa")
         default:
             EmptyView()
         }

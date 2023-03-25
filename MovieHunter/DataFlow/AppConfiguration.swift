@@ -14,6 +14,8 @@ final class AppConfiguration: ObservableObject {
     @AppStorage("colorScheme") var colorScheme: ColorSchemeSetting = .system
     /// selected genre
     @AppStorage("genres") var genres: [Int] = Genres.allCases.map { $0.rawValue }
+    /// show adult movie
+    @AppStorage("showAdultMovieInResult") var showAdultMovieInResult = false
     /// genre sortBy
     @AppStorage("genre_sortBy") var genre_sortBy: Genre_SortBy = .byPopularity
     /// show book mark button in movie poster

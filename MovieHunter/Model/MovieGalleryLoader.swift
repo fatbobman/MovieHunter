@@ -37,7 +37,10 @@ final class MoviesGalleryLoader: RandomAccessCollection, ObservableObject {
                 try await loader(self.currentPage)
             }) {
                 await MainActor.run {
-                    movies += result.results
+                    // TMDB 数据库有时会将相同的 MovieID，返回多个 Copy，这样会造成 ForEach 显示问题（ 以 movieID 为标识符）
+                    // 在此处做一下去重处理
+                    let tempMovies = movies + result.results
+                    movies = tempMovies.uniqueMovie()
                     if let totalPages = result.totalPages, currentPage < Swift.min(totalPages, maxPage) {
                         currentPage += 1
                     } else {

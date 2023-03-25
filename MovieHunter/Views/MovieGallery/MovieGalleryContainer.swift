@@ -32,11 +32,12 @@ struct GalleryLazyVGrid: View {
     var body: some View {
         ScrollView(.vertical) {
             let columns: [GridItem] = [.init(.adaptive(minimum: minWidth))]
-            LazyVGrid(columns: columns, spacing: 0) {
+            LazyVGrid(columns: columns, spacing: 20) {
                 ForEach(movies) { movie in
                     MovieItem(movie: movie, displayType: .portrait(.middle))
                 }
             }
+            .padding(.vertical,20)
         }
     }
 }

@@ -12,8 +12,13 @@ import TMDb
 struct GenreScrollView: View {
     let genreID: Int
     @State private var movies = [Movie]()
-    @AppStorage("showAdultMovieInResult") var showAdultMovieInResult = false
+    @StateObject private var configuration = AppConfiguration()
     @Environment(\.tmdb) private var tmdb
+    
+    private var showAdultMovieInResult:Bool {
+        configuration.showAdultMovieInResult
+    }
+    
     var body: some View {
         ScrollView(.horizontal) {
             LazyHStack(spacing: 10) {

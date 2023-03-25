@@ -12,14 +12,19 @@ import TMDb
 final class MoviesGalleryLoader: RandomAccessCollection, ObservableObject {
     @Published var movies = [Movie]()
     @Published var loading = false
-    @AppStorage("genre_sortBy") private var genre_sortBy: Genre_SortBy = .byPopularity
-    @AppStorage("showAdultMovieInResult") var showAdultMovieInResult = false
+    @StateObject private var configuration = AppConfiguration()
     private var category: Category? = nil
     private var tmdb: TMDbAPI? = nil
     private var currentPage: Int = 1
     private var finished = false
     private let maxPage = 10
     private var loader: ((Int) async throws -> PageableListResult<Movie>)?
+    private var genre_sortBy:Genre_SortBy {
+        configuration.genre_sortBy
+    }
+    private var showAdultMovieInResult:Bool {
+        configuration.showAdultMovieInResult
+    }
 
     func formIndex(after i: inout Int) {
         i += 1

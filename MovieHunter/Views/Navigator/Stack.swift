@@ -10,11 +10,9 @@ import SwiftUI
 
 struct StackContainer: View {
     @EnvironmentObject var store: Store
-    @State private var size: CGSize = .zero
     var body: some View {
         NavigationStack(path: $store.state.destinations) {
             Home()
-                .environment(\.tabViewSize, size)
                 .navigationDestination(for: Destination.self) { destination in
                     switch destination {
                     case .favoritePerson:
@@ -31,7 +29,7 @@ struct StackContainer: View {
                     }
                 }
         }
-        .getSizeByWidth(size: $size, aspectRatio: 9 / 16)
+        .setBackdropSize()
     }
 }
 

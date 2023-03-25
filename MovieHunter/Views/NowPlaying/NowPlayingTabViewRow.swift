@@ -11,21 +11,17 @@ import TMDb
 
 struct NowPlayingTabViewRow: View {
     let movies: [Movie]
-    @Environment(\.tabViewSize) private var tabViewSize
-
+    @Environment(\.backdropSize) private var size
     var body: some View {
-        TabView {
-            ForEach(movies) { movie in
-                NowPlayingBanner(
-                    movie: movie,
-                    backdropSize: tabViewSize
-                )
+        // TODO: 自动滚屏控件
+            VStack {
+                ForEach(movies.prefix(1)) { movie in
+                    NowPlayingBanner(
+                        movie: movie,
+                        backdropSize: size
+                    )
+                }
             }
-        }
-        #if !os(macOS)
-        .tabViewStyle(.page(indexDisplayMode: .never))
-        #endif
-        .frame(width: tabViewSize.width, height: tabViewSize.height)
     }
 }
 

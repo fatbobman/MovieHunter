@@ -49,7 +49,7 @@ struct MovieIsLoadingKey: EnvironmentKey {
     static var defaultValue: Bool = false
 }
 
-struct TabViewSizeKey: EnvironmentKey {
+struct BackdropSizeKey: EnvironmentKey {
     static var defaultValue: CGSize = .zero
 }
 
@@ -90,8 +90,8 @@ extension EnvironmentValues {
     }
 
     // set nowPlaying backdrop size in compact mode
-    var tabViewSize: CGSize {
-        get { self[TabViewSizeKey.self] }
-        set { self[TabViewSizeKey.self] = newValue }
+    var backdropSize: CGSize {
+        get { self[BackdropSizeKey.self] }
+        set { self[BackdropSizeKey.self] = newValue }
     }
 }

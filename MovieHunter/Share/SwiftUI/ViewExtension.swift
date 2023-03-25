@@ -17,16 +17,9 @@ public extension View {
             self
         }
     }
-
-    func getSizeByWidth(size: Binding<CGSize>, aspectRatio: CGFloat = 1) -> some View {
-        background(
-            GeometryReader { proxy in
-                Color.clear
-                    .task(id: proxy.size.width) {
-                        size.wrappedValue = .init(width: proxy.size.width, height: proxy.size.width * aspectRatio)
-                    }
-            }
-        )
+    
+    func setBackdropSize() -> some View {
+        modifier(SetBackdropSizeModifier())
     }
 
     @ViewBuilder
@@ -38,6 +31,32 @@ public extension View {
             onAppear {
                 Task(priority: priority, operation: action)
             }
+        }
+    }
+}
+
+struct SetBackdropSizeModifier:ViewModifier {
+    @Environment(\.deviceStatus) var deviceStatus
+    @State var size:CGSize = .zero
+    func body(content: Content) -> some View {
+        switch deviceStatus {
+        case .compact:
+            content
+                .environment(\.backdropSize, size)
+                .background(
+                    GeometryReader { proxy in
+                        Color.clear
+                            .task(id:proxy.size.width){ [size] in
+                                if size.width != proxy.size.width {
+                                    let width = proxy.size.width
+                                    self.size = .init(width: width, height: width / (16/9))
+                                }
+                            }
+                    }
+                )
+                
+        default:
+            content
         }
     }
 }

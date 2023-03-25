@@ -31,14 +31,17 @@ struct Home: View {
         }
         .scrollContentBackground(.hidden)
         .background(Assets.Colors.mainBackground)
+        #if !os(macOS)
+            .toolbar(.hidden, for: .navigationBar)
+        #endif
     }
 }
 
 #if DEBUG
-struct HomeRoot_Previews: PreviewProvider {
-    static var previews: some View {
-        Home()
-            .environmentObject(Store.share)
+    struct HomeRoot_Previews: PreviewProvider {
+        static var previews: some View {
+            Home()
+                .environmentObject(Store.share)
+        }
     }
-}
 #endif

@@ -11,25 +11,21 @@ import TMDb
 
 struct NowPlayingTabViewRow: View {
     let movies: [Movie]
-    @State private var size: CGSize = .zero
+    @Environment(\.tabViewSize) private var tabViewSize
 
     var body: some View {
         TabView {
             ForEach(movies) { movie in
                 NowPlayingBanner(
                     movie: movie,
-                    backdropSize: size
+                    backdropSize: tabViewSize
                 )
             }
         }
         #if !os(macOS)
         .tabViewStyle(.page(indexDisplayMode: .never))
         #endif
-        .getSizeByWidth(size: $size, aspectRatio: 9 / 16)
-        .if(size != .zero) {
-            // 在 ScrollView + TabView + Geometry 的组合下，需要显式设定尺寸
-            $0.frame(width: size.width, height: size.height + 70)
-        }
+        .frame(width: tabViewSize.width, height: tabViewSize.height)
     }
 }
 

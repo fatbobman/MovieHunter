@@ -41,6 +41,7 @@ struct SideBar: View {
             }
         }
         .listStyle(.sidebar)
+        .buttonStyle(.plain)
     }
 }
 

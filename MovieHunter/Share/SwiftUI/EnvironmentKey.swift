@@ -49,6 +49,10 @@ struct MovieIsLoadingKey: EnvironmentKey {
     static var defaultValue: Bool = false
 }
 
+struct TabViewSizeKey: EnvironmentKey {
+    static var defaultValue: CGSize = .zero
+}
+
 extension EnvironmentValues {
     // check if in favorite movie list
     var inWishlist: (Int) -> Bool {
@@ -83,5 +87,11 @@ extension EnvironmentValues {
     var isLoading: Bool {
         get { self[MovieIsLoadingKey.self] }
         set { self[MovieIsLoadingKey.self] = newValue }
+    }
+
+    // set nowPlaying backdrop size in compact mode
+    var tabViewSize: CGSize {
+        get { self[TabViewSizeKey.self] }
+        set { self[TabViewSizeKey.self] = newValue }
     }
 }

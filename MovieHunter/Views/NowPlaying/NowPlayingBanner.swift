@@ -46,9 +46,6 @@ struct NowPlayingBanner: View {
             BookMarkCornerButton(movieID: movie.id)
                 .matchedGeometryEffect(id: "posterTopLeading", in: nameSpace, anchor: .topLeading, isSource: false)
         )
-//        .onTapGesture {
-//            goDetail(.nowPlaying, movie)
-//        }
         .padding(.bottom, 15)
         .background(Assets.Colors.rowBackground)
     }

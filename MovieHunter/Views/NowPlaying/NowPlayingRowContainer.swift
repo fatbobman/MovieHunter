@@ -13,13 +13,11 @@ struct NowPlayingRowContainer: View {
     @Environment(\.tmdb) private var tmdb
     @Environment(\.deviceStatus) private var deviceStatus
     @State private var movies = [Movie]()
-
     var body: some View {
         VStack(spacing: 0) {
             switch deviceStatus {
             case .compact:
                 NowPlayingTabViewRow(movies: movies)
-
             default:
                 NowPlayingScrollViewRow(movies: movies)
             }

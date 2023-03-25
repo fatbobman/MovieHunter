@@ -45,6 +45,10 @@ struct GoCategoryKey: EnvironmentKey {
     }
 }
 
+struct MovieIsLoadingKey: EnvironmentKey {
+    static var defaultValue: Bool = false
+}
+
 extension EnvironmentValues {
     // check if in favorite movie list
     var inWishlist: (Int) -> Bool {
@@ -74,5 +78,10 @@ extension EnvironmentValues {
     var goCategory: (Destination) -> Void {
         get { self[GoCategoryKey.self] }
         set { self[GoCategoryKey.self] = newValue }
+    }
+
+    var isLoading: Bool {
+        get { self[MovieIsLoadingKey.self] }
+        set { self[MovieIsLoadingKey.self] = newValue }
     }
 }

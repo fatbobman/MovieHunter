@@ -11,13 +11,12 @@ import TMDb
 
 final class MoviesGalleryLoader: RandomAccessCollection, ObservableObject {
     @Published var movies = [Movie]()
-
+    @Published var loading = false
     @AppStorage("genre_sortBy") private var genre_sortBy: Genre_SortBy = .byPopularity
     private var category: Category? = nil
     private var tmdb: TMDbAPI? = nil
     private var currentPage: Int = 1
     private var finished = false
-    private var loading = false
     private let maxPage = 10
     private var loader: ((Int) async throws -> PageableListResult<Movie>)?
 
@@ -32,7 +31,9 @@ final class MoviesGalleryLoader: RandomAccessCollection, ObservableObject {
 
     func loadNextPage() async {
         if !finished,!loading, let loader {
-            loading = true
+            await MainActor.run{
+                loading = true
+            }
             if let result = await withErrorHandling({ () -> PageableListResult<Movie> in
                 try await loader(self.currentPage)
             }) {
@@ -48,7 +49,9 @@ final class MoviesGalleryLoader: RandomAccessCollection, ObservableObject {
                     }
                 }
             }
-            loading = false
+            await MainActor.run{
+                loading = false
+            }
         }
     }
 

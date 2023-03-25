@@ -28,6 +28,7 @@ struct MovieGalleryContainer: View {
 
 struct GalleryLazyVGrid: View {
     let movies: AnyRandomAccessCollection<Movie>
+    @Environment(\.isLoading) private var isLoading
     private let minWidth: CGFloat = DisplayType.portrait(.middle).imageSize.width + 10
     var body: some View {
         ScrollView(.vertical) {
@@ -38,12 +39,17 @@ struct GalleryLazyVGrid: View {
                 }
             }
             .padding(.vertical,20)
+            if isLoading {
+                ProgressView()
+                    .padding(10)
+            }
         }
     }
 }
 
 struct GalleryLazyVStack: View {
     let movies: AnyRandomAccessCollection<Movie>
+    @Environment(\.isLoading) private var isLoading
     var body: some View {
         ScrollView {
             LazyVStack(spacing:0) {
@@ -58,6 +64,10 @@ struct GalleryLazyVStack: View {
                     }
                     .padding(.horizontal,10)
                 }
+            }
+            if isLoading {
+                ProgressView()
+                    .padding(10)
             }
         }
     }

@@ -11,7 +11,7 @@ import TMDb
 
 struct MovieGalleryDataSource: View {
     let category: Category
-
+    // TODO: 添加 isLoading 提示
     @StateObject private var loader = MoviesGalleryLoader()
     @Environment(\.tmdb) private var tmdb
     @FetchRequest
@@ -42,6 +42,7 @@ struct MovieGalleryDataSource: View {
 
     var body: some View {
         MovieGalleryContainer(movies: movies)
+            .environment(\.isLoading, loader.loading)
             .onAppear {
                 switch source {
                 case .tmdb:

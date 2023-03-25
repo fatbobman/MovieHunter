@@ -12,19 +12,14 @@ import TMDb
 final class MoviesGalleryLoader: RandomAccessCollection, ObservableObject {
     @Published var movies = [Movie]()
     @Published var loading = false
-    @StateObject private var configuration = AppConfiguration()
     private var category: Category? = nil
     private var tmdb: TMDbAPI? = nil
     private var currentPage: Int = 1
     private var finished = false
     private let maxPage = 10
     private var loader: ((Int) async throws -> PageableListResult<Movie>)?
-    private var genre_sortBy:Genre_SortBy {
-        configuration.genre_sortBy
-    }
-    private var showAdultMovieInResult:Bool {
-        configuration.showAdultMovieInResult
-    }
+    @AppStorage("genre_sortBy") var genre_sortBy: Genre_SortBy = .byPopularity
+    @AppStorage("showAdultMovieInResult") var showAdultMovieInResult = false
 
     func formIndex(after i: inout Int) {
         i += 1
@@ -77,6 +72,13 @@ final class MoviesGalleryLoader: RandomAccessCollection, ObservableObject {
         guard self.tmdb == nil, self.category == nil else { return }
         self.tmdb = tmdb
         self.category = category
+        loader = makeLoader(category: category, tmdb: tmdb)
+        Task {
+            await loadNextPage()
+        }
+    }
+
+    func makeLoader(category: Category, tmdb: TMDbAPI) -> ((Int) async throws -> PageableListResult<Movie>)? {
         let loaders = Loaders()
         var loader: ((Int) async throws -> PageableListResult<Movie>)? = nil
         switch category {
@@ -93,10 +95,7 @@ final class MoviesGalleryLoader: RandomAccessCollection, ObservableObject {
         default:
             break
         }
-        self.loader = loader
-        Task {
-            await loadNextPage()
-        }
+        return loader
     }
 }
 

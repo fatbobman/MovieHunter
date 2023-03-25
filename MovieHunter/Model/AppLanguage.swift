@@ -31,7 +31,7 @@ enum AppLanguage: Int, CaseIterable, Identifiable {
     var locale: Locale {
         switch self {
         case .system:
-            return .current
+            return .autoupdatingCurrent
         case .zh:
             return .init(identifier: "zh-cn")
         case .en:

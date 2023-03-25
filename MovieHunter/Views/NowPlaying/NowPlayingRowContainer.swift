@@ -51,7 +51,7 @@ struct MovieNowPlayingScrollView_Previews: PreviewProvider {
                 NowPlayingRowContainer()
                 Spacer()
             }
-            .navigationTitle("")
+            .navigationTitle("EmptyLocalizableString")
             #if !os(macOS)
                 .navigationBarTitleDisplayMode(.inline)
             #endif

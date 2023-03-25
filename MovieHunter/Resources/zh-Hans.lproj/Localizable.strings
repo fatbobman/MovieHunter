@@ -53,3 +53,6 @@
 // ConfirmationDialog
 "Confirm_To_Remove_From_Favorite_Movies" = "从想看列表中移除";
 "Wishlist_Manage" = "想看列表";
+
+// PlaceHolder 替代 “”
+"EmptyLocalizableString" = "";

@@ -13,7 +13,7 @@ struct GenreContainer: View {
     let genreID:Int
     
     private var genreTitle:LocalizedStringKey {
-        Genres(rawValue: genreID)?.localizedString ?? ""
+        Genres(rawValue: genreID)?.localizedString ?? "EmptyLocalizableString"
     }
     
     var body: some View {

@@ -38,8 +38,8 @@ extension Category {
             return "Category_movieWishlist"
         case .favoritePerson:
             return "Category_favoritePerson"
-        case .genre:
-            return ""
+        case .genre(let genreID):
+            return Genres(id: genreID)?.localizedString ?? "EmptyLocalizableString"
         }
     }
 }

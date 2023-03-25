@@ -14,12 +14,15 @@ struct MovieGalleryContainer: View {
     @Environment(\.deviceStatus) private var deviceStatus
 
     var body: some View {
-        switch deviceStatus {
-        case .macOS, .regular:
-            GalleryLazyVGrid(movies: movies)
-        case .compact:
-            GalleryLazyVStack(movies: movies)
+        VStack {
+            switch deviceStatus {
+            case .macOS, .regular:
+                GalleryLazyVGrid(movies: movies)
+            case .compact:
+                GalleryLazyVStack(movies: movies)
+            }
         }
+        .animation(.default, value: movies.count)
     }
 }
 

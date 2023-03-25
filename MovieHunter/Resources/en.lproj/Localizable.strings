@@ -54,3 +54,6 @@
 // ConfirmationDialog
 "Confirm_To_Remove_From_Favorite_Movies" = "Remove from Watchlist";
 "Wishlist_Manage" = "Wishlist";
+
+// PlaceHolder 替代 “”
+"EmptyLocalizableString" = "";

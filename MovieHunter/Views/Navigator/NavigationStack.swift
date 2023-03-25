@@ -17,8 +17,6 @@ struct StackContainer: View {
                     switch destination {
                     case .favoritePerson:
                         EmptyView()
-                    case .wishlist:
-                        WishlistContainer()
                     case .movieDetail:
                         // movie Detail
                         EmptyView()
@@ -26,7 +24,7 @@ struct StackContainer: View {
                         EmptyView()
                     default:
                         if let category = destination.category {
-                            
+                            MovieGalleryDataSource(category: category)
                         }
                     }
                 }

@@ -99,7 +99,7 @@ struct FavoritButton: View {
 struct PersonName: View {
     let person: Person?
     var body: some View {
-        Text(person?.name ?? "")
+        Text(person?.name ?? "EmptyLocalizableString")
             .lineLimit(1)
             .font(.caption)
     }

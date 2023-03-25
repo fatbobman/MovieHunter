@@ -13,7 +13,7 @@ struct TMDBKey: EnvironmentKey {
     static var tmdbConfiguration: URLSessionConfiguration {
         let configuration = URLSessionConfiguration.default
         configuration.urlCache = URLCache(memoryCapacity: 0, diskCapacity: 1024 * 1024 * 100)
-        configuration.requestCachePolicy = .reloadRevalidatingCacheData
+        configuration.requestCachePolicy = .returnCacheDataElseLoad
         return configuration
     }
 

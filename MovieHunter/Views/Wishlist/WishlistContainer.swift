@@ -14,7 +14,10 @@ struct WishlistContainer: View {
     @State private var showEmpty: Bool = true
     var body: some View {
         VStack(spacing: 0) {
-            ViewMoreButton(title: Category.movieWishlist.localizedString)
+            ViewMoreButton(
+                title: Category.movieWishlist.localizedString,
+                destination: .wishlist
+            )
             WishlistScrollView()
                 .overlay(
                     VStack {

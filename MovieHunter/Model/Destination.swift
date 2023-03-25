@@ -45,4 +45,27 @@ enum Destination: CustomDebugStringConvertible, Identifiable, Hashable, Equatabl
     var id: String {
         debugDescription
     }
+
+    var category: Category? {
+        switch self {
+        case .upcoming:
+            return .upComing
+        case .nowPlaying:
+            return .nowPlaying
+        case .popular:
+            return .popular
+        case .topRate:
+            return .topRate
+        case .wishlist:
+            return .movieWishlist
+        case .favoritePerson:
+            return .favoritePerson
+        case let .genre(genreID):
+            return .genre(genreID)
+        case .movieDetail:
+            return nil
+        case .personDetail:
+            return nil
+        }
+    }
 }

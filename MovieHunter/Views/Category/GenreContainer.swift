@@ -18,7 +18,10 @@ struct GenreContainer: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            ViewMoreButton(title: genreTitle)
+            ViewMoreButton(
+                title: genreTitle,
+                destination: .genre(genreID)
+            )
             GenreScrollView(genreID: genreID)
         }
         .background(Assets.Colors.rowBackground)

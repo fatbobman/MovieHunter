@@ -27,7 +27,8 @@ struct NowPlayingRowContainer: View {
                 title: Category.nowPlaying.localizedString,
                 showSymbol: false,
                 showViewMoreText: false,
-                textSize: .small
+                textSize: .small,
+                destination: .nowPlaying
             )
         }
         .task {
@@ -38,10 +39,10 @@ struct NowPlayingRowContainer: View {
     }
 }
 
- struct MovieNowPlayingScrollView_Previews: PreviewProvider {
+struct MovieNowPlayingScrollView_Previews: PreviewProvider {
     static var previews: some View {
         NowPlayingRowContainer()
-        .environment(\.colorScheme, .dark)
+            .environment(\.colorScheme, .dark)
 
         NavigationSplitView {
             Text("abc")
@@ -59,4 +60,4 @@ struct NowPlayingRowContainer: View {
         .previewDevice(.init(rawValue: "iPad Pro (11-inch) (4th generation)"))
         .previewInterfaceOrientation(.landscapeLeft)
     }
- }
+}

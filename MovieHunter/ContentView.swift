@@ -11,7 +11,7 @@ struct ContentView: View {
     @EnvironmentObject var store: Store
     var body: some View {
         VStack {
-            Home()
+            StackContainer()
                 .environment(\.inWishlist) {
                     store.state.favoriteMovieIDs.contains($0)
                 }

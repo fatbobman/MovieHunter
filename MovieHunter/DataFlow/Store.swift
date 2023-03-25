@@ -11,7 +11,7 @@ import Foundation
 final class Store: ObservableObject {
     private let configuration = AppConfiguration()
 
-    @Published private(set) var state: AppState
+    @Published var state: AppState
 
     private let environment = AppEnvironment()
 

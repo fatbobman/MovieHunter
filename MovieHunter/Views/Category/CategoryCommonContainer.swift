@@ -13,7 +13,10 @@ struct CategoryCommonContainer: View {
     let category: Category
     var body: some View {
         VStack(spacing: 0) {
-            ViewMoreButton(title: category.localizedString)
+            ViewMoreButton(
+                title: category.localizedString,
+                destination: category.destination
+            )
             CategoryCommonScrollView(category: category)
         }
         .background(Assets.Colors.rowBackground)

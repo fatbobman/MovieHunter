@@ -15,6 +15,7 @@ struct ViewMoreButton: View {
     private let showViewMoreText: Bool
     private let showArrow: Bool
     private let textSize: TextSize
+    private let destination: Destination
     @Environment(\.goCategory) private var goCategory
 
     init(
@@ -22,13 +23,15 @@ struct ViewMoreButton: View {
         showSymbol: Bool = true,
         showViewMoreText: Bool = true,
         showArrow: Bool = true,
-        textSize: TextSize = .middle
+        textSize: TextSize = .middle,
+        destination: Destination
     ) {
         self.title = title
         self.showSymbol = showSymbol
         self.showViewMoreText = showViewMoreText
         self.showArrow = showArrow
         self.textSize = textSize
+        self.destination = destination
     }
 
     var body: some View {
@@ -37,7 +40,7 @@ struct ViewMoreButton: View {
             .frame(maxWidth: .infinity)
             .overlay(
                 Button {
-                    goCategory(.favoritePerson)
+                    goCategory(destination)
                 } label: {
                     HStack(spacing: 10) {
                         if showSymbol {
@@ -161,10 +164,14 @@ struct MoreButton: View {
                     title: Category.nowPlaying.localizedString,
                     showSymbol: false,
                     showViewMoreText: false,
-                    textSize: .small
+                    textSize: .small,
+                    destination: .nowPlaying
                 )
 
-                ViewMoreButton(title: Category.movieWishlist.localizedString)
+                ViewMoreButton(
+                    title: Category.movieWishlist.localizedString,
+                    destination: .nowPlaying
+                )
             }
         }
     }

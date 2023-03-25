@@ -45,11 +45,6 @@
 "Wishlist_Is_Empty_Description_1" = "不要错过任何电影或节目。";
 "Wishlist_Is_Empty_Description_2" = "使用您的想看列表跟踪您想看的内容。";
 
-// SortBy
-"SortBy_VoteAverage" = "按评分排序";
-"SortBy_ReleaseDate" = "按发布日期排序";
-"SortBy_Popularity" = "按受欢迎程度排序";
-
 // ConfirmationDialog
 "Confirm_To_Remove_From_Favorite_Movies" = "从想看列表中移除";
 "Wishlist_Manage" = "想看列表";
@@ -67,7 +62,6 @@
 // Setting
 "Setting_Title" = "设置";
 "SettingCategory_Appearance" = "外观";
-"SettingCategory_Preference" = "电影偏好";
 "SettingCategory_Genre" = "电影类型";
 "SettingCategory_NetworkAndStorage" = "网络与存储";
 "SettingCategory_About" = "关于";

@@ -18,8 +18,8 @@ final class MoviesGalleryLoader: RandomAccessCollection, ObservableObject {
     private var finished = false
     private let maxPage = 10
     private var loader: ((Int) async throws -> PageableListResult<Movie>)?
-    @AppStorage("genre_sortBy") var genre_sortBy: Genre_SortBy = .byPopularity
-    @AppStorage("showAdultMovieInResult") var showAdultMovieInResult = false
+    private let genre_sortBy: Genre_SortBy = .byPopularity
+    private let showAdultMovieInResult = false
 
     func formIndex(after i: inout Int) {
         i += 1

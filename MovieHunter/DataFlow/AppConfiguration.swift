@@ -16,10 +16,6 @@ final class AppConfiguration: ObservableObject {
     @AppStorage("language") var appLanguage: AppLanguage = .system
     /// selected genre
     @AppStorage("genres") var genres: [Int] = Genres.allCases.map { $0.rawValue }
-    /// show adult movie
-    @AppStorage("showAdultMovieInResult") var showAdultMovieInResult = false
-    /// genre sortBy
-    @AppStorage("genre_sortBy") var genre_sortBy: Genre_SortBy = .byPopularity
     /// show book mark button in movie poster
     @AppStorage("show_favorite_button_in_movie_poster") var show_favorite_button_in_movie_poster = true
     /// show book mark button in person poster

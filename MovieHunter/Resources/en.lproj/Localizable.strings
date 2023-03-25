@@ -57,3 +57,6 @@
 
 // PlaceHolder 替代 “”
 "EmptyLocalizableString" = "";
+
+// SideBar
+"SideBar_Genre_Section_Label" = "Genre";

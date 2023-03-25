@@ -11,19 +11,23 @@ struct ContentView: View {
     @EnvironmentObject var store: Store
     var body: some View {
         VStack {
-            StackContainer()
-                .environment(\.inWishlist) {
-                    store.state.favoriteMovieIDs.contains($0)
-                }
-                .environment(\.goDetailFromHome) { category, movie in
-                    store.send(.setDestination(to: [category.destination, .movieDetail(movie)]))
-                }
-                .environment(\.updateWishlist) {
-                    store.send(.updateMovieWishlist($0))
-                }
-                .environment(\.goCategory) {
-                    store.send(.setDestination(to: [$0]))
-                }
+            #if !os(macOS)
+                TabViewContainer()
+            #else
+                StackContainer()
+            #endif
+        }
+        .environment(\.inWishlist) {
+            store.state.favoriteMovieIDs.contains($0)
+        }
+        .environment(\.goDetailFromHome) { category, movie in
+            store.send(.setDestination(to: [category.destination, .movieDetail(movie)]))
+        }
+        .environment(\.updateWishlist) {
+            store.send(.updateMovieWishlist($0))
+        }
+        .environment(\.goCategory) {
+            store.send(.setDestination(to: [$0]))
         }
     }
 }

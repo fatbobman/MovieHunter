@@ -60,3 +60,7 @@
 
 // SideBar
 "SideBar_Genre_Section_Label" = "Genre";
+
+// Tab
+"Tab_Home" = "Home";
+"Tab_Setting" = "You";

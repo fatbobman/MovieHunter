@@ -59,3 +59,7 @@
 
 // SideBar
 "SideBar_Genre_Section_Label" = "类型";
+
+// Tab
+"Tab_Home" = "首页";
+"Tab_Setting" = "您";

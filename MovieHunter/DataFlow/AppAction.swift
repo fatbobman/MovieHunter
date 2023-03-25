@@ -16,6 +16,8 @@ enum AppAction {
     case TabItemButtonTapped(TabDestination)
     /// empty destinations and back to home
     case setDestination(to: [Destination])
+    /// update destnation
+    case updateDestination(to: [Destination])
     /// append one destination into destinations
     case gotoDestination(Destination)
     /// Configuration

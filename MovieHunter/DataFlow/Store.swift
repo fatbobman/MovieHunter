@@ -69,6 +69,16 @@ final class Store: ObservableObject {
             state.destinations.append(destination)
         // set destination of NavigationStack from root
         case let .setDestination(destinations):
+            if state.destinations == destinations {
+                break
+            }
+            if state.destinations.isEmpty {
+                state.destinations = destinations
+                break
+            }
+            state.destinations.removeAll()
+            return Just(AppAction.updateDestination(to: destinations)).delay(for: .seconds(1), scheduler: DispatchQueue.main).eraseToAnyPublisher()
+        case let .updateDestination(destinations):
             state.destinations = destinations
         // update colorScheme
         case let .updateColorScheme(colorScheme):

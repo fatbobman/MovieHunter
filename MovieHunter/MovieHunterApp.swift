@@ -10,16 +10,19 @@ import SwiftUI
 @main
 struct MovieHunterApp: App {
     let stack = CoreDataStack.share
-    @StateObject var store = Store.share
+//    @StateObject var store = Store.share
     var body: some Scene {
         WindowGroup {
             ContentView()
 //            MovieGalleryDataSource(category:.genre(12))
-                .syncCoreData() // 同步 favorite 数据
-                .environmentObject(store)
-                .preferredColorScheme(store.state.configuration.colorScheme.colorScheme)
-                .setDeviceStatus()
                 .environment(\.managedObjectContext, stack.viewContext)
         }
+        
+        #if os(macOS)
+        Settings {
+            SettingContainer()
+                .environmentObject(Store.share)
+        }
+        #endif
     }
 }

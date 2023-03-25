@@ -6,9 +6,13 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ContentView: View {
-    @EnvironmentObject var store: Store
+    @StateObject var store = Store()
+//    @AppStorage("colorScheme") var colorScheme: ColorSchemeSetting = .system
+    @State var id = UUID()
+    @StateObject private var c = AppConfiguration.share
     var body: some View {
         VStack {
             #if !os(macOS)
@@ -29,6 +33,11 @@ struct ContentView: View {
         .environment(\.goCategory) {
             store.send(.setDestination(to: [$0]))
         }
+        .syncCoreData() // 同步 favorite 数据
+        .environmentObject(store)
+        .preferredColorScheme(c.colorScheme.colorScheme)
+        .environment(\.locale, c.appLanguage.locale)
+        .setDeviceStatus()
     }
 }
 

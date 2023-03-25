@@ -9,17 +9,11 @@ import Combine
 import Foundation
 
 final class Store: ObservableObject {
-    private let configuration = AppConfiguration()
-
-    @Published var state: AppState
+    
+    @Published var state = AppState()
 
     private let environment = AppEnvironment()
-
     private var effectCancellable: [UUID: AnyCancellable] = [:]
-
-    init() {
-        state = AppState(configuration: configuration)
-    }
 
     func send(_ action: AppAction) {
         let effect = reduce(&state, action, environment)
@@ -80,20 +74,12 @@ final class Store: ObservableObject {
             return Just(AppAction.updateDestination(to: destinations)).delay(for: .seconds(1), scheduler: DispatchQueue.main).eraseToAnyPublisher()
         case let .updateDestination(destinations):
             state.destinations = destinations
-        // update colorScheme
-        case let .updateColorScheme(colorScheme):
-            state.configuration.colorScheme = colorScheme
         // update favorite movie
         case let .updateMovieWishlist(movieID):
             environment.stack.updateFavoriteMovie(movieID: movieID)
         // update favorite person
         case let .updateFavoritePersonList(personID):
             environment.stack.updateFavoritePerson(personID: personID)
-        // update genre list
-        case let .updateGenreList(genres):
-            state.configuration.genres = genres
-        case .noop:
-            break
         }
         return Empty(completeImmediately: true).eraseToAnyPublisher()
     }

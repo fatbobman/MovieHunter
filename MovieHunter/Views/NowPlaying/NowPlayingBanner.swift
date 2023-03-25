@@ -16,7 +16,7 @@ struct NowPlayingBanner: View {
     @Environment(\.deviceStatus) private var deviceStatus
     @Environment(\.colorScheme) private var colorScheme
     @Namespace private var nameSpace
-    @StateObject private var configuration = AppConfiguration()
+    @StateObject private var configuration = AppConfiguration.share
     private var showBookMark: Bool {
         configuration.showBookMarkInPoster
     }

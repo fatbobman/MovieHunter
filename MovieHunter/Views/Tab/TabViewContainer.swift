@@ -9,25 +9,25 @@ import Foundation
 import SwiftUI
 
 struct TabViewContainer: View {
-    @EnvironmentObject private var store:Store
-    
-    var selection:Binding<TabDestination> {
+    @EnvironmentObject private var store: Store
+
+    var selection: Binding<TabDestination> {
         store.binding(for: \.tabDestination, toAction: {
             .TabItemButtonTapped($0)
         })
     }
-    
+
     var body: some View {
-        TabView(selection: selection){
+        TabView(selection: selection) {
             StackContainer()
                 .tag(TabDestination.movie)
-                .tabItem{
+                .tabItem {
                     Label("Tab_Home", systemImage: "house.fill")
                 }
-            Text("Setting")
+            SettingContainer()
                 .tag(TabDestination.setting)
-                .tabItem{
-                    Label("Tab_Setting",systemImage: "person.circle.fill")
+                .tabItem {
+                    Label("Tab_Setting", systemImage: "gear")
                 }
         }
     }

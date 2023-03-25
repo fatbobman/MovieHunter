@@ -63,11 +63,20 @@
 
 // Tab
 "Tab_Home" = "Home";
-"Tab_Setting" = "You";
+"Tab_Setting" = "Settings";
 
 // Setting
+"Setting_Title" = "Settings";
 "SettingCategory_Appearance" = "Appearance";
-"SettingCategory_Preference" = "Preference";
-"SettingCategory_Genre" = "Genre";
+"SettingCategory_Preference" = "Movie Preference";
+"SettingCategory_Genre" = "Movie Genre";
 "SettingCategory_NetworkAndStorage" = "Network and Storage";
 "SettingCategory_About" = "About";
+"Setting_BySystem" = "System";
+"AppLanguage_English" = "English";
+"AppLanguage_Chinese" = "中文";
+"Setting_DarkMode" = "Dark";
+"Setting_LightMode" = "Light";
+"Setting_showBookMark" = "Display wishlist button";
+"Setting_ColorScheme_Label" = "Color Scheme";
+"Setting_Language_Label" = "Language";

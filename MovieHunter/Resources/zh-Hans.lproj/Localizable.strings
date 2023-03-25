@@ -62,11 +62,20 @@
 
 // Tab
 "Tab_Home" = "首页";
-"Tab_Setting" = "您";
+"Tab_Setting" = "设置";
 
 // Setting
+"Setting_Title" = "设置";
 "SettingCategory_Appearance" = "外观";
-"SettingCategory_Preference" = "偏好";
-"SettingCategory_Genre" = "类型";
+"SettingCategory_Preference" = "电影偏好";
+"SettingCategory_Genre" = "电影类型";
 "SettingCategory_NetworkAndStorage" = "网络与存储";
 "SettingCategory_About" = "关于";
+"Setting_BySystem" = "跟随系统";
+"AppLanguage_English" = "English";
+"AppLanguage_Chinese" = "中文";
+"Setting_DarkMode" = "深色";
+"Setting_LightMode" = "浅色";
+"Setting_showBookMark" = "显示想看按钮";
+"Setting_ColorScheme_Label" = "色彩模式";
+"Setting_Language_Label" = "语言";

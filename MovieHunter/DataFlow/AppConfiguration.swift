@@ -12,6 +12,8 @@ import TMDb
 final class AppConfiguration: ObservableObject {
     /// colorScheme
     @AppStorage("colorScheme") var colorScheme: ColorSchemeSetting = .system
+    /// Language
+    @AppStorage("language") var appLanguage: AppLanguage = .system
     /// selected genre
     @AppStorage("genres") var genres: [Int] = Genres.allCases.map { $0.rawValue }
     /// show adult movie
@@ -26,4 +28,6 @@ final class AppConfiguration: ObservableObject {
     @AppStorage("open_in_new_window") var open_in_new_window = false
     /// show bookMark
     @AppStorage("showBookMarkInPoster") var showBookMarkInPoster = true
+
+    static let share = AppConfiguration()
 }

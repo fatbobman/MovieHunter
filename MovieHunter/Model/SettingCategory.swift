@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum SettingCategory {
+enum SettingCategory: Int, CaseIterable, Hashable {
     case appearance
     case preference
     case genre

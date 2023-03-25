@@ -21,7 +21,7 @@ public struct MovieItem: View {
     @Environment(\.goDetailFromCategory) private var goDetailFromCategory
     @Environment(\.colorScheme) private var colorScheme
     @State private var isPressed: Bool = false
-    @StateObject private var configuration = AppConfiguration()
+    @StateObject private var configuration = AppConfiguration.share
     private var showBookMark: Bool {
         configuration.showBookMarkInPoster
     }

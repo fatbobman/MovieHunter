@@ -20,14 +20,8 @@ enum AppAction {
     case updateDestination(to: [Destination])
     /// append one destination into destinations
     case gotoDestination(Destination)
-    /// Configuration
-    case updateColorScheme(ColorSchemeSetting)
     /// update favorite movies
     case updateMovieWishlist(Int)
     /// update favorite person
     case updateFavoritePersonList(Int)
-    /// update genre list
-    case updateGenreList([Int])
-    
-    case noop
 }

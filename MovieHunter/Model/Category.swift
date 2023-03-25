@@ -70,6 +70,6 @@ extension Category {
         .upComing,
         .topRate,
         .movieWishlist,
-        .favoritePerson,
+//        .favoritePerson,
     ]
 }

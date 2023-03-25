@@ -92,6 +92,8 @@ final class Store: ObservableObject {
         // update genre list
         case let .updateGenreList(genres):
             state.configuration.genres = genres
+        case .noop:
+            break
         }
         return Empty(completeImmediately: true).eraseToAnyPublisher()
     }

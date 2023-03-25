@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct Home: View {
+    @EnvironmentObject private var store: Store
     @StateObject var configuration = AppConfiguration()
     var genres: [Genres] {
         Genres

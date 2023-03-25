@@ -16,7 +16,7 @@ enum AppAction {
     case TabItemButtonTapped(TabDestination)
     /// empty destinations and back to home
     case setDestination(to: [Destination])
-    /// update destnation
+    /// update destination
     case updateDestination(to: [Destination])
     /// append one destination into destinations
     case gotoDestination(Destination)
@@ -28,4 +28,6 @@ enum AppAction {
     case updateFavoritePersonList(Int)
     /// update genre list
     case updateGenreList([Int])
+    
+    case noop
 }

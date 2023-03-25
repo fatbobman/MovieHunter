@@ -67,6 +67,7 @@ struct ViewMoreButton: View {
                         }
                     }
                     .if(!showSymbol) { $0.frame(height: 40) }
+                    .contentShape(Rectangle())
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 16)
                 }

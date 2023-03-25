@@ -10,7 +10,11 @@ import SwiftUI
 
 struct SettingContainer: View {
     var body: some View {
-        Text("")
+        NavigationSplitView {
+            Text("d")
+        } detail: {
+            Text("s")
+        }
     }
 }
 

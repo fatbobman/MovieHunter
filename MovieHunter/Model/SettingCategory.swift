@@ -13,6 +13,7 @@ enum SettingCategory {
     case preference
     case genre
     case networkAndStorage
+    case about
 
     var localizedString: LocalizedStringKey {
         switch self {
@@ -24,6 +25,8 @@ enum SettingCategory {
             return "SettingCategory_Genre"
         case .networkAndStorage:
             return "SettingCategory_NetworkAndStorage"
+        case .about:
+            return "SettingCategory_About"
         }
     }
 }

@@ -10,7 +10,6 @@ import SwiftUI
 
 enum SettingCategory: Int, CaseIterable, Hashable {
     case appearance
-    case preference
     case genre
     case networkAndStorage
     case about
@@ -19,8 +18,6 @@ enum SettingCategory: Int, CaseIterable, Hashable {
         switch self {
         case .appearance:
             return "SettingCategory_Appearance"
-        case .preference:
-            return "SettingCategory_Preference"
         case .genre:
             return "SettingCategory_Genre"
         case .networkAndStorage:

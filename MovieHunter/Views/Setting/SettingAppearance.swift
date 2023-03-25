@@ -39,9 +39,16 @@ struct SettingAppearance: View {
             #endif
 
             // 是否显示书签
-            Toggle("Setting_showBookMark", isOn: c.$showBookMarkInPoster)
-                .toggleStyle(.switch)
+            LabeledContent {
+                Toggle("Setting_showBookMark", isOn: c.$showBookMarkInPoster)
+                    .toggleStyle(.switch)
+                    .labelsHidden()
+            } label: {
+                Text("Setting_showBookMark")
+                Text("Setting_showBookMark_Description")
+            }
         }
+        .formStyle(.grouped) // macOS 必加
     }
 }
 

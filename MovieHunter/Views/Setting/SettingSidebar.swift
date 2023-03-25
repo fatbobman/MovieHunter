@@ -16,10 +16,6 @@ struct SettingSidebar: View {
                 Label(SettingCategory.appearance.localizedString, systemImage: "textformat")
             }
 
-            NavigationLink(value: SettingCategory.preference) {
-                Label(SettingCategory.preference.localizedString, systemImage: "slider.horizontal.3")
-            }
-
             NavigationLink(value: SettingCategory.genre) {
                 Label(SettingCategory.genre.localizedString, systemImage: "list.and.film")
             }
@@ -28,10 +24,8 @@ struct SettingSidebar: View {
                 Label(SettingCategory.networkAndStorage.localizedString, systemImage: "opticaldiscdrive.fill")
             }
 
-            Section {
-                NavigationLink(value: SettingCategory.about) {
-                    Label(SettingCategory.about.localizedString, systemImage: "person.fill")
-                }
+            NavigationLink(value: SettingCategory.about) {
+                Label(SettingCategory.about.localizedString, systemImage: "person.fill")
             }
         }
         .navigationTitle("Setting_Title")

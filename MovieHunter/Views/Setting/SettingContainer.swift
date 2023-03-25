@@ -13,21 +13,27 @@ struct SettingContainer: View {
         NavigationSplitView {
             SettingSidebar()
                 .navigationDestination(for: SettingCategory.self) { category in
-                    switch category {
-                    case .appearance:
-                        SettingAppearance()
-                    case .preference:
-                        EmptyView()
-                    case .genre:
-                        EmptyView()
-                    case .networkAndStorage:
-                        EmptyView()
-                    case .about:
-                        EmptyView()
+                    Group {
+                        switch category {
+                        case .appearance:
+                            SettingAppearance()
+                        case .genre:
+                            EmptyView()
+                        case .networkAndStorage:
+                            EmptyView()
+                        case .about:
+                            EmptyView()
+                        }
                     }
+                    #if os(macOS)
+                    .toolbar(.hidden, for: .windowToolbar)
+                    #endif
                 }
         } detail: {
             SettingHome()
+            #if os(macOS)
+                .toolbar(.hidden, for: .windowToolbar)
+            #endif
         }
     }
 }

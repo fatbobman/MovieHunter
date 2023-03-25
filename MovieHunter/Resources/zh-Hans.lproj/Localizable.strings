@@ -77,5 +77,6 @@
 "Setting_DarkMode" = "深色";
 "Setting_LightMode" = "浅色";
 "Setting_showBookMark" = "显示想看按钮";
+"Setting_showBookMark_Description" = "如果不显示想看按钮，将只能在详情处管理该影片是否添加于想看列表";
 "Setting_ColorScheme_Label" = "色彩模式";
 "Setting_Language_Label" = "语言";

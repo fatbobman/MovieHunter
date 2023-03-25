@@ -9,18 +9,18 @@ import Foundation
 import SwiftUI
 
 enum AppLanguage: Int, CaseIterable, Identifiable {
-    case system
     case en
     case zh
+    case system
 
     var localizedString: LocalizedStringKey {
         switch self {
-        case .system:
-            return "Setting_BySystem"
         case .en:
             return "AppLanguage_English"
         case .zh:
             return "AppLanguage_Chinese"
+        case .system:
+            return "Setting_BySystem"
         }
     }
 

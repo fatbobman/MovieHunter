@@ -21,7 +21,7 @@ struct MovieHunterApp: App {
         #if os(macOS)
         Settings {
             SettingContainer()
-                .environmentObject(Store.share)
+//                .environmentObject(Store.share)
         }
         #endif
     }

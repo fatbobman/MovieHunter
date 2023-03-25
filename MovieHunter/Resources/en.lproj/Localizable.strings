@@ -78,5 +78,6 @@
 "Setting_DarkMode" = "Dark";
 "Setting_LightMode" = "Light";
 "Setting_showBookMark" = "Display wishlist button";
+"Setting_showBookMark_Description" = "If you don’t show the button to watch, you can only manage whether the film is added to the wishlist in movie detail";
 "Setting_ColorScheme_Label" = "Color Scheme";
 "Setting_Language_Label" = "Language";

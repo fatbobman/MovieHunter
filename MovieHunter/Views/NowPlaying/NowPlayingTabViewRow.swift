@@ -14,14 +14,16 @@ struct NowPlayingTabViewRow: View {
     @Environment(\.backdropSize) private var size
     var body: some View {
         // TODO: 自动滚屏控件
-            VStack {
-                ForEach(movies.prefix(1)) { movie in
-                    NowPlayingBanner(
-                        movie: movie,
-                        backdropSize: size
-                    )
-                }
+        TabView {
+            ForEach(movies) { movie in
+                NowPlayingBanner(
+                    movie: movie,
+                    backdropSize: size
+                )
             }
+        }
+        .tabViewStyle(.page(indexDisplayMode: .never))
+        .frame(width: size.width, height: size.height + 70)
     }
 }
 

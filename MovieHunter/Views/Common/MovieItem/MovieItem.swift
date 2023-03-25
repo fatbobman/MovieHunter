@@ -22,7 +22,7 @@ public struct MovieItem: View {
     @Environment(\.colorScheme) private var colorScheme
     @State private var isPressed: Bool = false
     @StateObject private var configuration = AppConfiguration()
-    private var showBookMark:Bool {
+    private var showBookMark: Bool {
         configuration.showBookMarkInPoster
     }
 

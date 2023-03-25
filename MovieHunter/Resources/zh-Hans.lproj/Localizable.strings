@@ -63,3 +63,9 @@
 // Tab
 "Tab_Home" = "首页";
 "Tab_Setting" = "您";
+
+// Setting
+"SettingCategory_Appearance" = "外观";
+"SettingCategory_Preference" = "偏好";
+"SettingCategory_Genre" = "类型";
+"SettingCategory_NetworkAndStorage" = "网络与存储";

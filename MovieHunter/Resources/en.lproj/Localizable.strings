@@ -64,3 +64,9 @@
 // Tab
 "Tab_Home" = "Home";
 "Tab_Setting" = "You";
+
+// Setting
+"SettingCategory_Appearance" = "Appearance";
+"SettingCategory_Preference" = "Preference";
+"SettingCategory_Genre" = "Genre";
+"SettingCategory_NetworkAndStorage" = "Network and Storage";

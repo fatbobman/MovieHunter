@@ -12,6 +12,7 @@ import TMDb
 struct GenreScrollView: View {
     let genreID: Int
     @State private var movies = [Movie]()
+    @AppStorage("showAdultMovieInResult") var showAdultMovieInResult = false
     @Environment(\.tmdb) private var tmdb
     var body: some View {
         ScrollView(.horizontal) {
@@ -43,7 +44,7 @@ struct GenreScrollView: View {
                 .frame(width: 6)
         }
         .task {
-            if let result = try? await tmdb.discover.movies(sortedBy: nil, withPeople: nil, withGenres: [genreID], page: 1) {
+            if let result = try? await tmdb.discover.movies(sortedBy: nil, withPeople: nil, withGenres: [genreID],includeAdult: showAdultMovieInResult, page: 1) {
                 movies = Array(result.results.prefix(10))
             }
         }

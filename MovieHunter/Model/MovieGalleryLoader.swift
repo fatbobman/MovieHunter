@@ -13,6 +13,7 @@ final class MoviesGalleryLoader: RandomAccessCollection, ObservableObject {
     @Published var movies = [Movie]()
     @Published var loading = false
     @AppStorage("genre_sortBy") private var genre_sortBy: Genre_SortBy = .byPopularity
+    @AppStorage("showAdultMovieInResult") var showAdultMovieInResult = false
     private var category: Category? = nil
     private var tmdb: TMDbAPI? = nil
     private var currentPage: Int = 1
@@ -31,7 +32,7 @@ final class MoviesGalleryLoader: RandomAccessCollection, ObservableObject {
 
     func loadNextPage() async {
         if !finished,!loading, let loader {
-            await MainActor.run{
+            await MainActor.run {
                 loading = true
             }
             if let result = await withErrorHandling({ () -> PageableListResult<Movie> in
@@ -49,7 +50,7 @@ final class MoviesGalleryLoader: RandomAccessCollection, ObservableObject {
                     }
                 }
             }
-            await MainActor.run{
+            await MainActor.run {
                 loading = false
             }
         }
@@ -83,7 +84,7 @@ final class MoviesGalleryLoader: RandomAccessCollection, ObservableObject {
         case .topRate:
             loader = { try await loaders.topRate(tmdb, $0) }
         case let .genre(genreID):
-            loader = { try await loaders.genre(tmdb, self.genre_sortBy.movieSort, genreID, $0) }
+            loader = { try await loaders.genre(tmdb, self.genre_sortBy.movieSort, genreID, self.showAdultMovieInResult, $0) }
         default:
             break
         }
@@ -112,8 +113,8 @@ extension MoviesGalleryLoader {
             try await tmdb.movies.topRated(page: page)
         }
 
-        let genre: (TMDbAPI, MovieSort, Genre.ID, Int) async throws -> PageableListResult<Movie> = { tmdb, sort, genreID, page in
-            try await tmdb.discover.movies(sortedBy: sort, withPeople: nil, withGenres: [genreID], page: page)
+        let genre: (TMDbAPI, MovieSort, Genre.ID, Bool, Int) async throws -> PageableListResult<Movie> = { tmdb, sort, genreID, includeAdult, page in
+            try await tmdb.discover.movies(sortedBy: sort, withPeople: nil, withGenres: [genreID], includeAdult: includeAdult, page: page)
         }
     }
 }

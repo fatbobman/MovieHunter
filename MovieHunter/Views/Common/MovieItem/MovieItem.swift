@@ -21,6 +21,10 @@ public struct MovieItem: View {
     @Environment(\.goDetailFromCategory) private var goDetailFromCategory
     @Environment(\.colorScheme) private var colorScheme
     @State private var isPressed: Bool = false
+    @StateObject private var configuration = AppConfiguration()
+    private var showBookMark:Bool {
+        configuration.showBookMarkInPoster
+    }
 
     init(
         movie: Movie?,
@@ -92,8 +96,9 @@ public struct MovieItem: View {
                 }
             }
             .buttonStyle(.pressStatus($isPressed))
-
-            BookMarkCornerButton(movieID: movie?.id)
+            if showBookMark {
+                BookMarkCornerButton(movieID: movie?.id)
+            }
         }
         .scaleEffect(isPressed ? 0.95 : 1)
         .animation(.easeOut.speed(2), value: isPressed)

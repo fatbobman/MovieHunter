@@ -24,4 +24,6 @@ final class AppConfiguration: ObservableObject {
     @AppStorage("show_favorite_button_in_person_poster") var show_favorite_button_in_person_poster = true
     /// open in new window on macOS
     @AppStorage("open_in_new_window") var open_in_new_window = false
+    /// show bookMark
+    @AppStorage("showBookMarkInPoster") var showBookMarkInPoster = true
 }

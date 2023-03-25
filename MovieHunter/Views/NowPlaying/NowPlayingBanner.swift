@@ -16,6 +16,10 @@ struct NowPlayingBanner: View {
     @Environment(\.deviceStatus) private var deviceStatus
     @Environment(\.colorScheme) private var colorScheme
     @Namespace private var nameSpace
+    @StateObject private var configuration = AppConfiguration()
+    private var showBookMark:Bool {
+        configuration.showBookMarkInPoster
+    }
 
     var body: some View {
         Button {
@@ -43,8 +47,12 @@ struct NowPlayingBanner: View {
         }
         .buttonStyle(.flat)
         .overlay(
-            BookMarkCornerButton(movieID: movie.id)
-                .matchedGeometryEffect(id: "posterTopLeading", in: nameSpace, anchor: .topLeading, isSource: false)
+            Group {
+                if showBookMark {
+                    BookMarkCornerButton(movieID: movie.id)
+                        .matchedGeometryEffect(id: "posterTopLeading", in: nameSpace, anchor: .topLeading, isSource: false)
+                }
+            }
         )
         .padding(.bottom, 15)
         .background(Assets.Colors.rowBackground)

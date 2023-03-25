@@ -12,8 +12,10 @@ struct SplitViewContainer: View {
     var body: some View {
         NavigationSplitView {
             SideBar()
-                .navigationSplitViewColumnWidth(ideal: 240)
+                .navigationSplitViewColumnWidth(ideal: 180,max: 240)
+            #if !os(macOS)
                 .toolbar(.hidden, for: .navigationBar)
+            #endif
         } detail: {
             StackContainer()
         }

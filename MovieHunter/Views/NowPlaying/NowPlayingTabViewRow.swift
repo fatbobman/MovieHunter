@@ -22,7 +22,9 @@ struct NowPlayingTabViewRow: View {
                 )
             }
         }
+        #if !os(macOS)
         .tabViewStyle(.page(indexDisplayMode: .never))
+        #endif
         .frame(width: size.width, height: size.height + 70)
     }
 }

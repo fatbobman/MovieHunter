@@ -56,6 +56,9 @@ struct MovieGalleryDataSource: View {
                 wishlistMovies = await Movie.loadWishlistMovieByIDs(tmdb: tmdb, movieIDs: Array(favoriteMovieIDs.map(\.movieID).map(Int.init)))
             }
             .navigationTitle(category.localizedString)
+        #if !os(macOS)
+            .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
 }
 

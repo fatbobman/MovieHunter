@@ -64,7 +64,7 @@
 "Setting_Title" = "Settings";
 "SettingCategory_Appearance" = "Appearance";
 "SettingCategory_Genre" = "Movie Genre";
-"SettingCategory_NetworkAndStorage" = "Network and Storage";
+"SettingCategory_Storage" = "Storage";
 "SettingCategory_About" = "About";
 "Setting_BySystem" = "System";
 "AppLanguage_English" = "English";
@@ -75,3 +75,4 @@
 "Setting_showBookMark_Description" = "If you don’t show the button to watch, you can only manage whether the film is added to the wishlist in movie detail";
 "Setting_ColorScheme_Label" = "Color Scheme";
 "Setting_Language_Label" = "Language";
+"Setting_Genre_In_Home" = "The movie genre displayed in the home";

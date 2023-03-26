@@ -10,18 +10,18 @@ import SwiftUI
 
 enum SettingCategory: Int, CaseIterable, Hashable {
     case appearance
-    case genre
-    case networkAndStorage
+    case genres
+    case storage
     case about
 
     var localizedString: LocalizedStringKey {
         switch self {
         case .appearance:
             return "SettingCategory_Appearance"
-        case .genre:
+        case .genres:
             return "SettingCategory_Genre"
-        case .networkAndStorage:
-            return "SettingCategory_NetworkAndStorage"
+        case .storage:
+            return "SettingCategory_Storage"
         case .about:
             return "SettingCategory_About"
         }

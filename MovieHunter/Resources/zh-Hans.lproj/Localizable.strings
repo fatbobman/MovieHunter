@@ -63,7 +63,7 @@
 "Setting_Title" = "设置";
 "SettingCategory_Appearance" = "外观";
 "SettingCategory_Genre" = "电影类型";
-"SettingCategory_NetworkAndStorage" = "网络与存储";
+"SettingCategory_Storage" = "存储";
 "SettingCategory_About" = "关于";
 "Setting_BySystem" = "跟随系统";
 "AppLanguage_English" = "English";
@@ -74,3 +74,4 @@
 "Setting_showBookMark_Description" = "如果不显示想看按钮，将只能在详情处管理该影片是否添加于想看列表";
 "Setting_ColorScheme_Label" = "色彩模式";
 "Setting_Language_Label" = "语言";
+"Setting_Genre_In_Home" = "在列表中显示的电影类型";

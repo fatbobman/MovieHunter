@@ -16,12 +16,12 @@ struct SettingSidebar: View {
                 Label(SettingCategory.appearance.localizedString, systemImage: "textformat")
             }
 
-            NavigationLink(value: SettingCategory.genre) {
-                Label(SettingCategory.genre.localizedString, systemImage: "list.and.film")
+            NavigationLink(value: SettingCategory.genres) {
+                Label(SettingCategory.genres.localizedString, systemImage: "list.and.film")
             }
 
-            NavigationLink(value: SettingCategory.networkAndStorage) {
-                Label(SettingCategory.networkAndStorage.localizedString, systemImage: "opticaldiscdrive.fill")
+            NavigationLink(value: SettingCategory.storage) {
+                Label(SettingCategory.storage.localizedString, systemImage: "opticaldiscdrive.fill")
             }
 
             NavigationLink(value: SettingCategory.about) {

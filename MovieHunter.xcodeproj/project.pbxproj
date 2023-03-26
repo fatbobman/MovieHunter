@@ -50,8 +50,8 @@
 		769F247C29CF001200C550B8 /* SettingSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F247B29CF001200C550B8 /* SettingSidebar.swift */; };
 		769F247E29CF001C00C550B8 /* SettingHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F247D29CF001C00C550B8 /* SettingHome.swift */; };
 		769F248029CF002800C550B8 /* SettingAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F247F29CF002800C550B8 /* SettingAppearance.swift */; };
-		769F248429CF003D00C550B8 /* SettingGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F248329CF003D00C550B8 /* SettingGenre.swift */; };
-		769F248629CF004B00C550B8 /* SettingNetworkAndStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F248529CF004B00C550B8 /* SettingNetworkAndStorage.swift */; };
+		769F248429CF003D00C550B8 /* SettingGenres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F248329CF003D00C550B8 /* SettingGenres.swift */; };
+		769F248629CF004B00C550B8 /* SettingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F248529CF004B00C550B8 /* SettingStorage.swift */; };
 		769F248829CF005200C550B8 /* SettingAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F248729CF005200C550B8 /* SettingAbout.swift */; };
 		769F248A29CF10E700C550B8 /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F248929CF10E700C550B8 /* AppLanguage.swift */; };
 		76A0D34F29C9727A002C3286 /* Genre_SortBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A0D34E29C9727A002C3286 /* Genre_SortBy.swift */; };
@@ -130,8 +130,8 @@
 		769F247B29CF001200C550B8 /* SettingSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSidebar.swift; sourceTree = "<group>"; };
 		769F247D29CF001C00C550B8 /* SettingHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHome.swift; sourceTree = "<group>"; };
 		769F247F29CF002800C550B8 /* SettingAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAppearance.swift; sourceTree = "<group>"; };
-		769F248329CF003D00C550B8 /* SettingGenre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingGenre.swift; sourceTree = "<group>"; };
-		769F248529CF004B00C550B8 /* SettingNetworkAndStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNetworkAndStorage.swift; sourceTree = "<group>"; };
+		769F248329CF003D00C550B8 /* SettingGenres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingGenres.swift; sourceTree = "<group>"; };
+		769F248529CF004B00C550B8 /* SettingStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingStorage.swift; sourceTree = "<group>"; };
 		769F248729CF005200C550B8 /* SettingAbout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAbout.swift; sourceTree = "<group>"; };
 		769F248929CF10E700C550B8 /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
 		76A0D34E29C9727A002C3286 /* Genre_SortBy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre_SortBy.swift; sourceTree = "<group>"; };
@@ -319,8 +319,8 @@
 				769F247B29CF001200C550B8 /* SettingSidebar.swift */,
 				769F247D29CF001C00C550B8 /* SettingHome.swift */,
 				769F247F29CF002800C550B8 /* SettingAppearance.swift */,
-				769F248329CF003D00C550B8 /* SettingGenre.swift */,
-				769F248529CF004B00C550B8 /* SettingNetworkAndStorage.swift */,
+				769F248329CF003D00C550B8 /* SettingGenres.swift */,
+				769F248529CF004B00C550B8 /* SettingStorage.swift */,
 				769F248729CF005200C550B8 /* SettingAbout.swift */,
 			);
 			path = Setting;
@@ -591,7 +591,7 @@
 				769002CC29C82C1800620A3C /* CategoryCommonContainer.swift in Sources */,
 				76AC25B329C2E37C007874DA /* MovieItem.swift in Sources */,
 				769F248829CF005200C550B8 /* SettingAbout.swift in Sources */,
-				769F248629CF004B00C550B8 /* SettingNetworkAndStorage.swift in Sources */,
+				769F248629CF004B00C550B8 /* SettingStorage.swift in Sources */,
 				76AC258529C2E23A007874DA /* ContentView.swift in Sources */,
 				76AC25B429C2E37C007874DA /* MovieShortInfo.swift in Sources */,
 				76AC25B229C2E37C007874DA /* BookMarkButton.swift in Sources */,
@@ -630,7 +630,7 @@
 				7652A73929CD3E99000D7A4A /* ErrorHandler.swift in Sources */,
 				76AC25FF29C3F4D0007874DA /* MovieGenre.swift in Sources */,
 				7652A74429CD6EA5000D7A4A /* MovieGalleryContainer.swift in Sources */,
-				769F248429CF003D00C550B8 /* SettingGenre.swift in Sources */,
+				769F248429CF003D00C550B8 /* SettingGenres.swift in Sources */,
 				7652A74229CD6C0E000D7A4A /* MovieExtension.swift in Sources */,
 				769002C429C804DC00620A3C /* NowPlayingScrollViewRow.swift in Sources */,
 				76AC25B629C2E381007874DA /* Rate.swift in Sources */,

@@ -11,7 +11,7 @@ import NukeUI
 import SwiftUI
 
 public struct PipelineKey: EnvironmentKey {
-    public static var defaultValue: ImagePipeline? = pipeline
+    public static var defaultValue: ImagePipeline? = appPipeline
 }
 
 public extension EnvironmentValues {
@@ -32,7 +32,7 @@ public extension LazyImage {
     }
 }
 
-let pipeline = ImagePipeline {
+let appPipeline = ImagePipeline {
     $0.dataLoader = DataLoader(configuration: {
         let conf = DataLoader.defaultConfiguration
         conf.urlCache = nil

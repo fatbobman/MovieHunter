@@ -17,10 +17,10 @@ struct SettingContainer: View {
                         switch category {
                         case .appearance:
                             SettingAppearance()
-                        case .genre:
-                            EmptyView()
-                        case .networkAndStorage:
-                            EmptyView()
+                        case .genres:
+                            SettingGenres()
+                        case .storage:
+                            SettingStorage()
                         case .about:
                             EmptyView()
                         }

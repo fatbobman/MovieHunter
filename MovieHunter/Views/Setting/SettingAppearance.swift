@@ -9,11 +9,11 @@ import Foundation
 import SwiftUI
 
 struct SettingAppearance: View {
-    @StateObject private var c = AppConfiguration.share
+    @StateObject private var configuration = AppConfiguration.share
     var body: some View {
         Form {
             // 语言
-            Picker("Setting_ColorScheme_Label", selection: $c.colorScheme) {
+            Picker("Setting_ColorScheme_Label", selection: $configuration.colorScheme) {
                 ForEach(ColorSchemeSetting.allCases) { colorScheme in
                     Text(colorScheme.localizedString)
                         .tag(colorScheme.rawValue)
@@ -26,7 +26,7 @@ struct SettingAppearance: View {
             #endif
 
             // 色彩模式
-            Picker("Setting_Language_Label", selection: c.$appLanguage) {
+            Picker("Setting_Language_Label", selection: configuration.$appLanguage) {
                 ForEach(AppLanguage.allCases) { language in
                     Text(language.localizedString)
                         .tag(language)
@@ -40,7 +40,7 @@ struct SettingAppearance: View {
 
             // 是否显示书签
             LabeledContent {
-                Toggle("Setting_showBookMark", isOn: c.$showBookMarkInPoster)
+                Toggle("Setting_showBookMark", isOn: configuration.$showBookMarkInPoster)
                     .toggleStyle(.switch)
                     .labelsHidden()
             } label: {
@@ -48,7 +48,7 @@ struct SettingAppearance: View {
                 Text("Setting_showBookMark_Description")
             }
         }
-        .formStyle(.grouped) // macOS 必加
+        .formStyle(.grouped) // for macOS
     }
 }
 

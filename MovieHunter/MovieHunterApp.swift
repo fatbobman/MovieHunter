@@ -10,19 +10,20 @@ import SwiftUI
 @main
 struct MovieHunterApp: App {
     let stack = CoreDataStack.share
-//    @StateObject var store = Store.share
     var body: some Scene {
         WindowGroup {
             ContentView()
-//            MovieGalleryDataSource(category:.genre(12))
                 .environment(\.managedObjectContext, stack.viewContext)
+            #if os(macOS)
+                .frame(minWidth: 800, minHeight: 700)
+            #endif
         }
-        
+        .defaultSize(width: 1024, height: 800)
+
         #if os(macOS)
-        Settings {
-            SettingContainer()
-//                .environmentObject(Store.share)
-        }
+            Settings {
+                SettingContainer()
+            }
         #endif
     }
 }

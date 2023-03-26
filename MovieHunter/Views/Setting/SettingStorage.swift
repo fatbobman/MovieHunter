@@ -16,20 +16,23 @@ struct SettingStorage: View {
     @State var pipelineCache: String = ""
     var body: some View {
         Form {
-            Section {
-                LabeledContent("asdg sd"){
-                    Text("\(tmdbCache)")
-                    Text("asdg asdg asdg asdg asdg  asdgasd asg")
+            Section("Setting_Storage_CleanMovieCache_Section_Title") {
+                Text("Setting_Storage_CleanMovieCache_Description").foregroundColor(.secondary) + Text(tmdbCache)
+
+                Button("Setting_Storage_CleanMovieCache_CleanButton") {
+                    emptyMovieCache()
                 }
-                LabeledContent{
-                    Text(" asdg asdgl;jasdg ;lksdg ")
-                    Text("asdg asdg asdg asdg asdg  asdgasd asg")
-                } label: {
-                    Text("\(tmdbCache)")
-                }
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .buttonStyle(.borderedProminent)
             }
-           
-            Text("\(pipelineCache)")
+
+            Section("Setting_Storage_CleanImageCache_Section_Title") {
+                Text("Setting_Storage_CleanImageCache_Description").foregroundColor(.secondary) + Text(pipelineCache)
+
+                Button("Setting_Storage_CleanImageCache_CleanButton") {}
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .buttonStyle(.borderedProminent)
+            }
         }
         .formStyle(.grouped)
         .onAppear {
@@ -39,12 +42,43 @@ struct SettingStorage: View {
     }
 
     func loadPipelineCacheCost() -> String {
-        guard let dataCache = pipeline.configuration.dataCache as? DataCache else { return "unknown" }
-        return formatter.string(fromByteCount: Int64(dataCache.totalSize))
+        var cost = 0
+        if let dataCache = pipeline.configuration.dataCache as? DataCache {
+            cost = dataCache.totalCount
+        }
+        if let imageCache = pipeline.configuration.imageCache as? ImageCache {
+            cost += imageCache.totalCost
+        }
+        return formatter.string(fromByteCount: Int64(cost))
     }
 
     func loadURLCacheCost() -> String {
         formatter.string(fromByteCount: Int64(urlCache.currentDiskUsage))
+    }
+
+    func emptyMovieCache() {
+        urlCache.removeAllCachedResponses()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            tmdbCache = loadURLCacheCost()
+        }
+    }
+
+    func emptyImageCache() {
+        if let dataLoader = pipeline.configuration.dataLoader as? DataLoader {
+            dataLoader.session.configuration.urlCache?.removeAllCachedResponses()
+        }
+
+        if let imageCache = pipeline.configuration.imageCache as? ImageCache {
+            imageCache.removeAll()
+        }
+
+        if let dataCache = pipeline.configuration.dataCache as? DataCache {
+            dataCache.removeAll()
+            dataCache.flush()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            pipelineCache = loadPipelineCacheCost()
+        }
     }
 
     let formatter: ByteCountFormatter = {

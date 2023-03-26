@@ -16,7 +16,7 @@ struct SettingGenres: View {
         Form {
             Section("Setting_Genre_In_Home") {
                 ForEach($genres) { $genre in
-                    Toggle(genre.genre.localizedString,isOn: $genre.showInHome)
+                    Toggle(genre.genre.localizedString, isOn: $genre.showInHome)
                 }
             }
         }

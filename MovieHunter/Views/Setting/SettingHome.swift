@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SettingHome: View {
     var body: some View {
-        Text("Home")
+        Text("Setting_Home")
     }
 }
 

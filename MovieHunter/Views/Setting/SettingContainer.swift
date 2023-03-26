@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct SettingContainer: View {
+    @StateObject var configuration = AppConfiguration.share
     var body: some View {
         NavigationSplitView {
             SettingSidebar()
@@ -22,7 +23,7 @@ struct SettingContainer: View {
                         case .storage:
                             SettingStorage()
                         case .about:
-                            EmptyView()
+                            About()
                         }
                     }
                     #if os(macOS)
@@ -35,6 +36,11 @@ struct SettingContainer: View {
                 .toolbar(.hidden, for: .windowToolbar)
             #endif
         }
+        #if os(macOS)
+        .frame(width: 550,height: 400)
+        .preferredColorScheme(configuration.colorScheme.colorScheme)
+        .environment(\.locale, configuration.appLanguage.locale)
+        #endif
     }
 }
 

@@ -91,3 +91,5 @@
 "Favorite_Button_Cancel" = "已加到观片清单";
 "Favorite_Button_Add" = "加入观片清单";
 "Detail_Cast_Label" = "演员";
+"Detail_Director" = "导演";
+"Detail_Writer" = "编剧";

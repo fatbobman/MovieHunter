@@ -16,6 +16,14 @@ struct DetailCredit: View {
     @State private var casts = [CastMember]()
     @State private var crews = [CrewMember]()
 
+    private var directors: [CrewMember] {
+        crews.filter { $0.job == "Director" }
+    }
+
+    private var writers: [CrewMember] {
+        crews.filter { $0.job == "Writer" }
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             ViewMoreButton(
@@ -28,6 +36,10 @@ struct DetailCredit: View {
             )
             CastList(casts: casts)
             divider
+            directorView
+            divider
+            writerView
+                .padding(.bottom,10)
         }
         .padding(.horizontal, 16)
         .frame(maxWidth: .infinity)
@@ -41,10 +53,33 @@ struct DetailCredit: View {
     }
 
     var divider: some View {
-        Divider()
-            .tint(Assets.Colors.outline)
+        RoundedRectangle(cornerRadius: 3)
+            .fill(Assets.Colors.outline)
             .frame(height: 0.5)
     }
+    
+    var directorView:some View {
+        HStack {
+            Text("Detail_Director") + Text(verbatim:":")
+            Text(directors.map(\.name),format: .list(type: .and))
+                .lineLimit(1)
+                .foregroundColor(.secondary)
+        }
+        .padding(.vertical,10)
+        .frame(maxWidth: .infinity,alignment: .leading)
+    }
+    
+    var writerView:some View {
+        HStack {
+            Text("Detail_Writer") + Text(verbatim:":")
+            Text(writers.map(\.name),format: .list(type: .and))
+                .lineLimit(1)
+                .foregroundColor(.secondary)
+        }
+        .padding(.vertical,10)
+        .frame(maxWidth: .infinity,alignment: .leading)
+    }
+    
 }
 
 struct CastList: View {

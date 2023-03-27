@@ -57,6 +57,8 @@
 		769AB0B229D1BCE5008451E6 /* SwiftUIOverlayContainer in Frameworks */ = {isa = PBXBuildFile; productRef = 769AB0B129D1BCE5008451E6 /* SwiftUIOverlayContainer */; };
 		769AB0B529D1BD32008451E6 /* ContainerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769AB0B429D1BD32008451E6 /* ContainerConfiguration.swift */; };
 		769AB0B729D1BE68008451E6 /* DetailFullScreenCoverBackdrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769AB0B629D1BE68008451E6 /* DetailFullScreenCoverBackdrop.swift */; };
+		769AB0BA29D1CAC1008451E6 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769AB0B929D1CAC1008451E6 /* MenuBar.swift */; };
+		769AB0BD29D1CC34008451E6 /* WindowGroupRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769AB0BC29D1CC34008451E6 /* WindowGroupRoot.swift */; };
 		769F247529CEEC2F00C550B8 /* TabViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F247429CEEC2F00C550B8 /* TabViewContainer.swift */; };
 		769F247829CEFA4200C550B8 /* SettingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F247729CEFA4200C550B8 /* SettingContainer.swift */; };
 		769F247A29CEFA7700C550B8 /* SettingCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F247929CEFA7700C550B8 /* SettingCategory.swift */; };
@@ -150,6 +152,8 @@
 		769AB0AB29D19DAE008451E6 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		769AB0B429D1BD32008451E6 /* ContainerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerConfiguration.swift; sourceTree = "<group>"; };
 		769AB0B629D1BE68008451E6 /* DetailFullScreenCoverBackdrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFullScreenCoverBackdrop.swift; sourceTree = "<group>"; };
+		769AB0B929D1CAC1008451E6 /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
+		769AB0BC29D1CC34008451E6 /* WindowGroupRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowGroupRoot.swift; sourceTree = "<group>"; };
 		769F247429CEEC2F00C550B8 /* TabViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewContainer.swift; sourceTree = "<group>"; };
 		769F247729CEFA4200C550B8 /* SettingContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingContainer.swift; sourceTree = "<group>"; };
 		769F247929CEFA7700C550B8 /* SettingCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCategory.swift; sourceTree = "<group>"; };
@@ -340,6 +344,24 @@
 			path = OverlayContainer;
 			sourceTree = "<group>";
 		};
+		769AB0B829D1CAB1008451E6 /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				769AB0B929D1CAC1008451E6 /* MenuBar.swift */,
+			);
+			path = MenuBar;
+			sourceTree = "<group>";
+		};
+		769AB0BB29D1CC1B008451E6 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				76AC258229C2E23A007874DA /* MovieHunterApp.swift */,
+				76AC258429C2E23A007874DA /* ContentView.swift */,
+				769AB0BC29D1CC34008451E6 /* WindowGroupRoot.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		769F247329CEEC2100C550B8 /* Tab */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,8 +411,6 @@
 				76AC259229C2E250007874DA /* Views */,
 				76AC25FD29C3F4C2007874DA /* Model */,
 				76AC259129C2E24A007874DA /* Share */,
-				76AC258229C2E23A007874DA /* MovieHunterApp.swift */,
-				76AC258429C2E23A007874DA /* ContentView.swift */,
 				76AC258629C2E23B007874DA /* Assets.xcassets */,
 				76AC258829C2E23B007874DA /* MovieHunter.entitlements */,
 				76AC258929C2E23B007874DA /* Preview Content */,
@@ -422,6 +442,8 @@
 		76AC259229C2E250007874DA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				769AB0BB29D1CC1B008451E6 /* App */,
+				769AB0B829D1CAB1008451E6 /* MenuBar */,
 				769AB0B329D1BD21008451E6 /* OverlayContainer */,
 				769F247629CEFA2700C550B8 /* Setting */,
 				769F247329CEEC2100C550B8 /* Tab */,
@@ -683,8 +705,10 @@
 				76751E5329C542F10013BBDF /* AppAction.swift in Sources */,
 				769002A629C67ACB00620A3C /* Model.xcdatamodeld in Sources */,
 				769F247E29CF001C00C550B8 /* SettingHome.swift in Sources */,
+				769AB0BD29D1CC34008451E6 /* WindowGroupRoot.swift in Sources */,
 				769002B229C6DF6B00620A3C /* Category.swift in Sources */,
 				7652A73E29CD52E9000D7A4A /* FetchRequest.swift in Sources */,
+				769AB0BA29D1CAC1008451E6 /* MenuBar.swift in Sources */,
 				769AB09629D1407B008451E6 /* GenreList.swift in Sources */,
 				769002D429C83DD000620A3C /* WishlistEmpty.swift in Sources */,
 				769AB0AC29D19DAE008451E6 /* URL.swift in Sources */,

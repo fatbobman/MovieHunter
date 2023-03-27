@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import TMDb
 
-enum Category: Hashable {
+enum Category: Hashable,Codable {
     case nowPlaying
     case popular
     case upComing

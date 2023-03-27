@@ -10,7 +10,7 @@ import SwiftUI
 import SwiftUIOverlayContainer
 
 struct ContentView: View {
-    @StateObject var store = Store()
+    @EnvironmentObject var store:Store
     @State var id = UUID()
     @StateObject private var c = AppConfiguration.share
     var body: some View {

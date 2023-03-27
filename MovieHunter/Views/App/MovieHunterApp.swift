@@ -14,6 +14,7 @@ struct MovieHunterApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, stack.viewContext)
+                .environmentObject(Store())
             #if os(macOS)
                 .frame(minWidth: 800, minHeight: 700)
             #endif
@@ -26,6 +27,20 @@ struct MovieHunterApp: App {
             Settings {
                 SettingContainer()
             }
+
+            MenuBarExtra {
+                MenuBar()
+            } label: {
+                Image(systemName: "film.fill")
+            }
+            .menuBarExtraStyle(.menu)
+
+            WindowGroup(id: "categoryGroup", for: Category.self) { category in
+                WindowGroupRoot(category: category.wrappedValue)
+                    .environment(\.managedObjectContext, stack.viewContext)
+                    .frame(minWidth: 800, minHeight: 700)
+            }
+            .defaultSize(width: 1024, height: 800)
         #endif
     }
 }

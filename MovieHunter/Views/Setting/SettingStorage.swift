@@ -29,9 +29,11 @@ struct SettingStorage: View {
             Section("Setting_Storage_CleanImageCache_Section_Title") {
                 Text("Setting_Storage_CleanImageCache_Description").foregroundColor(.secondary) + Text(pipelineCache)
 
-                Button("Setting_Storage_CleanImageCache_CleanButton") {}
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .buttonStyle(.borderedProminent)
+                Button("Setting_Storage_CleanImageCache_CleanButton") {
+                    emptyImageCache()
+                }
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .buttonStyle(.borderedProminent)
             }
         }
         .formStyle(.grouped)
@@ -45,9 +47,11 @@ struct SettingStorage: View {
         var cost = 0
         if let dataCache = pipeline.configuration.dataCache as? DataCache {
             cost = dataCache.totalCount
+            print("data cache \(cost)")
         }
         if let imageCache = pipeline.configuration.imageCache as? ImageCache {
             cost += imageCache.totalCost
+            print("image cache \(cost)")
         }
         return formatter.string(fromByteCount: Int64(cost))
     }
@@ -66,15 +70,18 @@ struct SettingStorage: View {
     func emptyImageCache() {
         if let dataLoader = pipeline.configuration.dataLoader as? DataLoader {
             dataLoader.session.configuration.urlCache?.removeAllCachedResponses()
+            print("clean url cache")
         }
 
         if let imageCache = pipeline.configuration.imageCache as? ImageCache {
             imageCache.removeAll()
+            print("clean image cache")
         }
 
         if let dataCache = pipeline.configuration.dataCache as? DataCache {
             dataCache.removeAll()
             dataCache.flush()
+            print("clean data cache")
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             pipelineCache = loadPipelineCacheCost()

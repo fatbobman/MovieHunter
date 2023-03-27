@@ -81,7 +81,7 @@
 "Setting_Storage_CleanMovieCache_Section_Title" = "Movie Data Cache";
 "Setting_Storage_CleanImageCache_Section_Title" = "Image Cache";
 "Setting_Storage_CleanMovieCache_Description" = "In order to avoid the API Key being blocked due to too frequent data access, this App currently adopts the principle of cache priority. This may cause the data to not be updated in time, or after changing the language, the old data is still in other languages version. After cleaning the data, the problem can be solved. The current cache capacity is ";
-"Setting_Storage_CleanImageCache_Description" = "Current image data cache capacity is:";
+"Setting_Storage_CleanImageCache_Description" = "Current image data cache capacity is ";
 "Setting_Storage_CleanMovieCache_CleanButton" = "Empty Movie Cache";
 "Setting_Storage_CleanImageCache_CleanButton" = "Empty Image Cache";
 "% Settings" = "% Settings";

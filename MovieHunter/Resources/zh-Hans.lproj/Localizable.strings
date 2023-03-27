@@ -79,8 +79,8 @@
 "Setting_Genre_In_Home" = "在列表中显示的电影类型";
 "Setting_Storage_CleanMovieCache_Section_Title" = "电影数据缓存";
 "Setting_Storage_CleanImageCache_Section_Title" = "图片缓存";
-"Setting_Storage_CleanMovieCache_Description" = "为了避免造成因数据访问过于频繁而导致 API Key 被封，本 App 当前采用缓存优先的原则。这可能会导致，数据更新不及时，或更改语言后，旧数据仍为其他语言版本的情况。清除数据后，可解决该问题。目前缓存容量为";
-"Setting_Storage_CleanImageCache_Description" = "目前图片数据占用缓存容量为：";
+"Setting_Storage_CleanMovieCache_Description" = "为了避免造成因数据访问过于频繁而导致 API Key 被封，本 App 当前采用缓存优先的原则。这可能会导致，数据更新不及时，或更改语言后，旧数据仍为其他语言版本的情况。清除数据后，可解决该问题。目前缓存容量为 ";
+"Setting_Storage_CleanImageCache_Description" = "目前图片数据占用缓存容量为 ";
 "Setting_Storage_CleanMovieCache_CleanButton" = "清除电影数据缓存";
 "Setting_Storage_CleanImageCache_CleanButton" = "清除图片缓存";
 

@@ -15,5 +15,6 @@ enum Assets {
         static let mainBackground = Color("mainBackground")
         static let favorite = Color("starYellow")
         static let secondWhite = Color("secondWhite")
+        static let outline = Color.secondary.opacity(0.3)
     }
 }

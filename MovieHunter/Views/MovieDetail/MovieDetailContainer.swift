@@ -11,6 +11,16 @@ import TMDb
 
 struct MovieDetailContainer: View {
     @State private var movie: Movie?
+    @Environment(\.deviceStatus) var deviceStatus
+
+    private var compact: Bool {
+        deviceStatus == .compact
+    }
+
+    private var regular: Bool {
+        deviceStatus == .regular
+    }
+
     private let movieID: Int
     init(movie: Movie) {
         movieID = movie.id
@@ -20,73 +30,43 @@ struct MovieDetailContainer: View {
     var body: some View {
         VStack(alignment: .leading) {
             if let movie {
-                ScrollView {
-                    LazyVStack(alignment: .leading, spacing: 10) {
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text(movie.title)
-                                .font(.title)
-                            if let releaseDate = movie.releaseDate {
-                                Text(releaseDate, format: .dateTime.year().month())
-                                    .font(.footnote)
-                                    .foregroundColor(.secondary)
+                HStack(spacing: 0) {
+                    MovieDetail(movie: movie)
+                        .frame(idealWidth: 500, maxWidth: 800)
+                        .layoutPriority(1)
+
+                    if !compact {
+                        VStack(alignment: .leading) {
+                            ScrollView {
+                                Color.clear
                             }
                         }
-                        .padding(.bottom, 10)
-
-                        HStack(alignment: .top, spacing: 20) {
-                            ItemPoster(movie: movie, size: DisplayType.portrait(.small).imageSize)
-                            VStack(alignment: .leading, spacing: 10) {
-                                GenreList(movie: movie)
-
-                                Text(movie.overview ?? "")
-                                    .lineLimit(8)
-                                    .font(.footnote)
-                                    .foregroundColor(.secondary)
-                            }
-                        }
+                        .background(
+                            Rectangle()
+                                .fill(.secondary.opacity(0.1).shadow(.inner(radius: 2, x: 2, y: 0)))
+                        )
+                        .frame(minWidth: 150)
                     }
-                    .padding(.horizontal, 16)
                 }
-                .frame(maxWidth: 600)
-                .border(.blue)
             } else {
                 ProgressView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+        .if(regular) {
+            $0
+                .navigationTitle(movie?.title ?? "")
+            #if !os(macOS)
+                .toolbarBackground(.visible, for: .navigationBar) // 处理 iPad 下 toolbar 显示异常
+                .toolbarBackground(.visible, for: .tabBar)
+            #endif
+        }
         .task {
             if let movie = try? await tmdb.movies.details(forMovie: movieID) {
                 self.movie = movie
             }
         }
-    }
-}
-
-struct GenreList: View {
-    let movie: Movie
-    @Environment(\.tmdb) private var tmdb
-    var body: some View {
-        ViewThatFits(in: .horizontal) {
-            genres
-            ScrollView(.horizontal, showsIndicators: false) {
-                genres
-            }
-        }
-    }
-
-    var genres: some View {
-        HStack {
-            ForEach(movie.genres ?? []) { genre in
-                Text(genre.name)
-                    .padding(.vertical, 5)
-                    .padding(.horizontal, 10)
-                    .background(
-                        RoundedRectangle(cornerRadius: 3)
-                            .stroke(Color.secondary)
-                    )
-            }
-        }
-        .fixedSize(horizontal: true, vertical: false)
     }
 }
 

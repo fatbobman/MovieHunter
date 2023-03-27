@@ -9,14 +9,29 @@ import Foundation
 import SwiftUI
 
 struct RateView: View {
-    let rate: Double
+    let rate: Double?
     let participants: Int?
+    let type: RateType
+    let showStar: Bool
+    init(rate: Double?, participants: Int?, type: RateType = .horizontal, showStar: Bool = false) {
+        self.rate = rate
+        self.participants = participants
+        self.type = type
+        self.showStar = showStar
+    }
+
+    var layout: AnyLayout {
+        type == .horizontal ? AnyLayout(HStackLayout(alignment: .firstTextBaseline)) : AnyLayout(VStackLayout())
+    }
+
     var body: some View {
-        VStack {
-            Image(systemName: "star")
-                .symbolVariant(.fill)
-                .foregroundColor(Color("starYellow"))
-                .font(.title3)
+        layout {
+            if showStar {
+                Image(systemName: "star")
+                    .symbolVariant(.fill)
+                    .foregroundColor(Color("starYellow"))
+                    .font(.title3)
+            }
             HStack(alignment: .lastTextBaseline, spacing: 0) {
                 rateNumber
                 totalView
@@ -26,9 +41,17 @@ struct RateView: View {
     }
 
     var rateNumber: some View {
-        Text(rate, format: .number.precision(.fractionLength(1)))
-            .font(.title2)
-            .foregroundColor(.primary)
+        Group {
+            if let rate {
+                Text(rate, format: .number.precision(.fractionLength(1)))
+                    .font(.title2)
+                    .foregroundColor(.primary)
+            } else {
+                Text(verbatim: "NIL")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+            }
+        }
     }
 
     var totalView: some View {
@@ -45,7 +68,17 @@ struct RateView: View {
     var participantsView: some View {
         if let participants {
             Text(participants, format: .number)
+                .if(type == .horizontal) {
+                    $0
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
         }
+    }
+
+    enum RateType {
+        case horizontal
+        case vertical
     }
 }
 
@@ -53,6 +86,10 @@ struct RateView: View {
     struct RateViewPreview: PreviewProvider {
         static var previews: some View {
             RateView(rate: 9.5, participants: 268_935)
+                .foregroundColor(.secondary)
+                .font(.footnote)
+
+            RateView(rate: nil, participants: nil)
                 .foregroundColor(.secondary)
                 .font(.footnote)
         }

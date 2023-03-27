@@ -86,3 +86,7 @@
 
 // About
 "About" = "Movie Hunter by [fatbobman](http://www.fatbobman.com)";
+
+// Movie Detail
+"Favorite_Button_Cancel" = "已加到观片清单";
+"Favorite_Button_Add" = "加入观片清单";

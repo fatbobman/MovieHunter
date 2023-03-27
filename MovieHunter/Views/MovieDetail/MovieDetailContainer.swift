@@ -37,9 +37,8 @@ struct MovieDetailContainer: View {
 
                     if !compact {
                         VStack(alignment: .leading) {
-                            ScrollView {
-                                Color.clear
-                            }
+                            DetailGallery(movie: movie)
+                                .padding(.leading,10)
                         }
                         .background(
                             Rectangle()

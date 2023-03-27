@@ -26,8 +26,12 @@ struct MovieDetail: View {
                 if !reviews.isEmpty {
                     DetailReviews(reviews: reviews)
                 }
+                if compact {
+                    DetailGallery(movie: movie)
+                }
                 MovieSpecific(movie: movie)
                 SimilarMovies(movie: movie)
+                
             }
         }
         .scrollContentBackground(.hidden)

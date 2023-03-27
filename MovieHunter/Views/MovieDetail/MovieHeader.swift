@@ -78,6 +78,7 @@ struct MovieHeader: View {
                 Image(systemName: isFavorite ? "checkmark" : "plus")
                 Text(isFavorite ? "Favorite_Button_Cancel" : "Favorite_Button_Add")
             }
+            .foregroundColor(!isFavorite ? .black : .primary)
             .padding(.vertical, 10)
             .padding(.leading, compact ? 10 : 20)
             .frame(maxWidth: .infinity, alignment: .leading)

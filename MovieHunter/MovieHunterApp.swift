@@ -18,7 +18,9 @@ struct MovieHunterApp: App {
                 .frame(minWidth: 800, minHeight: 700)
             #endif
         }
+        #if os(macOS)
         .defaultSize(width: 1024, height: 800)
+        #endif
 
         #if os(macOS)
             Settings {

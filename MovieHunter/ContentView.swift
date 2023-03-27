@@ -33,6 +33,9 @@ struct ContentView: View {
         .environment(\.goCategory) {
             store.send(.setDestination(to: [$0]))
         }
+        .environment(\.goDetailFromCategory){
+            store.send(.gotoDestination(.movieDetail($0)))
+        }
         .syncCoreData() // 同步 favorite 数据
         .environmentObject(store)
         .preferredColorScheme(c.colorScheme.colorScheme)

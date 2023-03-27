@@ -93,5 +93,12 @@
 "Favorite_Button_Cancel" = "Added to Watchlist";
 "Favorite_Button_Add" = "Add to Watchlist";
 "Detail_Cast_Label" = "Casts";
+"Detail_Review_Label" = "Review";
+"Detail_Specific_Label" = "Details";
+"Detail_MoreLikeThis_Label" = "More like this";
 "Detail_Director" = "Director";
 "Detail_Writer" = "Writer";
+"Detail_ReleaseDate" = "Release Date";
+"Detail_Runtime" = "Run Time";
+"Detail_Budget" = "Budget";
+"Detail_ProductionCompany" = "Production Company";

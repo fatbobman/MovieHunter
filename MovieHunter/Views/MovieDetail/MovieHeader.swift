@@ -74,12 +74,12 @@ struct MovieHeader: View {
             }
 
         } label: {
-            HStack(spacing: 20) {
+            HStack(spacing: compact ? 10 : 20) {
                 Image(systemName: isFavorite ? "checkmark" : "plus")
                 Text(isFavorite ? "Favorite_Button_Cancel" : "Favorite_Button_Add")
             }
             .padding(.vertical, 10)
-            .padding(.leading, 20)
+            .padding(.leading, compact ? 10 : 20)
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(
                 ZStack {

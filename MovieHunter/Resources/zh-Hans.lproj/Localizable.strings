@@ -91,5 +91,12 @@
 "Favorite_Button_Cancel" = "已加到观片清单";
 "Favorite_Button_Add" = "加入观片清单";
 "Detail_Cast_Label" = "演员";
+"Detail_Specific_Label" = "详情";
+"Detail_MoreLikeThis_Label" = "更多类似";
+"Detail_Review_Label" = "精选评论";
 "Detail_Director" = "导演";
 "Detail_Writer" = "编剧";
+"Detail_ReleaseDate" = "发行日期";
+"Detail_Runtime" = "时长";
+"Detail_Budget" = "票房";
+"Detail_ProductionCompany" = "制作公司";

@@ -25,25 +25,14 @@ struct DetailCredit: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            ViewMoreButton(
-                title: "Detail_Cast_Label",
-                showViewMoreText: false,
-                showArrow: false,
-                destination: .nowPlaying,
-                clickable: false,
-                enableHorizontalPadding: false
-            )
+        DetailRow(title: "Detail_Cast_Label") {
             CastList(casts: casts)
             divider
             directorView
             divider
             writerView
-                .padding(.bottom,10)
+                .padding(.bottom, 10)
         }
-        .padding(.horizontal, 16)
-        .frame(maxWidth: .infinity)
-        .background(Assets.Colors.rowBackground)
         .task {
             if let showCredits = try? await tmdb.movies.credits(forMovie: movie.id) {
                 self.casts = showCredits.cast
@@ -57,29 +46,28 @@ struct DetailCredit: View {
             .fill(Assets.Colors.outline)
             .frame(height: 0.5)
     }
-    
-    var directorView:some View {
+
+    var directorView: some View {
         HStack {
-            Text("Detail_Director") + Text(verbatim:":")
-            Text(directors.map(\.name),format: .list(type: .and))
+            Text("Detail_Director") + Text(verbatim: ":")
+            Text(directors.map(\.name), format: .list(type: .and))
                 .lineLimit(1)
                 .foregroundColor(.secondary)
         }
-        .padding(.vertical,10)
-        .frame(maxWidth: .infinity,alignment: .leading)
+        .padding(.vertical, 10)
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
-    
-    var writerView:some View {
+
+    var writerView: some View {
         HStack {
-            Text("Detail_Writer") + Text(verbatim:":")
-            Text(writers.map(\.name),format: .list(type: .and))
+            Text("Detail_Writer") + Text(verbatim: ":")
+            Text(writers.map(\.name), format: .list(type: .and))
                 .lineLimit(1)
                 .foregroundColor(.secondary)
         }
-        .padding(.vertical,10)
-        .frame(maxWidth: .infinity,alignment: .leading)
+        .padding(.vertical, 10)
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
-    
 }
 
 struct CastList: View {

@@ -15,9 +15,11 @@ struct DetailGallery: View {
     let movie: Movie
     @State var urls = [URL]()
     @Environment(\.tmdb) private var tmdb
+    private let baseURL: URL = .init(string: "https://image.tmdb.org/t/p/w300")!
+    private let bigSizeBaseURL: URL = .init(string: "https://image.tmdb.org/t/p/w1280")!
     @Environment(\.imagePipeline) private var pipeline
     @Environment(\.deviceStatus) private var deviceStatus
-    private let baseURL: URL = .init(string: "https://image.tmdb.org/t/p/w300")!
+    @Environment(\.overlayContainerManager) private var overlayContainerManager
     private var compact: Bool {
         deviceStatus == .compact
     }
@@ -33,12 +35,12 @@ struct DetailGallery: View {
                             }
                         }
                     }
-                    .padding(.bottom,20)
+                    .padding(.bottom, 20)
                 }
                 .frame(height: 250)
             } else {
                 ScrollView(.vertical) {
-                    VStack(alignment:.leading,spacing: 10) {
+                    VStack(alignment: .leading, spacing: 10) {
                         ForEach(urls) { url in
                             poster(url: url)
                         }
@@ -57,12 +59,16 @@ struct DetailGallery: View {
     @MainActor
     @ViewBuilder
     func poster(url: URL) -> some View {
-        let url = baseURL.appending(path: url.absoluteString)
-        LazyImage(url: url) { state in
+        let smallUrl = baseURL.appending(path: url.absoluteString)
+        LazyImage(url: smallUrl) { state in
             if let image = state.image {
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
+                    .onTapGesture {
+                        let bigURL = bigSizeBaseURL.appending(path: url.absoluteString)
+                        overlayContainerManager.show(containerView: BigBackdrop(url: bigURL), in: backdropContainerName)
+                    }
             }
         }
         .pipeline(pipeline)

@@ -54,6 +54,9 @@
 		769AB0A829D1915E008451E6 /* DetailGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769AB0A729D1915E008451E6 /* DetailGallery.swift */; };
 		769AB0AA29D19929008451E6 /* DetailRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769AB0A929D19929008451E6 /* DetailRow.swift */; };
 		769AB0AC29D19DAE008451E6 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769AB0AB29D19DAE008451E6 /* URL.swift */; };
+		769AB0B229D1BCE5008451E6 /* SwiftUIOverlayContainer in Frameworks */ = {isa = PBXBuildFile; productRef = 769AB0B129D1BCE5008451E6 /* SwiftUIOverlayContainer */; };
+		769AB0B529D1BD32008451E6 /* ContainerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769AB0B429D1BD32008451E6 /* ContainerConfiguration.swift */; };
+		769AB0B729D1BE68008451E6 /* DetailFullScreenCoverBackdrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769AB0B629D1BE68008451E6 /* DetailFullScreenCoverBackdrop.swift */; };
 		769F247529CEEC2F00C550B8 /* TabViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F247429CEEC2F00C550B8 /* TabViewContainer.swift */; };
 		769F247829CEFA4200C550B8 /* SettingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F247729CEFA4200C550B8 /* SettingContainer.swift */; };
 		769F247A29CEFA7700C550B8 /* SettingCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F247929CEFA7700C550B8 /* SettingCategory.swift */; };
@@ -145,6 +148,8 @@
 		769AB0A729D1915E008451E6 /* DetailGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGallery.swift; sourceTree = "<group>"; };
 		769AB0A929D19929008451E6 /* DetailRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRow.swift; sourceTree = "<group>"; };
 		769AB0AB29D19DAE008451E6 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		769AB0B429D1BD32008451E6 /* ContainerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerConfiguration.swift; sourceTree = "<group>"; };
+		769AB0B629D1BE68008451E6 /* DetailFullScreenCoverBackdrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFullScreenCoverBackdrop.swift; sourceTree = "<group>"; };
 		769F247429CEEC2F00C550B8 /* TabViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewContainer.swift; sourceTree = "<group>"; };
 		769F247729CEFA4200C550B8 /* SettingContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingContainer.swift; sourceTree = "<group>"; };
 		769F247929CEFA7700C550B8 /* SettingCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCategory.swift; sourceTree = "<group>"; };
@@ -196,6 +201,7 @@
 				76AC259E29C2E2D4007874DA /* NukeVideo in Frameworks */,
 				76AC259A29C2E2D4007874DA /* NukeExtensions in Frameworks */,
 				76AC259C29C2E2D4007874DA /* NukeUI in Frameworks */,
+				769AB0B229D1BCE5008451E6 /* SwiftUIOverlayContainer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +332,14 @@
 			path = FavoritePerson;
 			sourceTree = "<group>";
 		};
+		769AB0B329D1BD21008451E6 /* OverlayContainer */ = {
+			isa = PBXGroup;
+			children = (
+				769AB0B429D1BD32008451E6 /* ContainerConfiguration.swift */,
+			);
+			path = OverlayContainer;
+			sourceTree = "<group>";
+		};
 		769F247329CEEC2100C550B8 /* Tab */ = {
 			isa = PBXGroup;
 			children = (
@@ -408,6 +422,7 @@
 		76AC259229C2E250007874DA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				769AB0B329D1BD21008451E6 /* OverlayContainer */,
 				769F247629CEFA2700C550B8 /* Setting */,
 				769F247329CEEC2100C550B8 /* Tab */,
 				76629CE629CE7AD600FA75AA /* Navigator */,
@@ -447,6 +462,7 @@
 				769AB0A329D17C6E008451E6 /* MovieSpecific.swift */,
 				769AB0A529D18EF7008451E6 /* SimilarMovies.swift */,
 				769AB0A729D1915E008451E6 /* DetailGallery.swift */,
+				769AB0B629D1BE68008451E6 /* DetailFullScreenCoverBackdrop.swift */,
 				769AB0A929D19929008451E6 /* DetailRow.swift */,
 			);
 			path = MovieDetail;
@@ -556,6 +572,7 @@
 				76AC259929C2E2D4007874DA /* NukeExtensions */,
 				76AC259B29C2E2D4007874DA /* NukeUI */,
 				76AC259D29C2E2D4007874DA /* NukeVideo */,
+				769AB0B129D1BCE5008451E6 /* SwiftUIOverlayContainer */,
 			);
 			productName = MovieHunter;
 			productReference = 76AC257F29C2E23A007874DA /* MovieHunter.app */;
@@ -589,6 +606,7 @@
 			packageReferences = (
 				76AC259329C2E2A0007874DA /* XCRemoteSwiftPackageReference "TMDb" */,
 				76AC259629C2E2D4007874DA /* XCRemoteSwiftPackageReference "Nuke" */,
+				769AB0B029D1BCE5008451E6 /* XCRemoteSwiftPackageReference "SwiftUIOverlayContainer" */,
 			);
 			productRefGroup = 76AC258029C2E23A007874DA /* Products */;
 			projectDirPath = "";
@@ -619,6 +637,7 @@
 			files = (
 				769F248029CF002800C550B8 /* SettingAppearance.swift in Sources */,
 				76751E5129C5424C0013BBDF /* Store.swift in Sources */,
+				769AB0B529D1BD32008451E6 /* ContainerConfiguration.swift in Sources */,
 				769AB09829D1412F008451E6 /* MovieDetail.swift in Sources */,
 				769002C229C8043800620A3C /* NowPlayingTabViewRow.swift in Sources */,
 				769F247529CEEC2F00C550B8 /* TabViewContainer.swift in Sources */,
@@ -652,6 +671,7 @@
 				769002CA29C826FF00620A3C /* ViewMore.swift in Sources */,
 				76751E4F29C542110013BBDF /* AppState.swift in Sources */,
 				76AC25C829C2EAA1007874DA /* TMDBConfiguration.swift in Sources */,
+				769AB0B729D1BE68008451E6 /* DetailFullScreenCoverBackdrop.swift in Sources */,
 				769AB0AA29D19929008451E6 /* DetailRow.swift in Sources */,
 				761044E429CC1ACE004EFAA2 /* ButtonStyle.swift in Sources */,
 				76C939CF29C95C2400A5D020 /* GenreContainer.swift in Sources */,
@@ -929,6 +949,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		769AB0B029D1BCE5008451E6 /* XCRemoteSwiftPackageReference "SwiftUIOverlayContainer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/fatbobman/SwiftUIOverlayContainer.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		76AC259329C2E2A0007874DA /* XCRemoteSwiftPackageReference "TMDb" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/fatbobman/TMDb.git";
@@ -948,6 +976,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		769AB0B129D1BCE5008451E6 /* SwiftUIOverlayContainer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 769AB0B029D1BCE5008451E6 /* XCRemoteSwiftPackageReference "SwiftUIOverlayContainer" */;
+			productName = SwiftUIOverlayContainer;
+		};
 		76AC259429C2E2A0007874DA /* TMDb */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 76AC259329C2E2A0007874DA /* XCRemoteSwiftPackageReference "TMDb" */;

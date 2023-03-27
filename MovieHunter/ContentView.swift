@@ -5,12 +5,12 @@
 //  Created by Yang Xu on 2023/3/16.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
+import SwiftUIOverlayContainer
 
 struct ContentView: View {
     @StateObject var store = Store()
-//    @AppStorage("colorScheme") var colorScheme: ColorSchemeSetting = .system
     @State var id = UUID()
     @StateObject private var c = AppConfiguration.share
     var body: some View {
@@ -21,6 +21,7 @@ struct ContentView: View {
                 StackContainer()
             #endif
         }
+        .overlayContainer(backdropContainerName, containerConfiguration: ContainerConfiguration.share)
         .environment(\.inWishlist) {
             store.state.favoriteMovieIDs.contains($0)
         }
@@ -33,7 +34,7 @@ struct ContentView: View {
         .environment(\.goCategory) {
             store.send(.setDestination(to: [$0]))
         }
-        .environment(\.goDetailFromCategory){
+        .environment(\.goDetailFromCategory) {
             store.send(.gotoDestination(.movieDetail($0)))
         }
         .syncCoreData() // 同步 favorite 数据

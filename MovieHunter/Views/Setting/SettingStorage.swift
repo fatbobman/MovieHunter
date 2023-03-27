@@ -37,6 +37,10 @@ struct SettingStorage: View {
             }
         }
         .formStyle(.grouped)
+        .onAppear {
+            tmdbCache = loadURLCacheCost()
+            pipelineCache = loadPipelineCacheCost()
+        }
     }
 
     func loadPipelineCacheCost() -> String {

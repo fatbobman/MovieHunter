@@ -12,6 +12,7 @@ import TMDb
 struct MovieDetailContainer: View {
     @State private var movie: Movie?
     @Environment(\.deviceStatus) var deviceStatus
+    @EnvironmentObject var store: Store
 
     private var compact: Bool {
         deviceStatus == .compact
@@ -38,7 +39,7 @@ struct MovieDetailContainer: View {
                     if !compact {
                         VStack(alignment: .leading) {
                             DetailGallery(movie: movie)
-                                .padding(.leading,10)
+                                .padding(.leading, 10)
                         }
                         .background(
                             Rectangle()
@@ -61,11 +62,22 @@ struct MovieDetailContainer: View {
                 .toolbarBackground(.visible, for: .tabBar)
             #endif
         }
-        .task {
-            if let movie = try? await tmdb.movies.details(forMovie: movieID) {
-                self.movie = movie
+        #if os(macOS)
+        .toolbar {
+            ToolbarItem(placement: .navigation) {
+                Button {
+                    store.send(.setDestination(to: []))
+                } label: {
+                    Image(systemName: "house.fill")
+                }
             }
         }
+        #endif
+            .task {
+                if let movie = try? await tmdb.movies.details(forMovie: movieID) {
+                    self.movie = movie
+                }
+            }
     }
 }
 

@@ -76,13 +76,9 @@ public struct MovieItem: View {
                         movie: movie,
                         displayType: displayType
                     )
-                }
-                .overlay(alignment: .topTrailing) {
                     if displayType == .landscape {
-                        Image(systemName: "ellipsis")
-                            .offset(x: -10, y: 16)
-                            .font(.title3)
-                            .bold()
+                        Image(systemName: "chevron.forward")
+                            .padding(.trailing, 16)
                             .foregroundColor(.secondary)
                     }
                 }

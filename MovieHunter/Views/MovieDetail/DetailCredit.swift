@@ -94,7 +94,7 @@ struct CastList: View {
     }
 
     var images: some View {
-        HStack {
+        LazyHStack {
             if casts.isEmpty {
                 PersonPortrait(personID: nil, name: nil, displayType: .landscape)
             }

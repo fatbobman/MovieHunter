@@ -20,6 +20,7 @@ struct MovieDetail: View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 10) {
                 MovieHeader(movie: movie)
+                DetailCredit(movie: movie)
             }
         }
         .scrollContentBackground(.hidden)

@@ -92,3 +92,4 @@
 // Movie Detail
 "Favorite_Button_Cancel" = "Added to Watchlist";
 "Favorite_Button_Add" = "Add to Watchlist";
+"Detail_Cast_Label" = "Casts";

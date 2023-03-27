@@ -15,7 +15,9 @@ struct ViewMoreButton: View {
     private let showViewMoreText: Bool
     private let showArrow: Bool
     private let textSize: TextSize
-    private let destination: Destination
+    private let destination: Destination?
+    private let clickable: Bool
+    private let enableHorizontalPadding: Bool
     @Environment(\.goCategory) private var goCategory
 
     init(
@@ -24,7 +26,9 @@ struct ViewMoreButton: View {
         showViewMoreText: Bool = true,
         showArrow: Bool = true,
         textSize: TextSize = .middle,
-        destination: Destination
+        destination: Destination?,
+        clickable: Bool = true,
+        enableHorizontalPadding: Bool = true
     ) {
         self.title = title
         self.showSymbol = showSymbol
@@ -32,6 +36,8 @@ struct ViewMoreButton: View {
         self.showArrow = showArrow
         self.textSize = textSize
         self.destination = destination
+        self.clickable = clickable
+        self.enableHorizontalPadding = enableHorizontalPadding
     }
 
     var body: some View {
@@ -40,7 +46,9 @@ struct ViewMoreButton: View {
             .frame(maxWidth: .infinity)
             .overlay(
                 Button {
-                    goCategory(destination)
+                    if let destination {
+                        goCategory(destination)
+                    }
                 } label: {
                     HStack(spacing: 10) {
                         if showSymbol {
@@ -69,10 +77,11 @@ struct ViewMoreButton: View {
                     .if(!showSymbol) { $0.frame(height: 40) }
                     .contentShape(Rectangle())
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal, 16)
+                    .padding(.horizontal, enableHorizontalPadding ? 16 : 0)
                 }
                 .buttonStyle(.plain)
                 .padding(.vertical, 10)
+                .allowsHitTesting(clickable)
             )
     }
 
@@ -172,6 +181,14 @@ struct MoreButton: View {
                 ViewMoreButton(
                     title: Category.movieWishlist.localizedString,
                     destination: .nowPlaying
+                )
+
+                ViewMoreButton(
+                    title: Category.movieWishlist.localizedString,
+                    showViewMoreText: false,
+                    showArrow: false,
+                    destination: .nowPlaying,
+                    clickable: false
                 )
             }
         }

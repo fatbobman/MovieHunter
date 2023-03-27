@@ -12,23 +12,25 @@ import SwiftUI
 import TMDb
 
 struct PersonPortrait: View {
-    let person: Person?
-    let imageURL: URL?
+    let personID: Int?
+    let name: String?
+    let baseURL: URL = .init(string: "https://image.tmdb.org/t/p/w300")!
     let displayType: DisplayType
-    let isFavorite: Bool
-    var updateFavorite: (Int) -> Void
+    @State private var imageURL: URL?
+    @Environment(\.tmdb) private var tmdb
 
     var body: some View {
         VStack(spacing: 10) {
             PeopleImage(imageURL: imageURL, displayType: displayType)
                 .frame(width: imageSize.width, height: imageSize.height)
                 .clipped()
-                .overlay(alignment: .bottomLeading) {
-                    FavoritButton(personID: person?.id, isFavorite: isFavorite, updateFavorite: updateFavorite)
-                        .offset(x: 3, y: -3)
-                }
-            PersonName(person: person)
+            PersonName(name: name)
                 .frame(width: imageSize.width)
+        }
+        .task {
+            if let personID, let url = try? await tmdb.people.images(forPerson: personID).profiles.first?.filePath {
+                imageURL = baseURL.appending(path: url.absoluteString)
+            }
         }
     }
 
@@ -59,7 +61,7 @@ struct PeopleImage: View {
     }
 }
 
-struct FavoritButton: View {
+struct FavoriteButton: View {
     let personID: Int?
     let isFavorite: Bool
     var updateFavorite: (Int) -> Void
@@ -97,9 +99,9 @@ struct FavoritButton: View {
 }
 
 struct PersonName: View {
-    let person: Person?
+    let name: String?
     var body: some View {
-        Text(person?.name ?? "EmptyLocalizableString")
+        Text(name ?? "EmptyLocalizableString")
             .lineLimit(1)
             .font(.caption)
     }
@@ -107,44 +109,13 @@ struct PersonName: View {
 
 #if DEBUG
     struct PersonPortraitPreviewWrapper: View {
-        var isFavorite: Bool {
-            if let id = person?.id {
-                return favorite.contains(id)
-            } else { return false }
-        }
-
-        @State var person: Person?
-        @State var personImageURL: URL?
-        @State var favorite = Set<Int>()
         var body: some View {
             VStack {
                 PersonPortrait(
-                    person: person,
-                    imageURL: personImageURL,
-                    displayType: .landscape,
-                    isFavorite: isFavorite,
-                    updateFavorite: { id in
-                        if favorite.contains(id) {
-                            favorite.removeAll()
-                        } else {
-                            favorite.insert(id)
-                        }
-                    }
+                    personID: PreviewData.previewPerson.id,
+                    name: "fatbobman",
+                    displayType: .landscape
                 )
-
-                Button("Switch Person") {
-                    if person != nil {
-                        person = nil
-                        personImageURL = nil
-                        if let id = person?.id {
-                            favorite.insert(id)
-                        }
-                    } else {
-                        person = PreviewData.previewPerson
-                        personImageURL = PreviewData.peopleImageURL
-                        favorite.removeAll()
-                    }
-                }
             }
         }
     }

@@ -30,6 +30,10 @@ struct DetailGallery: View {
                 DetailRow(title: "Detail_Gallery") {
                     ScrollView(.horizontal) {
                         HStack(spacing: 10) {
+                            if urls.isEmpty {
+                                DownloadPlaceHolder()
+                                    .frame(minWidth:100)
+                            }
                             ForEach(urls) { url in
                                 poster(url: url)
                             }

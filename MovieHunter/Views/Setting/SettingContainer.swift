@@ -34,6 +34,7 @@ struct SettingContainer: View {
                 }
         } detail: {
             SettingHome()
+                .navigationTitle("Settings_Title")
             #if os(macOS)
                 .toolbar(.hidden, for: .windowToolbar)
             #endif

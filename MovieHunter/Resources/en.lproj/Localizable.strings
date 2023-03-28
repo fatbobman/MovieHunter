@@ -85,7 +85,7 @@
 "Setting_Storage_CleanImageCache_Description" = "Current image data cache capacity is ";
 "Setting_Storage_CleanMovieCache_CleanButton" = "Empty Movie Cache";
 "Setting_Storage_CleanImageCache_CleanButton" = "Empty Image Cache";
-"%@ SETTINGS" = "%@ Settings";
+"Settings_Title" = "Settings";
 
 // About
 "About" = "Movie Hunter by [fatbobman(东坡肘子)](http://www.fatbobman.com)";

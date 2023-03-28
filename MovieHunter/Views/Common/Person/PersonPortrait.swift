@@ -53,8 +53,7 @@ struct PeopleImage: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
             } else {
-                Rectangle()
-                    .fill(Color("imagePlaceHolderColor").gradient)
+                DownloadPlaceHolder()
             }
         }
         .pipeline(pipeline)

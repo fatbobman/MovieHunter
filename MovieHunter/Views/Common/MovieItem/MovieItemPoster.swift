@@ -56,12 +56,12 @@ struct ItemPoster: View {
                             }
                         #endif
                     } else {
-                        Assets.Colors.imagePlaceHolder
+                        DownloadPlaceHolder()
                     }
                 }
                 .pipeline(imagePipeline)
             } else {
-                Assets.Colors.imagePlaceHolder
+                DownloadPlaceHolder()
             }
         }
         .frame(width: size.width, height: size.height)
@@ -84,7 +84,7 @@ struct ItemPoster: View {
     struct ItemPosterPreview: PreviewProvider {
         static var previews: some View {
             ItemPoster(
-                movie: PreviewData.previewMovie1,
+                movie: nil,
                 size: DisplayType.portrait(.small).imageSize
             )
 

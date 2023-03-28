@@ -31,8 +31,7 @@ struct NowPlayingBackdrop: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
             } else {
-                Rectangle()
-                    .fill(Assets.Colors.imagePlaceHolder)
+                DownloadPlaceHolder()
             }
         }
         .pipeline(imagePipeline)

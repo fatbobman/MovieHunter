@@ -84,6 +84,7 @@
 "Setting_Storage_CleanImageCache_Description" = "目前图片数据占用缓存容量为 ";
 "Setting_Storage_CleanMovieCache_CleanButton" = "清除电影数据缓存";
 "Setting_Storage_CleanImageCache_CleanButton" = "清除图片缓存";
+"%@ SETTINGS" = "%@ 设置";
 
 // About
 "About" = "Movie Hunter by [fatbobman](http://www.fatbobman.com)";

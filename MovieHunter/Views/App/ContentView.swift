@@ -10,9 +10,8 @@ import SwiftUI
 import SwiftUIOverlayContainer
 
 struct ContentView: View {
-    @EnvironmentObject var store:Store
-    @State var id = UUID()
-    @StateObject private var c = AppConfiguration.share
+    @EnvironmentObject var store: Store
+    @StateObject private var appConfiguration = AppConfiguration.share
     var body: some View {
         VStack {
             #if !os(macOS)
@@ -39,9 +38,12 @@ struct ContentView: View {
         }
         .syncCoreData() // 同步 favorite 数据
         .environmentObject(store)
-        .preferredColorScheme(c.colorScheme.colorScheme)
-        .environment(\.locale, c.appLanguage.locale)
+        .preferredColorScheme(appConfiguration.colorScheme.colorScheme)
+        .environment(\.locale, appConfiguration.appLanguage.locale)
         .setDeviceStatus()
+        #if os(macOS)
+            .frame(minWidth: 800, minHeight: 700)
+        #endif
     }
 }
 

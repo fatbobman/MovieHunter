@@ -73,9 +73,6 @@ struct DetailGallery: View {
                         let bigURL = bigSizeBaseURL.appending(path: url.absoluteString)
                         overlayContainerManager.show(containerView: BigBackdrop(url: bigURL), in: backdropContainerName)
                     }
-            } else {
-                DownloadPlaceHolder()
-                    .frame(minWidth: 100)
             }
         }
         .pipeline(pipeline)

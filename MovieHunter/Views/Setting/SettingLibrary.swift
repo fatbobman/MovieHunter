@@ -10,11 +10,12 @@ import SwiftUI
 
 struct SettingLibrary: View {
     var body: some View {
-        List {
+        Form {
             Link("Nuke", destination: URL(string: "https://github.com/kean/Nuke")!)
             Link("TMDb", destination: URL(string: "https://github.com/adamayoung/TMDb")!)
             Link("SwiftUI Overlay Container", destination: URL(string: "https://github.com/fatbobman/SwiftUIOverlayContainer")!)
         }
+        .formStyle(.grouped)
     }
 }
 

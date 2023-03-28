@@ -66,6 +66,7 @@
 "SettingCategory_Genre" = "Movie Genre";
 "SettingCategory_Storage" = "Storage";
 "SettingCategory_About" = "About";
+"SettingCategory_Library" = "3rd Library";
 "Setting_BySystem" = "System";
 "AppLanguage_English" = "English";
 "AppLanguage_Chinese" = "中文";
@@ -88,6 +89,7 @@
 
 // About
 "About" = "Movie Hunter by [fatbobman](http://www.fatbobman.com)";
+"License" = "This App is released under the MIT license";
 
 // Movie Detail
 "Favorite_Button_Cancel" = "Added to Watchlist";

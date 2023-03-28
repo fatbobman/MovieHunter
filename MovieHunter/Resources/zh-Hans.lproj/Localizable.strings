@@ -65,6 +65,7 @@
 "SettingCategory_Genre" = "电影类型";
 "SettingCategory_Storage" = "存储";
 "SettingCategory_About" = "关于";
+"SettingCategory_Library" = "第三方库";
 "Setting_BySystem" = "跟随系统";
 "AppLanguage_English" = "English";
 "AppLanguage_Chinese" = "中文";
@@ -86,6 +87,7 @@
 
 // About
 "About" = "Movie Hunter by [fatbobman](http://www.fatbobman.com)";
+"License" = "This App is released under the MIT license";
 
 // Movie Detail
 "Favorite_Button_Cancel" = "已加到观片清单";

@@ -10,7 +10,16 @@ import SwiftUI
 
 struct About: View {
     var body: some View {
-        Text("About")
+        VStack {
+            Image("cartoonHunter")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 200, height: 200)
+            Text("About")
+            Text("License")
+                .font(.footnote)
+                .foregroundColor(.secondary)
+        }
     }
 }
 

@@ -13,6 +13,7 @@ enum SettingCategory: Int, CaseIterable, Hashable {
     case genres
     case storage
     case about
+    case library
 
     var localizedString: LocalizedStringKey {
         switch self {
@@ -24,6 +25,8 @@ enum SettingCategory: Int, CaseIterable, Hashable {
             return "SettingCategory_Storage"
         case .about:
             return "SettingCategory_About"
+        case .library:
+            return "SettingCategory_Library"
         }
     }
 }

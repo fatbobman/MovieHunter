@@ -24,6 +24,10 @@ struct SettingSidebar: View {
                 Label(SettingCategory.storage.localizedString, systemImage: "opticaldiscdrive.fill")
             }
 
+            NavigationLink(value: SettingCategory.library) {
+                Label(SettingCategory.library.localizedString, systemImage: "building.columns.fill")
+            }
+            
             NavigationLink(value: SettingCategory.about) {
                 Label(SettingCategory.about.localizedString, systemImage: "person.fill")
             }

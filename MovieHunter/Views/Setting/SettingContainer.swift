@@ -24,6 +24,8 @@ struct SettingContainer: View {
                             SettingStorage()
                         case .about:
                             About()
+                        case .library:
+                            SettingLibrary()
                         }
                     }
                     #if os(macOS)
@@ -37,7 +39,7 @@ struct SettingContainer: View {
             #endif
         }
         #if os(macOS)
-        .frame(width: 550,height: 400)
+        .frame(width: 550, height: 400)
         .preferredColorScheme(configuration.colorScheme.colorScheme)
         .environment(\.locale, configuration.appLanguage.locale)
         #endif

@@ -14,7 +14,7 @@ import TMDb
 struct PersonPortrait: View {
     let personID: Int?
     let name: String?
-    let baseURL: URL = .init(string: "https://image.tmdb.org/t/p/w300")!
+    let baseURL = imageBaseURL(.w300)
     let displayType: DisplayType
     @State private var imageURL: URL?
     @Environment(\.tmdb) private var tmdb

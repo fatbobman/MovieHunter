@@ -39,7 +39,9 @@ import SwiftUI
             }
         }
     }
+#endif
 
+#if DEBUG && os(macOS)
     struct MenuBar_Previews: PreviewProvider {
         static var previews: some View {
             MenuBar()

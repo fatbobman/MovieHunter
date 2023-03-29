@@ -999,7 +999,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/fatbobman/TMDb.git";
 			requirement = {
-				branch = main;
+				branch = MovieHunter;
 				kind = branch;
 			};
 		};

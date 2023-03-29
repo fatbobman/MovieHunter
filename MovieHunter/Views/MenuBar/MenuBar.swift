@@ -8,33 +8,41 @@
 import Foundation
 import SwiftUI
 
-struct MenuBar: View {
-    @Environment(\.openWindow) var openWindow
-    private let id = "categoryGroup"
-    var body: some View {
-        ForEach(Category.showableCategory) { category in
-            Button {
-                openWindow(id: id, value: category)
-            } label: {
-                Text(category.localizedString)
-            }
-        }
-        Menu {
-            ForEach(Genres.allCases) { genre in
+#if os(macOS)
+    struct MenuBar: View {
+        @Environment(\.openWindow) var openWindow
+        private let id = "categoryGroup"
+        var body: some View {
+            ForEach(Category.showableCategory) { category in
                 Button {
-                    openWindow(id: id, value: Category.genre(genre.id))
+                    openWindow(id: id, value: category)
                 } label: {
-                    Text(genre.localizedString)
+                    Text(category.localizedString)
                 }
             }
-        } label: {
-            Text("SideBar_Genre_Section_Label")
+            Menu {
+                ForEach(Genres.allCases) { genre in
+                    Button {
+                        openWindow(id: id, value: Category.genre(genre.id))
+                    } label: {
+                        Text(genre.localizedString)
+                    }
+                }
+            } label: {
+                Text("SideBar_Genre_Section_Label")
+            }
+            Divider()
+            Button {
+                NSApplication.shared.terminate(nil)
+            } label: {
+                Text("Quit_App")
+            }
         }
     }
-}
 
-struct MenuBar_Previews: PreviewProvider {
-    static var previews: some View {
-        MenuBar()
+    struct MenuBar_Previews: PreviewProvider {
+        static var previews: some View {
+            MenuBar()
+        }
     }
-}
+#endif

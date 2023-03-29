@@ -104,3 +104,6 @@
 "Detail_Budget" = "票房";
 "Detail_ProductionCompany" = "制作公司";
 "Detail_Gallery" = "剧照";
+
+// App
+"Quit_App" = "退出";

@@ -105,3 +105,6 @@
 "Detail_Budget" = "Budget";
 "Detail_ProductionCompany" = "Production Company";
 "Detail_Gallery" = "Stills";
+
+// App
+"Quit_App" = "Quit";

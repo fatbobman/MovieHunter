@@ -27,7 +27,7 @@ struct PersonPortrait: View {
             PersonName(name: name)
                 .frame(width: imageSize.width)
         }
-        .task {
+        .safeTask {
             if let personID, let url = try? await tmdb.people.images(forPerson: personID).profiles.first?.filePath {
                 imageURL = baseURL.appending(path: url.absoluteString)
             }

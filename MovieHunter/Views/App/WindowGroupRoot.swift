@@ -22,8 +22,10 @@ struct WindowGroupRoot: View {
     }
 }
 
-struct WindowGroupRoot_Previews: PreviewProvider {
-    static var previews: some View {
-        WindowGroupRoot(category: .popular)
+#if os(macOS) && DEBUG
+    struct WindowGroupRoot_Previews: PreviewProvider {
+        static var previews: some View {
+            WindowGroupRoot(category: .popular)
+        }
     }
-}
+#endif

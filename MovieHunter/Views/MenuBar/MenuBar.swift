@@ -44,7 +44,10 @@ import SwiftUI
 #if DEBUG && os(macOS)
     struct MenuBar_Previews: PreviewProvider {
         static var previews: some View {
-            MenuBar()
+            Form {
+                MenuBar()
+            }
+            .formStyle(.grouped)
         }
     }
 #endif

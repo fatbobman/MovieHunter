@@ -27,7 +27,12 @@ struct SettingGenres: View {
             }
             self.genres = genres
         }
-        .formStyle(.grouped)
+        .navigationTitle(SettingCategory.genres.localizedString)
+        #if !os(macOS)
+            .navigationBarTitleDisplayMode(.inline)
+        #else
+            .formStyle(.grouped) // for macOS
+        #endif
     }
 
     func handler(genre: Genres) {

@@ -20,6 +20,10 @@ struct About: View {
                 .font(.footnote)
                 .foregroundColor(.secondary)
         }
+        .navigationTitle(SettingCategory.about.localizedString)
+        #if !os(macOS)
+            .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
 }
 

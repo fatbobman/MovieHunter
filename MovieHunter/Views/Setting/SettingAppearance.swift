@@ -48,7 +48,12 @@ struct SettingAppearance: View {
                 Text("Setting_showBookMark_Description")
             }
         }
-        .formStyle(.grouped) // for macOS
+        .navigationTitle(SettingCategory.appearance.localizedString)
+        #if !os(macOS)
+            .navigationBarTitleDisplayMode(.inline)
+        #else
+            .formStyle(.grouped) // for macOS
+        #endif
     }
 }
 

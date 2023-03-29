@@ -34,9 +34,10 @@ struct SettingContainer: View {
                 }
         } detail: {
             SettingHome()
-                .navigationTitle("Settings_Title")
             #if os(macOS)
                 .toolbar(.hidden, for: .windowToolbar)
+            #else
+                .navigationBarTitleDisplayMode(.inline)
             #endif
         }
         #if os(macOS)

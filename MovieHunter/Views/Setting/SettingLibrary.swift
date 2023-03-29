@@ -15,7 +15,12 @@ struct SettingLibrary: View {
             Link("TMDb", destination: URL(string: "https://github.com/adamayoung/TMDb")!)
             Link("SwiftUI Overlay Container", destination: URL(string: "https://github.com/fatbobman/SwiftUIOverlayContainer")!)
         }
-        .formStyle(.grouped)
+        .navigationTitle(SettingCategory.library.localizedString)
+        #if !os(macOS)
+            .navigationBarTitleDisplayMode(.inline)
+        #else
+            .formStyle(.grouped) // for macOS
+        #endif
     }
 }
 

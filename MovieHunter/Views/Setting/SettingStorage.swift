@@ -36,11 +36,16 @@ struct SettingStorage: View {
                 .buttonStyle(.borderedProminent)
             }
         }
-        .formStyle(.grouped)
         .onAppear {
             tmdbCache = loadURLCacheCost()
             pipelineCache = loadPipelineCacheCost()
         }
+        .navigationTitle(SettingCategory.storage.localizedString)
+        #if !os(macOS)
+            .navigationBarTitleDisplayMode(.inline)
+        #else
+            .formStyle(.grouped) // for macOS
+        #endif
     }
 
     func loadPipelineCacheCost() -> String {

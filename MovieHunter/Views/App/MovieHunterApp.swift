@@ -18,6 +18,7 @@ struct MovieHunterApp: App {
         }
         #if os(macOS)
         .defaultSize(width: 1024, height: 800)
+        .defaultPosition(.center)
         #endif
 
         #if os(macOS)
@@ -37,6 +38,7 @@ struct MovieHunterApp: App {
                     .environment(\.managedObjectContext, stack.viewContext)
             }
             .defaultSize(width: 1024, height: 800)
+            .defaultPosition(.center)
         #endif
     }
 }

@@ -287,12 +287,12 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		769002B529C6E75800620A3C /* HomeAndSideBar */ = {
+		769002B529C6E75800620A3C /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				769002B629C6E76300620A3C /* Home.swift */,
 			);
-			path = HomeAndSideBar;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		769002B829C6EBF000620A3C /* Category */ = {
@@ -463,7 +463,7 @@
 				769002CF29C83B3400620A3C /* Wishlist */,
 				769002C529C825CD00620A3C /* Common */,
 				769002B829C6EBF000620A3C /* Category */,
-				769002B529C6E75800620A3C /* HomeAndSideBar */,
+				769002B529C6E75800620A3C /* Home */,
 				76AC25A029C2E2F3007874DA /* MovieDetail */,
 				76751E6329C58B690013BBDF /* NowPlaying */,
 			);

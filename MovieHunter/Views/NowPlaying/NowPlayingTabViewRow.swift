@@ -32,8 +32,14 @@ struct NowPlayingTabViewRow: View {
 #if DEBUG
     struct NowPlayingTabViewRowPreview: PreviewProvider {
         static var previews: some View {
-            NowPlayingTabViewRow(movies: [PreviewData.previewMovie1, PreviewData.previewMovie2])
-                .frame(width: 400, height: 400)
+            NowPlayingTabViewRow(
+                movies: [
+                    PreviewData.previewMovie1,
+                    PreviewData.previewMovie2
+                ]
+            )
+            .environment(\.backdropSize, .init(width: 400, height: 200))
+            .previewDevice(.init(rawValue: "iPhone 14 Pro"))
         }
     }
 #endif

@@ -37,7 +37,7 @@ struct NowPlayingRowContainer: View {
     }
 }
 
-#if Debug
+#if DEBUG
     struct MovieNowPlayingScrollView_Previews: PreviewProvider {
         static var previews: some View {
             NowPlayingRowContainer()

@@ -85,6 +85,7 @@ struct MovieGalleryContainer_Previews: PreviewProvider {
         )
         .frame(width: 400)
         .environment(\.deviceStatus, .compact)
+        .previewDevice(.iPhoneName)
 
         MovieGalleryContainer(
             movies: AnyRandomAccessCollection(
@@ -96,5 +97,6 @@ struct MovieGalleryContainer_Previews: PreviewProvider {
         )
         .environment(\.deviceStatus, .regular)
         .frame(width: 400)
+        .previewDevice(.iPadName)
     }
 }

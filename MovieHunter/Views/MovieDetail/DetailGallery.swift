@@ -82,7 +82,7 @@ struct DetailGallery: View {
 #if DEBUG
     struct DetailGallery_Previews: PreviewProvider {
         static var previews: some View {
-            DetailGallery(movie: PreviewData.previewMovie1)
+            DetailGallery(movie: .previewMovie1)
         }
     }
 #endif

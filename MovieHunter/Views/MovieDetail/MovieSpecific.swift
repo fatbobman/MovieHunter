@@ -81,6 +81,6 @@ struct MovieSpecific: View {
 
 struct MovieSpecific_Previews: PreviewProvider {
     static var previews: some View {
-        MovieSpecific(movie: PreviewData.previewMovie1)
+        MovieSpecific(movie: .previewMovie1)
     }
 }

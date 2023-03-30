@@ -85,11 +85,11 @@ struct MovieDetailContainer: View {
     struct MovieDetailContainer_Previews: PreviewProvider {
         static var previews: some View {
             #if os(iOS)
-                MovieDetailContainer(movie: PreviewData.previewMovie1)
+                MovieDetailContainer(movie: .previewMovie1)
                     .environment(\.deviceStatus, .compact)
                     .previewDevice(.iPhoneName)
 
-                MovieDetailContainer(movie: PreviewData.previewMovie1)
+                MovieDetailContainer(movie: .previewMovie1)
                     .environment(\.deviceStatus, .regular)
                     .previewDevice(.iPadName)
 
@@ -100,7 +100,7 @@ struct MovieDetailContainer: View {
             #endif
 
             #if os(macOS)
-                MovieDetailContainer(movie: PreviewData.previewMovie1)
+                MovieDetailContainer(movie: .previewMovie1)
                     .environment(\.deviceStatus, .macOS)
                     .frame(width: 1200, height: 800)
             #endif

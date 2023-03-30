@@ -70,7 +70,7 @@ struct NowPlayingBackdrop: View {
     struct MovieNowPlayingBackdrop_Previews: PreviewProvider {
         static var previews: some View {
             NowPlayingBackdrop(
-                movie: PreviewData.previewMovie1
+                movie: .previewMovie1
             )
             .frame(width: 390, height: 390 / 1.77)
             .environment(\.colorScheme, .dark)

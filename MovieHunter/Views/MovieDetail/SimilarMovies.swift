@@ -38,6 +38,6 @@ struct SimilarMovies: View {
 
 struct SimilarMovies_Previews: PreviewProvider {
     static var previews: some View {
-        SimilarMovies(movie: PreviewData.previewMovie1)
+        SimilarMovies(movie: .previewMovie1)
     }
 }

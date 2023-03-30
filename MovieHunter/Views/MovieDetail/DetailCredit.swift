@@ -96,7 +96,7 @@ struct CastList: View {
 
 struct DetailPersonList_Previews: PreviewProvider {
     static var previews: some View {
-        DetailCredit(movie: PreviewData.previewMovie1)
+        DetailCredit(movie: .previewMovie1)
             .border(.red)
     }
 }

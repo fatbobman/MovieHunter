@@ -46,6 +46,6 @@ struct MovieDetail: View {
 
 struct MovieDetail_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDetail(movie: PreviewData.previewMovie1)
+        MovieDetail(movie: .previewMovie1)
     }
 }

@@ -134,7 +134,7 @@ public enum DisplayType: Equatable {
         @State var favorite: Bool = false
         var body: some View {
             MovieItem(
-                movie: PreviewData.previewMovie1,
+                movie: .previewMovie1,
                 displayType: .portrait(.small)
             )
             .border(.gray)
@@ -150,13 +150,13 @@ public enum DisplayType: Equatable {
                 MovieItemTest()
 
                 MovieItem(
-                    movie: PreviewData.previewMovie1,
+                    movie: .previewMovie1,
                     displayType: .portrait(.small)
                 )
                 .environment(\.inWishlist) { _ in true }
 
                 MovieItem(
-                    movie: PreviewData.previewMovie1,
+                    movie: .previewMovie1,
                     displayType: .portrait(.large)
                 )
             }

@@ -89,12 +89,12 @@ struct ItemPoster: View {
             )
 
             ItemPoster(
-                movie: PreviewData.previewMovie1,
+                movie: .previewMovie1,
                 size: DisplayType.portrait(.small).imageSize
             )
 
             ItemPoster(
-                movie: PreviewData.previewMovie1,
+                movie: .previewMovie1,
                 size: DisplayType.portrait(.middle).imageSize
             )
         }

@@ -117,6 +117,6 @@ struct MovieHeader: View {
 
 struct MovieHeader_Previews: PreviewProvider {
     static var previews: some View {
-        MovieHeader(movie: PreviewData.previewMovie1)
+        MovieHeader(movie: .previewMovie1)
     }
 }

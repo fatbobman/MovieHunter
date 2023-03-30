@@ -34,8 +34,8 @@ struct NowPlayingTabViewRow: View {
         static var previews: some View {
             NowPlayingTabViewRow(
                 movies: [
-                    PreviewData.previewMovie1,
-                    PreviewData.previewMovie2,
+                    .previewMovie1,
+                    .previewMovie2,
                 ]
             )
             .environment(\.backdropSize, .init(width: 400, height: 200))

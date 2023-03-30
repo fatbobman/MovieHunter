@@ -113,12 +113,12 @@ struct NowPlayingBanner: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 10) {
                         NowPlayingBanner(
-                            movie: PreviewData.previewMovie1,
+                            movie: .previewMovie1,
                             backdropSize: .init(width: 540, height: 540 / 1.77)
                         )
 
                         NowPlayingBanner(
-                            movie: PreviewData.previewMovie2,
+                            movie: .previewMovie2,
                             backdropSize: .init(width: 540, height: 540 / 1.77)
                         )
                     }

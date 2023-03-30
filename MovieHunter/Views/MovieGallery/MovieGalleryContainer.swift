@@ -78,8 +78,8 @@ struct MovieGalleryContainer_Previews: PreviewProvider {
         MovieGalleryContainer(
             movies: AnyRandomAccessCollection(
                 [
-                    PreviewData.previewMovie1,
-                    PreviewData.previewMovie2,
+                    .previewMovie1,
+                    .previewMovie2,
                 ]
             )
         )
@@ -89,8 +89,8 @@ struct MovieGalleryContainer_Previews: PreviewProvider {
         MovieGalleryContainer(
             movies: AnyRandomAccessCollection(
                 [
-                    PreviewData.previewMovie1,
-                    PreviewData.previewMovie2,
+                    .previewMovie1,
+                    .previewMovie2,
                 ]
             )
         )

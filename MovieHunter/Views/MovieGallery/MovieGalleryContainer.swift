@@ -94,6 +94,7 @@ struct MovieGalleryContainer_Previews: PreviewProvider {
                 ]
             )
         )
+        .environment(\.deviceStatus, .regular)
         .frame(width: 400)
     }
 }

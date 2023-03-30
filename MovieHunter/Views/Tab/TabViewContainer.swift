@@ -35,7 +35,15 @@ struct TabViewContainer: View {
 
 struct TabViewContainer_Previews: PreviewProvider {
     static var previews: some View {
-        TabViewContainer()
-            .environmentObject(Store.share)
+        #if os(iOS)
+            TabViewContainer()
+                .environmentObject(Store.share)
+                .previewDevice(.init(rawValue: "iPhone 14 Pro"))
+
+            TabViewContainer()
+                .environmentObject(Store.share)
+                .environment(\.deviceStatus, .regular)
+                .previewDevice(.init(rawValue: "iPad Pro 11'"))
+        #endif
     }
 }

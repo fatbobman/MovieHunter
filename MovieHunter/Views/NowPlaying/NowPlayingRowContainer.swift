@@ -45,12 +45,12 @@ struct NowPlayingRowContainer: View {
                     .environment(\.colorScheme, .dark)
                     .environment(\.backdropSize, .init(width: 400, height: 200))
                     .environment(\.deviceStatus, .compact)
-                    .previewDevice(.init(rawValue: "iPhone 14 Pro"))
+                    .previewDevice(.iPhoneName)
 
                 NowPlayingRowContainer()
                     .environmentObject(Store())
                     .environment(\.deviceStatus, .regular)
-                    .previewDevice(.init(rawValue: "iPad Pro 11'"))
+                    .previewDevice(.iPadName)
                     .previewInterfaceOrientation(.landscapeLeft)
                     .frame(height: 450)
             #else

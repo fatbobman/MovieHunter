@@ -32,17 +32,30 @@ struct CategoryWrapper: View {
 #if DEBUG
     struct CategoryRoot_Previews: PreviewProvider {
         static var previews: some View {
-            CategoryWrapper(category: .nowPlaying)
-                .environmentObject(Store.share)
+            #if os(iOS)
+                CategoryWrapper(category: .nowPlaying)
+                    .environmentObject(Store.share)
+                    .previewDevice(.iPhoneName)
+                    .environment(\.deviceStatus, .compact)
+                    .environment(\.backdropSize, .init(width: 400, height: 200))
 
-            CategoryWrapper(category: .nowPlaying)
-                .environmentObject(Store.share)
-                .environment(\.deviceStatus, .regular)
-                .previewDevice(PreviewDevice(rawValue: "iPad Pro 11'"))
-                .previewInterfaceOrientation(.landscapeLeft)
+                CategoryWrapper(category: .nowPlaying)
+                    .environmentObject(Store.share)
+                    .environment(\.deviceStatus, .regular)
+                    .previewDevice(.iPadName)
+                    .previewInterfaceOrientation(.landscapeLeft)
 
-            CategoryWrapper(category: .popular)
-                .environmentObject(Store.share)
+                CategoryWrapper(category: .popular)
+                    .environmentObject(Store.share)
+                    .environment(\.deviceStatus, .regular)
+                    .previewDevice(.iPadName)
+                    .previewInterfaceOrientation(.landscapeLeft)
+            #else
+                CategoryWrapper(category: .popular)
+                    .environmentObject(Store.share)
+                    .environment(\.deviceStatus, .macOS)
+                    .frame(width: 800)
+            #endif
         }
     }
 #endif

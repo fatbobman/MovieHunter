@@ -85,18 +85,18 @@ struct MovieDetailContainer: View {
     struct MovieDetailContainer_Previews: PreviewProvider {
         static var previews: some View {
             #if os(iOS)
-            MovieDetailContainer(movie: PreviewData.previewMovie1)
-                .environment(\.deviceStatus, .compact)
-                .previewDevice(.init(rawValue: "iPhone 14 Pro"))
+                MovieDetailContainer(movie: PreviewData.previewMovie1)
+                    .environment(\.deviceStatus, .compact)
+                    .previewDevice(.iPhoneName)
 
-            MovieDetailContainer(movie: PreviewData.previewMovie1)
-                .environment(\.deviceStatus, .regular)
-                .previewDevice(.init(rawValue: "iPad Pro 11'"))
+                MovieDetailContainer(movie: PreviewData.previewMovie1)
+                    .environment(\.deviceStatus, .regular)
+                    .previewDevice(.iPadName)
 
-            MovieDetailContainer(movie: PreviewData.previewMovie1)
-                .environment(\.deviceStatus, .regular)
-                .previewDevice(.init(rawValue: "iPad Pro 11'"))
-                .previewInterfaceOrientation(.landscapeLeft)
+                MovieDetailContainer(movie: PreviewData.previewMovie1)
+                    .environment(\.deviceStatus, .regular)
+                    .previewDevice(.iPadName)
+                    .previewInterfaceOrientation(.landscapeLeft)
             #endif
 
             #if os(macOS)

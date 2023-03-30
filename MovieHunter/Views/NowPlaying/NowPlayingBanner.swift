@@ -87,27 +87,44 @@ struct NowPlayingBanner: View {
 #if DEBUG
     struct MovieBanner_Previews: PreviewProvider {
         static var previews: some View {
-            NowPlayingBanner(
-                movie: PreviewData.previewMovie1,
-                backdropSize: .init(width: 393, height: 393 / 1.77)
-            )
-            .environment(\.colorScheme, .dark)
+            #if os(iOS)
+                NowPlayingBanner(
+                    movie: PreviewData.previewMovie1,
+                    backdropSize: .init(width: 393, height: 393 / 1.77)
+                )
+                .environment(\.colorScheme, .dark)
 
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 10) {
-                    NowPlayingBanner(
-                        movie: PreviewData.previewMovie1,
-                        backdropSize: .init(width: 540, height: 540 / 1.77)
-                    )
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 10) {
+                        NowPlayingBanner(
+                            movie: PreviewData.previewMovie1,
+                            backdropSize: .init(width: 540, height: 540 / 1.77)
+                        )
 
-                    NowPlayingBanner(
-                        movie: PreviewData.previewMovie2,
-                        backdropSize: .init(width: 540, height: 540 / 1.77)
-                    )
+                        NowPlayingBanner(
+                            movie: PreviewData.previewMovie2,
+                            backdropSize: .init(width: 540, height: 540 / 1.77)
+                        )
+                    }
                 }
-            }
-            .previewDevice(.init(rawValue: "iPad Pro 11'"))
-            .previewInterfaceOrientation(.landscapeLeft)
+                .previewDevice(.iPadName)
+                .previewInterfaceOrientation(.landscapeLeft)
+            #else
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 10) {
+                        NowPlayingBanner(
+                            movie: PreviewData.previewMovie1,
+                            backdropSize: .init(width: 540, height: 540 / 1.77)
+                        )
+
+                        NowPlayingBanner(
+                            movie: PreviewData.previewMovie2,
+                            backdropSize: .init(width: 540, height: 540 / 1.77)
+                        )
+                    }
+                }
+                .frame(width: 800)
+            #endif
         }
     }
 #endif

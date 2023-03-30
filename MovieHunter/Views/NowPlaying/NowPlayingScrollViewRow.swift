@@ -31,14 +31,19 @@ struct NowPlayingScrollViewRow: View {
 #if DEBUG
     struct NowPlayingScrollViewRowPreview: PreviewProvider {
         static var previews: some View {
-            NowPlayingScrollViewRow(movies: [PreviewData.previewMovie1, PreviewData.previewMovie2])
-                .previewDevice(.init(rawValue: "iPad Pro 11'"))
-                .previewInterfaceOrientation(.landscapeLeft)
+            #if os(iOS)
+                NowPlayingScrollViewRow(movies: [PreviewData.previewMovie1, PreviewData.previewMovie2])
+                    .previewDevice(.iPadName)
+                    .previewInterfaceOrientation(.landscapeLeft)
 
-            NowPlayingScrollViewRow(movies: [PreviewData.previewMovie1, PreviewData.previewMovie2])
-                .previewDevice(.init(rawValue: "iPad Pro 11'"))
-                .previewInterfaceOrientation(.landscapeLeft)
-                .environment(\.colorScheme, .dark)
+                NowPlayingScrollViewRow(movies: [PreviewData.previewMovie1, PreviewData.previewMovie2])
+                    .previewDevice(.iPadName)
+                    .previewInterfaceOrientation(.landscapeLeft)
+                    .environment(\.colorScheme, .dark)
+            #else
+                NowPlayingScrollViewRow(movies: [PreviewData.previewMovie1, PreviewData.previewMovie2])
+                    .frame(width: 800)
+            #endif
         }
     }
 #endif

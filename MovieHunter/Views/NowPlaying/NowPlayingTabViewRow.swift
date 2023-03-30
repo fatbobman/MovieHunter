@@ -35,11 +35,11 @@ struct NowPlayingTabViewRow: View {
             NowPlayingTabViewRow(
                 movies: [
                     PreviewData.previewMovie1,
-                    PreviewData.previewMovie2
+                    PreviewData.previewMovie2,
                 ]
             )
             .environment(\.backdropSize, .init(width: 400, height: 200))
-            .previewDevice(.init(rawValue: "iPhone 14 Pro"))
+            .previewDevice(.iPhoneName)
         }
     }
 #endif

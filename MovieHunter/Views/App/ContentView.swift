@@ -10,7 +10,7 @@ import SwiftUI
 import SwiftUIOverlayContainer
 
 struct ContentView: View {
-    @EnvironmentObject var store: Store
+    @StateObject var store = Store()
     @StateObject private var appConfiguration = AppConfiguration.share
     var body: some View {
         VStack {

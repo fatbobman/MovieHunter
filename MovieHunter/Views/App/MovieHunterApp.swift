@@ -14,7 +14,6 @@ struct MovieHunterApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, stack.viewContext)
-                .environmentObject(Store())
         }
         #if os(macOS)
         .defaultSize(width: 1024, height: 800)

@@ -105,11 +105,3 @@ extension Genres: Identifiable {
         }
     }
 }
-
-/*
- 最流行
- 最高评分
- 当前上映
- 即将上映
- 我的愿望单
- */

@@ -11,7 +11,6 @@ import SwiftUI
 struct StackContainer: View {
     @EnvironmentObject var store: Store
     var body: some View {
-        if showStack {
             NavigationStack(path: $store.state.destinations) {
                 Home()
                     .navigationDestination(for: Destination.self) { destination in
@@ -31,9 +30,6 @@ struct StackContainer: View {
                     }
             }
             .setBackdropSize()
-        } else {
-            Text("Movie Empty")
-        }
     }
     
     // 测试时，屏蔽 Movie 视图，减少 TMDb 网络调用，防止被封

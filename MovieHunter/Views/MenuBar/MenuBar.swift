@@ -37,6 +37,7 @@ import SwiftUI
             } label: {
                 Text("Quit_App")
             }
+            .keyboardShortcut("Q", modifiers: [.command, .option])
         }
     }
 #endif

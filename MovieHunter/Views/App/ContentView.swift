@@ -49,7 +49,20 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
-            .environmentObject(Store())
+        #if os(iOS)
+            ContentView()
+                .environmentObject(Store())
+                .environment(\.deviceStatus, .compact)
+                .previewDevice(.iPhoneName)
+
+            ContentView()
+                .environmentObject(Store())
+                .environment(\.deviceStatus, .regular)
+                .previewDevice(.iPadName)
+        #else
+            ContentView()
+                .environmentObject(Store())
+                .environment(\.deviceStatus, .macOS)
+        #endif
     }
 }

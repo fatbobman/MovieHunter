@@ -37,25 +37,21 @@ struct NowPlayingRowContainer: View {
     }
 }
 
-struct MovieNowPlayingScrollView_Previews: PreviewProvider {
-    static var previews: some View {
-        NowPlayingRowContainer()
-            .environment(\.colorScheme, .dark)
+#if Debug
+    struct MovieNowPlayingScrollView_Previews: PreviewProvider {
+        static var previews: some View {
+            NowPlayingRowContainer()
+                .environment(\.colorScheme, .dark)
+                .environment(\.backdropSize, .init(width: 400, height: 200))
+                .environment(\.deviceStatus, .compact)
+                .previewDevice(.init(rawValue: "iPhone 14 Pro"))
 
-        NavigationSplitView {
-            Text("abc")
-        } detail: {
-            VStack {
-                NowPlayingRowContainer()
-                Spacer()
-            }
-            .navigationTitle("EmptyLocalizableString")
-            #if !os(macOS)
-                .navigationBarTitleDisplayMode(.inline)
-            #endif
+            NowPlayingRowContainer()
+                .environmentObject(Store())
+                .environment(\.deviceStatus, .regular)
+                .previewDevice(.init(rawValue: "iPad Pro (11-inch) (4th generation)"))
+                .previewInterfaceOrientation(.landscapeLeft)
+                .frame(height: 450)
         }
-        .environmentObject(Store())
-        .previewDevice(.init(rawValue: "iPad Pro (11-inch) (4th generation)"))
-        .previewInterfaceOrientation(.landscapeLeft)
     }
-}
+#endif

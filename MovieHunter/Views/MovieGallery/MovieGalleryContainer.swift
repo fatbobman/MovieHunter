@@ -38,7 +38,7 @@ struct GalleryLazyVGrid: View {
                     MovieItem(movie: movie, displayType: .portrait(.middle))
                 }
             }
-            .padding(.vertical,20)
+            .padding(.vertical, 20)
             if isLoading {
                 ProgressView()
                     .padding(10)
@@ -52,17 +52,17 @@ struct GalleryLazyVStack: View {
     @Environment(\.isLoading) private var isLoading
     var body: some View {
         ScrollView {
-            LazyVStack(spacing:0) {
+            LazyVStack(spacing: 0) {
                 ForEach(movies) { movie in
-                    VStack(spacing:0) {
-                        Divider().frame(height:0.3)
+                    VStack(spacing: 0) {
+                        Divider().frame(height: 0.3)
                         MovieItem(movie: movie, displayType: .landscape)
-                            .padding(.vertical,10)
+                            .padding(.vertical, 10)
                         if movie.id == movies.last?.id {
-                            Divider().frame(height:0.3)
+                            Divider().frame(height: 0.3)
                         }
                     }
-                    .padding(.horizontal,10)
+                    .padding(.horizontal, 10)
                 }
             }
             if isLoading {
@@ -73,8 +73,27 @@ struct GalleryLazyVStack: View {
     }
 }
 
-// struct MovieGalleryContainer_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MovieGalleryContainer()
-//    }
-// }
+struct MovieGalleryContainer_Previews: PreviewProvider {
+    static var previews: some View {
+        MovieGalleryContainer(
+            movies: AnyRandomAccessCollection(
+                [
+                    PreviewData.previewMovie1,
+                    PreviewData.previewMovie2,
+                ]
+            )
+        )
+        .frame(width: 400)
+        .environment(\.deviceStatus, .compact)
+
+        MovieGalleryContainer(
+            movies: AnyRandomAccessCollection(
+                [
+                    PreviewData.previewMovie1,
+                    PreviewData.previewMovie2,
+                ]
+            )
+        )
+        .frame(width: 400)
+    }
+}

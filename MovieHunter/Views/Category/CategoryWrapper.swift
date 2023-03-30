@@ -38,7 +38,7 @@ struct CategoryWrapper: View {
             CategoryWrapper(category: .nowPlaying)
                 .environmentObject(Store.share)
                 .environment(\.deviceStatus, .regular)
-                .previewDevice(PreviewDevice(rawValue: "iPad Pro (11-inch) (4th generation)"))
+                .previewDevice(PreviewDevice(rawValue: "iPad Pro 11'"))
                 .previewInterfaceOrientation(.landscapeLeft)
 
             CategoryWrapper(category: .popular)

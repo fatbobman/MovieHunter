@@ -32,11 +32,11 @@ struct NowPlayingScrollViewRow: View {
     struct NowPlayingScrollViewRowPreview: PreviewProvider {
         static var previews: some View {
             NowPlayingScrollViewRow(movies: [PreviewData.previewMovie1, PreviewData.previewMovie2])
-                .previewDevice(.init(rawValue: "iPad Pro (11-inch) (4th generation)"))
+                .previewDevice(.init(rawValue: "iPad Pro 11'"))
                 .previewInterfaceOrientation(.landscapeLeft)
 
             NowPlayingScrollViewRow(movies: [PreviewData.previewMovie1, PreviewData.previewMovie2])
-                .previewDevice(.init(rawValue: "iPad Pro (11-inch) (4th generation)"))
+                .previewDevice(.init(rawValue: "iPad Pro 11'"))
                 .previewInterfaceOrientation(.landscapeLeft)
                 .environment(\.colorScheme, .dark)
         }

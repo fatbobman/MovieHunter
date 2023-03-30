@@ -40,18 +40,25 @@ struct NowPlayingRowContainer: View {
 #if DEBUG
     struct MovieNowPlayingScrollView_Previews: PreviewProvider {
         static var previews: some View {
-            NowPlayingRowContainer()
-                .environment(\.colorScheme, .dark)
-                .environment(\.backdropSize, .init(width: 400, height: 200))
-                .environment(\.deviceStatus, .compact)
-                .previewDevice(.init(rawValue: "iPhone 14 Pro"))
+            #if os(iOS)
+                NowPlayingRowContainer()
+                    .environment(\.colorScheme, .dark)
+                    .environment(\.backdropSize, .init(width: 400, height: 200))
+                    .environment(\.deviceStatus, .compact)
+                    .previewDevice(.init(rawValue: "iPhone 14 Pro"))
 
-            NowPlayingRowContainer()
-                .environmentObject(Store())
-                .environment(\.deviceStatus, .regular)
-                .previewDevice(.init(rawValue: "iPad Pro (11-inch) (4th generation)"))
-                .previewInterfaceOrientation(.landscapeLeft)
-                .frame(height: 450)
+                NowPlayingRowContainer()
+                    .environmentObject(Store())
+                    .environment(\.deviceStatus, .regular)
+                    .previewDevice(.init(rawValue: "iPad Pro 11'"))
+                    .previewInterfaceOrientation(.landscapeLeft)
+                    .frame(height: 450)
+            #else
+                NowPlayingRowContainer()
+                    .environmentObject(Store())
+                    .environment(\.deviceStatus, .macOS)
+                    .frame(width: 700, height: 400)
+            #endif
         }
     }
 #endif

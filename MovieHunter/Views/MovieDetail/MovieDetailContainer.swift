@@ -91,11 +91,11 @@ struct MovieDetailContainer: View {
 
             MovieDetailContainer(movie: PreviewData.previewMovie1)
                 .environment(\.deviceStatus, .regular)
-                .previewDevice(.init(rawValue: "iPad Pro"))
+                .previewDevice(.init(rawValue: "iPad Pro 11'"))
 
             MovieDetailContainer(movie: PreviewData.previewMovie1)
                 .environment(\.deviceStatus, .regular)
-                .previewDevice(.init(rawValue: "iPad Pro"))
+                .previewDevice(.init(rawValue: "iPad Pro 11'"))
                 .previewInterfaceOrientation(.landscapeLeft)
             #endif
 

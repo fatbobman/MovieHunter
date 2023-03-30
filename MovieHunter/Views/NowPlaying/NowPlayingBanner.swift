@@ -106,7 +106,7 @@ struct NowPlayingBanner: View {
                     )
                 }
             }
-            .previewDevice(.init(rawValue: "iPad Pro (11-inch) (4th generation)"))
+            .previewDevice(.init(rawValue: "iPad Pro 11'"))
             .previewInterfaceOrientation(.landscapeLeft)
         }
     }

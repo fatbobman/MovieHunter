@@ -16,6 +16,7 @@ struct NowPlayingBanner: View {
     @Environment(\.deviceStatus) private var deviceStatus
     @Environment(\.colorScheme) private var colorScheme
     @Namespace private var nameSpace
+    private let id = "posterTopLeading"
     @StateObject private var configuration = AppConfiguration.share
     private var showBookMark: Bool {
         configuration.showBookMarkInPoster
@@ -36,7 +37,7 @@ struct NowPlayingBanner: View {
                         showShadow: true,
                         enableScale: false
                     )
-                    .matchedGeometryEffect(id: "posterTopLeading", in: nameSpace, properties: [.position], anchor: .topLeading, isSource: true)
+                    .matchedGeometryEffect(id: id, in: nameSpace, properties: [.position], anchor: .topLeading, isSource: true)
                     NowPlayingBannerTitle(movie: movie)
                         .alignmentGuide(.lastTextBaseline) { $0[.lastTextBaseline] + 10 }
                 }
@@ -50,7 +51,7 @@ struct NowPlayingBanner: View {
             Group {
                 if showBookMark {
                     BookMarkCornerButton(movieID: movie.id)
-                        .matchedGeometryEffect(id: "posterTopLeading", in: nameSpace, anchor: .topLeading, isSource: false)
+                        .matchedGeometryEffect(id: id, in: nameSpace, anchor: .topLeading, isSource: false)
                 }
             }
         )

@@ -10,8 +10,9 @@ import SwiftUI
 
 struct SettingContainer: View {
     @StateObject var configuration = AppConfiguration.share
+    @State private var visibility: NavigationSplitViewVisibility = .doubleColumn
     var body: some View {
-        NavigationSplitView {
+        NavigationSplitView(columnVisibility: $visibility) {
             SettingSidebar()
                 .navigationDestination(for: SettingCategory.self) { category in
                     Group {
@@ -29,12 +30,14 @@ struct SettingContainer: View {
                         }
                     }
                     #if os(macOS)
+                    .frame(minWidth: 400)
                     .toolbar(.hidden, for: .windowToolbar)
                     #endif
                 }
         } detail: {
             SettingHome()
             #if os(macOS)
+                .frame(minWidth: 400)
                 .navigationTitle("Setting_Title")
                 .toolbar(.hidden, for: .windowToolbar)
             #else
@@ -45,6 +48,13 @@ struct SettingContainer: View {
         .frame(width: 550, height: 400)
         .preferredColorScheme(configuration.colorScheme.colorScheme)
         .environment(\.locale, configuration.appLanguage.locale)
+        .task {
+            for await _ in Timer.publish(every: 0.3, on: .main, in: .common).autoconnect().values {
+                if visibility != .doubleColumn {
+                    visibility = .doubleColumn
+                }
+            }
+        }
         #endif
     }
 }

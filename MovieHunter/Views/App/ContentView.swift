@@ -10,8 +10,13 @@ import SwiftUI
 import SwiftUIOverlayContainer
 
 struct ContentView: View {
-    @StateObject var store = Store()
+    @StateObject private var store = Store()
     @StateObject private var appConfiguration = AppConfiguration.share
+    private let category: Category?
+    init(category: Category? = nil) {
+        self.category = category
+    }
+
     var body: some View {
         VStack {
             #if !os(macOS)
@@ -44,6 +49,11 @@ struct ContentView: View {
         #if os(macOS)
             .frame(minWidth: 800, minHeight: 700)
         #endif
+            .task {
+                if let category {
+                    store.send(.setDestination(to: [category.destination]))
+                }
+            }
     }
 }
 

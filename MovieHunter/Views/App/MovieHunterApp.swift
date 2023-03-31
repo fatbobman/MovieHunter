@@ -32,8 +32,8 @@ struct MovieHunterApp: App {
             }
             .menuBarExtraStyle(.menu)
 
-            WindowGroup(id: "categoryGroup", for: Category.self) { category in
-                WindowGroupRoot(category: category.wrappedValue)
+            WindowGroup(id: windowGroupID, for: Category.self) { category in
+                ContentView(category: category.wrappedValue)
                     .environment(\.managedObjectContext, stack.viewContext)
             }
             .defaultSize(width: 1024, height: 800)

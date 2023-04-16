@@ -12,6 +12,7 @@ import SwiftUIOverlayContainer
 struct ContentView: View {
     @StateObject private var store = Store()
     @StateObject private var appConfiguration = AppConfiguration.share
+    @State private var containerName = ""
     private let category: Category?
     init(category: Category? = nil) {
         self.category = category
@@ -25,7 +26,10 @@ struct ContentView: View {
                 StackContainer()
             #endif
         }
-        .overlayContainer(backdropContainerName, containerConfiguration: ContainerConfiguration.share)
+        .if(containerName != ""){
+            $0.overlayContainer(containerName, containerConfiguration: ContainerConfiguration.share)
+        }
+        .environment(\.containerName, containerName)
         .environment(\.inWishlist) {
             store.state.favoriteMovieIDs.contains($0)
         }
@@ -53,6 +57,9 @@ struct ContentView: View {
                 if let category {
                     store.send(.setDestination(to: [category.destination]))
                 }
+            }
+            .onAppear {
+                containerName = UUID().uuidString
             }
     }
 }

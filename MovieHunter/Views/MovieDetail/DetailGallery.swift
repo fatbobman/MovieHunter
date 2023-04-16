@@ -20,6 +20,7 @@ struct DetailGallery: View {
     @Environment(\.imagePipeline) private var pipeline
     @Environment(\.deviceStatus) private var deviceStatus
     @Environment(\.overlayContainerManager) private var overlayContainerManager
+    @Environment(\.containerName) private var containerName
     private var compact: Bool {
         deviceStatus == .compact
     }
@@ -71,7 +72,7 @@ struct DetailGallery: View {
                     .aspectRatio(contentMode: .fill)
                     .onTapGesture {
                         let bigURL = bigSizeBaseURL.appending(path: url.absoluteString)
-                        overlayContainerManager.show(containerView: BigBackdrop(url: bigURL), in: backdropContainerName)
+                        overlayContainerManager.show(containerView: BigBackdrop(url: bigURL), in: containerName)
                     }
             }
         }

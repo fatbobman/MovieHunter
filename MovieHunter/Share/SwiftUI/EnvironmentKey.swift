@@ -53,6 +53,10 @@ struct BackdropSizeKey: EnvironmentKey {
     static var defaultValue: CGSize = .zero
 }
 
+struct OverlayContainerSceneName: EnvironmentKey {
+    static var defaultValue: String = UUID().uuidString
+}
+
 extension EnvironmentValues {
     // check if in favorite movie list
     var inWishlist: (Int) -> Bool {
@@ -93,5 +97,11 @@ extension EnvironmentValues {
     var backdropSize: CGSize {
         get { self[BackdropSizeKey.self] }
         set { self[BackdropSizeKey.self] = newValue }
+    }
+
+    // overlay Container name
+    var containerName: String {
+        get { self[OverlayContainerSceneName.self] }
+        set { self[OverlayContainerSceneName.self] = newValue }
     }
 }
